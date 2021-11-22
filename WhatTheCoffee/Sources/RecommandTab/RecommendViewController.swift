@@ -9,6 +9,9 @@ import UIKit
 
 class RecommendViewController: UIViewController {
   
+  // MARK: - Properties
+  var environment: Environment? = nil
+  
   // MARK: - UI
   @IBOutlet weak var recommendButton: UIButton!
   
@@ -16,7 +19,6 @@ class RecommendViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    configure()
   }
 
   // MARK: - Configure

@@ -10,6 +10,8 @@ import UIKit
 class RecordsViewController: UIViewController {
   
   // MARK: - Properties
+  var environment: Environment? = nil
+  
   let cellInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
   let cellColors: [UIColor] = [.red, .blue, .yellow, .orange, .darkGray, .systemPink, .cyan, .brown]
   

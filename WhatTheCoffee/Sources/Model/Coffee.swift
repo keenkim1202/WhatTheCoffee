@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
 
-// 커피 리스트에 들어갈 커피 모델
-struct Coffee {
-  var name: String
-  var coffeeImage: UIImage
+class Coffee: Object {
+  @Persisted var name: String
+
+  @Persisted(primaryKey: true) var _id: ObjectId
+  
+  convenience init(name: String) {
+    self.init()
+    self.name = name
+  }
 }
+
