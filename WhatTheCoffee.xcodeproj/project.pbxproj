@@ -1,0 +1,532 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206372744B41A00FDBBEF /* AppDelegate.swift */; };
+		1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206392744B41A00FDBBEF /* SceneDelegate.swift */; };
+		1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C22063D2744B41A00FDBBEF /* Main.storyboard */; };
+		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
+		1C2206442744B41B00FDBBEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206422744B41B00FDBBEF /* LaunchScreen.storyboard */; };
+		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
+		1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */; };
+		1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */; };
+		1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */; };
+		1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */; };
+		1C37C3622744E70100EC3CA3 /* CafeLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */; };
+		1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3632744E71B00EC3CA3 /* RecordsViewController.swift */; };
+		1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3652744E72300EC3CA3 /* AddRecordViewController.swift */; };
+		1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */; };
+		1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */; };
+		1C37C3822744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3812744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift */; };
+		1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38A2745483200EC3CA3 /* Coffee.swift */; };
+		1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38C2745489000EC3CA3 /* Cafe.swift */; };
+		1C37C38F274548E800EC3CA3 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38E274548E800EC3CA3 /* Rate.swift */; };
+		1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */; };
+		1C37C394274550B900EC3CA3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C393274550B900EC3CA3 /* Realm */; };
+		1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C395274550B900EC3CA3 /* RealmSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C2206372744B41A00FDBBEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1C2206392744B41A00FDBBEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1C22063E2744B41A00FDBBEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1C2206402744B41B00FDBBEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C2206432744B41B00FDBBEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C2206452744B41B00FDBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewController.swift; sourceTree = "<group>"; };
+		1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewController.swift; sourceTree = "<group>"; };
+		1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeViewController.swift; sourceTree = "<group>"; };
+		1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNearCafeViewController.swift; sourceTree = "<group>"; };
+		1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeLocationViewController.swift; sourceTree = "<group>"; };
+		1C37C3632744E71B00EC3CA3 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		1C37C3652744E72300EC3CA3 /* AddRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
+		1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor++Extension.swift"; sourceTree = "<group>"; };
+		1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		1C37C3812744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListTableViewCell.swift; sourceTree = "<group>"; };
+		1C37C38A2745483200EC3CA3 /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		1C37C38C2745489000EC3CA3 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		1C37C38E274548E800EC3CA3 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C2206312744B41A00FDBBEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
+				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C22062B2744B41A00FDBBEF = {
+			isa = PBXGroup;
+			children = (
+				1C2206362744B41A00FDBBEF /* WhatTheCoffee */,
+				1C2206352744B41A00FDBBEF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C2206352744B41A00FDBBEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C2206362744B41A00FDBBEF /* WhatTheCoffee */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C3692744E7A800EC3CA3 /* Resources */,
+				1C37C3682744E7A100EC3CA3 /* Sources */,
+				1C37C3672744E79800EC3CA3 /* Supporting Files */,
+			);
+			path = WhatTheCoffee;
+			sourceTree = "<group>";
+		};
+		1C37C3672744E79800EC3CA3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1C2206452744B41B00FDBBEF /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1C37C3682744E7A100EC3CA3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1C2206372744B41A00FDBBEF /* AppDelegate.swift */,
+				1C2206392744B41A00FDBBEF /* SceneDelegate.swift */,
+				1C37C3892745482400EC3CA3 /* Service */,
+				1C37C3882745481E00EC3CA3 /* Model */,
+				1C37C37C2744F82900EC3CA3 /* Extensions */,
+				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
+				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
+				1C37C36C2744E7E300EC3CA3 /* RecordsTab */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1C37C3692744E7A800EC3CA3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1C22063D2744B41A00FDBBEF /* Main.storyboard */,
+				1C2206402744B41B00FDBBEF /* Assets.xcassets */,
+				1C2206422744B41B00FDBBEF /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1C37C36A2744E7BE00EC3CA3 /* RecommandTab */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */,
+				1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */,
+				1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */,
+				1C37C3812744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift */,
+			);
+			path = RecommandTab;
+			sourceTree = "<group>";
+		};
+		1C37C36B2744E7CF00EC3CA3 /* CafeListTab */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */,
+				1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */,
+				1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */,
+			);
+			path = CafeListTab;
+			sourceTree = "<group>";
+		};
+		1C37C36C2744E7E300EC3CA3 /* RecordsTab */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C3632744E71B00EC3CA3 /* RecordsViewController.swift */,
+				1C37C3652744E72300EC3CA3 /* AddRecordViewController.swift */,
+				1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */,
+			);
+			path = RecordsTab;
+			sourceTree = "<group>";
+		};
+		1C37C37C2744F82900EC3CA3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1C37C3882745481E00EC3CA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C38A2745483200EC3CA3 /* Coffee.swift */,
+				1C37C38C2745489000EC3CA3 /* Cafe.swift */,
+				1C37C38E274548E800EC3CA3 /* Rate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1C37C3892745482400EC3CA3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C2206332744B41A00FDBBEF /* WhatTheCoffee */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C2206482744B41B00FDBBEF /* Build configuration list for PBXNativeTarget "WhatTheCoffee" */;
+			buildPhases = (
+				1C2206302744B41A00FDBBEF /* Sources */,
+				1C2206312744B41A00FDBBEF /* Frameworks */,
+				1C2206322744B41A00FDBBEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhatTheCoffee;
+			packageProductDependencies = (
+				1C37C393274550B900EC3CA3 /* Realm */,
+				1C37C395274550B900EC3CA3 /* RealmSwift */,
+			);
+			productName = WhatTheCoffee;
+			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C22062C2744B41A00FDBBEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					1C2206332744B41A00FDBBEF = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 1C22062F2744B41A00FDBBEF /* Build configuration list for PBXProject "WhatTheCoffee" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C22062B2744B41A00FDBBEF;
+			packageReferences = (
+				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
+			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C2206332744B41A00FDBBEF /* WhatTheCoffee */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C2206322744B41A00FDBBEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C2206442744B41B00FDBBEF /* LaunchScreen.storyboard in Resources */,
+				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
+				1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C2206302744B41A00FDBBEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C37C3622744E70100EC3CA3 /* CafeLocationViewController.swift in Sources */,
+				1C37C38F274548E800EC3CA3 /* Rate.swift in Sources */,
+				1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */,
+				1C37C3822744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift in Sources */,
+				1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */,
+				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
+				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
+				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
+				1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */,
+				1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */,
+				1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */,
+				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
+				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
+				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
+				1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */,
+				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
+				1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1C22063D2744B41A00FDBBEF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C22063E2744B41A00FDBBEF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1C2206422744B41B00FDBBEF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C2206432744B41B00FDBBEF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1C2206462744B41B00FDBBEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1C2206472744B41B00FDBBEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C2206492744B41B00FDBBEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5LZNHGFB8C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "왓더커피";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1C22064A2744B41B00FDBBEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5LZNHGFB8C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "왓더커피";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C22062F2744B41A00FDBBEF /* Build configuration list for PBXProject "WhatTheCoffee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C2206462744B41B00FDBBEF /* Debug */,
+				1C2206472744B41B00FDBBEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C2206482744B41B00FDBBEF /* Build configuration list for PBXNativeTarget "WhatTheCoffee" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C2206492744B41B00FDBBEF /* Debug */,
+				1C22064A2744B41B00FDBBEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C37C393274550B900EC3CA3 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		1C37C395274550B900EC3CA3 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1C22062C2744B41A00FDBBEF /* Project object */;
+}
