@@ -29,6 +29,8 @@
 		1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */; };
 		1C37C394274550B900EC3CA3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C393274550B900EC3CA3 /* Realm */; };
 		1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C395274550B900EC3CA3 /* RealmSwift */; };
+		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
+		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		1C37C38C2745489000EC3CA3 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		1C37C38E274548E800EC3CA3 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
+		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 			files = (
 				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
 				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
+				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */,
+				1C605BDF274B76B0000E94D0 /* Environment.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			packageProductDependencies = (
 				1C37C393274550B900EC3CA3 /* Realm */,
 				1C37C395274550B900EC3CA3 /* RealmSwift */,
+				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -235,6 +241,7 @@
 			mainGroup = 1C22062B2744B41A00FDBBEF;
 			packageReferences = (
 				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
 			projectDirPath = "";
@@ -276,6 +283,7 @@
 				1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */,
 				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
+				1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */,
 				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
 				1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
@@ -509,8 +517,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 10.19.0;
+			};
+		};
+		1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -525,6 +541,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

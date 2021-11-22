@@ -9,6 +9,9 @@ import UIKit
 
 class AddRecordViewController: UIViewController {
   
+  // MARK: - Properties
+  var environment: Environment? = nil
+  
   // MARK: - UI
   @IBOutlet weak var recordImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!

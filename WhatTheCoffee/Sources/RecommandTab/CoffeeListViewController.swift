@@ -9,6 +9,9 @@ import UIKit
 
 class CoffeeListViewController: UIViewController {
   
+  // MARK: - Properties
+  var environment: Environment? = nil
+  
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
   let dummyList: [String] = ["아메리카노", "에스프레소", "카페 라떼", "바닐라 라떼", "헤이즐넛 라떼", "카라멜 메끼에또"]

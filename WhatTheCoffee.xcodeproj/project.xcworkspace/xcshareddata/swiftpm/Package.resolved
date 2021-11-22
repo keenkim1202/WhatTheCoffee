@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "IQKeyboardManagerSwift",
+        "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
+        "state": {
+          "branch": null,
+          "revision": "474f849accae40fe61b5302d9b057dd48ee073ba",
+          "version": "6.5.9"
+        }
+      },
+      {
         "package": "Realm",
         "repositoryURL": "https://github.com/realm/realm-cocoa.git",
         "state": {
-          "branch": "master",
-          "revision": "f630b28cc3d056f784d568569e671e32b9eacb6c",
-          "version": null
+          "branch": null,
+          "revision": "328425bfc372ce77ec1f4f2701f61ececbb97d84",
+          "version": "10.19.0"
         }
       },
       {
@@ -15,8 +24,8 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "c3c11a841642ac93c27bd1edd61f989fc0bfb809",
-          "version": "11.6.1"
+          "revision": "b170db6a47789ff5f2fbc3eeed0220b4b0a3f6b7",
+          "version": "11.6.0"
         }
       }
     ]
