@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: 화면 전환 시, 버튼 색상이 원하는대로 안뜸. 버튼을 눌러야지 색상이 바뀜.
+
 class AddCoffeeViewController: UIViewController {
   
   // MARK: - Properties
@@ -27,7 +29,9 @@ class AddCoffeeViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    self.addImageButton.tintColor = UIColor.imageButtonColor
+    addImageButton.tintColor = UIColor.imageButtonColor
+    addImageButton.titleLabel?.textColor = UIColor.oppositeColor
+
     
     // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
     if let coffee = coffee {
