@@ -665,7 +665,7 @@
                     <connections>
                         <outlet property="addImageButton" destination="nVq-e1-sj4" id="FNJ-Vl-OuX"/>
                         <outlet property="coffeeImageView" destination="UTu-am-Yy7" id="s1O-nt-SUk"/>
-                        <outlet property="nameTextField" destination="XmZ-uA-g5P" id="W1v-lG-4of"/>
+                        <outlet property="nameTextField" destination="XmZ-uA-g5P" id="hSo-9R-4BP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjn-7B-mgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@ class AddCoffeeViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
+  var coffee: Coffee?
   
   // MARK: - UI
   @IBOutlet weak var coffeeImageView: UIImageView!
@@ -20,20 +21,27 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    print(#function)
     configure()
   }
   
   // MARK: - Configure
   func configure() {
     self.addImageButton.tintColor = UIColor.imageButtonColor
+    
+    // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
+    if let coffee = coffee {
+      nameTextField.text = coffee.name
+      coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id).jpg")
+    }
+
   }
   
   func saveButtonClicked() {
     let task = Coffee(name: nameTextField.text!)
     environment?.coffeeRepository.add(item: task)
-    saveImageToDocumentDirectory(imageName: "\(task._id).png", image: coffeeImageView.image!)
-    dismiss(animated: true, completion: nil)
+    saveImageToDocumentDirectory(imageName: "\(task._id).jpg", image: coffeeImageView.image!)
+    self.navigationController?.popViewController(animated: true)
   }
   
   // MARK: - Actions
