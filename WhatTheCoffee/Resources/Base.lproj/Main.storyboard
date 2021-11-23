@@ -423,7 +423,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random_coffee_image" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-cb-c1s">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-cb-c1s">
                                                 <rect key="frame" x="0.0" y="54" width="240" height="240"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="UdJ-cb-c1s" secondAttribute="height" multiplier="1:1" id="8ho-GI-7vz"/>
@@ -515,7 +515,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="47K-bs-yZk">
                                                     <rect key="frame" x="16" y="8" width="382" height="74"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random_coffee_image" translatesAutoresizingMaskIntoConstraints="NO" id="uaW-4j-Feg">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random" translatesAutoresizingMaskIntoConstraints="NO" id="uaW-4j-Feg">
                                                             <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="uaW-4j-Feg" secondAttribute="height" multiplier="1:1" id="wXV-yC-y0B"/>
@@ -591,7 +591,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random_coffee_image" translatesAutoresizingMaskIntoConstraints="NO" id="UTu-am-Yy7">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random" translatesAutoresizingMaskIntoConstraints="NO" id="UTu-am-Yy7">
                                         <rect key="frame" x="37" y="40.5" width="240" height="240"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="UTu-am-Yy7" secondAttribute="height" multiplier="1:1" id="iUE-b0-McO"/>
@@ -735,7 +735,7 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
-        <image name="random_coffee_image" width="1440" height="1440"/>
+        <image name="random" width="1086" height="1512"/>
         <namedColor name="AppearanceColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
