@@ -78,12 +78,6 @@ class RecommendViewController: UIViewController {
     return randomCoffee
   }
   
-  // MARK: Configuring Alert
-  fileprivate func showAlert(_ message: String) {
-    UIAlertController
-      .show(self, contentType: .error, message: message)
-  }
-  
   // MARK: - Actions
   /// barButtonItems
   @IBAction func coffeeListBarButton(_ sender: UIBarButtonItem) {
