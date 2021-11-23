@@ -17,7 +17,7 @@ protocol CoffeeRepositoryType {
   func add(item: Coffee)
   func update(item: Coffee, new: Coffee)
   func remove(item: Coffee)
-  func fetch(type: Coffee) -> [Coffee]
+  func fetch() -> [Coffee]
 }
 
 final class CoffeeRepository: CoffeeRepositoryType {
@@ -30,7 +30,7 @@ final class CoffeeRepository: CoffeeRepositoryType {
   }
 
   var count: Int {
-    return realm.objects(Coffee.self).filter("isEnable == true").count
+    return realm.objects(Coffee.self).count
   }
 
   func add(item: Coffee) {
@@ -57,7 +57,7 @@ final class CoffeeRepository: CoffeeRepositoryType {
     }
   }
 
-  func fetch(type: Coffee) -> [Coffee] {
+  func fetch() -> [Coffee] {
     return realm.objects(Coffee.self)
       .sorted(byKeyPath: "name", ascending: false)
       .map { $0 }

@@ -29,30 +29,6 @@ class AddCoffeeViewController: UIViewController {
     self.addImageButton.tintColor = UIColor.imageButtonColor
   }
   
-  // MARK: - Document Date Manage
-  func saveImageToDocumentDirectory(imageName: String, image: UIImage) {
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    let imageURL = documentDirectory.appendingPathComponent(imageName)
-  
-    guard let data = image.pngData() else { return }
-    
-    if FileManager.default.fileExists(atPath: imageURL.path) {
-      do {
-        try FileManager.default.removeItem(at: imageURL)
-        print("SUCCESS - image deleted.")
-      } catch {
-        print("FAILED - fail to delete image.")
-      }
-    }
-  
-    do {
-      try data.write(to: imageURL)
-      print("SUCCESS - image saved.")
-    } catch {
-      print("FAILED - fail to save image.")
-    }
-  }
-  
   func saveButtonClicked() {
     let task = Coffee(name: nameTextField.text!)
     environment?.coffeeRepository.add(item: task)
@@ -65,6 +41,7 @@ class AddCoffeeViewController: UIViewController {
   @IBAction func onDone(_ sender: UIBarButtonItem) {
     print(#function)
     
+    // TODO: 이미지 저장에 실패한 경우 처리하기
     // text가 비어있으면 alert문을 띄우고 저장하지 않음.
     if let text = nameTextField.text {
       if text.isEmpty {
