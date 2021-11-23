@@ -52,11 +52,10 @@ extension CoffeeListViewController: UITableViewDelegate {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as? AddCoffeeViewController else { return }
     let coffee = coffeeList[indexPath.row]
     
-    vc.nameTextField.text = coffee.name
-    // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
-    vc.coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id)")
-    
-    self.present(vc, animated: true, completion: nil)
+    vc.environment = environment
+    vc.coffee = coffee
+  
+    self.navigationController?.pushViewController(vc, animated: true)
   }
 }
 
