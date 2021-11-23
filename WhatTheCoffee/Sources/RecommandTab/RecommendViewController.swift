@@ -48,7 +48,7 @@ class RecommendViewController: UIViewController {
         let coffee = Coffee(name: defaultCoffeeList[i])
         env.coffeeRepository.add(item: coffee)
         
-        let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage(named: "random_coffee_image")
+        let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage(named: "random")
         saveImageToDocumentDirectory(imageName: "\(coffee._id).jpg", image: image!)
       }
     }
