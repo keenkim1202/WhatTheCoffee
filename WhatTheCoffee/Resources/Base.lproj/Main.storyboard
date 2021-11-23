@@ -485,6 +485,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="recommendButton" destination="ISS-Ug-Qew" id="f2o-9x-uU1"/>
+                        <outlet property="todayCoffeeImage" destination="UdJ-cb-c1s" id="9aN-H5-zwG"/>
+                        <outlet property="todayCoffeeLabel" destination="TfK-Iq-NJk" id="fjU-MI-mPD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1FF-GA-o0N" sceneMemberID="firstResponder"/>

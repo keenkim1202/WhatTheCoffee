@@ -13,6 +13,8 @@ class RecommendViewController: UIViewController {
   var environment: Environment? = nil
   
   // MARK: - UI
+  @IBOutlet weak var todayCoffeeImage: UIImageView!
+  @IBOutlet weak var todayCoffeeLabel: UILabel!
   @IBOutlet weak var recommendButton: UIButton!
   
   // MARK: - View Life-Cycle
@@ -47,6 +49,12 @@ class RecommendViewController: UIViewController {
     }
   }
   
+  // MARK: Configuring Alert
+  fileprivate func showAlert(_ message: String) {
+    UIAlertController
+      .show(self, contentType: .error, message: message)
+  }
+  
   // MARK: - Actions
   /// barButtonItems
   @IBAction func coffeeListBarButton(_ sender: UIBarButtonItem) {
@@ -61,6 +69,17 @@ class RecommendViewController: UIViewController {
   
   /// component
   @IBAction func onRecommend(_ sender: UIButton) {
+    guard let env = environment else { return }
+    let coffeeList = env.coffeeRepository.fetch()
+    
+    if !coffeeList.isEmpty {
+      let randomCoffee = coffeeList.randomElement()!
+      todayCoffeeImage.image = loadImageFromDocumentDirectory(imageName: "\(randomCoffee._id).jpg")
+      todayCoffeeLabel.text = randomCoffee.name
+    } else {
+      showAlert("커피 리스트가 비어있습니다.\n커피 목록에서 추가해주세요!")
+    }
+    
     
   }
   
