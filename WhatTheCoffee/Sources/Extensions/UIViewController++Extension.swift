@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-// MARK: - Document Date Manage
+
 extension UIViewController {
+  // MARK: - Document Date Manage
   func saveImageToDocumentDirectory(imageName: String, image: UIImage) {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
     let imageURL = documentDirectory.appendingPathComponent(imageName)
@@ -43,5 +44,11 @@ extension UIViewController {
       return UIImage(contentsOfFile: imageURL.path)
     }
     return nil
+  }
+  
+  // MARK:  Configuring Alert
+  func showAlert(_ message: String) {
+    UIAlertController
+      .show(self, contentType: .error, message: message)
   }
 }
