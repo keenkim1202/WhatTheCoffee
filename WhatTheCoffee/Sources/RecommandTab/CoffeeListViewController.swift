@@ -69,7 +69,7 @@ extension CoffeeListViewController: UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: CoffeeListTableViewCell.identifier) as? CoffeeListTableViewCell else { return UITableViewCell() }
     let row = coffeeList[indexPath.row]
     cell.nameLabel.text = row.name
-    cell.coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg")
+    cell.coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg") ?? UIImage(named: "random")
     
     return cell
   }
