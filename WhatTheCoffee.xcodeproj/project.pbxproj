@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1839F9274CB06800AAD04B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839F8274CB06800AAD04B /* Storage.swift */; };
 		1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206372744B41A00FDBBEF /* AppDelegate.swift */; };
 		1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206392744B41A00FDBBEF /* SceneDelegate.swift */; };
 		1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C22063D2744B41A00FDBBEF /* Main.storyboard */; };
@@ -31,9 +32,11 @@
 		1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C395274550B900EC3CA3 /* RealmSwift */; };
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
+		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C1839F8274CB06800AAD04B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2206372744B41A00FDBBEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C2206392744B41A00FDBBEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		1C37C38E274548E800EC3CA3 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */,
+				1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			children = (
 				1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */,
 				1C605BDF274B76B0000E94D0 /* Environment.swift */,
+				1C1839F8274CB06800AAD04B /* Storage.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -276,8 +282,10 @@
 				1C37C3822744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift in Sources */,
 				1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */,
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
+				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
+				1C1839F9274CB06800AAD04B /* Storage.swift in Sources */,
 				1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */,
 				1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */,
 				1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */,

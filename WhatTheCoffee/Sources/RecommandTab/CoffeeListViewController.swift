@@ -6,22 +6,31 @@
 //
 
 import UIKit
+import Network
 
 class CoffeeListViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
+  var coffeeList: [Coffee] = []
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
-  let dummyList: [String] = ["아메리카노", "에스프레소", "카페 라떼", "바닐라 라떼", "헤이즐넛 라떼", "카라멜 메끼에또"]
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("coffeeList VC - vdl")
     
     tableView.delegate = self
     tableView.dataSource = self
+    
+    configure()
+  }
+  
+  func configure() {
+//    guard let env = environment else { return }
+//    coffeeList = env.coffeeRepository.fetch()
   }
   
   // MARK: - Actions
@@ -35,18 +44,34 @@ class CoffeeListViewController: UIViewController {
 // MARK: Extension
 // MARK: - UITableViewDelegate
 extension CoffeeListViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 100
+  }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as? AddCoffeeViewController else { return }
+    let coffee = coffeeList[indexPath.row]
+    
+    vc.nameTextField.text = coffee.name
+    // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
+    vc.coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id)")
+    
+    self.present(vc, animated: true, completion: nil)
+  }
 }
 
 // MARK: - UITableViewDataSource
 extension CoffeeListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dummyList.count
+    return coffeeList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: CoffeeListTableViewCell.identifier) as? CoffeeListTableViewCell else { return UITableViewCell() }
-    cell.nameLabel.text = dummyList[indexPath.row]
+    let row = coffeeList[indexPath.row]
+    cell.nameLabel.text = row.name
+    cell.coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg")
+    
     return cell
   }
   
