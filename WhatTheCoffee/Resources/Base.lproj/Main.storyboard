@@ -415,7 +415,7 @@
                                 <rect key="frame" x="30" y="188" width="354" height="525"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xts-aX-PfG">
-                                        <rect key="frame" x="57" y="0.0" width="240" height="402"/>
+                                        <rect key="frame" x="57" y="0.0" width="240" height="408"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피는" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHj-cL-udR">
                                                 <rect key="frame" x="66" y="0.0" width="108.5" height="24"/>
@@ -423,20 +423,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-cb-c1s">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="아메리카노" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-cb-c1s">
                                                 <rect key="frame" x="0.0" y="54" width="240" height="240"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="UdJ-cb-c1s" secondAttribute="height" multiplier="1:1" id="8ho-GI-7vz"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot; 아이스 아메리카노 &quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-Iq-NJk">
-                                                <rect key="frame" x="33" y="324" width="174" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아메리카노" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-Iq-NJk">
+                                                <rect key="frame" x="66" y="324" width="108.5" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axq-OD-H7h">
-                                                <rect key="frame" x="91" y="378" width="58" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입니다 :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axq-OD-H7h">
+                                                <rect key="frame" x="85.5" y="384" width="69.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -447,7 +447,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-Ug-Qew">
-                                        <rect key="frame" x="30" y="471" width="294" height="54"/>
+                                        <rect key="frame" x="30" y="477" width="294" height="48"/>
                                         <color key="tintColor" red="0.76166011768398523" green="0.36981043670294611" blue="0.83392210681029044" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="다시 추천 받기" cornerStyle="capsule">
@@ -663,7 +663,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addImageButton" destination="nVq-e1-sj4" id="FNJ-Vl-OuX"/>
+                        <outlet property="addImageButton" destination="nVq-e1-sj4" id="nAR-Dk-mL0"/>
                         <outlet property="coffeeImageView" destination="UTu-am-Yy7" id="s1O-nt-SUk"/>
                         <outlet property="nameTextField" destination="XmZ-uA-g5P" id="hSo-9R-4BP"/>
                     </connections>
@@ -736,6 +736,7 @@
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
         <image name="random" width="1086" height="1512"/>
+        <image name="아메리카노" width="441" height="588"/>
         <namedColor name="AppearanceColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

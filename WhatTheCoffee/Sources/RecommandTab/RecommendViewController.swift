@@ -43,7 +43,7 @@ class RecommendViewController: UIViewController {
         print("env nil.")
         return
       }
-      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라라떼", "녹차라떼", "카페모카"]
+      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라라떼", "녹차라떼", "카페모카", "카라멜마끼아또"]
       for i in 0..<defaultCoffeeList.count {
         let coffee = Coffee(name: defaultCoffeeList[i])
         env.coffeeRepository.add(item: coffee)
