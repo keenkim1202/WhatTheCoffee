@@ -150,7 +150,6 @@ extension AddCoffeeViewController : UIImagePickerControllerDelegate, UINavigatio
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
       coffeeImageView.image = image
-      print(info)
     }
     
     dismiss(animated: true, completion: nil)
