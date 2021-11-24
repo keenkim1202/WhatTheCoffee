@@ -456,7 +456,7 @@
                     <navigationItem key="navigationItem" id="sIu-nA-Vzs">
                         <barButtonItem key="rightBarButtonItem" title="커피 목록" id="6TX-kh-dcd">
                             <connections>
-                                <action selector="coffeeListBarButton:" destination="xsf-7k-i9C" id="nGD-y8-Eo2"/>
+                                <action selector="onCoffeeList:" destination="xsf-7k-i9C" id="tbE-hY-9qj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

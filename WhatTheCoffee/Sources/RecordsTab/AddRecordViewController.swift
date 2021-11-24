@@ -45,8 +45,7 @@ class AddRecordViewController: UIViewController {
   
   /// components
   @IBAction func onAddImage(_ sender: UIButton) {
+    
   }
-  
-  
   
 }
