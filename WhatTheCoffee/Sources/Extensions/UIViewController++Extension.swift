@@ -46,6 +46,33 @@ extension UIViewController {
     return nil
   }
   
+  func deleteImageFromDocumentDirectory(named: String) {
+    guard let documentDirectory =
+            try? FileManager.default.url(for: .documentDirectory,
+                                            in: .userDomainMask,
+                                            appropriateFor: nil,
+                                            create: false) as NSURL
+    else { return }
+    
+    do {
+      if let directoryPath = documentDirectory.path {
+        let fileNames = try FileManager.default.contentsOfDirectory(atPath: directoryPath)
+        
+        for fileName in fileNames {
+          if fileName == named {
+            let filePathName = "\(directoryPath)/\(fileName)"
+            try FileManager.default.removeItem(atPath: filePathName)
+            print("delete success.")
+            return
+          }
+        }
+      }
+    }
+    catch let error as NSError {
+      print("Could not deleteImage🥺: \(error), \(error.userInfo)")
+    }
+  }
+  
   // MARK:  Configuring Alert
   func showAlert(_ message: String) {
     UIAlertController

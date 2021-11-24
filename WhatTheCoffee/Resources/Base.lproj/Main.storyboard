@@ -708,7 +708,7 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
-        <image name="random" width="1086" height="1512"/>
+        <image name="random" width="786" height="786"/>
         <image name="아메리카노" width="441" height="588"/>
         <namedColor name="AppearanceColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
