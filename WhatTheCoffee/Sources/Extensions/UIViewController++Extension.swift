@@ -8,8 +8,15 @@
 import Foundation
 import UIKit
 
+// TODO: 이미지 변경 시, 이전 이미지 삭제하도록 하기. -> delete 함수 수정하기. (뭔가 이상함)
 
 extension UIViewController {
+  
+//  enum DirectoryType: String {
+//    case coffee = "coffeeImages"
+//    case cafe = "cafeImages"
+//  }
+  
   // MARK: - Document Date Manage
   func saveImageToDocumentDirectory(imageName: String, image: UIImage) {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -44,33 +51,6 @@ extension UIViewController {
       return UIImage(contentsOfFile: imageURL.path)
     }
     return nil
-  }
-  
-  func deleteImageFromDocumentDirectory(named: String) {
-    guard let documentDirectory =
-            try? FileManager.default.url(for: .documentDirectory,
-                                            in: .userDomainMask,
-                                            appropriateFor: nil,
-                                            create: false) as NSURL
-    else { return }
-    
-    do {
-      if let directoryPath = documentDirectory.path {
-        let fileNames = try FileManager.default.contentsOfDirectory(atPath: directoryPath)
-        
-        for fileName in fileNames {
-          if fileName == named {
-            let filePathName = "\(directoryPath)/\(fileName)"
-            try FileManager.default.removeItem(atPath: filePathName)
-            print("delete success.")
-            return
-          }
-        }
-      }
-    }
-    catch let error as NSError {
-      print("Could not deleteImage🥺: \(error), \(error.userInfo)")
-    }
   }
   
   // MARK:  Configuring Alert
