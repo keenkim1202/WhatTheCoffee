@@ -121,7 +121,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I8h-MU-vid">
                                                         <rect key="frame" x="10" y="0.0" width="354" height="379.5"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RandCoffeImage" translatesAutoresizingMaskIntoConstraints="NO" id="FFm-Wx-1u5">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random" translatesAutoresizingMaskIntoConstraints="NO" id="FFm-Wx-1u5">
                                                                 <rect key="frame" x="20" y="0.0" width="314" height="314"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="FFm-Wx-1u5" secondAttribute="height" multiplier="1:1" id="on5-UQ-rxk"/>
@@ -806,7 +806,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="RandCoffeImage" width="1440" height="1440"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>

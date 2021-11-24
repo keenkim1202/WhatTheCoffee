@@ -131,7 +131,7 @@ class AddCoffeeViewController: UIViewController {
     }
     
     let defaultImage =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in
-      self.coffeeImageView.image = UIImage(systemName: "random")
+      self.coffeeImageView.image = UIImage(named: "random")
     }
     
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)

@@ -7,6 +7,9 @@
 
 import UIKit
 
+// TODO: 일단 기능 구현해서 완성하는게 우선!! 다 만들고 나서 분리하고 정리하기...
+// TODO: coffee, cafe 이미지 저장 폴더 나누기도 나중에.
+
 class RecommendViewController: UIViewController {
   
   // MARK: - Properties
