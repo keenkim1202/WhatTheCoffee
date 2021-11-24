@@ -7,6 +7,7 @@
 
 import UIKit
 
+// TODO: 카메라 및 사진첩 접근 권한 묻도록 설정하기.
 // TODO: 화면 전환 시, 버튼 색상이 원하는대로 안뜸. 버튼을 눌러야지 색상이 바뀜.
 
 class AddCoffeeViewController: UIViewController {
@@ -55,7 +56,7 @@ class AddCoffeeViewController: UIViewController {
       viewType = .update
       title = "커피 수정"
       nameTextField.text = coffee.name
-      coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id).jpg")
+      coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id).jpg") ?? UIImage(named: "random")
     } else {
       title = "커피 추가"
       coffeeImageView.image = UIImage(named: "random")
@@ -67,9 +68,16 @@ class AddCoffeeViewController: UIViewController {
     // 만약 기본이미지이면 이미지는 저장하지 않음.
     guard let env = environment else { return }
     guard let coffeeName = nameTextField.text else { return }
-    
+    guard let coffee = coffee else { return }
+
     let item = Coffee(name: coffeeName)
-    env.coffeeRepository.add(item: item)
+    
+    if viewType == .update {
+      env.coffeeRepository.update(item: coffee, new: item)
+//      deleteImageFromDocumentDirectory(named: "\(coffee._id).jpg")
+    } else {
+      env.coffeeRepository.add(item: item)
+    }
     
     if coffeeImageView.image != UIImage(named: "random") {
       saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: coffeeImageView.image!)
@@ -89,7 +97,7 @@ class AddCoffeeViewController: UIViewController {
       imagePicker.sourceType = .camera
       self.present(imagePicker, animated: false, completion: nil)
     } else {
-      print("Camera not available")
+      showAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
   }
   
@@ -101,13 +109,13 @@ class AddCoffeeViewController: UIViewController {
   
   @objc func onSave() {
     // TODO: 이미지 저장에 실패한 경우 처리하기
-    if let text = nameTextField.text {
-      if text.isEmpty {
-        showAlert("카페명을 입력해주세요.")
-      } else {
-        saveData()
-        self.navigationController?.popViewController(animated: true)
-      }
+    guard let text = nameTextField.text else { return }
+    
+    if text.isEmpty {
+      showAlert("카페명을 입력해주세요.")
+    } else {
+      saveData()
+      self.navigationController?.popViewController(animated: true)
     }
   }
   

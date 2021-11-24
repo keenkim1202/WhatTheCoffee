@@ -45,6 +45,7 @@ final class CoffeeRepository: CoffeeRepositoryType {
         Coffee.self,
         value: ["_id": item._id,
                 "name": new.name,
+                "date": Date()
                 ],
         update: .modified
       )
