@@ -9,6 +9,12 @@ import UIKit
 
 class RecordsViewController: UIViewController {
   
+  // MARK: - Metric
+  struct Metric {
+    static var spacing: CGFloat = 10
+    static var cellForItemCount: CGFloat = 2
+  }
+  
   // MARK: - Properties
   var environment: Environment? = nil
   
@@ -22,8 +28,20 @@ class RecordsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configure()
+  }
+  
+  // MARK: - Configure
+  func configure() {
+    let layout = UICollectionViewFlowLayout()
+    recordCollectionView.collectionViewLayout = layout
+    
     recordCollectionView.delegate = self
     recordCollectionView.dataSource = self
+    recordCollectionView.register(
+      UINib(nibName: "RecordCell", bundle: nil),
+      forCellWithReuseIdentifier: RecordCollectionViewCell.identifier
+    )
   }
   
   // MARK: - Actions
@@ -39,17 +57,9 @@ class RecordsViewController: UIViewController {
 }
 
 // MARK: Extension
-// MARK: - UICollectionViewDelegate & UICollectionViewDelegateFlowLayout
-extension RecordsViewController: UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let width = collectionView.frame.width
-      let itemsPerRow: CGFloat = 2
-      
-      let widthPadding = cellInsets.top * (itemsPerRow + 1)
-      let cellWidth = (width - widthPadding) / itemsPerRow
-    
-      return CGSize(width: cellWidth, height: cellWidth)
-  }
+// MARK: - UICollectionViewDelegate
+extension RecordsViewController: UICollectionViewDelegate {
+
 }
 
 // MARK: - UICollectionViewDataSource
@@ -65,4 +75,15 @@ extension RecordsViewController: UICollectionViewDataSource {
     return cell
   }
   
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension RecordsViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let screenSize = UIScreen.main.bounds.size
+    let spacing = Metric.spacing * (Metric.cellForItemCount - 1)
+    let width = (screenSize.width - spacing) / Metric.cellForItemCount
+
+    return CGSize(width: width, height: width)
+  }
 }
