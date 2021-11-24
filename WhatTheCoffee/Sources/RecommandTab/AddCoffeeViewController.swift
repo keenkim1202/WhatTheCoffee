@@ -23,6 +23,7 @@ class AddCoffeeViewController: UIViewController {
   var viewType: ViewType = .add
   var coffee: Coffee?
   let imagePicker = UIImagePickerController()
+  let buttonCornerRadius: CGFloat = 25
   
   // MARK: - UI
   @IBOutlet weak var coffeeImageView: UIImageView!
@@ -40,6 +41,7 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - Configure
   func configure() {
     imagePicker.delegate = self
+    addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.imageButtonColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
   }
