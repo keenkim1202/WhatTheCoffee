@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: IQKeyboardManager 설정하기
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -539,7 +539,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zhD-ee-3Hb">
                             <connections>
-                                <segue destination="wst-wb-a30" kind="show" id="FOa-hw-M8Q"/>
+                                <action selector="onAdd:" destination="u5x-la-GTA" id="4Dh-tB-HVF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -560,7 +560,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YUk-ox-hnc">
-                                <rect key="frame" x="50" y="118" width="314" height="345.5"/>
+                                <rect key="frame" x="50" y="74" width="314" height="345.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 이미지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p22-Tm-rFk">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
@@ -599,7 +599,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-TA-pbX">
-                                <rect key="frame" x="50" y="513.5" width="314" height="74.5"/>
+                                <rect key="frame" x="50" y="469.5" width="314" height="74.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4J-VX-NYw">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
@@ -633,11 +633,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="커피 추가" id="NR0-Wz-89v">
-                        <barButtonItem key="rightBarButtonItem" title="완료" id="uqX-b7-xzi">
-                            <connections>
-                                <action selector="onDone:" destination="wst-wb-a30" id="N5F-lY-PPU"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="uqX-b7-xzi"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addImageButton" destination="nVq-e1-sj4" id="nAR-Dk-mL0"/>
@@ -647,7 +643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjn-7B-mgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4416" y="-327"/>
+            <point key="canvasLocation" x="4412" y="-327"/>
         </scene>
         <!--추천-->
         <scene sceneID="1YV-w5-oaN">
@@ -671,7 +667,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zmf-cp-mHd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="JH2-8t-wZx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="coffeeListNAV" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="JH2-8t-wZx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="fqc-rX-v2F"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RUD-rk-09u">

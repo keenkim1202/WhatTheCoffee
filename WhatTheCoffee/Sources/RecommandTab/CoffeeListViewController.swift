@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import Network
+
+// TODO: 커피 정렬하기 - 등록일 순 > 가나다 순
+// TODO: 커피 이미지랑 카페기록 이미지 각자 폴더 만들어서 저장하도록 하기
 
 class CoffeeListViewController: UIViewController {
   
@@ -20,15 +22,13 @@ class CoffeeListViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    print("coffeeList VC - vdl")
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    
+
     configure()
   }
   
   func configure() {
+    tableView.delegate = self
+    tableView.dataSource = self
   }
   
   // MARK: - Actions
@@ -37,6 +37,12 @@ class CoffeeListViewController: UIViewController {
     self.dismiss(animated: true, completion: nil)
   }
   
+  @IBAction func onAdd(_ sender: UIBarButtonItem) {
+    let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as! AddCoffeeViewController
+    vc.environment = environment
+
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
 }
 
 // MARK: Extension
@@ -48,9 +54,10 @@ extension CoffeeListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as? AddCoffeeViewController else { return }
-    let coffee = coffeeList[indexPath.row]
+    guard let env = environment else { return }
     
-    vc.environment = environment
+    let coffee = coffeeList[indexPath.row]
+    vc.environment = env
     vc.coffee = coffee
   
     self.navigationController?.pushViewController(vc, animated: true)
@@ -71,6 +78,5 @@ extension CoffeeListViewController: UITableViewDataSource {
     
     return cell
   }
-  
-  
+
 }

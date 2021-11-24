@@ -83,6 +83,7 @@ class RecommendViewController: UIViewController {
   @IBAction func coffeeListBarButton(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
+    vc.environment = env
     vc.coffeeList = env.coffeeRepository.fetch()
 
     let nav = UINavigationController(rootViewController: vc)
@@ -96,7 +97,7 @@ class RecommendViewController: UIViewController {
     if !coffeeList.isEmpty {
       let randomCoffee = randomCoffee()
       
-      todayCoffeeImage.image = loadImageFromDocumentDirectory(imageName: "\(randomCoffee._id).jpg")
+      todayCoffeeImage.image = loadImageFromDocumentDirectory(imageName: "\(randomCoffee._id).jpg") ?? UIImage(named: "random")
       todayCoffeeLabel.text = randomCoffee.name
       todayCoffee = randomCoffee
       
