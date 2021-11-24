@@ -31,7 +31,7 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(#function)
+    
     configureNAV()
     configure()
   }

@@ -80,7 +80,7 @@ class RecommendViewController: UIViewController {
   
   // MARK: - Actions
   /// barButtonItems
-  @IBAction func coffeeListBarButton(_ sender: UIBarButtonItem) {
+  @IBAction func onCoffeeList(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
     vc.environment = env

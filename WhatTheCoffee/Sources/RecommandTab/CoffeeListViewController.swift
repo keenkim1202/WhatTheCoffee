@@ -26,6 +26,7 @@ class CoffeeListViewController: UIViewController {
     configure()
   }
   
+  // MARK: - Configure
   func configure() {
     tableView.delegate = self
     tableView.dataSource = self
