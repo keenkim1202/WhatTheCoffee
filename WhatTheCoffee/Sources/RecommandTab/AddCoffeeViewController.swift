@@ -11,8 +11,15 @@ import UIKit
 
 class AddCoffeeViewController: UIViewController {
   
+  // MARK: - Enum
+  enum ViewType {
+    case add
+    case update
+  }
+  
   // MARK: - Properties
   var environment: Environment? = nil
+  var viewType: ViewType = .add
   var coffee: Coffee?
   let imagePicker = UIImagePickerController()
   
@@ -25,6 +32,7 @@ class AddCoffeeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     print(#function)
+    configureNAV()
     configure()
   }
   
@@ -33,52 +41,71 @@ class AddCoffeeViewController: UIViewController {
     imagePicker.delegate = self
     addImageButton.tintColor = UIColor.imageButtonColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
-
+  }
+  
+  func configureNAV() {
+    let cancelBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onCancel))
+    let saveBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(onSave))
+    
+    navigationItem.leftBarButtonItem = cancelBarButton
+    navigationItem.rightBarButtonItem = saveBarButton
+    
     // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
     if let coffee = coffee {
+      viewType = .update
+      title = "커피 수정"
       nameTextField.text = coffee.name
       coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id).jpg")
+    } else {
+      title = "커피 추가"
+      coffeeImageView.image = UIImage(named: "random")
     }
 
   }
   
-  func saveButtonClicked() {
-    let item = Coffee(name: nameTextField.text!)
-    environment?.coffeeRepository.add(item: item)
+  func saveData() {
+    // 만약 기본이미지이면 이미지는 저장하지 않음.
+    guard let env = environment else { return }
+    guard let coffeeName = nameTextField.text else { return }
+    
+    let item = Coffee(name: coffeeName)
+    env.coffeeRepository.add(item: item)
     
     if coffeeImageView.image != UIImage(named: "random") {
       saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: coffeeImageView.image!)
     }
+    
     self.navigationController?.popViewController(animated: true)
   }
   
-  // MARK: Photo Library & Camera Access
+  // MARK: - Photo Library & Camera Access
   func openLibrary() {
     imagePicker.sourceType = .photoLibrary
-    present(imagePicker, animated: false, completion: nil)
+    self.present(imagePicker, animated: false, completion: nil)
   }
   
   func openCamera() {
-    if(UIImagePickerController .isSourceTypeAvailable(.camera)) {
+    if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
       imagePicker.sourceType = .camera
-      present(imagePicker, animated: false, completion: nil)
-    }
-    else{
+      self.present(imagePicker, animated: false, completion: nil)
+    } else {
       print("Camera not available")
     }
   }
   
   // MARK: - Actions
   /// navigationBarButton
-  @IBAction func onDone(_ sender: UIBarButtonItem) {
-    print(#function)
-    
+  @objc func onCancel() {
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  @objc func onSave() {
     // TODO: 이미지 저장에 실패한 경우 처리하기
     if let text = nameTextField.text {
       if text.isEmpty {
         showAlert("카페명을 입력해주세요.")
       } else {
-        saveButtonClicked()
+        saveData()
         self.navigationController?.popViewController(animated: true)
       }
     }
@@ -96,7 +123,7 @@ class AddCoffeeViewController: UIViewController {
     }
     
     let defaultImage =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in
-      self.coffeeImageView.image = UIImage(systemName: "folder")
+      self.coffeeImageView.image = UIImage(systemName: "random")
     }
     
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
