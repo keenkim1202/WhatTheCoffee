@@ -29,8 +29,6 @@ class CoffeeListViewController: UIViewController {
   }
   
   func configure() {
-//    guard let env = environment else { return }
-//    coffeeList = env.coffeeRepository.fetch()
   }
   
   // MARK: - Actions
