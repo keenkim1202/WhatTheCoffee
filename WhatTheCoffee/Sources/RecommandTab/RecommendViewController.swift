@@ -16,6 +16,7 @@ class RecommendViewController: UIViewController {
   var environment: Environment? = nil
   var todayCoffee: Coffee?
   var coffeeList: [Coffee] = []
+  let buttonCornerRadius: CGFloat = 25
   
   // MARK: - UI
   @IBOutlet weak var todayCoffeeImage: UIImageView!
@@ -31,6 +32,7 @@ class RecommendViewController: UIViewController {
 
   // MARK: - Configure
   func configure() {
+    recommendButton.layer.cornerRadius = buttonCornerRadius
     recommendButton.tintColor = UIColor.recommendButtonColor
     recommendButton.titleLabel?.textColor = UIColor.oppositeColor
     

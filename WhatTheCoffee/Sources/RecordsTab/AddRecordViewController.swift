@@ -12,6 +12,7 @@ import UIKit
 class AddRecordViewController: UIViewController {
   
   // MARK: - Properties
+  let buttonCornerRadius: CGFloat = 25
   var environment: Environment? = nil
   let imagePicker = UIImagePickerController()
   
@@ -37,6 +38,7 @@ class AddRecordViewController: UIViewController {
   // MARK: - Configure
   func configure() {
     imagePicker.delegate = self
+    addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.imageButtonColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
   }
