@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Realm
+import RealmSwift
 
 // TODO: 커피 정렬하기 - 등록일 순 > 가나다 순
 // TODO: 커피 이미지랑 카페기록 이미지 각자 폴더 만들어서 저장하도록 하기
@@ -14,6 +16,7 @@ class CoffeeListViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
+//  var tasks: Results<Coffee>!
   var coffeeList: [Coffee] = [] { didSet { tableView.reloadData() } }
   
   // MARK: - UI
@@ -42,6 +45,26 @@ class CoffeeListViewController: UIViewController {
   func fetchData() {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
+  }
+  
+  // MARK: Swipe Actions
+  func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+    let action = UIContextualAction(style: .destructive, title: "삭제") { action, view, success in
+      
+      self.deleteAlert("정말 삭제하시겠습니까?") {
+        
+        guard let env = self.environment else { return }
+        let coffee = self.coffeeList[indexPath.row]
+        env.coffeeRepository.remove(item: coffee)
+        
+        self.fetchData()
+      }
+      success(true)
+    }
+    action.image = UIImage(systemName: "trash")
+    action.backgroundColor = .systemRed
+    
+    return action
   }
   
   // MARK: - Actions
@@ -92,4 +115,8 @@ extension CoffeeListViewController: UITableViewDataSource {
     return cell
   }
 
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let delete = deleteAction(at: indexPath)
+    return UISwipeActionsConfiguration(actions:[delete])
+  }
 }
