@@ -32,6 +32,7 @@
 		1C37C394274550B900EC3CA3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C393274550B900EC3CA3 /* Realm */; };
 		1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C395274550B900EC3CA3 /* RealmSwift */; };
 		1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C555637274DC94C00B5A145 /* RecordCell.xib */; };
+		1C55565A274FA6E100B5A145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* DataManager.swift */; };
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
@@ -63,6 +64,7 @@
 		1C37C38E274548E800EC3CA3 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
 		1C555637274DC94C00B5A145 /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
+		1C555659274FA6E100B5A145 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +180,7 @@
 				1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */,
 				1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */,
 				1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */,
+				1C555659274FA6E100B5A145 /* DataManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */,
 				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
 				1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */,
+				1C55565A274FA6E100B5A145 /* DataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
 				1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */,
 			);
