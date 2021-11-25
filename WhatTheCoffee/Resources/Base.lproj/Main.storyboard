@@ -12,7 +12,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Qoz-aW-DIm">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="KcE-Hp-jPq" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="KcE-Hp-jPq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ym-tY-yhP">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -485,7 +485,7 @@
         <!--Recommend View Controller-->
         <scene sceneID="Qai-pl-gI9">
             <objects>
-                <viewController id="xsf-7k-i9C" customClass="RecommendViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recommnadVC" id="xsf-7k-i9C" customClass="RecommendViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ylo-7W-iy4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
