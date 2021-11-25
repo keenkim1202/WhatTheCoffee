@@ -6,12 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 // 커피 기록에 쓰일 카페 모델
-struct Cafe {
-  var name: String
-  var visitDate: Date
-  var comment: String
-  var rate: Rate
-  var cafeImage: UIImage
+class Cafe: Object {
+  @Persisted var name: String
+  @Persisted var visitDate: Date
+  @Persisted var comment: String?
+  @Persisted var rate: Int
+  
+  @Persisted(primaryKey: true) var _id: ObjectId
+  
+  convenience init(name: String, comment: String?, rate: Int) {
+    self.init()
+    self.name = name
+    self.comment = comment
+    self.rate = rate
+    self.visitDate = Date()
+  }
 }
