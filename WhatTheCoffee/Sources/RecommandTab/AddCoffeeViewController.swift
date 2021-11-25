@@ -68,15 +68,18 @@ class AddCoffeeViewController: UIViewController {
   
   func saveData() {
     // 만약 기본이미지이면 이미지는 저장하지 않음.
-    guard let env = environment else { return }
+    guard let env = environment else {
+      print("addCoffeeVC - env nil..")
+      return
+    }
     guard let coffeeName = nameTextField.text else { return }
-    guard let coffee = coffee else { return }
-
+    
     let item = Coffee(name: coffeeName)
+    print(item)
     
     if viewType == .update {
+      guard let coffee = coffee else { return }
       env.coffeeRepository.update(item: coffee, new: item)
-//      deleteImageFromDocumentDirectory(named: "\(coffee._id).jpg")
     } else {
       env.coffeeRepository.add(item: item)
     }
