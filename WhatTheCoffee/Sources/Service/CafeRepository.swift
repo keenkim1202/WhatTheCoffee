@@ -45,7 +45,9 @@ final class CafeRepository: CafeRepositoryType {
         Cafe.self,
         value: ["_id": item._id,
                 "name": new.name,
-                "date": Date()
+                "visitDate": new.visitDate,
+                "comment": new.comment ?? "",
+                "rate": new.rate
                 ],
         update: .modified
       )
@@ -60,7 +62,7 @@ final class CafeRepository: CafeRepositoryType {
 
   func fetch() -> [Cafe] {
     return realm.objects(Cafe.self)
-      .sorted(byKeyPath: "name", ascending: false)
+      .sorted(byKeyPath: "visitDate", ascending: false)
       .map { $0 }
   }
   

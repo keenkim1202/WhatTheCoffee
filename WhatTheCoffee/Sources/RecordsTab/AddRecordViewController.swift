@@ -101,11 +101,11 @@ class AddRecordViewController: UIViewController {
   /// navigationBarButton
   @IBAction func onDone(_ sender: UIBarButtonItem) {
     print(#function)
-    self.dismiss(animated: true, completion: nil)
+    self.navigationController?.popViewController(animated: true)
   }
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-    self.dismiss(animated: true, completion: nil)
+    self.navigationController?.popViewController(animated: true)
   }
   
   /// components
