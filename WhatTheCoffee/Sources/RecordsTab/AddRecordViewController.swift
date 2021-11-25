@@ -11,10 +11,20 @@ import UIKit
 
 class AddRecordViewController: UIViewController {
   
+  // MARK: - ViewType
+  enum ViewType {
+    case add
+    case update
+  }
+  
   // MARK: - Properties
   let buttonCornerRadius: CGFloat = 25
-  var environment: Environment? = nil
   let imagePicker = UIImagePickerController()
+  
+  var environment: Environment? = nil
+  var viewType: ViewType = .add
+  var cafe: Cafe?
+  var rate: Int?
   
   // MARK: - UI
   @IBOutlet weak var recordImageView: UIImageView!
@@ -32,6 +42,7 @@ class AddRecordViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configureNAV()
     configure()
   }
   
@@ -41,6 +52,22 @@ class AddRecordViewController: UIViewController {
     addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.imageButtonColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
+  }
+  
+  func configureNAV() {
+    // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
+    if let cafe = cafe {
+      viewType = .update
+      title = "기록 수정"
+      
+      recordImageView.image = loadImageFromDocumentDirectory(imageName: "\(cafe._id).jpg") ?? UIImage(named: "random")
+      titleTextField.text = cafe.name
+      updateRate(Rate.init(rawValue: cafe.rate)!)
+      commentTextView.text = cafe.comment
+    } else {
+      title = "기록 추가"
+      recordImageView.image = UIImage(named: "random")
+    }
   }
   
   // MARK: - Photo Library & Camera Access
@@ -95,13 +122,48 @@ class AddRecordViewController: UIViewController {
       badButton.isSelected = false
       verybadButton.isSelected = true
     }
+    
+//    rate = rate.rawValue
   }
+  
+//  func saveData() {
+//    // 만약 기본이미지이면 이미지는 저장하지 않음.
+//    guard let env = environment else {
+//      print("addCoffeeVC - env nil..")
+//      return
+//    }
+//    guard let cafeName = titleTextField.text else { return }
+//    guard let comment = commentTextView.text else { return }
+//
+//    let item = Cafe(name: cafeName, comment: comment, rate: <#T##Int#>)
+//    print(item)
+//
+//    if viewType == .update {
+//      guard let cafe = cafe else { return }
+//      env.cafeRepository.update(item: cafe, new: item)
+//    } else {
+//      env.cafeRepository.add(item: item)
+//    }
+//
+//    if recordImageView.image != UIImage(named: "random") {
+//      saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: recordImageView.image!)
+//    }
+//
+//    self.navigationController?.popViewController(animated: true)
+//  }
   
   // MARK: - Actions
   /// navigationBarButton
   @IBAction func onDone(_ sender: UIBarButtonItem) {
     print(#function)
-    self.navigationController?.popViewController(animated: true)
+    
+//    guard let text = titleTextField.text else { return }
+//    if text.isEmpty {
+//      showAlert("카페명을 입력해주세요.")
+//    } else {
+//      saveData()
+//      self.navigationController?.popViewController(animated: true)
+//    }
   }
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {

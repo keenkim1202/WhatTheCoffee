@@ -12,13 +12,24 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+  var window: UIWindow?
+  
+  func navigate(with vc: UIViewController?) {
+    guard
+      let app = UIApplication.shared.delegate as? AppDelegate,
+      let window = app.window
+      else {
+        fatalError("Not found UIWindow")
+    }
+    window.rootViewController = vc
+    window.makeKeyAndVisible()
+  }
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     UINavigationBar.appearance().tintColor = .systemPink
     UINavigationBar.appearance().backgroundColor = UIColor.appearanceColor
     UITabBar.appearance().tintColor = .systemPink
-    
-    sleep(1)
     return true
   }
 
