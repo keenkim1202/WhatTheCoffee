@@ -26,8 +26,16 @@ class RecommendViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     checkIsFirst()
     configure()
+    fetchData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    fetchData()
   }
 
   // MARK: - Configure
@@ -35,7 +43,9 @@ class RecommendViewController: UIViewController {
     recommendButton.layer.cornerRadius = buttonCornerRadius
     recommendButton.tintColor = UIColor.recommendButtonColor
     recommendButton.titleLabel?.textColor = UIColor.oppositeColor
-    
+  }
+  
+  func fetchData() {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
   }
@@ -89,7 +99,7 @@ class RecommendViewController: UIViewController {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
     vc.environment = env
-    vc.coffeeList = env.coffeeRepository.fetch()
+//    vc.coffeeList = env.coffeeRepository.fetch()
 
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen

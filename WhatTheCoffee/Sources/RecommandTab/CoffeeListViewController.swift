@@ -14,7 +14,7 @@ class CoffeeListViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
-  var coffeeList: [Coffee] = []
+  var coffeeList: [Coffee] = [] { didSet { tableView.reloadData() } }
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -24,12 +24,24 @@ class CoffeeListViewController: UIViewController {
     super.viewDidLoad()
 
     configure()
+    fetchData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    fetchData()
   }
   
   // MARK: - Configure
   func configure() {
     tableView.delegate = self
     tableView.dataSource = self
+  }
+  
+  func fetchData() {
+    guard let env = environment else { return }
+    coffeeList = env.coffeeRepository.fetch()
   }
   
   // MARK: - Actions
