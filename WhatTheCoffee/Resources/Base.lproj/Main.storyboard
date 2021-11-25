@@ -83,7 +83,6 @@
                             <barButtonItem systemItem="add" id="EFl-tJ-e5x">
                                 <connections>
                                     <action selector="onAdd:" destination="dZ5-6g-54Y" id="zAc-7e-kEC"/>
-                                    <segue destination="waj-Ej-o0N" kind="presentation" id="B3u-i8-4Wu"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="편집" id="8Ug-f3-eWN">
@@ -792,7 +791,7 @@
         <!--Navigation Controller-->
         <scene sceneID="KiN-MM-MhY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="waj-Ej-o0N" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="addRecordNAV" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="waj-Ej-o0N" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qZj-bC-J95">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

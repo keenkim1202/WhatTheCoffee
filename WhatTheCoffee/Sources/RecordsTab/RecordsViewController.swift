@@ -45,13 +45,16 @@ class RecordsViewController: UIViewController {
   }
   
   // MARK: - Actions
-  
   @IBAction func onEdit(_ sender: UIBarButtonItem) {
     print(#function)
   }
   
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
     print(#function)
+    let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
+    vc.environment = environment
+
+    self.navigationController?.pushViewController(vc, animated: true)
   }
   
 }
