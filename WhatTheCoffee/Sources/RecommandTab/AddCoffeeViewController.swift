@@ -19,11 +19,13 @@ class AddCoffeeViewController: UIViewController {
   }
   
   // MARK: - Properties
+  let imagePicker = UIImagePickerController()
+  let buttonCornerRadius: CGFloat = 25
+  
   var environment: Environment? = nil
   var viewType: ViewType = .add
   var coffee: Coffee?
-  let imagePicker = UIImagePickerController()
-  let buttonCornerRadius: CGFloat = 25
+
   
   // MARK: - UI
   @IBOutlet weak var coffeeImageView: UIImageView!
