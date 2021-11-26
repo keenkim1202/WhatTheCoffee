@@ -21,17 +21,28 @@ class RecordsViewController: UIViewController {
     top: Metric.spacing, left: Metric.spacing,
     bottom: Metric.spacing, right: Metric.spacing
   )
-  let cafeData: [String] = ["cafe1", "cafe2", "cafe3"]
-  let cellColors: [UIColor] = [.red, .blue, .yellow, .orange, .darkGray, .systemPink, .cyan, .brown]
+  var cafeList: [Cafe] = [] { didSet { recordCollectionView.reloadData() } }
   
   // MARK: - UI
   @IBOutlet weak var recordCollectionView: UICollectionView!
+  
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
     configure()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    fetchData()
+  }
+  
+  func fetchData() {
+    guard let env = environment else { return }
+    cafeList = env.cafeRepository.fetch()
   }
   
   // MARK: - Configure
@@ -73,14 +84,15 @@ extension RecordsViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension RecordsViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return cafeData.count
+    return cafeList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
     
-    cell.cellConfigure()
-    cell.backgroundImageView.image = UIImage(named: cafeData[indexPath.row])
+    let item = cafeList[indexPath.item]
+    cell.cellConfigure(with: item)
+
     return cell
   }
   

@@ -17,10 +17,14 @@ class RecordCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var rateImageView: UIImageView!
   
-  func cellConfigure() {
-    backgroundImageView.layer.cornerRadius = CGFloat(8)
-    backgroundImageView.clipsToBounds = true
+  func cellConfigure(with item: Cafe) {
+    self.layer.cornerRadius = CGFloat(8)
     self.clipsToBounds = true
+    
+    nameLabel.text = item.name
+    backgroundImageView.image = UIImage(named: "\(item._id).jpg") ?? UIImage(named: "random")
+    rateImageView.image = UIImage(named: "star\(item.rate)")!
+    dateLabel.text = DateFormatter.visitDateFormat.string(from: item.visitDate)
   }
   
 }

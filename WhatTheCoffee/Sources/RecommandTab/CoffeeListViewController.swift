@@ -16,7 +16,6 @@ class CoffeeListViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
-//  var tasks: Results<Coffee>!
   var coffeeList: [Coffee] = [] { didSet { tableView.reloadData() } }
   
   // MARK: - UI
