@@ -11,14 +11,16 @@ class RecordsViewController: UIViewController {
   
   // MARK: - Metric
   struct Metric {
-    static var spacing: CGFloat = 15
+    static var spacing: CGFloat = 10
     static var cellForItemCount: CGFloat = 2
   }
   
   // MARK: - Properties
   var environment: Environment? = nil
-  
-  let cellInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+  let cellInsets = UIEdgeInsets(
+    top: Metric.spacing, left: Metric.spacing,
+    bottom: Metric.spacing, right: Metric.spacing
+  )
   let cafeData: [String] = ["cafe1", "cafe2", "cafe3"]
   let cellColors: [UIColor] = [.red, .blue, .yellow, .orange, .darkGray, .systemPink, .cyan, .brown]
   
@@ -63,7 +65,9 @@ class RecordsViewController: UIViewController {
 // MARK: Extension
 // MARK: - UICollectionViewDelegate
 extension RecordsViewController: UICollectionViewDelegate {
-
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return cellInsets
+  }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -86,7 +90,7 @@ extension RecordsViewController: UICollectionViewDataSource {
 extension RecordsViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let screenSize = UIScreen.main.bounds.size
-    let spacing = Metric.spacing * (Metric.cellForItemCount - 1)
+    let spacing = Metric.spacing * (Metric.cellForItemCount - 1 + 2)
     let width = (screenSize.width - spacing) / Metric.cellForItemCount
 
     return CGSize(width: width, height: width)
