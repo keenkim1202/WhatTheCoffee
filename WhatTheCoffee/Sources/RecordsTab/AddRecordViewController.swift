@@ -197,13 +197,7 @@ class AddRecordViewController: UIViewController {
   
   @IBAction func onRateButton(_ sender: Any) {
     guard let button = sender as? UIButton else { return }
-    guard
-      let text = button.titleLabel?.text,
-      let rate = Rate(rawValue: button.tag)
-    else { return }
-    
-    let tag = button.tag
-    print(text, tag)
+    guard let rate = Rate(rawValue: button.tag) else { return }
     
     updateRate(rate)
   }
