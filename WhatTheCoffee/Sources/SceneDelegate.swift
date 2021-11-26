@@ -17,27 +17,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     guard let window = scene.windows.first else { return }
-//    guard let tabBar = window.rootViewController as? UITabBarController else { return }
-//    guard let viewControllers = tabBar.viewControllers else { return }
-    
-    guard let splash = window.rootViewController as? SplashViewController else { return }
+    guard let tabBar = window.rootViewController as? UITabBarController else { return }
+    guard let viewControllers = tabBar.viewControllers else { return }
     
     let realm = try! Realm()
     environment = AppEnvironment(coffeeRepository: CoffeeRepository(realm: realm), cafeRepsitory: CafeRepository(realm: realm))
     
-    splash.environment = environment
-//    for vc in viewControllers {
-//      switch vc.children.first {
-//      case let vc as RecommendViewController:
-//        vc.environment = environment
-//
-//      case let vc as RecordsViewController:
-//        vc.environment = environment
-//
-//      default:
-//        break
-//      }
-//    }
+    for vc in viewControllers {
+      switch vc.children.first {
+      case let vc as RecommendViewController:
+        vc.environment = environment
+
+      case let vc as RecordsViewController:
+        vc.environment = environment
+
+      default:
+        break
+      }
+    }
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

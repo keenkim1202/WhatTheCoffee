@@ -11,14 +11,15 @@ class RecordsViewController: UIViewController {
   
   // MARK: - Metric
   struct Metric {
-    static var spacing: CGFloat = 10
+    static var spacing: CGFloat = 15
     static var cellForItemCount: CGFloat = 2
   }
   
   // MARK: - Properties
   var environment: Environment? = nil
   
-  let cellInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+  let cellInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+  let cafeData: [String] = ["cafe1", "cafe2", "cafe3"]
   let cellColors: [UIColor] = [.red, .blue, .yellow, .orange, .darkGray, .systemPink, .cyan, .brown]
   
   // MARK: - UI
@@ -68,13 +69,14 @@ extension RecordsViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension RecordsViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return cellColors.count
+    return cafeData.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
     
-    cell.backgroundColor = cellColors[indexPath.item]
+    cell.cellConfigure()
+    cell.backgroundImageView.image = UIImage(named: cafeData[indexPath.row])
     return cell
   }
   
