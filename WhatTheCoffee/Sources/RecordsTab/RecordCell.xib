@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,24 +22,31 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jf6-kV-jee">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
-                                <rect key="frame" x="-10" y="94.5" width="320" height="111"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vt8-iI-VEF">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
+                                <rect key="frame" x="-10" y="100.5" width="320" height="99.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-Ot-Dto">
-                                        <rect key="frame" x="128.5" y="0.0" width="63.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="128" y="0.0" width="64" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/11/11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXU-3g-N5C">
-                                        <rect key="frame" x="121.5" y="30.5" width="77" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="125" y="26.5" width="70.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="shadowOffset" width="1" height="1"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A1V-Mk-WPq">
-                                        <rect key="frame" x="135" y="61" width="50" height="50"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star5" translatesAutoresizingMaskIntoConstraints="NO" id="A1V-Mk-WPq">
+                                        <rect key="frame" x="135" y="49.5" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="A1V-Mk-WPq" secondAttribute="height" multiplier="1:1" id="0SI-dc-MR4"/>
                                             <constraint firstAttribute="width" constant="50" id="1iX-aj-4lE"/>
@@ -51,14 +57,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vt8-iI-VEF" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="8XA-cz-4fL"/>
+                            <constraint firstAttribute="bottom" secondItem="vt8-iI-VEF" secondAttribute="bottom" id="9c3-qW-VhQ"/>
                             <constraint firstAttribute="trailing" secondItem="Jf6-kV-jee" secondAttribute="trailing" id="9ie-8h-65B"/>
                             <constraint firstItem="xex-Un-859" firstAttribute="centerY" secondItem="ahY-6T-K8s" secondAttribute="centerY" id="IMI-Ye-G04"/>
                             <constraint firstItem="Jf6-kV-jee" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="S41-37-VMk"/>
                             <constraint firstItem="xex-Un-859" firstAttribute="centerX" secondItem="ahY-6T-K8s" secondAttribute="centerX" id="Yx0-Pa-mKi"/>
+                            <constraint firstItem="vt8-iI-VEF" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="cbS-1k-UXL"/>
                             <constraint firstItem="xex-Un-859" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" constant="-10" id="flO-M3-wRp"/>
                             <constraint firstItem="Jf6-kV-jee" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="iaK-US-VPA"/>
                             <constraint firstAttribute="trailing" secondItem="xex-Un-859" secondAttribute="trailing" constant="-10" id="o1O-6j-ESH"/>
                             <constraint firstAttribute="bottom" secondItem="Jf6-kV-jee" secondAttribute="bottom" id="qfu-Jn-amZ"/>
+                            <constraint firstAttribute="trailing" secondItem="vt8-iI-VEF" secondAttribute="trailing" id="skP-0r-CBN"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -74,6 +84,7 @@
             <size key="customSize" width="296" height="294"/>
             <connections>
                 <outlet property="backgroundImageView" destination="Jf6-kV-jee" id="ZzS-Jc-BJG"/>
+                <outlet property="cellView" destination="vt8-iI-VEF" id="GUs-2n-z9H"/>
                 <outlet property="dateLabel" destination="DXU-3g-N5C" id="ImJ-6R-Z76"/>
                 <outlet property="nameLabel" destination="C7v-Ot-Dto" id="BNS-t6-DOl"/>
                 <outlet property="rateImageView" destination="A1V-Mk-WPq" id="Bgv-zH-LX7"/>
@@ -82,8 +93,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="star5" width="330" height="330"/>
     </resources>
 </document>
