@@ -108,7 +108,6 @@ class RecommendViewController: UIViewController {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
     vc.environment = env
-//    vc.coffeeList = env.coffeeRepository.fetch()
 
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
