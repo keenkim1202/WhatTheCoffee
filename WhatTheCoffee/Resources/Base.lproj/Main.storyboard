@@ -379,11 +379,10 @@
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="f8n-s5-gDg">
                                                                 <rect key="frame" x="0.0" y="39" width="354" height="177"/>
-                                                                <color key="backgroundColor" red="0.90119906900010582" green="0.83521032599008449" blue="0.96761244540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="backgroundColor" name="AppearanceColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="f8n-s5-gDg" secondAttribute="height" multiplier="2:1" id="l5a-HY-PCC"/>
                                                                 </constraints>
-                                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                                 <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

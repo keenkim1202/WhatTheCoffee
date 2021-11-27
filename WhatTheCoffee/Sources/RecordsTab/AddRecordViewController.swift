@@ -50,17 +50,10 @@ class AddRecordViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    commentTextView.delegate = self
     imagePicker.delegate = self
     addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.imageButtonColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
-    
-    commentTextView.layer.borderWidth = 0.5
-    commentTextView.layer.borderColor = UIColor.systemGray5.cgColor
-    commentTextView.backgroundColor = .appearanceColor
-    commentTextView.layer.cornerRadius = CGFloat(8)
-    
   }
   
   func configureNAV() {
@@ -80,8 +73,14 @@ class AddRecordViewController: UIViewController {
   }
   
   func configureTextView() {
+    commentTextView.delegate = self
+    commentTextView.layer.borderWidth = 0.5
+    commentTextView.layer.borderColor = UIColor.placeholderText.cgColor
+    commentTextView.backgroundColor = .appearanceColor
+    commentTextView.layer.cornerRadius = CGFloat(8)
+    commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     commentTextView.text = commentPlaceholder
-    commentTextView.textColor = UIColor.lightGray
+    commentTextView.textColor = UIColor.placeholderText
   }
   
   // MARK: - Photo Library & Camera Access
@@ -239,9 +238,9 @@ extension AddRecordViewController : UIImagePickerControllerDelegate, UINavigatio
 extension AddRecordViewController: UITextViewDelegate {
   // TextView Place Holder
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if commentTextView.textColor == UIColor.systemGray5 {
-      commentTextView.text = nil
-      commentTextView.textColor = UIColor.black
+    if commentTextView.textColor == UIColor.placeholderText {
+      commentTextView.text = ""
+      commentTextView.textColor = UIColor.oppositeColor
     }
     
   }
@@ -249,7 +248,7 @@ extension AddRecordViewController: UITextViewDelegate {
   func textViewDidEndEditing(_ textView: UITextView) {
     if commentTextView.text.isEmpty {
       commentTextView.text = commentPlaceholder
-      commentTextView.textColor = UIColor.systemGray5
+      commentTextView.textColor = UIColor.placeholderText
     }
   }
 }
