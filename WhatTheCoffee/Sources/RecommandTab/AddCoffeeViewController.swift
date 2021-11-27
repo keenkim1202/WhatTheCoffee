@@ -9,7 +9,6 @@ import UIKit
 import AVFoundation
 
 // TODO: 카메라 및 사진첩 접근 권한 묻도록 설정하기.
-// TODO: 화면 전환 시, 버튼 색상이 원하는대로 안뜸. 버튼을 눌러야지 색상이 바뀜.
 
 class AddCoffeeViewController: UIViewController {
   
