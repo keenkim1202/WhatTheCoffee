@@ -20,15 +20,15 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahY-6T-K8s">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jf6-kV-jee">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jf6-kV-jee">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vt8-iI-VEF">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
-                                <rect key="frame" x="-10" y="100.5" width="320" height="99.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
+                                <rect key="frame" x="-10" y="102.5" width="320" height="95.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-Ot-Dto">
                                         <rect key="frame" x="128" y="0.0" width="64" height="21.5"/>
@@ -39,7 +39,7 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/11/11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXU-3g-N5C">
-                                        <rect key="frame" x="125" y="26.5" width="70.5" height="18"/>
+                                        <rect key="frame" x="125" y="24.5" width="70.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star5" translatesAutoresizingMaskIntoConstraints="NO" id="A1V-Mk-WPq">
-                                        <rect key="frame" x="135" y="49.5" width="50" height="50"/>
+                                        <rect key="frame" x="135" y="45.5" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="A1V-Mk-WPq" secondAttribute="height" multiplier="1:1" id="0SI-dc-MR4"/>
                                             <constraint firstAttribute="width" constant="50" id="1iX-aj-4lE"/>

@@ -72,7 +72,7 @@ class RecommendViewController: UIViewController {
         let cafe = Cafe(name: defaultCafeList[i], comment: "디저트가 매우 맛있음! (특히 당근케이크)", rate: 5 - i)
         env.cafeRepository.add(item: cafe)
         
-        let image = UIImage(named: defaultCafeList[i]) ?? UIImage(named: "random")
+        let image = UIImage(named: defaultCafeList[i]) ?? UIImage(named: "cafeDefault3")
         saveImageToDocumentDirectory(imageName: "\(cafe._id).jpg", image: image!)
       }
     }

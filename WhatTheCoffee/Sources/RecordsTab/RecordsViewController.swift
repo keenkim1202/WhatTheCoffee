@@ -171,8 +171,9 @@ extension RecordsViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
-    
     let item = cafeList[indexPath.item]
+    
+    cell.backgroundImageView.image = loadImageFromDocumentDirectory(imageName: "\(item._id).jpg") ?? UIImage(named: "cafeDefault3")
     cell.cellConfigure(with: item)
 
     return cell
