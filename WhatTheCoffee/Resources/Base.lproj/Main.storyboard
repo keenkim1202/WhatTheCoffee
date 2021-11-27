@@ -116,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjv-B7-2FO">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Yjv-B7-2FO">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-te-qHT">
@@ -142,7 +142,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="이미지 추가하기">
+                                                                <state key="normal" title="카페 이미지 추가하기">
                                                                     <color key="titleColor" name="OppositeColor"/>
                                                                 </state>
                                                                 <connections>
@@ -379,7 +379,7 @@
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="f8n-s5-gDg">
                                                                 <rect key="frame" x="0.0" y="39" width="354" height="177"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <color key="backgroundColor" red="0.90119906900010582" green="0.83521032599008449" blue="0.96761244540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="f8n-s5-gDg" secondAttribute="height" multiplier="2:1" id="l5a-HY-PCC"/>
                                                                 </constraints>
@@ -672,29 +672,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YUk-ox-hnc">
-                                <rect key="frame" x="50" y="74" width="314" height="345.5"/>
+                                <rect key="frame" x="50" y="74" width="314" height="305"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 이미지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p22-Tm-rFk">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random" translatesAutoresizingMaskIntoConstraints="NO" id="UTu-am-Yy7">
-                                        <rect key="frame" x="37" y="40.5" width="240" height="240"/>
+                                        <rect key="frame" x="37" y="0.0" width="240" height="240"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="UTu-am-Yy7" secondAttribute="height" multiplier="1:1" id="iUE-b0-McO"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVq-e1-sj4">
-                                        <rect key="frame" x="0.0" y="300.5" width="314" height="45"/>
+                                        <rect key="frame" x="0.0" y="260" width="314" height="45"/>
                                         <color key="backgroundColor" name="ImageButtonColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nVq-e1-sj4" secondAttribute="height" multiplier="7:1" id="6oN-Fp-252"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="이미지 추가하기">
+                                        <state key="normal" title="커피 이미지 추가하기">
                                             <color key="titleColor" name="OppositeColor"/>
                                         </state>
                                         <connections>
@@ -704,15 +698,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="UTu-am-Yy7" secondAttribute="trailing" constant="37" id="BnA-fk-VSl"/>
-                                    <constraint firstItem="p22-Tm-rFk" firstAttribute="leading" secondItem="YUk-ox-hnc" secondAttribute="leading" id="E0i-qa-5RT"/>
                                     <constraint firstAttribute="trailing" secondItem="nVq-e1-sj4" secondAttribute="trailing" id="Fxf-u7-KsG"/>
                                     <constraint firstItem="UTu-am-Yy7" firstAttribute="leading" secondItem="YUk-ox-hnc" secondAttribute="leading" constant="37" id="gfC-lI-2TI"/>
-                                    <constraint firstAttribute="trailing" secondItem="p22-Tm-rFk" secondAttribute="trailing" id="oTe-ua-HPt"/>
                                     <constraint firstItem="nVq-e1-sj4" firstAttribute="leading" secondItem="YUk-ox-hnc" secondAttribute="leading" id="upu-tE-tMc"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-TA-pbX">
-                                <rect key="frame" x="50" y="469.5" width="314" height="74.5"/>
+                                <rect key="frame" x="50" y="429" width="314" height="74.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4J-VX-NYw">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>

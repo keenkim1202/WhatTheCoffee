@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 // TODO: IQKeyboardManager 설정하기
 
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().tintColor = .systemPink
     UINavigationBar.appearance().backgroundColor = UIColor.appearanceColor
     UITabBar.appearance().tintColor = .systemPink
+    
+    IQKeyboardManager.shared.enable = true
+    IQKeyboardManager.shared.enableAutoToolbar = false
+    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     return true
   }
 
