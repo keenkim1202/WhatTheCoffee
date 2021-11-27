@@ -154,7 +154,6 @@ class AddRecordViewController: UIViewController {
     }
     
     let item = Cafe(name: cafeName, comment: comment, rate: rate)
-    print(item)
 
     if viewType == .update {
       guard let cafe = cafe else { return }
@@ -236,15 +235,13 @@ extension AddRecordViewController : UIImagePickerControllerDelegate, UINavigatio
 
 // MARK: - Extension - UITextViewDelegate
 extension AddRecordViewController: UITextViewDelegate {
-  // TextView Place Holder
   func textViewDidBeginEditing(_ textView: UITextView) {
     if commentTextView.textColor == UIColor.placeholderText {
       commentTextView.text = ""
       commentTextView.textColor = UIColor.oppositeColor
     }
-    
   }
-  // TextView Place Holder
+
   func textViewDidEndEditing(_ textView: UITextView) {
     if commentTextView.text.isEmpty {
       commentTextView.text = commentPlaceholder
