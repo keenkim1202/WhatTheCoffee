@@ -20,6 +20,7 @@ class AddRecordViewController: UIViewController {
   // MARK: - Properties
   let buttonCornerRadius: CGFloat = 25
   let imagePicker = UIImagePickerController()
+  let commentPlaceholder: String = "커피/디저트/분위기 등은 어땠나요?"
   
   var environment: Environment? = nil
   var viewType: ViewType = .add
@@ -43,15 +44,23 @@ class AddRecordViewController: UIViewController {
     super.viewDidLoad()
     
     configureNAV()
+    configureTextView()
     configure()
   }
   
   // MARK: - Configure
   func configure() {
+    commentTextView.delegate = self
     imagePicker.delegate = self
     addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.imageButtonColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
+    
+    commentTextView.layer.borderWidth = 0.5
+    commentTextView.layer.borderColor = UIColor.systemGray5.cgColor
+    commentTextView.backgroundColor = .appearanceColor
+    commentTextView.layer.cornerRadius = CGFloat(8)
+    
   }
   
   func configureNAV() {
@@ -68,6 +77,11 @@ class AddRecordViewController: UIViewController {
       title = "기록 추가"
       recordImageView.image = UIImage(named: "cafeDefault3")
     }
+  }
+  
+  func configureTextView() {
+    commentTextView.text = commentPlaceholder
+    commentTextView.textColor = UIColor.lightGray
   }
   
   // MARK: - Photo Library & Camera Access
@@ -130,9 +144,16 @@ class AddRecordViewController: UIViewController {
     // 만약 기본이미지이면 이미지는 저장하지 않음.
     guard let env = environment else { return }
     guard let cafeName = titleTextField.text else { return }
-    guard let comment = commentTextView.text else { return }
+    guard let commentText = commentTextView.text else { return }
     guard let rate = rate else { return }
-
+    var comment: String = ""
+    
+    if commentText == commentPlaceholder {
+      comment = ""
+    } else {
+      comment = commentText
+    }
+    
     let item = Cafe(name: cafeName, comment: comment, rate: rate)
     print(item)
 
@@ -211,5 +232,24 @@ extension AddRecordViewController : UIImagePickerControllerDelegate, UINavigatio
     }
     
     dismiss(animated: true, completion: nil)
+  }
+}
+
+// MARK: - Extension - UITextViewDelegate
+extension AddRecordViewController: UITextViewDelegate {
+  // TextView Place Holder
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if commentTextView.textColor == UIColor.systemGray5 {
+      commentTextView.text = nil
+      commentTextView.textColor = UIColor.black
+    }
+    
+  }
+  // TextView Place Holder
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if commentTextView.text.isEmpty {
+      commentTextView.text = commentPlaceholder
+      commentTextView.textColor = UIColor.systemGray5
+    }
   }
 }
