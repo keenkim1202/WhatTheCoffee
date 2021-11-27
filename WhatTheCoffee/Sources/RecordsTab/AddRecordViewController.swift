@@ -66,7 +66,7 @@ class AddRecordViewController: UIViewController {
       commentTextView.text = cafe.comment
     } else {
       title = "기록 추가"
-      recordImageView.image = UIImage(named: "random")
+      recordImageView.image = UIImage(named: "cafeDefault13")
     }
   }
   
@@ -85,7 +85,7 @@ class AddRecordViewController: UIViewController {
     }
   }
   
-  func updateRate(_ rate: Rate) {
+  func updateRate(_ rate: Rate) { // 별점 버튼을 눌렀을 때 한 가지만 선택되도록 하기 위한 함수 입니다.
     switch rate {
     case .veryGood:
       verygoodButton.isSelected = true
@@ -144,7 +144,7 @@ class AddRecordViewController: UIViewController {
       env.cafeRepository.add(item: item)
     }
 
-    if recordImageView.image != UIImage(named: "random") {
+    if recordImageView.image != UIImage(named: "cafeDefault13") {
       saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: recordImageView.image!)
     }
 
@@ -183,7 +183,7 @@ class AddRecordViewController: UIViewController {
     }
     
     let defaultImage =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in
-      self.recordImageView.image = UIImage(named: "random")
+      self.recordImageView.image = UIImage(named: "cafeDefault13")
     }
     
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
