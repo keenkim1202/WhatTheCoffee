@@ -60,13 +60,13 @@ class AddRecordViewController: UIViewController {
       viewType = .update
       title = "기록 수정"
       
-      recordImageView.image = loadImageFromDocumentDirectory(imageName: "\(cafe._id).jpg") ?? UIImage(named: "random")
+      recordImageView.image = loadImageFromDocumentDirectory(imageName: "\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
       titleTextField.text = cafe.name
       updateRate(Rate.init(rawValue: cafe.rate)!)
       commentTextView.text = cafe.comment
     } else {
       title = "기록 추가"
-      recordImageView.image = UIImage(named: "cafeDefault13")
+      recordImageView.image = UIImage(named: "cafeDefault3")
     }
   }
   
@@ -123,7 +123,6 @@ class AddRecordViewController: UIViewController {
       verybadButton.isSelected = true
     }
     
-    print("Raw : ", rate.rawValue)
     self.rate = rate.rawValue
   }
   
@@ -144,7 +143,7 @@ class AddRecordViewController: UIViewController {
       env.cafeRepository.add(item: item)
     }
 
-    if recordImageView.image != UIImage(named: "cafeDefault13") {
+    if recordImageView.image != UIImage(named: "cafeDefault3") {
       saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: recordImageView.image!)
     }
 
@@ -183,7 +182,7 @@ class AddRecordViewController: UIViewController {
     }
     
     let defaultImage =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in
-      self.recordImageView.image = UIImage(named: "cafeDefault13")
+      self.recordImageView.image = UIImage(named: "cafeDefault3")
     }
     
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
