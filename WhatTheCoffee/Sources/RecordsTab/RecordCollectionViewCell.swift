@@ -37,7 +37,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
     self.clipsToBounds = true
     
     nameLabel.text = item.name
-    backgroundImageView.image = UIImage(named: "\(item._id).jpg") ?? UIImage(named: "random")
+    backgroundImageView.image = UIImage(named: "\(item._id).jpg") ?? UIImage(named: "cafeDefault3")
     rateImageView.image = UIImage(named: "star\(item.rate)")!
     dateLabel.text = DateFormatter.visitDateFormat.string(from: item.visitDate)
   }

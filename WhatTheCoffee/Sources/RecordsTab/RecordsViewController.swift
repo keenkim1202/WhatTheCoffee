@@ -29,6 +29,13 @@ class RecordsViewController: UIViewController {
     didSet {
       switch modeType {
       case .view:
+        for (key, value) in dictionarySelectedIndexPath {
+          if value {
+            recordCollectionView.deselectItem(at: key, animated: true)
+          }
+        }
+        dictionarySelectedIndexPath.removeAll()
+        
         recordCollectionView.allowsMultipleSelection = false
         deleteBarButtonItem.isEnabled = false
         addBarButtonItem.isEnabled = true
@@ -107,10 +114,7 @@ class RecordsViewController: UIViewController {
   
   // MARK: - Actions
   @IBAction func onEdit(_ sender: UIBarButtonItem) {
-    print(#function)
     changeDeleteButtonState()
-    
-
   }
   
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
@@ -118,7 +122,9 @@ class RecordsViewController: UIViewController {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
     vc.environment = environment
 
-    self.navigationController?.pushViewController(vc, animated: true)
+    let nav = UINavigationController(rootViewController: vc)
+    nav.modalPresentationStyle = .fullScreen
+    self.present(nav, animated: true, completion: nil)
   }
   
 }
@@ -133,7 +139,8 @@ extension RecordsViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch modeType {
     case .view:
-      print("> view mode")
+      recordCollectionView.deselectItem(at: indexPath, animated: true)
+      
       guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
       guard let env = environment else { return }
       
@@ -145,7 +152,6 @@ extension RecordsViewController: UICollectionViewDelegate {
       nav.modalPresentationStyle = .fullScreen
       self.present(nav, animated: true, completion: nil)
     case .edit:
-      print("> edit mode")
       dictionarySelectedIndexPath[indexPath] = true
     }
   }
