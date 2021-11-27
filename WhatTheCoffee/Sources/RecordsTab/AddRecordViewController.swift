@@ -163,12 +163,12 @@ class AddRecordViewController: UIViewController {
       showAlert("별점을 체크해주세요.")
     } else {
       saveData()
-      self.navigationController?.popViewController(animated: true)
+      self.dismiss(animated: true, completion: nil)
     }
   }
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-    self.navigationController?.popViewController(animated: true)
+    self.dismiss(animated: true, completion: nil)
   }
   
   /// components

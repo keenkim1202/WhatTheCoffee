@@ -90,9 +90,17 @@
                                     <action selector="onEdit:" destination="dZ5-6g-54Y" id="QiX-nH-bw5"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem enabled="NO" image="trash" catalog="system" id="7iQ-jJ-DRm">
+                                <connections>
+                                    <action selector="onDelete:" destination="dZ5-6g-54Y" id="Dc5-9R-BiV"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButtonItem" destination="EFl-tJ-e5x" id="mdp-BD-tBt"/>
+                        <outlet property="deleteBarButtonItem" destination="7iQ-jJ-DRm" id="Sp4-qP-EhF"/>
+                        <outlet property="editBarButtonItem" destination="8Ug-f3-eWN" id="E9I-BC-3ch"/>
                         <outlet property="recordCollectionView" destination="obo-uh-ygD" id="MSo-DF-Ww3"/>
                     </connections>
                 </viewController>
@@ -823,6 +831,7 @@
         <image name="star4_deselected" width="331" height="330"/>
         <image name="star5" width="330" height="330"/>
         <image name="star5_deselected" width="331" height="330"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="아메리카노" width="441" height="588"/>
         <namedColor name="AppearanceColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

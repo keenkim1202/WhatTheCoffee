@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,17 +55,35 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ycn-DX-OcT">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="0.84972578642384111" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-R4-sqm">
+                                <rect key="frame" x="265" y="263" width="25" height="29"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AkU-R4-sqm" secondAttribute="height" multiplier="1:1" id="D1a-sD-Ewf"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AkU-R4-sqm" secondAttribute="bottom" constant="10" id="4hC-bG-qNf"/>
                             <constraint firstItem="vt8-iI-VEF" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="8XA-cz-4fL"/>
+                            <constraint firstItem="Ycn-DX-OcT" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="9YK-19-aJf"/>
                             <constraint firstAttribute="bottom" secondItem="vt8-iI-VEF" secondAttribute="bottom" id="9c3-qW-VhQ"/>
                             <constraint firstAttribute="trailing" secondItem="Jf6-kV-jee" secondAttribute="trailing" id="9ie-8h-65B"/>
                             <constraint firstItem="xex-Un-859" firstAttribute="centerY" secondItem="ahY-6T-K8s" secondAttribute="centerY" id="IMI-Ye-G04"/>
+                            <constraint firstItem="Ycn-DX-OcT" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="K8W-38-pKA"/>
+                            <constraint firstAttribute="trailing" secondItem="Ycn-DX-OcT" secondAttribute="trailing" id="OlL-ct-ceK"/>
                             <constraint firstItem="Jf6-kV-jee" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="S41-37-VMk"/>
+                            <constraint firstAttribute="trailing" secondItem="AkU-R4-sqm" secondAttribute="trailing" constant="10" id="WPJ-2x-1Bo"/>
                             <constraint firstItem="xex-Un-859" firstAttribute="centerX" secondItem="ahY-6T-K8s" secondAttribute="centerX" id="Yx0-Pa-mKi"/>
                             <constraint firstItem="vt8-iI-VEF" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="cbS-1k-UXL"/>
                             <constraint firstItem="xex-Un-859" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" constant="-10" id="flO-M3-wRp"/>
+                            <constraint firstAttribute="bottom" secondItem="Ycn-DX-OcT" secondAttribute="bottom" id="hU2-rq-6Wn"/>
                             <constraint firstItem="Jf6-kV-jee" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="iaK-US-VPA"/>
                             <constraint firstAttribute="trailing" secondItem="xex-Un-859" secondAttribute="trailing" constant="-10" id="o1O-6j-ESH"/>
                             <constraint firstAttribute="bottom" secondItem="Jf6-kV-jee" secondAttribute="bottom" id="qfu-Jn-amZ"/>
@@ -85,7 +104,9 @@
             <connections>
                 <outlet property="backgroundImageView" destination="Jf6-kV-jee" id="ZzS-Jc-BJG"/>
                 <outlet property="cellView" destination="vt8-iI-VEF" id="GUs-2n-z9H"/>
+                <outlet property="checkImageView" destination="AkU-R4-sqm" id="DGo-Lv-uMg"/>
                 <outlet property="dateLabel" destination="DXU-3g-N5C" id="ImJ-6R-Z76"/>
+                <outlet property="highlightView" destination="Ycn-DX-OcT" id="cEW-zk-ByZ"/>
                 <outlet property="nameLabel" destination="C7v-Ot-Dto" id="BNS-t6-DOl"/>
                 <outlet property="rateImageView" destination="A1V-Mk-WPq" id="Bgv-zH-LX7"/>
             </connections>
@@ -93,6 +114,10 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="star5" width="330" height="330"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
