@@ -41,7 +41,7 @@ class RecommendViewController: UIViewController {
   // MARK: - Configure
   func configure() {
     recommendButton.layer.cornerRadius = buttonCornerRadius
-    recommendButton.tintColor = UIColor.recommendButtonColor
+    recommendButton.tintColor = UIColor.greenMainColor
     recommendButton.titleLabel?.textColor = UIColor.oppositeColor
   }
   

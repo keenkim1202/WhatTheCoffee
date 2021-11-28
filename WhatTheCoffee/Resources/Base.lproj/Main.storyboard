@@ -136,14 +136,14 @@
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxD-ZJ-dUd">
                                                                 <rect key="frame" x="0.0" y="329" width="354" height="50.5"/>
-                                                                <color key="backgroundColor" name="ImageButtonColor"/>
+                                                                <color key="backgroundColor" name="GreenSubColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="LxD-ZJ-dUd" secondAttribute="height" multiplier="7:1" id="ov0-CP-1uZ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="카페 이미지 추가하기">
-                                                                    <color key="titleColor" name="OppositeColor"/>
+                                                                    <color key="titleColor" name="GreenMainColor"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="onAddImage:" destination="sBU-it-W0Z" eventType="touchUpInside" id="mOO-9Q-R4l"/>
@@ -567,14 +567,14 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-Ug-Qew">
                                         <rect key="frame" x="30" y="447" width="294" height="49"/>
-                                        <color key="backgroundColor" name="RecommendButtonColor"/>
+                                        <color key="backgroundColor" name="GreenMainColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ISS-Ug-Qew" secondAttribute="height" multiplier="6:1" id="4xJ-fv-bNh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="다시 추천 받기">
-                                            <color key="titleColor" name="OppositeColor"/>
+                                            <color key="titleColor" name="GreenSubColor"/>
                                         </state>
                                         <connections>
                                             <action selector="onRecommend:" destination="xsf-7k-i9C" eventType="touchUpInside" id="cfR-gi-Jvg"/>
@@ -715,14 +715,14 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVq-e1-sj4">
                                         <rect key="frame" x="0.0" y="260" width="314" height="45"/>
-                                        <color key="backgroundColor" name="ImageButtonColor"/>
+                                        <color key="backgroundColor" name="GreenSubColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nVq-e1-sj4" secondAttribute="height" multiplier="7:1" id="6oN-Fp-252"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="커피 이미지 추가하기">
-                                            <color key="titleColor" name="OppositeColor"/>
+                                            <color key="titleColor" name="GreenMainColor"/>
                                         </state>
                                         <connections>
                                             <action selector="onAddImage:" destination="wst-wb-a30" eventType="touchUpInside" id="ubM-UR-TNt"/>
@@ -862,14 +862,17 @@
         <namedColor name="AppearanceColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="ImageButtonColor">
-            <color red="0.85199999809265137" green="0.35699999332427979" blue="0.37400001287460327" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        <namedColor name="GreenMainColor">
+            <color red="0.92549026010000002" green="0.88627451660000001" blue="0.64313727620000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="GreenSubColor">
+            <color red="0.30196079609999998" green="0.49019610879999997" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="OppositeColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="RecommendButtonColor">
-            <color red="0.76200002431869507" green="0.37000000476837158" blue="0.83399999141693115" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.92549026010000002" green="0.88627451660000001" blue="0.64313727620000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

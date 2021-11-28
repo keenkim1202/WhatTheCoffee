@@ -73,7 +73,7 @@ class AddRecordViewController: UIViewController {
     imagePicker.delegate = self
 
     addImageButton.layer.cornerRadius = buttonCornerRadius
-    addImageButton.tintColor = UIColor.imageButtonColor
+    addImageButton.tintColor = UIColor.greenSubColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
     
     datePickerButton.layer.borderWidth = 0.5

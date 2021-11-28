@@ -87,8 +87,8 @@ class RecordsViewController: UIViewController {
     recordCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier
     )
     
-    deleteBarButtonItem.tintColor = .orange
-    editBarButtonItem.tintColor = .brown
+    deleteBarButtonItem.tintColor = .red
+    addBarButtonItem.tintColor = .darkGreenColor
   }
   
   func changeDeleteButtonState() {
