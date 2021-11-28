@@ -8,12 +8,20 @@
 import UIKit
 
 extension UIColor {
-  public class var recommendButtonColor: UIColor {
-    return UIColor(named: "RecommendButtonColor")!
+  public class var greenMainColor: UIColor {
+    return UIColor(named: "GreenMainColor")!
   }
   
-  public class var imageButtonColor: UIColor {
-    return UIColor(named: "ImageButtonColor")!
+  public class var greenSubColor: UIColor {
+    return UIColor(named: "GreenSubColor")!
+  }
+  
+  public class var darkGreenColor: UIColor {
+    return UIColor(named: "DarkGreenColor")!
+  }
+  
+  public class var orangeMainColor: UIColor {
+    return UIColor(named: "OrangeMainColor")!
   }
   
   public class var oppositeColor: UIColor {

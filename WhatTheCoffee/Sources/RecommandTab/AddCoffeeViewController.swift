@@ -44,7 +44,7 @@ class AddCoffeeViewController: UIViewController {
   func configure() {
     imagePicker.delegate = self
     addImageButton.layer.cornerRadius = buttonCornerRadius
-    addImageButton.tintColor = UIColor.imageButtonColor
+    addImageButton.tintColor = UIColor.greenSubColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
   }
   
