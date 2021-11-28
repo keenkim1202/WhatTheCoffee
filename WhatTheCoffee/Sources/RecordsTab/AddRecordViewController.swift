@@ -43,29 +43,38 @@ class AddRecordViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    configureButton()
+    configureTextView()
     configure()
   }
   
   // MARK: - Configure
   func configure() {
-    configureNAV()
-    configureButton()
-    configureTextView()
-  }
-  
-  func configureNAV() {
-    // TODO: 이미지가 없거나 불러오기에 실패한 경우 처리하기
+    // TODO: 좀 더 깔끔하게 정리할 수 있을 것 같음. 나중에 수정하기
     if let cafe = cafe {
       viewType = .update
       title = "기록 수정"
       
+      let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
       recordImageView.image = loadImageFromDocumentDirectory(imageName: "\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
       titleTextField.text = cafe.name
+      datePickerButton.setTitle(date, for: .normal)
       updateRate(Rate.init(rawValue: cafe.rate)!)
-      commentTextView.text = cafe.comment
+
+      if let comment = cafe.comment, !comment.isEmpty {
+        commentTextView.text = comment
+        commentTextView.textColor = UIColor.orangeMainColor
+      } else {
+        commentTextView.text = commentPlaceholder
+        commentTextView.textColor = UIColor.placeholderText
+      }
+
     } else {
       title = "기록 추가"
       recordImageView.image = UIImage(named: "cafeDefault3")
+      commentTextView.text = commentPlaceholder
+      commentTextView.textColor = UIColor.placeholderText
     }
   }
   
@@ -89,8 +98,8 @@ class AddRecordViewController: UIViewController {
     commentTextView.backgroundColor = .appearanceColor
     commentTextView.layer.cornerRadius = CGFloat(8)
     commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-    commentTextView.text = commentPlaceholder
-    commentTextView.textColor = UIColor.placeholderText
+//    commentTextView.text = commentPlaceholder
+//    commentTextView.textColor = UIColor.placeholderText
   }
   
   // MARK: - Photo Library & Camera Access
@@ -157,10 +166,10 @@ class AddRecordViewController: UIViewController {
     guard let rate = rate else { return }
     guard let commentText = commentTextView.text else { return }
     
-    var comment: String = ""
+    var comment: String? = ""
     
     if commentText == commentPlaceholder {
-      comment = ""
+      comment = nil
     } else {
       comment = commentText
     }
@@ -272,8 +281,10 @@ extension AddRecordViewController : UIImagePickerControllerDelegate, UINavigatio
 extension AddRecordViewController: UITextViewDelegate {
   func textViewDidBeginEditing(_ textView: UITextView) {
     if commentTextView.textColor == UIColor.placeholderText {
-      commentTextView.text = ""
-      commentTextView.textColor = UIColor.oppositeColor
+      if commentTextView.text == commentPlaceholder {
+        commentTextView.text = nil
+      }
+      commentTextView.textColor = UIColor.orangeMainColor
     }
   }
 
