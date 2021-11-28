@@ -32,6 +32,7 @@
 		1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C395274550B900EC3CA3 /* RealmSwift */; };
 		1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */; };
 		1C48D3F727533CFE0008C3F7 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3F627533CFE0008C3F7 /* DatePickerViewController.swift */; };
+		1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */; };
 		1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C555637274DC94C00B5A145 /* RecordCell.xib */; };
 		1C55565A274FA6E100B5A145 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* DataManager.swift */; };
 		1C55565C274FA79C00B5A145 /* CafeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C55565B274FA79C00B5A145 /* CafeRepository.swift */; };
@@ -67,6 +68,7 @@
 		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
 		1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C48D3F627533CFE0008C3F7 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField++Extension.swift.swift"; sourceTree = "<group>"; };
 		1C555637274DC94C00B5A145 /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		1C555659274FA6E100B5A145 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1C55565B274FA79C00B5A145 /* CafeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeRepository.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */,
 				1C555659274FA6E100B5A145 /* DataManager.swift */,
 				1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */,
+				1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
+				1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */,
 				1C1839F9274CB06800AAD04B /* Storage.swift in Sources */,
 				1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */,
 				1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */,

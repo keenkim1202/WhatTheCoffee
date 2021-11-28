@@ -121,10 +121,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-te-qHT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1065"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1068"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Fif-7G-ljN">
-                                                <rect key="frame" x="20" y="20" width="374" height="1025"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="1028"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I8h-MU-vid">
                                                         <rect key="frame" x="10" y="0.0" width="354" height="379.5"/>
@@ -183,7 +183,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lZr-46-TKv">
-                                                        <rect key="frame" x="10" y="532.5" width="354" height="70"/>
+                                                        <rect key="frame" x="10" y="532.5" width="354" height="73"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방문일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LR-Ft-gUx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="24"/>
@@ -191,26 +191,21 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gia-JI-Edv">
-                                                                <rect key="frame" x="0.0" y="39" width="354" height="31"/>
-                                                                <color key="backgroundColor" name="AppearanceColor"/>
-                                                                <color key="tintColor" name="OrangeMainColor"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="날짜 선택하기"/>
-                                                                <connections>
-                                                                    <action selector="onDatePicker:" destination="sBU-it-W0Z" eventType="touchUpInside" id="qev-wG-Zbh"/>
-                                                                </connections>
-                                                            </button>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="언제 방문하셨나요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRe-dv-C59">
+                                                                <rect key="frame" x="0.0" y="39" width="354" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="gia-JI-Edv" firstAttribute="leading" secondItem="lZr-46-TKv" secondAttribute="leading" id="Er7-ZD-96Y"/>
                                                             <constraint firstItem="0LR-Ft-gUx" firstAttribute="leading" secondItem="lZr-46-TKv" secondAttribute="leading" id="Vh1-mp-Myl"/>
                                                             <constraint firstAttribute="trailing" secondItem="0LR-Ft-gUx" secondAttribute="trailing" id="gKY-B2-tEg"/>
-                                                            <constraint firstAttribute="trailing" secondItem="gia-JI-Edv" secondAttribute="trailing" id="pY6-NX-wYF"/>
+                                                            <constraint firstItem="WRe-dv-C59" firstAttribute="leading" secondItem="lZr-46-TKv" secondAttribute="leading" id="m44-RY-fyO"/>
+                                                            <constraint firstAttribute="trailing" secondItem="WRe-dv-C59" secondAttribute="trailing" id="vTD-wr-TDn"/>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-vH-VUA">
-                                                        <rect key="frame" x="0.0" y="642.5" width="374" height="126.5"/>
+                                                        <rect key="frame" x="0.0" y="645.5" width="374" height="126.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평점" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V11-db-jf7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -375,7 +370,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BXZ-9K-kk3">
-                                                        <rect key="frame" x="10" y="809" width="354" height="216"/>
+                                                        <rect key="frame" x="10" y="812" width="354" height="216"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="코멘트" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUX-xV-5Np">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="24"/>
@@ -463,7 +458,7 @@
                         <outlet property="addImageButton" destination="LxD-ZJ-dUd" id="tPx-qv-uwf"/>
                         <outlet property="badButton" destination="uQ8-64-Ria" id="R4i-rD-TGr"/>
                         <outlet property="commentTextView" destination="f8n-s5-gDg" id="vYK-I3-7gP"/>
-                        <outlet property="datePickerButton" destination="gia-JI-Edv" id="GHk-eO-8iv"/>
+                        <outlet property="dateTextField" destination="WRe-dv-C59" id="4hP-3I-Wm2"/>
                         <outlet property="goodButton" destination="LRh-Qg-qxF" id="krh-2h-X39"/>
                         <outlet property="recordImageView" destination="FFm-Wx-1u5" id="LSK-5L-cYg"/>
                         <outlet property="sosoButton" destination="u2S-Oy-BS7" id="nDm-CE-DMQ"/>
