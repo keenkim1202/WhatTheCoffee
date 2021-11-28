@@ -98,8 +98,6 @@ class AddRecordViewController: UIViewController {
     commentTextView.backgroundColor = .appearanceColor
     commentTextView.layer.cornerRadius = CGFloat(8)
     commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-//    commentTextView.text = commentPlaceholder
-//    commentTextView.textColor = UIColor.placeholderText
   }
   
   // MARK: - Photo Library & Camera Access
