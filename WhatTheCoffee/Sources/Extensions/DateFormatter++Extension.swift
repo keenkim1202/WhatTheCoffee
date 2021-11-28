@@ -9,8 +9,14 @@ import Foundation
 
 extension DateFormatter {
   static var visitDateFormat: DateFormatter {
-    let date = DateFormatter()
-    date.dateFormat = "yyyy/MM/dd"
-    return date
+    let df = DateFormatter()
+    df.dateFormat = "yyyy/MM/dd"
+    return df
+  }
+  
+  static var selectDateFormat: DateFormatter {
+    let df = DateFormatter()
+    df.dateFormat = "yyyy년 MM월 dd일"
+    return df
   }
 }
