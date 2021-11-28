@@ -33,6 +33,7 @@ class AddRecordViewController: UIViewController {
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var commentTextView: UITextView!
   
+  @IBOutlet weak var datePickerButton: UIButton!
   @IBOutlet weak var verygoodButton: UIButton!
   @IBOutlet weak var goodButton: UIButton!
   @IBOutlet weak var sosoButton: UIButton!
@@ -42,18 +43,14 @@ class AddRecordViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    configureNAV()
-    configureTextView()
     configure()
   }
   
   // MARK: - Configure
   func configure() {
-    imagePicker.delegate = self
-    addImageButton.layer.cornerRadius = buttonCornerRadius
-    addImageButton.tintColor = UIColor.imageButtonColor
-    addImageButton.titleLabel?.textColor = UIColor.oppositeColor
+    configureNAV()
+    configureButton()
+    configureTextView()
   }
   
   func configureNAV() {
@@ -70,6 +67,19 @@ class AddRecordViewController: UIViewController {
       title = "기록 추가"
       recordImageView.image = UIImage(named: "cafeDefault3")
     }
+  }
+  
+  func configureButton() {
+    imagePicker.delegate = self
+
+    addImageButton.layer.cornerRadius = buttonCornerRadius
+    addImageButton.tintColor = UIColor.imageButtonColor
+    addImageButton.titleLabel?.textColor = UIColor.oppositeColor
+    
+    datePickerButton.layer.borderWidth = 0.5
+    datePickerButton.layer.borderColor = UIColor.placeholderText.cgColor
+    datePickerButton.backgroundColor = .appearanceColor
+    datePickerButton.layer.cornerRadius = CGFloat(8)
   }
   
   func configureTextView() {
@@ -213,9 +223,29 @@ class AddRecordViewController: UIViewController {
     present(alert, animated: true, completion: nil)
   }
   
-  @IBAction func onRateButton(_ sender: Any) {
-    guard let button = sender as? UIButton else { return }
-    guard let rate = Rate(rawValue: button.tag) else { return }
+  @IBAction func onDatePicker(_ sender: UIButton) {
+    guard let contentView = self.storyboard?.instantiateViewController(withIdentifier: "datePickerVC") as? DatePickerViewController else { return }
+    contentView.preferredContentSize.height = 200
+    
+    let alert = UIAlertController(title: "날짜 선택", message: "날짜를 선택해주세요", preferredStyle: .alert)
+    alert.setValue(contentView, forKey: "contentViewController")
+    
+    let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+    let ok = UIAlertAction(title: "확인", style: .default) { _ in
+      let value = DateFormatter.selectDateFormat.string(from: contentView.datePicker.date)
+      
+      print("datePicker Button value: \(value)")
+      self.datePickerButton.setTitle("\(value)", for: .normal)
+    }
+    
+    alert.addAction(cancel)
+    alert.addAction(ok)
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  
+  @IBAction func onRate(_ sender: UIButton) {
+    guard let rate = Rate(rawValue: sender.tag) else { return }
     
     updateRate(rate)
   }
