@@ -33,7 +33,8 @@ class AddRecordViewController: UIViewController {
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var commentTextView: UITextView!
   
-  @IBOutlet weak var datePickerButton: UIButton!
+  
+  @IBOutlet weak var dateTextField: UITextField!
   @IBOutlet weak var verygoodButton: UIButton!
   @IBOutlet weak var goodButton: UIButton!
   @IBOutlet weak var sosoButton: UIButton!
@@ -46,6 +47,7 @@ class AddRecordViewController: UIViewController {
     
     configureButton()
     configureTextView()
+    configureTextField()
     configure()
   }
   
@@ -59,7 +61,7 @@ class AddRecordViewController: UIViewController {
       let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
       recordImageView.image = loadImageFromDocumentDirectory(imageName: "\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
       titleTextField.text = cafe.name
-      datePickerButton.setTitle(date, for: .normal)
+      dateTextField.text = date
       updateRate(Rate.init(rawValue: cafe.rate)!)
 
       if let comment = cafe.comment, !comment.isEmpty {
@@ -84,11 +86,12 @@ class AddRecordViewController: UIViewController {
     addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.greenSubColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
-    
-    datePickerButton.layer.borderWidth = 0.5
-    datePickerButton.layer.borderColor = UIColor.placeholderText.cgColor
-    datePickerButton.backgroundColor = .appearanceColor
-    datePickerButton.layer.cornerRadius = CGFloat(8)
+  }
+  
+  func configureTextField() {
+    dateTextField.setDatePicker(target: self, selector: #selector(datePickerDone))
+    dateTextField.textColor = .orangeMainColor
+    dateTextField.textAlignment = .center
   }
   
   func configureTextView() {
@@ -160,7 +163,7 @@ class AddRecordViewController: UIViewController {
     // 만약 기본이미지이면 이미지는 저장하지 않음.
     guard let env = environment else { return }
     guard let cafeName = titleTextField.text else { return }
-    guard let visitDate = datePickerButton.titleLabel?.text else { return }
+    guard let visitDate = dateTextField.text else { return }
     guard let rate = rate else { return }
     guard let commentText = commentTextView.text else { return }
     
@@ -194,11 +197,16 @@ class AddRecordViewController: UIViewController {
     self.navigationController?.popViewController(animated: true)
   }
   
+  @objc func datePickerDone() {
+    if let datePicker = self.dateTextField.inputView as? UIDatePicker {
+      self.dateTextField.text = DateFormatter.selectDateFormat.string(from: datePicker.date)
+    }
+    self.dateTextField.resignFirstResponder()
+  }
+  
   // MARK: - Actions
   /// navigationBarButton
   @IBAction func onDone(_ sender: UIBarButtonItem) {
-    print(#function)
-    
     guard let text = titleTextField.text else { return }
     if text.isEmpty {
       showAlert("카페명을 입력해주세요.")
@@ -237,25 +245,6 @@ class AddRecordViewController: UIViewController {
     alert.addAction(cancel)
     present(alert, animated: true, completion: nil)
   }
-  
-  @IBAction func onDatePicker(_ sender: UIButton) {
-    guard let contentView = self.storyboard?.instantiateViewController(withIdentifier: "datePickerVC") as? DatePickerViewController else { return }
-    contentView.preferredContentSize.height = 200
-    
-    let alert = UIAlertController(title: "날짜 선택", message: "날짜를 선택해주세요", preferredStyle: .alert)
-    alert.setValue(contentView, forKey: "contentViewController")
-    
-    let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-    let ok = UIAlertAction(title: "확인", style: .default) { _ in
-      let value = DateFormatter.selectDateFormat.string(from: contentView.datePicker.date)
-      self.datePickerButton.setTitle("\(value)", for: .normal)
-    }
-    
-    alert.addAction(cancel)
-    alert.addAction(ok)
-    self.present(alert, animated: true, completion: nil)
-  }
-  
   
   @IBAction func onRate(_ sender: UIButton) {
     guard let rate = Rate(rawValue: sender.tag) else { return }
