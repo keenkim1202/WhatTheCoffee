@@ -20,8 +20,16 @@ class Cafe: Object {
   convenience init(name: String, comment: String?, rate: Int) {
     self.init()
     self.name = name
+    self.visitDate = Date()
     self.comment = comment
     self.rate = rate
-    self.visitDate = Date()
+  }
+  
+  convenience init(name: String, visitDate: Date, comment: String?, rate: Int) {
+    self.init()
+    self.name = name
+    self.visitDate = visitDate
+    self.comment = comment
+    self.rate = rate
   }
 }

@@ -153,8 +153,10 @@ class AddRecordViewController: UIViewController {
     // 만약 기본이미지이면 이미지는 저장하지 않음.
     guard let env = environment else { return }
     guard let cafeName = titleTextField.text else { return }
-    guard let commentText = commentTextView.text else { return }
+    guard let visitDate = datePickerButton.titleLabel?.text else { return }
     guard let rate = rate else { return }
+    guard let commentText = commentTextView.text else { return }
+    
     var comment: String = ""
     
     if commentText == commentPlaceholder {
@@ -163,7 +165,13 @@ class AddRecordViewController: UIViewController {
       comment = commentText
     }
     
-    let item = Cafe(name: cafeName, comment: comment, rate: rate)
+    var item = Cafe(name: cafeName, comment: comment, rate: rate)
+    
+    if let date = DateFormatter.selectDateFormat.date(from: visitDate) {
+      item = Cafe(name: cafeName, visitDate: date, comment: comment, rate: rate)
+    }
+    
+    print(item)
 
     if viewType == .update {
       guard let cafe = cafe else { return }
@@ -233,8 +241,6 @@ class AddRecordViewController: UIViewController {
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
     let ok = UIAlertAction(title: "확인", style: .default) { _ in
       let value = DateFormatter.selectDateFormat.string(from: contentView.datePicker.date)
-      
-      print("datePicker Button value: \(value)")
       self.datePickerButton.setTitle("\(value)", for: .normal)
     }
     
@@ -246,7 +252,6 @@ class AddRecordViewController: UIViewController {
   
   @IBAction func onRate(_ sender: UIButton) {
     guard let rate = Rate(rawValue: sender.tag) else { return }
-    
     updateRate(rate)
   }
   
