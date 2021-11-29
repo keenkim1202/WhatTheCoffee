@@ -116,6 +116,8 @@ class RecordsViewController: UIViewController {
         for i in deleteNeededIndexPaths.sorted(by: { $0.item > $1.item }) {
           let item = self.cafeList[i.item]
           guard let env = self.environment else { return }
+          
+          self.deleteImageFromDucumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg")
           env.cafeRepository.remove(item: item)
         }
         
