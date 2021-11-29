@@ -22,7 +22,6 @@ class RecommendViewController: UIViewController {
   @IBOutlet weak var todayCoffeeImage: UIImageView!
   @IBOutlet weak var todayCoffeeLabel: UILabel!
   @IBOutlet weak var recommendButton: UIButton!
-  @IBOutlet weak var introduceLabel: UILabel!
   @IBOutlet weak var emptyView: UIView!
   
   // MARK: - View Life-Cycle
@@ -61,9 +60,6 @@ class RecommendViewController: UIViewController {
     coffeeList = env.coffeeRepository.fetch()
     
     todayCoffeeImage.image = UIImage.randomCoffeeImage
-    todayCoffeeLabel.text = ""
-    introduceLabel.isHidden = false
-    introduceLabel.text = "오늘의 커피를 추천 받아보세요!"
   }
   
   func checkIsFirst() {
@@ -133,8 +129,6 @@ class RecommendViewController: UIViewController {
   
   /// component
   @IBAction func onRecommend(_ sender: UIButton) {
-    introduceLabel.isHidden = true
-    
     if !coffeeList.isEmpty {
       let randomCoffee = randomCoffee()
       
