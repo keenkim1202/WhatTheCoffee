@@ -191,7 +191,7 @@ class AddRecordViewController: UIViewController {
     }
 
     if recordImageView.image != UIImage(named: "cafeDefault3") {
-      saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: recordImageView.image!)
+      saveImageToDocumentDirectory(imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
     }
 
     self.navigationController?.popViewController(animated: true)

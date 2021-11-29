@@ -69,7 +69,6 @@ class AddCoffeeViewController: UIViewController {
   }
   
   func saveData() {
-    // 만약 기본이미지이면 이미지는 저장하지 않음.
     guard let env = environment else {
       print("addCoffeeVC - env nil..")
       return
@@ -87,28 +86,13 @@ class AddCoffeeViewController: UIViewController {
     }
     
     if coffeeImageView.image != UIImage(named: "random") {
-      saveImageToDocumentDirectory(imageName: "\(item._id).jpg", image: coffeeImageView.image!)
+      saveImageToDocumentDirectory(imageName: "coffee_\(item._id).jpg", image: coffeeImageView.image!)
     }
     
     self.navigationController?.popViewController(animated: true)
   }
   
   // MARK: - Photo Library & Camera Access
-//  func checkCameraPermission() {
-//    let requiredAccessLevel: PHAccessLevel = .readWrite
-//    PHPhotoLibrary.requestAuthorization(for: requiredAccessLevel) { authorizationStatus in
-//      switch authorizationStatus {
-//      case .limited:
-//        print("limited authorization granted")
-//      case .authorized:
-//        print("authorization granted")
-//      default:
-//      //FIXME: Implement handling for all authorizationStatus
-//        print("Unimplemented")
-//      }
-//    }
-//  }
-  
   func openLibrary() {
     imagePicker.sourceType = .photoLibrary
     self.present(imagePicker, animated: false, completion: nil)
