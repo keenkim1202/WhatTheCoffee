@@ -815,7 +815,7 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
-        <image name="random" width="786" height="786"/>
+        <image name="random" width="772" height="758"/>
         <image name="star1" width="330" height="330"/>
         <image name="star1_deselected" width="331" height="330"/>
         <image name="star2" width="330" height="330"/>
