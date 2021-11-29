@@ -13,6 +13,6 @@ extension UIImage {
   }
   
   static var defaultCafeImage: UIImage {
-    return UIImage(systemName: "cafeDefault3")!
+    return UIImage(named: "cafeDefault3")!
   }
 }
