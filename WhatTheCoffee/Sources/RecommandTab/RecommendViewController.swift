@@ -71,9 +71,6 @@ class RecommendViewController: UIViewController {
     let isFirst = Storage.isFirstTime()
     print("isFirst = \(isFirst)")
     if isFirst == true {
-//      createDirectory(directoryName: "CoffeeImages")
-//      createDirectory(directoryName: "CafeImages")
-      
       guard let env = environment else { return }
       let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라라떼", "녹차라떼", "카페모카", "카라멜마끼아또"]
       for i in 0..<defaultCoffeeList.count {

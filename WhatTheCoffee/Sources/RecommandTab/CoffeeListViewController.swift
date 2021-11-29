@@ -104,6 +104,7 @@ extension CoffeeListViewController: UITableViewDelegate {
     let coffee = coffeeList[indexPath.row]
     vc.environment = env
     vc.coffee = coffee
+    print("seletecCoffe id -> \(coffee._id)")
   
     self.navigationController?.pushViewController(vc, animated: true)
   }
