@@ -539,13 +539,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-ec-ASy">
-                                <rect key="frame" x="30" y="204.5" width="354" height="492.5"/>
+                                <rect key="frame" x="30" y="206" width="354" height="489"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xts-aX-PfG">
-                                        <rect key="frame" x="57" y="0.0" width="240" height="374.5"/>
+                                        <rect key="frame" x="57" y="0.0" width="240" height="371"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피는" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHj-cL-udR">
-                                                <rect key="frame" x="66" y="0.0" width="108.5" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피 🤔" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHj-cL-udR">
+                                                <rect key="frame" x="59.5" y="0.0" width="121" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <color key="textColor" name="OppositeColor"/>
                                                 <nil key="highlightedColor"/>
@@ -563,8 +563,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피를 추천받아보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-G0-gce">
-                                                <rect key="frame" x="0.0" y="354" width="240" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="354" width="240" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <color key="textColor" name="OrangeMainColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -576,7 +576,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-Ug-Qew">
-                                        <rect key="frame" x="30" y="443.5" width="294" height="49"/>
+                                        <rect key="frame" x="30" y="440" width="294" height="49"/>
                                         <color key="backgroundColor" name="GreenMainColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ISS-Ug-Qew" secondAttribute="height" multiplier="6:1" id="4xJ-fv-bNh"/>
