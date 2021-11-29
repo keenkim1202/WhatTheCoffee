@@ -8,8 +8,6 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-// TODO: IQKeyboardManager 설정하기
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   

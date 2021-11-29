@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 
+// 커피 목록에 보일 커피 모델
 class Coffee: Object {
   @Persisted var name: String
   @Persisted var date: Date

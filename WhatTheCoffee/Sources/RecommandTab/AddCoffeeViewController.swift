@@ -69,31 +69,30 @@ class AddCoffeeViewController: UIViewController {
   }
   
   func saveData() {
-    guard let env = environment else {
-      print("addCoffeeVC - env nil..")
-      return
-    }
+    guard let env = environment else { return }
     guard let coffeeName = nameTextField.text else { return }
     
     let item = Coffee(name: coffeeName)
-    print(item)
+    print(item) // 출시 전에 지울 주석
     
     if viewType == .update {
       guard let coffee = coffee else { return }
       env.coffeeRepository.update(item: coffee, new: item)
+      
+      if coffeeImageView.image != UIImage(named: "random") {
+        saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: coffeeImageView.image!)
+      } else {
+        let previousImage = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage(named: "cafeDefault3")
+        
+        if previousImage != UIImage(named: "random") {
+          deleteImageFromDucumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
+        }
+      }
     } else {
       env.coffeeRepository.add(item: item)
-    }
-    
-    if coffeeImageView.image != UIImage(named: "random") {
-      guard let coffee = coffee else { return }
-      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: coffeeImageView.image!)
-    } else {
-      guard let coffee = coffee else { return }
-      let previousImage = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage(named: "cafeDefault3")
       
-      if previousImage != UIImage(named: "random") {
-        deleteImageFromDucumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
+      if coffeeImageView.image != UIImage(named: "random") {
+        saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(item._id).jpg", image: coffeeImageView.image!)
       }
     }
     
@@ -156,7 +155,6 @@ class AddCoffeeViewController: UIViewController {
     alert.addAction(cancel)
     present(alert, animated: true, completion: nil)
   }
-  
 }
 
 // MARK: - Extension - UIImagePickerControllerDelegate & UINavigationControllerDelegate
