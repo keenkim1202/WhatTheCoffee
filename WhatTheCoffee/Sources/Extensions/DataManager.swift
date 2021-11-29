@@ -7,20 +7,20 @@
 
 import UIKit
 
-// TODO: 이미지 변경 시, 이전 이미지 삭제하도록 하기. -> delete 함수 수정하기. (뭔가 이상함)
 // MARK: - Document Date Manage
 extension UIViewController {
   
-    enum DirectoryType: String {
-      case coffee = "coffeeImages"
-      case cafe = "cafeImages"
-    }
+  // MARK: - Enum
+  enum DirectoryType: String {
+    case coffee = "coffeeImages"
+    case cafe = "cafeImages"
+  }
   
   // MARK: - Save Document
   func saveImageToDocumentDirectory(type: DirectoryType, imageName: String, image: UIImage) {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    
     let filePath = documentDirectory.appendingPathComponent(type.rawValue)
+    
     if !FileManager.default.fileExists(atPath: filePath.path) {
       do {
         try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
@@ -69,7 +69,6 @@ extension UIViewController {
   // MARK: - Remove Document
   func deleteImageFromDucumentDirectory(type: DirectoryType, imageName: String) {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    
     let filePath = documentDirectory.appendingPathComponent(type.rawValue)
     
     if !FileManager.default.fileExists(atPath: filePath.path) {

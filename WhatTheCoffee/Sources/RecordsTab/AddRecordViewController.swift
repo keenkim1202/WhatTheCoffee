@@ -7,7 +7,7 @@
 
 import UIKit
 
-// TODO: ImagePicker 관련 코드. addCoffeeVC와 겹침. 수정해보자.
+// TODO: 좀 더 깔끔하게 정리할 수 있을 것 같음. 나중에 수정하기
 
 class AddRecordViewController: UIViewController {
   
@@ -33,7 +33,6 @@ class AddRecordViewController: UIViewController {
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var commentTextView: UITextView!
   
-  
   @IBOutlet weak var dateTextField: UITextField!
   @IBOutlet weak var verygoodButton: UIButton!
   @IBOutlet weak var goodButton: UIButton!
@@ -53,7 +52,6 @@ class AddRecordViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    // TODO: 좀 더 깔끔하게 정리할 수 있을 것 같음. 나중에 수정하기
     if let cafe = cafe {
       viewType = .update
       title = "기록 수정"
@@ -63,7 +61,7 @@ class AddRecordViewController: UIViewController {
       titleTextField.text = cafe.name
       dateTextField.text = date
       updateRate(Rate.init(rawValue: cafe.rate)!)
-
+      
       if let comment = cafe.comment, !comment.isEmpty {
         commentTextView.text = comment
         commentTextView.textColor = UIColor.orangeMainColor
@@ -71,7 +69,6 @@ class AddRecordViewController: UIViewController {
         commentTextView.text = commentPlaceholder
         commentTextView.textColor = UIColor.placeholderText
       }
-
     } else {
       title = "기록 추가"
       recordImageView.image = UIImage(named: "cafeDefault3")
@@ -82,7 +79,6 @@ class AddRecordViewController: UIViewController {
   
   func configureButton() {
     imagePicker.delegate = self
-
     addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.greenSubColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
@@ -92,7 +88,6 @@ class AddRecordViewController: UIViewController {
     dateTextField.setDatePicker(target: self, selector: #selector(datePickerDone))
     dateTextField.textColor = .orangeMainColor
     dateTextField.textAlignment = .center
-    
   }
   
   func configureTextView() {
@@ -119,7 +114,7 @@ class AddRecordViewController: UIViewController {
     }
   }
   
-  func updateRate(_ rate: Rate) { // 별점 버튼을 눌렀을 때 한 가지만 선택되도록 하기 위한 함수 입니다.
+  func updateRate(_ rate: Rate) {
     switch rate {
     case .veryGood:
       verygoodButton.isSelected = true
@@ -161,7 +156,6 @@ class AddRecordViewController: UIViewController {
   }
   
   func saveData() {
-    // 만약 기본이미지이면 이미지는 저장하지 않음.
     guard let env = environment else { return }
     guard let cafeName = titleTextField.text else { return }
     guard let visitDate = dateTextField.text else { return }
@@ -182,8 +176,6 @@ class AddRecordViewController: UIViewController {
       item = Cafe(name: cafeName, visitDate: date, comment: comment, rate: rate)
     }
     
-    print(item) // 주석 지울 예정
-
     if viewType == .update {
       guard let cafe = cafe else { return }
       env.cafeRepository.update(item: cafe, new: item)
@@ -204,7 +196,7 @@ class AddRecordViewController: UIViewController {
         saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
       }
     }
-
+    
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -261,7 +253,6 @@ class AddRecordViewController: UIViewController {
     guard let rate = Rate(rawValue: sender.tag) else { return }
     updateRate(rate)
   }
-  
 }
 
 // MARK: - Extension - UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -285,7 +276,7 @@ extension AddRecordViewController: UITextViewDelegate {
       commentTextView.textColor = UIColor.orangeMainColor
     }
   }
-
+  
   func textViewDidEndEditing(_ textView: UITextView) {
     if commentTextView.text.isEmpty {
       commentTextView.text = commentPlaceholder

@@ -25,6 +25,8 @@ class RecordsViewController: UIViewController {
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
   
   var environment: Environment? = nil
+  var cafeList: [Cafe] = [] { didSet { recordCollectionView.reloadData() } }
+  var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
   var modeType: ModeType = .view {
     didSet {
       switch modeType {
@@ -48,9 +50,6 @@ class RecordsViewController: UIViewController {
       }
     }
   }
-  var cafeList: [Cafe] = [] { didSet { recordCollectionView.reloadData() } }
-  var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
-
   
   // MARK: - UI
   @IBOutlet weak var recordCollectionView: UICollectionView!
@@ -134,15 +133,13 @@ class RecordsViewController: UIViewController {
   }
   
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
-    print(#function)
     let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
     vc.environment = environment
-
+    
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
     self.present(nav, animated: true, completion: nil)
   }
-  
 }
 
 // MARK: Extension
@@ -167,6 +164,7 @@ extension RecordsViewController: UICollectionViewDelegate {
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
       self.present(nav, animated: true, completion: nil)
+      
     case .edit:
       dictionarySelectedIndexPath[indexPath] = true
     }
@@ -191,10 +189,9 @@ extension RecordsViewController: UICollectionViewDataSource {
     
     cell.backgroundImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg") ?? UIImage(named: "cafeDefault3")
     cell.cellConfigure(with: item)
-
+    
     return cell
   }
-  
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -203,7 +200,7 @@ extension RecordsViewController: UICollectionViewDelegateFlowLayout {
     let screenSize = UIScreen.main.bounds.size
     let spacing = Metric.spacing * (Metric.cellForItemCount - 1 + 2)
     let width = (screenSize.width - spacing) / Metric.cellForItemCount
-
+    
     return CGSize(width: width, height: width)
   }
 }

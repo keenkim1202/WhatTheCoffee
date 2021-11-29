@@ -25,7 +25,7 @@ class CoffeeListViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     configure()
     fetchData()
   }
@@ -59,14 +59,13 @@ class CoffeeListViewController: UIViewController {
   // MARK: Swipe Actions
   func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
     let action = UIContextualAction(style: .destructive, title: "삭제") { action, view, success in
-      
       self.deleteAlert("정말 삭제하시겠습니까?") {
-        
         guard let env = self.environment else { return }
         let coffee = self.coffeeList[indexPath.row]
         env.coffeeRepository.remove(item: coffee)
         
         self.fetchData()
+        self.checkIsEmpty()
       }
       success(true)
     }
@@ -85,7 +84,7 @@ class CoffeeListViewController: UIViewController {
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as! AddCoffeeViewController
     vc.environment = environment
-
+    
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }
@@ -104,7 +103,7 @@ extension CoffeeListViewController: UITableViewDelegate {
     let coffee = coffeeList[indexPath.row]
     vc.environment = env
     vc.coffee = coffee
-  
+    
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }
@@ -123,7 +122,7 @@ extension CoffeeListViewController: UITableViewDataSource {
     
     return cell
   }
-
+  
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     let delete = deleteAction(at: indexPath)
     return UISwipeActionsConfiguration(actions:[delete])
