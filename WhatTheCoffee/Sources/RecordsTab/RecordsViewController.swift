@@ -102,6 +102,7 @@ class RecordsViewController: UIViewController {
     modeType = modeType == .view ? .edit : .view
   }
   
+  // TODO: 셀 삭제 시 이미지들도 지우도록 하기
   @IBAction func onDelete(_ sender: UIBarButtonItem) {
     var deleteNeededIndexPaths: [IndexPath] = []
     for (key, value) in dictionarySelectedIndexPath {
@@ -187,7 +188,7 @@ extension RecordsViewController: UICollectionViewDataSource {
     guard let cell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
     let item = cafeList[indexPath.item]
     
-    cell.backgroundImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg") ?? UIImage(named: "cafeDefault3")
+    cell.backgroundImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg") ?? UIImage.defaultCafeImage
     cell.cellConfigure(with: item)
     
     return cell
