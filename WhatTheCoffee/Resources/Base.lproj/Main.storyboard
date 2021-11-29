@@ -235,9 +235,6 @@
                                                                 <rect key="frame" x="0.0" y="39" width="354" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
-                                                                <connections>
-                                                                    <action selector="onDatePicker:" destination="sBU-it-W0Z" eventType="touchUpInside" id="igU-5U-9pJ"/>
-                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <constraints>

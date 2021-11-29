@@ -247,14 +247,6 @@ class AddRecordViewController: UIViewController {
     present(alert, animated: true, completion: nil)
   }
   
-  @IBAction func onDatePicker(_ sender: UITextField) {
-    if let datePicker = sender.inputView as? UIDatePicker {
-      datePicker.maximumDate = Date()
-    }
-    
-  }
-  
-  
   @IBAction func onRate(_ sender: UIButton) {
     guard let rate = Rate(rawValue: sender.tag) else { return }
     updateRate(rate)
