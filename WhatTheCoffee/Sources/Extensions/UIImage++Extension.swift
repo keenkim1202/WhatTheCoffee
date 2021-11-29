@@ -13,6 +13,6 @@ extension UIImage {
   }
   
   static var defaultCafeImage: UIImage {
-    return UIImage(named: "cafeDefault3")!
+    return UIImage(named: "stamp_p_h")!
   }
 }
