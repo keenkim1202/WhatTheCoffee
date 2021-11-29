@@ -11,19 +11,28 @@ import UIKit
 // MARK: - Document Date Manage
 extension UIViewController {
   
-//  enum DirectoryType: String {
-//    case coffee = "coffeeImages"
-//    case cafe = "cafeImages"
-//  }
+    enum DirectoryType: String {
+      case coffee = "coffeeImages"
+      case cafe = "cafeImages"
+    }
   
   // MARK: - Save Document
-  func saveImageToDocumentDirectory(imageName: String, image: UIImage) {
+  func saveImageToDocumentDirectory(type: DirectoryType, imageName: String, image: UIImage) {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    let imageURL = documentDirectory.appendingPathComponent(imageName)
-  
+    
+    let filePath = documentDirectory.appendingPathComponent(type.rawValue)
+    if !FileManager.default.fileExists(atPath: filePath.path) {
+      do {
+        try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
+    
+    let imageURL = filePath.appendingPathComponent(imageName)
     guard let data = image.jpegData(compressionQuality: 0.5) else { return }
     
-    if FileManager.default.fileExists(atPath: imageURL.path) {
+    if FileManager.default.fileExists(atPath: filePath.path) {
       do {
         try FileManager.default.removeItem(at: imageURL)
         print("SUCCESS - image deleted.")
@@ -31,7 +40,7 @@ extension UIViewController {
         print("FAILED - fail to delete image.")
       }
     }
-  
+    
     do {
       try data.write(to: imageURL)
       print("SUCCESS - image saved.")
@@ -41,23 +50,38 @@ extension UIViewController {
   }
   
   // MARK: - Load Document
-  func loadImageFromDocumentDirectory(imageName: String) -> UIImage? {
-    let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-    let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-    let path = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+  func loadImageFromDocumentDirectory(type: DirectoryType, imageName: String) -> UIImage? {
+    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+    let filePath = documentDirectory.appendingPathComponent(type.rawValue)
     
-    if let directoryPath = path.first {
-      let imageURL = URL(fileURLWithPath: directoryPath).appendingPathComponent(imageName)
-      return UIImage(contentsOfFile: imageURL.path)
+    if !FileManager.default.fileExists(atPath: filePath.path) {
+      do {
+        try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        print(error.localizedDescription)
+      }
     }
-    return nil
+    
+    let imageURL = filePath.appendingPathComponent(imageName)
+    return UIImage(contentsOfFile: imageURL.path)
   }
   
   // MARK: - Remove Document
-  func deleteImageFromDucumnetDirectory(imageName: String) {
+  func deleteImageFromDucumentDirectory(type: DirectoryType, imageName: String) {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    let imageURL = documentDirectory.appendingPathComponent(imageName)
-
+    
+    let filePath = documentDirectory.appendingPathComponent(type.rawValue)
+    
+    if !FileManager.default.fileExists(atPath: filePath.path) {
+      do {
+        try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
+    
+    let imageURL = filePath.appendingPathComponent(imageName)
+    
     if FileManager.default.fileExists(atPath: imageURL.path) {
       do {
         try FileManager.default.removeItem(at: imageURL)
@@ -67,4 +91,5 @@ extension UIViewController {
       }
     }
   }
+  
 }
