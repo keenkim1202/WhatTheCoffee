@@ -190,9 +190,17 @@ class AddRecordViewController: UIViewController {
     } else {
       env.cafeRepository.add(item: item)
     }
-
+    
     if recordImageView.image != UIImage(named: "cafeDefault3") {
-      saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
+      guard let cafe = cafe else { return }
+      saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: recordImageView.image!)
+    } else {
+      guard let cafe = cafe else { return }
+      let previousImage = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
+      
+      if previousImage != UIImage(named: "cafeDefault3") {
+        deleteImageFromDucumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg")
+      }
     }
 
     self.navigationController?.popViewController(animated: true)

@@ -86,7 +86,15 @@ class AddCoffeeViewController: UIViewController {
     }
     
     if coffeeImageView.image != UIImage(named: "random") {
-      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(item._id).jpg", image: coffeeImageView.image!)
+      guard let coffee = coffee else { return }
+      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: coffeeImageView.image!)
+    } else {
+      guard let coffee = coffee else { return }
+      let previousImage = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage(named: "cafeDefault3")
+      
+      if previousImage != UIImage(named: "random") {
+        deleteImageFromDucumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
+      }
     }
     
     self.navigationController?.popViewController(animated: true)

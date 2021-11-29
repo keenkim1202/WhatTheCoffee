@@ -32,7 +32,7 @@ extension UIViewController {
     let imageURL = filePath.appendingPathComponent(imageName)
     guard let data = image.jpegData(compressionQuality: 0.5) else { return }
     
-    if FileManager.default.fileExists(atPath: filePath.path) {
+    if FileManager.default.fileExists(atPath: imageURL.path) {
       do {
         try FileManager.default.removeItem(at: imageURL)
         print("SUCCESS - image deleted.")
