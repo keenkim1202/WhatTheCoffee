@@ -60,7 +60,7 @@ final class CafeRepository: CafeRepositoryType {
   
   func fetch() -> [Cafe] {
     return realm.objects(Cafe.self)
-      .sorted(byKeyPath: "visitDate", ascending: false)
       .map { $0 }
+      .sorted(by: {$0.visitDate > $1.visitDate})
   }
 }
