@@ -57,7 +57,7 @@ class RecordsViewController: UIViewController {
   @IBOutlet weak var addBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var deleteBarButtonItem: UIBarButtonItem!
-  
+  @IBOutlet weak var emptyView: UIView!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
@@ -70,11 +70,20 @@ class RecordsViewController: UIViewController {
     super.viewWillAppear(animated)
     
     fetchData()
+    checkIsEmpty()
   }
   
   func fetchData() {
     guard let env = environment else { return }
     cafeList = env.cafeRepository.fetch()
+  }
+  
+  func checkIsEmpty() {
+    if cafeList.isEmpty {
+      emptyView.isHidden = false
+    } else {
+      emptyView.isHidden = true
+    }
   }
   
   // MARK: - Configure
@@ -111,6 +120,7 @@ class RecordsViewController: UIViewController {
     }
     
     fetchData()
+    checkIsEmpty()
     dictionarySelectedIndexPath.removeAll()
   }
   
