@@ -59,7 +59,7 @@ class AddRecordViewController: UIViewController {
       title = "기록 수정"
       
       let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
-      recordImageView.image = loadImageFromDocumentDirectory(imageName: "\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
+      recordImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
       titleTextField.text = cafe.name
       dateTextField.text = date
       updateRate(Rate.init(rawValue: cafe.rate)!)
@@ -92,6 +92,7 @@ class AddRecordViewController: UIViewController {
     dateTextField.setDatePicker(target: self, selector: #selector(datePickerDone))
     dateTextField.textColor = .orangeMainColor
     dateTextField.textAlignment = .center
+    
   }
   
   func configureTextView() {
@@ -191,7 +192,7 @@ class AddRecordViewController: UIViewController {
     }
 
     if recordImageView.image != UIImage(named: "cafeDefault3") {
-      saveImageToDocumentDirectory(imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
+      saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
     }
 
     self.navigationController?.popViewController(animated: true)
@@ -245,6 +246,14 @@ class AddRecordViewController: UIViewController {
     alert.addAction(cancel)
     present(alert, animated: true, completion: nil)
   }
+  
+  @IBAction func onDatePicker(_ sender: UITextField) {
+    if let datePicker = sender.inputView as? UIDatePicker {
+      datePicker.maximumDate = Date()
+    }
+    
+  }
+  
   
   @IBAction func onRate(_ sender: UIButton) {
     guard let rate = Rate(rawValue: sender.tag) else { return }

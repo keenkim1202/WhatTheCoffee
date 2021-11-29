@@ -81,7 +81,7 @@ class RecommendViewController: UIViewController {
         env.coffeeRepository.add(item: coffee)
         
         let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage(named: "random")
-        saveImageToDocumentDirectory(imageName: "coffee_\(coffee._id).jpg", image: image!)
+        saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image!)
       }
       
       let defaultCafeList: [String] = ["cafe3", "cafe2", "cafe1"]
@@ -90,7 +90,7 @@ class RecommendViewController: UIViewController {
         env.cafeRepository.add(item: cafe)
         
         let image = UIImage(named: defaultCafeList[i]) ?? UIImage(named: "cafeDefault3")
-        saveImageToDocumentDirectory(imageName: "cafe_\(cafe._id).jpg", image: image!)
+        saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: image!)
       }
     }
   }
@@ -105,7 +105,7 @@ class RecommendViewController: UIViewController {
     }
     
     if todayCoffee == nil {
-      todayCoffeeImage.image = loadImageFromDocumentDirectory(imageName: "coffee_\(randomCoffee._id).jpg")
+      todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg")
       todayCoffeeLabel.text = randomCoffee.name
       return randomCoffee
     }
@@ -142,7 +142,7 @@ class RecommendViewController: UIViewController {
     if !coffeeList.isEmpty {
       let randomCoffee = randomCoffee()
       
-      todayCoffeeImage.image = loadImageFromDocumentDirectory(imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage(named: "random")
+      todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage(named: "random")
       todayCoffeeLabel.text = randomCoffee.name
       todayCoffee = randomCoffee
       
