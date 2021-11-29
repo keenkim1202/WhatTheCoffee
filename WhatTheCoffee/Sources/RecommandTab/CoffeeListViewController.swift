@@ -20,6 +20,7 @@ class CoffeeListViewController: UIViewController {
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var emptyView: UIView!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
@@ -33,6 +34,7 @@ class CoffeeListViewController: UIViewController {
     super.viewWillAppear(animated)
     
     fetchData()
+    checkIsEmpty()
   }
   
   // MARK: - Configure
@@ -44,6 +46,14 @@ class CoffeeListViewController: UIViewController {
   func fetchData() {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
+  }
+  
+  func checkIsEmpty() {
+    if coffeeList.isEmpty {
+      emptyView.isHidden = false
+    } else {
+      emptyView.isHidden = true
+    }
   }
   
   // MARK: Swipe Actions

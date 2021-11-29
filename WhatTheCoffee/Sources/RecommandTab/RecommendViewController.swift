@@ -22,6 +22,8 @@ class RecommendViewController: UIViewController {
   @IBOutlet weak var todayCoffeeImage: UIImageView!
   @IBOutlet weak var todayCoffeeLabel: UILabel!
   @IBOutlet weak var recommendButton: UIButton!
+  @IBOutlet weak var introduceLabel: UILabel!
+  @IBOutlet weak var emptyView: UIView!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
@@ -36,6 +38,15 @@ class RecommendViewController: UIViewController {
     super.viewWillAppear(animated)
     
     fetchData()
+    checkIsEmpty()
+  }
+  
+  func checkIsEmpty() {
+    if coffeeList.isEmpty {
+      emptyView.isHidden = false
+    } else {
+      emptyView.isHidden = true
+    }
   }
 
   // MARK: - Configure
@@ -48,9 +59,15 @@ class RecommendViewController: UIViewController {
   func fetchData() {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
+    
+    // 기본 이미지로 변경하기
+    todayCoffeeImage.image = UIImage(named: "random")!
+    todayCoffeeLabel.text = ""
+    introduceLabel.isHidden = false
+    introduceLabel.text = "오늘의 커피를 추천 받아보세요!"
   }
   
-  func checkIsFirst() { // 최초 실행이면 기본 커피 리스트 추가하기
+  func checkIsFirst() {
     let isFirst = Storage.isFirstTime()
     print("isFirst = \(isFirst)")
     if isFirst == true {
@@ -82,6 +99,10 @@ class RecommendViewController: UIViewController {
     var flag: Bool = false
     var index = Int.random(in: 0..<coffeeList.count)
     var randomCoffee = coffeeList[index]
+    
+    if coffeeList.count == 1 {
+      return coffeeList[0]
+    }
     
     if todayCoffee == nil {
       todayCoffeeImage.image = loadImageFromDocumentDirectory(imageName: "coffee_\(randomCoffee._id).jpg")
@@ -116,7 +137,8 @@ class RecommendViewController: UIViewController {
   
   /// component
   @IBAction func onRecommend(_ sender: UIButton) {
-    // TODO: Alert를 띄울지, 아니면 화면에 이미지와 텍스트를 지우고 '커피목록이 비어있습니다'를 출력해줄지 고민중...
+    introduceLabel.isHidden = true
+    
     if !coffeeList.isEmpty {
       let randomCoffee = randomCoffee()
       

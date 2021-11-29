@@ -60,7 +60,7 @@ class AddCoffeeViewController: UIViewController {
       viewType = .update
       title = "커피 수정"
       nameTextField.text = coffee.name
-      coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "\(coffee._id).jpg") ?? UIImage(named: "random")
+      coffeeImageView.image = loadImageFromDocumentDirectory(imageName: "coffee_\(coffee._id).jpg") ?? UIImage(named: "random")
     } else {
       title = "커피 추가"
       coffeeImageView.image = UIImage(named: "random")
