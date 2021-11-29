@@ -96,6 +96,8 @@ class RecordsViewController: UIViewController {
   }
   
   @IBAction func onDelete(_ sender: UIBarButtonItem) {
+    showAlert("정말 삭제하시겠습니까?")
+    
     var deleteNeededIndexPaths: [IndexPath] = []
     for (key, value) in dictionarySelectedIndexPath {
       if value {

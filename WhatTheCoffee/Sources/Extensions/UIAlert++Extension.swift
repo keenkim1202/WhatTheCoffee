@@ -8,6 +8,7 @@
 import UIKit
 
 // TODO: 상황에 따라 alert문 케이스 나누기
+// TODO: 커피기록 삭제시, 정말 삭제할 것인지 alert 띄우기
 
 extension UIAlertController {
   enum ContentType: String {

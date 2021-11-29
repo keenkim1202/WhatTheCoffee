@@ -21,7 +21,7 @@ extension UIViewController {
     guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
     let imageURL = documentDirectory.appendingPathComponent(imageName)
   
-    guard let data = image.pngData() else { return }
+    guard let data = image.jpegData(compressionQuality: 0.5) else { return }
     
     if FileManager.default.fileExists(atPath: imageURL.path) {
       do {
