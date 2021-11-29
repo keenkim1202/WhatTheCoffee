@@ -30,22 +30,43 @@ extension UIViewController {
     }
     
     let imageURL = filePath.appendingPathComponent(imageName)
-    guard let data = image.jpegData(compressionQuality: 0.5) else { return }
     
-    if FileManager.default.fileExists(atPath: imageURL.path) {
-      do {
-        try FileManager.default.removeItem(at: imageURL)
-        print("SUCCESS - image deleted.")
-      } catch {
-        print("FAILED - fail to delete image.")
+    if type == .cafe {
+      guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+      
+      if FileManager.default.fileExists(atPath: imageURL.path) {
+        do {
+          try FileManager.default.removeItem(at: imageURL)
+          print("SUCCESS - image deleted.")
+        } catch {
+          print("FAILED - fail to delete image.")
+        }
       }
-    }
-    
-    do {
-      try data.write(to: imageURL)
-      print("SUCCESS - image saved.")
-    } catch {
-      print("FAILED - fail to save image.")
+      
+      do {
+        try data.write(to: imageURL)
+        print("SUCCESS - image saved.")
+      } catch {
+        print("FAILED - fail to save image.")
+      }
+    } else {
+      guard let data = image.pngData() else { return }
+      
+      if FileManager.default.fileExists(atPath: imageURL.path) {
+        do {
+          try FileManager.default.removeItem(at: imageURL)
+          print("SUCCESS - image deleted.")
+        } catch {
+          print("FAILED - fail to delete image.")
+        }
+      }
+      
+      do {
+        try data.write(to: imageURL)
+        print("SUCCESS - image saved.")
+      } catch {
+        print("FAILED - fail to save image.")
+      }
     }
   }
   

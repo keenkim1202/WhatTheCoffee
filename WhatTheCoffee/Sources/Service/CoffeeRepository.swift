@@ -58,7 +58,7 @@ final class CoffeeRepository: CoffeeRepositoryType {
   
   func fetch() -> [Coffee] {
     return realm.objects(Coffee.self)
-      .sorted(byKeyPath: "name", ascending: false)
       .map { $0 }
+      .sorted(by: {$0.name < $1.name})
   }
 }
