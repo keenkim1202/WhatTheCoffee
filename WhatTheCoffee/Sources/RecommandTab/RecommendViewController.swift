@@ -64,7 +64,7 @@ class RecommendViewController: UIViewController {
         env.coffeeRepository.add(item: coffee)
         
         let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage(named: "random")
-        saveImageToDocumentDirectory(imageName: "\(coffee._id).jpg", image: image!)
+        saveImageToDocumentDirectory(imageName: "coffee_\(coffee._id).jpg", image: image!)
       }
       
       let defaultCafeList: [String] = ["cafe1", "cafe2", "cafe3"]
@@ -73,7 +73,7 @@ class RecommendViewController: UIViewController {
         env.cafeRepository.add(item: cafe)
         
         let image = UIImage(named: defaultCafeList[i]) ?? UIImage(named: "cafeDefault3")
-        saveImageToDocumentDirectory(imageName: "\(cafe._id).jpg", image: image!)
+        saveImageToDocumentDirectory(imageName: "cafe_\(cafe._id).jpg", image: image!)
       }
     }
   }
