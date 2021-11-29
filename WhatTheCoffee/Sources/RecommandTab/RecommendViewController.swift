@@ -60,7 +60,7 @@ class RecommendViewController: UIViewController {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
     
-    todayCoffeeImage.image = UIImage(named: "random")!
+    todayCoffeeImage.image = UIImage.randomCoffeeImage
     todayCoffeeLabel.text = ""
     introduceLabel.isHidden = false
     introduceLabel.text = "오늘의 커피를 추천 받아보세요!"
@@ -76,8 +76,8 @@ class RecommendViewController: UIViewController {
         let coffee = Coffee(name: defaultCoffeeList[i])
         env.coffeeRepository.add(item: coffee)
         
-        let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage(named: "random")
-        saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image!)
+        let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage.randomCoffeeImage
+        saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
       }
       
       let defaultCafeList: [String] = ["cafe3", "cafe2", "cafe1"]
@@ -85,8 +85,8 @@ class RecommendViewController: UIViewController {
         let cafe = Cafe(name: defaultCafeList[i], comment: "디저트가 매우 맛있음! (특히 당근케이크)", rate: 5 - i)
         env.cafeRepository.add(item: cafe)
         
-        let image = UIImage(named: defaultCafeList[i]) ?? UIImage(named: "cafeDefault3")
-        saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: image!)
+        let image = UIImage(named: defaultCafeList[i]) ?? UIImage.defaultCafeImage
+        saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: image)
       }
     }
   }
@@ -138,7 +138,7 @@ class RecommendViewController: UIViewController {
     if !coffeeList.isEmpty {
       let randomCoffee = randomCoffee()
       
-      todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage(named: "random")
+      todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage.randomCoffeeImage
       todayCoffeeLabel.text = randomCoffee.name
       todayCoffee = randomCoffee
       

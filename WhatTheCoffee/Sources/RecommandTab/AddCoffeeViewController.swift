@@ -59,10 +59,10 @@ class AddCoffeeViewController: UIViewController {
       viewType = .update
       title = "커피 수정"
       nameTextField.text = coffee.name
-      coffeeImageView.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage(named: "random")
+      coffeeImageView.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage.randomCoffeeImage
     } else {
       title = "커피 추가"
-      coffeeImageView.image = UIImage(named: "random")
+      coffeeImageView.image = UIImage.randomCoffeeImage
     }
   }
   
@@ -77,19 +77,19 @@ class AddCoffeeViewController: UIViewController {
       guard let coffee = coffee else { return }
       env.coffeeRepository.update(item: coffee, new: item)
       
-      if coffeeImageView.image != UIImage(named: "random") {
+      if coffeeImageView.image != UIImage.randomCoffeeImage {
         saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: coffeeImageView.image!)
       } else {
-        let previousImage = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage(named: "cafeDefault3")
+        let previousImage = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage.defaultCafeImage
         
-        if previousImage != UIImage(named: "random") {
+        if previousImage != UIImage.randomCoffeeImage {
           deleteImageFromDucumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
         }
       }
     } else {
       env.coffeeRepository.add(item: item)
       
-      if coffeeImageView.image != UIImage(named: "random") {
+      if coffeeImageView.image != UIImage.randomCoffeeImage {
         saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(item._id).jpg", image: coffeeImageView.image!)
       }
     }
@@ -142,7 +142,7 @@ class AddCoffeeViewController: UIViewController {
     }
     
     let defaultImage =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in
-      self.coffeeImageView.image = UIImage(named: "random")
+      self.coffeeImageView.image = UIImage.randomCoffeeImage
     }
     
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)

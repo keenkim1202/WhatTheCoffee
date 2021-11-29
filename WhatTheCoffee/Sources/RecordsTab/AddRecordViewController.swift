@@ -57,7 +57,7 @@ class AddRecordViewController: UIViewController {
       title = "기록 수정"
       
       let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
-      recordImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
+      recordImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage.defaultCafeImage
       titleTextField.text = cafe.name
       dateTextField.text = date
       updateRate(Rate.init(rawValue: cafe.rate)!)
@@ -71,7 +71,7 @@ class AddRecordViewController: UIViewController {
       }
     } else {
       title = "기록 추가"
-      recordImageView.image = UIImage(named: "cafeDefault3")
+      recordImageView.image = UIImage.defaultCafeImage
       commentTextView.text = commentPlaceholder
       commentTextView.textColor = UIColor.placeholderText
     }
@@ -180,19 +180,19 @@ class AddRecordViewController: UIViewController {
       guard let cafe = cafe else { return }
       env.cafeRepository.update(item: cafe, new: item)
       
-      if recordImageView.image != UIImage(named: "cafeDefault3") {
+      if recordImageView.image != UIImage.defaultCafeImage {
         saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: recordImageView.image!)
       } else {
-        let previousImage = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
+        let previousImage = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage.defaultCafeImage
         
-        if previousImage != UIImage(named: "cafeDefault3") {
+        if previousImage != UIImage.defaultCafeImage {
           deleteImageFromDucumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg")
         }
       }
     } else {
       env.cafeRepository.add(item: item)
       
-      if recordImageView.image != UIImage(named: "cafeDefault3") {
+      if recordImageView.image != UIImage.defaultCafeImage {
         saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
       }
     }
@@ -237,7 +237,7 @@ class AddRecordViewController: UIViewController {
     }
     
     let defaultImage =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in
-      self.recordImageView.image = UIImage(named: "cafeDefault3")
+      self.recordImageView.image = UIImage.defaultCafeImage
     }
     
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
