@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     UINavigationBar.appearance().tintColor = .orangeMainColor
     UINavigationBar.appearance().backgroundColor = UIColor.appearanceColor
-    UITabBar.appearance().tintColor = .systemPink
+    UITabBar.appearance().tintColor = .orangeMainColor
     
     IQKeyboardManager.shared.enable = true
     IQKeyboardManager.shared.enableAutoToolbar = false

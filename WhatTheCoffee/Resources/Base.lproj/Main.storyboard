@@ -530,7 +530,7 @@
             </objects>
             <point key="canvasLocation" x="935" y="453"/>
         </scene>
-        <!--Recommend View Controller-->
+        <!--Today's Coffee-->
         <scene sceneID="Qai-pl-gI9">
             <objects>
                 <viewController storyboardIdentifier="recommnadVC" id="xsf-7k-i9C" customClass="RecommendViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
@@ -539,44 +539,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-ec-ASy">
-                                <rect key="frame" x="30" y="206" width="354" height="489"/>
+                                <rect key="frame" x="30" y="251.5" width="354" height="398.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xts-aX-PfG">
-                                        <rect key="frame" x="57" y="0.0" width="240" height="371"/>
+                                        <rect key="frame" x="57" y="0.0" width="240" height="280.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피 🤔" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHj-cL-udR">
-                                                <rect key="frame" x="59.5" y="0.0" width="121" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                <color key="textColor" name="OppositeColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="아메리카노" translatesAutoresizingMaskIntoConstraints="NO" id="UdJ-cb-c1s">
-                                                <rect key="frame" x="0.0" y="44" width="240" height="240"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="UdJ-cb-c1s" secondAttribute="height" multiplier="1:1" id="8ho-GI-7vz"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아메리카노" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-Iq-NJk">
-                                                <rect key="frame" x="66" y="304" width="108.5" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
-                                                <color key="textColor" name="OppositeColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피를 추천받아보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyO-G0-gce">
-                                                <rect key="frame" x="0.0" y="354" width="240" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피를 추천받아보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-Iq-NJk">
+                                                <rect key="frame" x="17.5" y="260" width="205" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                                 <color key="textColor" name="OrangeMainColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="yyO-G0-gce" firstAttribute="leading" secondItem="xts-aX-PfG" secondAttribute="leading" id="L9U-at-diw"/>
-                                            <constraint firstAttribute="trailing" secondItem="yyO-G0-gce" secondAttribute="trailing" id="lWg-Us-YBd"/>
                                             <constraint firstItem="UdJ-cb-c1s" firstAttribute="width" secondItem="xts-aX-PfG" secondAttribute="width" id="sBL-at-TwE"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-Ug-Qew">
-                                        <rect key="frame" x="30" y="440" width="294" height="49"/>
+                                        <rect key="frame" x="30" y="349.5" width="294" height="49"/>
                                         <color key="backgroundColor" name="GreenMainColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ISS-Ug-Qew" secondAttribute="height" multiplier="6:1" id="4xJ-fv-bNh"/>
@@ -628,7 +614,7 @@
                             <constraint firstItem="mQt-ec-ASy" firstAttribute="leading" secondItem="oKb-rw-ZvZ" secondAttribute="leading" constant="30" id="wrC-2z-zEo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sIu-nA-Vzs">
+                    <navigationItem key="navigationItem" title="Today's Coffee" id="sIu-nA-Vzs">
                         <barButtonItem key="rightBarButtonItem" title="커피 목록" id="6TX-kh-dcd">
                             <connections>
                                 <action selector="onCoffeeList:" destination="xsf-7k-i9C" id="tbE-hY-9qj"/>
@@ -637,7 +623,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emptyView" destination="Bvw-zE-Dzt" id="UUG-aO-GqI"/>
-                        <outlet property="introduceLabel" destination="yyO-G0-gce" id="v9T-8E-BLp"/>
                         <outlet property="recommendButton" destination="ISS-Ug-Qew" id="f2o-9x-uU1"/>
                         <outlet property="todayCoffeeImage" destination="UdJ-cb-c1s" id="9aN-H5-zwG"/>
                         <outlet property="todayCoffeeLabel" destination="TfK-Iq-NJk" id="fjU-MI-mPD"/>
@@ -917,16 +902,16 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GreenMainColor">
-            <color red="0.92549026010000002" green="0.88627451660000001" blue="0.64313727620000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.92500001192092896" green="0.88599997758865356" blue="0.64300000667572021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="GreenSubColor">
-            <color red="0.30196079609999998" green="0.49019610879999997" blue="0.2901961207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.30199998617172241" green="0.49000000953674316" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="OppositeColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="OrangeMainColor">
-            <color red="0.83137255909999996" green="0.38431376220000002" blue="0.25490197539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.83099997043609619" green="0.38400000333786011" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
