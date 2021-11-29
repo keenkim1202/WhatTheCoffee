@@ -62,6 +62,8 @@ class CoffeeListViewController: UIViewController {
       self.deleteAlert("정말 삭제하시겠습니까?") {
         guard let env = self.environment else { return }
         let coffee = self.coffeeList[indexPath.row]
+        
+        self.deleteImageFromDucumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
         env.coffeeRepository.remove(item: coffee)
         
         self.fetchData()
