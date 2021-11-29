@@ -25,7 +25,6 @@ class AddCoffeeViewController: UIViewController {
   var environment: Environment? = nil
   var viewType: ViewType = .add
   var coffee: Coffee?
-
   
   // MARK: - UI
   @IBOutlet weak var coffeeImageView: UIImageView!
@@ -65,7 +64,6 @@ class AddCoffeeViewController: UIViewController {
       title = "커피 추가"
       coffeeImageView.image = UIImage(named: "random")
     }
-
   }
   
   func saveData() {

@@ -10,10 +10,10 @@ import Realm
 import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+  
   var window: UIWindow?
   var environment: Environment? = nil
-
+  
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     guard let window = scene.windows.first else { return }
@@ -27,30 +27,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       switch vc.children.first {
       case let vc as RecommendViewController:
         vc.environment = environment
-
+        
       case let vc as RecordsViewController:
         vc.environment = environment
-
+        
       default:
         break
       }
     }
   }
-
+  
   func sceneDidDisconnect(_ scene: UIScene) {
   }
-
+  
   func sceneDidBecomeActive(_ scene: UIScene) {
   }
-
+  
   func sceneWillResignActive(_ scene: UIScene) {
   }
-
+  
   func sceneWillEnterForeground(_ scene: UIScene) {
   }
-
+  
   func sceneDidEnterBackground(_ scene: UIScene) {
   }
-
+  
 }
 

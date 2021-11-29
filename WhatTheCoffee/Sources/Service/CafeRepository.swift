@@ -13,7 +13,7 @@ import RealmSwift
 
 protocol CafeRepositoryType {
   var count: Int { get }
-
+  
   func add(item: Cafe)
   func update(item: Cafe, new: Cafe)
   func remove(item: Cafe)
@@ -21,24 +21,24 @@ protocol CafeRepositoryType {
 }
 
 final class CafeRepository: CafeRepositoryType {
-
+  
   private let realm: Realm
-
+  
   init(realm: Realm) {
     self.realm = realm
     print("Realm Location: ", realm.configuration.fileURL ?? "cannot find locaation.")
   }
-
+  
   var count: Int {
     return realm.objects(Cafe.self).count
   }
-
+  
   func add(item: Cafe) {
     try! realm.write {
       realm.add(item)
     }
   }
-
+  
   func update(item: Cafe, new: Cafe) {
     try! realm.write {
       realm.create(
@@ -48,22 +48,21 @@ final class CafeRepository: CafeRepositoryType {
                 "visitDate": new.visitDate,
                 "comment": new.comment ?? "",
                 "rate": new.rate
-                ],
+               ],
         update: .modified
       )
     }
   }
-
+  
   func remove(item: Cafe) {
     try! realm.write {
       realm.delete(item)
     }
   }
-
+  
   func fetch() -> [Cafe] {
     return realm.objects(Cafe.self)
       .sorted(byKeyPath: "visitDate", ascending: false)
       .map { $0 }
   }
-  
 }

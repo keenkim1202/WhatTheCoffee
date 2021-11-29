@@ -48,7 +48,7 @@ class RecommendViewController: UIViewController {
       emptyView.isHidden = true
     }
   }
-
+  
   // MARK: - Configure
   func configure() {
     recommendButton.layer.cornerRadius = buttonCornerRadius
@@ -60,7 +60,6 @@ class RecommendViewController: UIViewController {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
     
-    // 기본 이미지로 변경하기
     todayCoffeeImage.image = UIImage(named: "random")!
     todayCoffeeLabel.text = ""
     introduceLabel.isHidden = false
@@ -91,7 +90,7 @@ class RecommendViewController: UIViewController {
       }
     }
   }
-
+  
   func randomCoffee() -> Coffee {
     var flag: Bool = false
     var index = Int.random(in: 0..<coffeeList.count)
@@ -126,7 +125,7 @@ class RecommendViewController: UIViewController {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
     vc.environment = env
-
+    
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
     self.present(nav, animated: true, completion: nil)

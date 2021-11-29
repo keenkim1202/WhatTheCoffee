@@ -25,6 +25,7 @@ extension UIViewController {
     let yes = UIAlertAction(title: "네", style: .destructive) { _ in
       completion()
     }
+    
     alert.addAction(no)
     alert.addAction(yes)
     
