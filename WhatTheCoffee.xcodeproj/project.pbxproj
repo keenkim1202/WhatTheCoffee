@@ -40,6 +40,8 @@
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
+		1CCF0F8727550CF100B45F07 /* Kyobo Handwriting 2019.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8627550CF100B45F07 /* Kyobo Handwriting 2019.otf */; };
+		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
+		1CCF0F8627550CF100B45F07 /* Kyobo Handwriting 2019.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kyobo Handwriting 2019.otf"; sourceTree = "<group>"; };
+		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		1C37C3672744E79800EC3CA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1CCF0F8627550CF100B45F07 /* Kyobo Handwriting 2019.otf */,
 				1C2206452744B41B00FDBBEF /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -192,6 +197,7 @@
 				1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */,
 				1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */,
 				1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */,
+				1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 			files = (
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
 				1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */,
+				1CCF0F8727550CF100B45F07 /* Kyobo Handwriting 2019.otf in Resources */,
 				1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */,
 				1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */,
 			);
@@ -324,6 +331,7 @@
 				1C55565A274FA6E100B5A145 /* DataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
 				1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */,
+				1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

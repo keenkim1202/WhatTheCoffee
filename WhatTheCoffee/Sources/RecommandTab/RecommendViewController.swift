@@ -133,7 +133,9 @@ class RecommendViewController: UIViewController {
       let randomCoffee = randomCoffee()
       
       todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage.randomCoffeeImage
+//      todayCoffeeLabel.font = UIFont.KyoboHandWriting(type: .regular, size: 19)
       todayCoffeeLabel.text = randomCoffee.name
+      
       todayCoffee = randomCoffee
       
     } else {

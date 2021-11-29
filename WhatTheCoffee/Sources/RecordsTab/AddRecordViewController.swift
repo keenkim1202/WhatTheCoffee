@@ -87,7 +87,6 @@ class AddRecordViewController: UIViewController {
   func configureTextField() {
     dateTextField.setDatePicker(target: self, selector: #selector(datePickerDone))
     dateTextField.textColor = .orangeMainColor
-    dateTextField.textAlignment = .center
   }
   
   func configureTextView() {
