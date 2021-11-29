@@ -105,8 +105,6 @@ class RecordsViewController: UIViewController {
   }
   
   @IBAction func onDelete(_ sender: UIBarButtonItem) {
-    showAlert("정말 삭제하시겠습니까?")
-    
     var deleteNeededIndexPaths: [IndexPath] = []
     for (key, value) in dictionarySelectedIndexPath {
       if value {
@@ -114,14 +112,21 @@ class RecordsViewController: UIViewController {
       }
     }
     
-    for i in deleteNeededIndexPaths.sorted(by: { $0.item > $1.item }) {
-      let item = cafeList[i.item]
-      environment?.cafeRepository.remove(item: item)
+    if deleteNeededIndexPaths.count > 0 {
+      deleteAlert("\(deleteNeededIndexPaths.count)개의 기록을 삭제하시겠습니까?") {
+        for i in deleteNeededIndexPaths.sorted(by: { $0.item > $1.item }) {
+          let item = self.cafeList[i.item]
+          guard let env = self.environment else { return }
+          env.cafeRepository.remove(item: item)
+        }
+        
+        self.fetchData()
+        self.checkIsEmpty()
+        self.dictionarySelectedIndexPath.removeAll()
+      }
+    } else {
+      showAlert("삭제할 기록을 선택해주세요.")
     }
-    
-    fetchData()
-    checkIsEmpty()
-    dictionarySelectedIndexPath.removeAll()
   }
   
   // MARK: - Actions
