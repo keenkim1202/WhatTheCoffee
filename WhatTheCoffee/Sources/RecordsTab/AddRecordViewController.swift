@@ -182,24 +182,26 @@ class AddRecordViewController: UIViewController {
       item = Cafe(name: cafeName, visitDate: date, comment: comment, rate: rate)
     }
     
-    print(item)
+    print(item) // 주석 지울 예정
 
     if viewType == .update {
       guard let cafe = cafe else { return }
       env.cafeRepository.update(item: cafe, new: item)
+      
+      if recordImageView.image != UIImage(named: "cafeDefault3") {
+        saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: recordImageView.image!)
+      } else {
+        let previousImage = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
+        
+        if previousImage != UIImage(named: "cafeDefault3") {
+          deleteImageFromDucumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg")
+        }
+      }
     } else {
       env.cafeRepository.add(item: item)
-    }
-    
-    if recordImageView.image != UIImage(named: "cafeDefault3") {
-      guard let cafe = cafe else { return }
-      saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: recordImageView.image!)
-    } else {
-      guard let cafe = cafe else { return }
-      let previousImage = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage(named: "cafeDefault3")
       
-      if previousImage != UIImage(named: "cafeDefault3") {
-        deleteImageFromDucumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg")
+      if recordImageView.image != UIImage(named: "cafeDefault3") {
+        saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg", image: recordImageView.image!)
       }
     }
 
