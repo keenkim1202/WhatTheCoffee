@@ -46,6 +46,7 @@
 		1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */; };
 		1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */; };
 		1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */; };
+		1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCF0F962756055600B45F07 /* TextFieldEffects */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
+				1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */,
 				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
 				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -144,15 +146,13 @@
 			children = (
 				1C2206372744B41A00FDBBEF /* AppDelegate.swift */,
 				1C2206392744B41A00FDBBEF /* SceneDelegate.swift */,
+				1CCF0F942756002800B45F07 /* Setting */,
 				1C37C3892745482400EC3CA3 /* Service */,
 				1C37C3882745481E00EC3CA3 /* Model */,
 				1C37C37C2744F82900EC3CA3 /* Extensions */,
 				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
 				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
 				1C37C36C2744E7E300EC3CA3 /* RecordsTab */,
-				1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */,
-				1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */,
-				1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -235,6 +235,16 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		1CCF0F942756002800B45F07 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */,
+				1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */,
+				1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,6 +265,7 @@
 				1C37C393274550B900EC3CA3 /* Realm */,
 				1C37C395274550B900EC3CA3 /* RealmSwift */,
 				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
+				1CCF0F962756055600B45F07 /* TextFieldEffects */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -287,6 +298,7 @@
 			packageReferences = (
 				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
 			projectDirPath = "";
@@ -488,7 +500,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
@@ -522,7 +534,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
@@ -589,6 +601,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -606,6 +626,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		1CCF0F962756055600B45F07 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
