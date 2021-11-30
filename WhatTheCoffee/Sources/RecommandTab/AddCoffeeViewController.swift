@@ -24,7 +24,7 @@ class AddCoffeeViewController: UIViewController {
     imagePicker.allowsEditing = true
     return imagePicker
   }()
-  let buttonCornerRadius: CGFloat = 25
+  let buttonCornerRadius: CGFloat = 20
   
   var environment: Environment? = nil
   var viewType: ViewType = .add

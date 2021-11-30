@@ -18,7 +18,7 @@ class AddRecordViewController: UIViewController {
   }
   
   // MARK: - Properties
-  let buttonCornerRadius: CGFloat = 25
+  let buttonCornerRadius: CGFloat = 20
   let imagePicker = UIImagePickerController()
   let commentPlaceholder: String = "커피/디저트/분위기 등은 어땠나요?"
   

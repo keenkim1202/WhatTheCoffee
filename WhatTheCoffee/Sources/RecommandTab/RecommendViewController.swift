@@ -16,7 +16,7 @@ class RecommendViewController: UIViewController {
   var environment: Environment? = nil
   var todayCoffee: Coffee?
   var coffeeList: [Coffee] = []
-  let buttonCornerRadius: CGFloat = 25
+  let buttonCornerRadius: CGFloat = 20
   
   // MARK: - UI
   @IBOutlet weak var todayCoffeeImage: UIImageView!
