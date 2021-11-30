@@ -46,6 +46,7 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - Configure
   func configure() {
     imagePicker.delegate = self
+    nameTextField.delegate = self
     
     coffeeImageView.layer.cornerRadius = CGFloat(5)
     addImageButton.layer.cornerRadius = buttonCornerRadius
@@ -169,5 +170,13 @@ extension AddCoffeeViewController : UIImagePickerControllerDelegate, UINavigatio
     }
     
     dismiss(animated: true, completion: nil)
+  }
+}
+
+// MARK: - Extension - UITextFieldDelegate
+extension AddCoffeeViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    nameTextField.resignFirstResponder()
+    return true
   }
 }
