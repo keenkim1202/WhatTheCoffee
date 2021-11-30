@@ -538,6 +538,104 @@
             </objects>
             <point key="canvasLocation" x="935" y="453"/>
         </scene>
+        <!--설정-->
+        <scene sceneID="1mj-Rh-4iQ">
+            <objects>
+                <viewController id="Y6u-Aq-zXF" customClass="SettingViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T0x-GE-Ezs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I5h-oq-FzC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingCell" rowHeight="70" id="5R3-gU-Kv2" customClass="SettingTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5R3-gU-Kv2" id="Q9K-R6-1pL">
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDY-30-Tqd">
+                                                    <rect key="frame" x="20" y="22.5" width="344.5" height="25"/>
+                                                    <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="qDY-30-Tqd" secondAttribute="trailing" constant="20" id="QPp-NC-aZO"/>
+                                                <constraint firstItem="qDY-30-Tqd" firstAttribute="leading" secondItem="Q9K-R6-1pL" secondAttribute="leading" constant="20" id="V4G-Uh-1xg"/>
+                                                <constraint firstItem="qDY-30-Tqd" firstAttribute="centerY" secondItem="Q9K-R6-1pL" secondAttribute="centerY" id="uKF-9t-fPp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="qDY-30-Tqd" id="mLs-Ij-Jw8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pwx-5C-5g0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="I5h-oq-FzC" firstAttribute="top" secondItem="pwx-5C-5g0" secondAttribute="top" id="CTL-7C-Hbr"/>
+                            <constraint firstItem="pwx-5C-5g0" firstAttribute="bottom" secondItem="I5h-oq-FzC" secondAttribute="bottom" id="IE6-B4-5FH"/>
+                            <constraint firstItem="I5h-oq-FzC" firstAttribute="leading" secondItem="pwx-5C-5g0" secondAttribute="leading" id="U9I-hi-icL"/>
+                            <constraint firstItem="pwx-5C-5g0" firstAttribute="trailing" secondItem="I5h-oq-FzC" secondAttribute="trailing" id="hii-KX-K9Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="설정" id="rJk-yC-jaG"/>
+                    <connections>
+                        <outlet property="tableView" destination="I5h-oq-FzC" id="yW4-Jc-JzC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRF-ri-D9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="-1013"/>
+        </scene>
+        <!--Setting Detail View Controller-->
+        <scene sceneID="H7l-yQ-a21">
+            <objects>
+                <viewController storyboardIdentifier="detailSettingVC" id="U5y-nF-aFb" customClass="SettingDetailViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BpY-zd-0eR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62P-xa-Dnq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FKV-5n-bCo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FKV-5n-bCo" firstAttribute="trailing" secondItem="62P-xa-Dnq" secondAttribute="trailing" id="9D9-4b-obF"/>
+                            <constraint firstItem="62P-xa-Dnq" firstAttribute="leading" secondItem="FKV-5n-bCo" secondAttribute="leading" id="hem-nW-lGM"/>
+                            <constraint firstItem="62P-xa-Dnq" firstAttribute="top" secondItem="FKV-5n-bCo" secondAttribute="top" id="jH1-ET-7Y9"/>
+                            <constraint firstItem="FKV-5n-bCo" firstAttribute="bottom" secondItem="62P-xa-Dnq" secondAttribute="bottom" id="r7c-OH-SMK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bNb-G2-6J2">
+                        <barButtonItem key="leftBarButtonItem" title="닫기" id="F2Y-qS-SKy">
+                            <connections>
+                                <action selector="onClose:" destination="U5y-nF-aFb" id="Kki-ff-ITT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="62P-xa-Dnq" id="w8N-G1-1Sc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvo-bn-3R7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3545" y="-1013"/>
+        </scene>
         <!--Today's Coffee-->
         <scene sceneID="Qai-pl-gI9">
             <objects>
@@ -625,6 +723,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Today's Coffee" id="sIu-nA-Vzs">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="info.circle" catalog="system" id="6Q6-hz-7St">
+                            <connections>
+                                <segue destination="Y6u-Aq-zXF" kind="show" id="zFE-Tt-fx0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="커피 목록" id="6TX-kh-dcd">
                             <connections>
                                 <action selector="onCoffeeList:" destination="xsf-7k-i9C" id="tbE-hY-9qj"/>
@@ -888,6 +991,24 @@
             </objects>
             <point key="canvasLocation" x="2663.768115942029" y="452.67857142857139"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TMI-8R-gCV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="22a-nA-AIA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xpJ-nE-e71">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="U5y-nF-aFb" kind="relationship" relationship="rootViewController" id="coG-CH-dR4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72N-I7-qZ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2664" y="-1013"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cafeDefault3" width="1280" height="1280"/>
@@ -895,6 +1016,7 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="random_coffee" width="772" height="758"/>
         <image name="star1" width="330" height="330"/>
         <image name="star1_deselected" width="331" height="330"/>

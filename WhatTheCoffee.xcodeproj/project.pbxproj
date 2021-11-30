@@ -40,10 +40,12 @@
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
-		1CCF0F8727550CF100B45F07 /* Kyobo Handwriting 2019.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8627550CF100B45F07 /* Kyobo Handwriting 2019.otf */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 		1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */; };
 		1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */; };
+		1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */; };
+		1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */; };
+		1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,10 +81,12 @@
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
-		1CCF0F8627550CF100B45F07 /* Kyobo Handwriting 2019.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kyobo Handwriting 2019.otf"; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
 		1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
+		1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +134,6 @@
 			children = (
 				1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */,
 				1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */,
-				1CCF0F8627550CF100B45F07 /* Kyobo Handwriting 2019.otf */,
 				1C2206452744B41B00FDBBEF /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -147,6 +150,9 @@
 				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
 				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
 				1C37C36C2744E7E300EC3CA3 /* RecordsTab */,
+				1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */,
+				1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */,
+				1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -298,7 +304,6 @@
 			files = (
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
 				1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */,
-				1CCF0F8727550CF100B45F07 /* Kyobo Handwriting 2019.otf in Resources */,
 				1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */,
 				1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */,
 				1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */,
@@ -317,11 +322,13 @@
 				1C37C38F274548E800EC3CA3 /* Rate.swift in Sources */,
 				1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */,
 				1C55565C274FA79C00B5A145 /* CafeRepository.swift in Sources */,
+				1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */,
 				1C37C3822744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift in Sources */,
 				1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */,
 				1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */,
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
+				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
 				1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */,
@@ -332,6 +339,7 @@
 				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
 				1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */,
+				1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */,
 				1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */,
 				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
 				1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */,
