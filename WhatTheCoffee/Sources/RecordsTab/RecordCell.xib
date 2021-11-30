@@ -34,39 +34,45 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
-                                <rect key="frame" x="-10" y="98.5" width="320" height="103"/>
+                                <rect key="frame" x="10" y="10" width="280" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-Ot-Dto">
-                                        <rect key="frame" x="119.5" y="0.0" width="81" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-Ot-Dto">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
                                         <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/11/11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXU-3g-N5C">
-                                        <rect key="frame" x="120.5" y="30" width="79.5" height="23"/>
-                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/11/11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXU-3g-N5C">
+                                        <rect key="frame" x="0.0" y="30" width="280" height="20"/>
+                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star5" translatesAutoresizingMaskIntoConstraints="NO" id="A1V-Mk-WPq">
-                                        <rect key="frame" x="135" y="53" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="A1V-Mk-WPq" secondAttribute="height" multiplier="1:1" id="0SI-dc-MR4"/>
-                                            <constraint firstAttribute="width" constant="50" id="1iX-aj-4lE"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="DXU-3g-N5C" firstAttribute="leading" secondItem="xex-Un-859" secondAttribute="leading" id="5Rc-6g-gR3"/>
+                                    <constraint firstAttribute="trailing" secondItem="DXU-3g-N5C" secondAttribute="trailing" id="6Ah-GI-mWm"/>
+                                    <constraint firstItem="C7v-Ot-Dto" firstAttribute="leading" secondItem="xex-Un-859" secondAttribute="leading" id="ZEQ-Qn-M3R"/>
+                                    <constraint firstAttribute="trailing" secondItem="C7v-Ot-Dto" secondAttribute="trailing" id="enr-xr-nen"/>
+                                </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star5" translatesAutoresizingMaskIntoConstraints="NO" id="A1V-Mk-WPq">
+                                <rect key="frame" x="240" y="240" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A1V-Mk-WPq" secondAttribute="height" multiplier="1:1" id="0SI-dc-MR4"/>
+                                    <constraint firstAttribute="width" constant="50" id="1iX-aj-4lE"/>
+                                </constraints>
+                            </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ycn-DX-OcT">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="0.84972578642384111" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AkU-R4-sqm">
-                                <rect key="frame" x="265" y="263" width="25" height="29"/>
+                                <rect key="frame" x="10" y="263" width="25" height="29"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AkU-R4-sqm" secondAttribute="height" multiplier="1:1" id="D1a-sD-Ewf"/>
@@ -81,19 +87,20 @@
                             <constraint firstItem="Ycn-DX-OcT" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="9YK-19-aJf"/>
                             <constraint firstAttribute="bottom" secondItem="vt8-iI-VEF" secondAttribute="bottom" id="9c3-qW-VhQ"/>
                             <constraint firstAttribute="trailing" secondItem="Jf6-kV-jee" secondAttribute="trailing" id="9ie-8h-65B"/>
-                            <constraint firstItem="xex-Un-859" firstAttribute="centerY" secondItem="ahY-6T-K8s" secondAttribute="centerY" id="IMI-Ye-G04"/>
+                            <constraint firstAttribute="trailing" secondItem="A1V-Mk-WPq" secondAttribute="trailing" constant="10" id="BqX-Zv-3dd"/>
                             <constraint firstItem="Ycn-DX-OcT" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="K8W-38-pKA"/>
                             <constraint firstAttribute="trailing" secondItem="Ycn-DX-OcT" secondAttribute="trailing" id="OlL-ct-ceK"/>
                             <constraint firstItem="Jf6-kV-jee" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="S41-37-VMk"/>
-                            <constraint firstAttribute="trailing" secondItem="AkU-R4-sqm" secondAttribute="trailing" constant="10" id="WPJ-2x-1Bo"/>
-                            <constraint firstItem="xex-Un-859" firstAttribute="centerX" secondItem="ahY-6T-K8s" secondAttribute="centerX" id="Yx0-Pa-mKi"/>
                             <constraint firstItem="vt8-iI-VEF" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" id="cbS-1k-UXL"/>
-                            <constraint firstItem="xex-Un-859" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" constant="-10" id="flO-M3-wRp"/>
+                            <constraint firstItem="xex-Un-859" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" constant="10" id="flO-M3-wRp"/>
                             <constraint firstAttribute="bottom" secondItem="Ycn-DX-OcT" secondAttribute="bottom" id="hU2-rq-6Wn"/>
+                            <constraint firstItem="AkU-R4-sqm" firstAttribute="leading" secondItem="ahY-6T-K8s" secondAttribute="leading" constant="10" id="iNe-Et-kUU"/>
                             <constraint firstItem="Jf6-kV-jee" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" id="iaK-US-VPA"/>
-                            <constraint firstAttribute="trailing" secondItem="xex-Un-859" secondAttribute="trailing" constant="-10" id="o1O-6j-ESH"/>
+                            <constraint firstAttribute="bottom" secondItem="A1V-Mk-WPq" secondAttribute="bottom" constant="10" id="mZZ-BW-8gm"/>
+                            <constraint firstAttribute="trailing" secondItem="xex-Un-859" secondAttribute="trailing" constant="10" id="o1O-6j-ESH"/>
                             <constraint firstAttribute="bottom" secondItem="Jf6-kV-jee" secondAttribute="bottom" id="qfu-Jn-amZ"/>
                             <constraint firstAttribute="trailing" secondItem="vt8-iI-VEF" secondAttribute="trailing" id="skP-0r-CBN"/>
+                            <constraint firstItem="xex-Un-859" firstAttribute="top" secondItem="ahY-6T-K8s" secondAttribute="top" constant="10" id="wlm-Mi-d5g"/>
                         </constraints>
                     </view>
                 </subviews>
