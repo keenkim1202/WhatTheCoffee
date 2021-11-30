@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Kyobo Handwriting 2019.otf">
-            <string>KyoboHandwriting2019</string>
+        <array key="GowunBatang-Bold.ttf">
+            <string>GowunBatang-Bold</string>
         </array>
     </customFonts>
     <objects>
@@ -33,27 +33,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
-                                <rect key="frame" x="-10" y="99" width="320" height="102"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
+                                <rect key="frame" x="-10" y="98.5" width="320" height="103"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-Ot-Dto">
-                                        <rect key="frame" x="125" y="0.0" width="70" height="26"/>
-                                        <fontDescription key="fontDescription" name="KyoboHandwriting2019" family="Kyobo Handwriting 2019" pointSize="20"/>
+                                        <rect key="frame" x="119.5" y="0.0" width="81" height="30"/>
+                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/11/11" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXU-3g-N5C">
-                                        <rect key="frame" x="130" y="29" width="60" height="20"/>
-                                        <fontDescription key="fontDescription" name="KyoboHandwriting2019" family="Kyobo Handwriting 2019" pointSize="15"/>
+                                        <rect key="frame" x="120.5" y="30" width="79.5" height="23"/>
+                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star5" translatesAutoresizingMaskIntoConstraints="NO" id="A1V-Mk-WPq">
-                                        <rect key="frame" x="135" y="52" width="50" height="50"/>
+                                        <rect key="frame" x="135" y="53" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="A1V-Mk-WPq" secondAttribute="height" multiplier="1:1" id="0SI-dc-MR4"/>
                                             <constraint firstAttribute="width" constant="50" id="1iX-aj-4lE"/>

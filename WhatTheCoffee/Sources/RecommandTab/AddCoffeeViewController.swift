@@ -48,6 +48,7 @@ class AddCoffeeViewController: UIViewController {
   }
   
   func configureNAV() {
+    adjustNavigationBarFont()
     let cancelBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onCancel))
     let saveBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(onSave))
     
@@ -71,7 +72,6 @@ class AddCoffeeViewController: UIViewController {
     guard let coffeeName = nameTextField.text else { return }
     
     let item = Coffee(name: coffeeName)
-    print(item) // 출시 전에 지울 주석
     
     if viewType == .update {
       guard let coffee = coffee else { return }

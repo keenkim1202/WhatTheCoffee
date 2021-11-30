@@ -87,6 +87,8 @@ class RecordsViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
+    adjustNavigationBarFont()
+    
     let layout = UICollectionViewFlowLayout()
     recordCollectionView.collectionViewLayout = layout
     
