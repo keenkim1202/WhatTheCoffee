@@ -133,7 +133,8 @@ class RecommendViewController: UIViewController {
       let randomCoffee = randomCoffee()
       
       todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage.randomCoffeeImage
-//      todayCoffeeLabel.font = UIFont.KyoboHandWriting(type: .regular, size: 19)
+      // TODO: 카페모카, 녹차라떼, 에스프레소 출력될 때 폰트가 안먹음... 왜지..
+      todayCoffeeLabel.font = UIFont.KyoboHandWriting(type: .regular, size: 19)
       todayCoffeeLabel.text = randomCoffee.name
       
       todayCoffee = randomCoffee
