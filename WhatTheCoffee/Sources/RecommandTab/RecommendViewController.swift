@@ -51,6 +51,7 @@ class RecommendViewController: UIViewController {
   func configure() {
     adjustNavigationBarFont()
     
+    todayCoffeeImage.layer.cornerRadius = CGFloat(5)
     recommendButton.layer.cornerRadius = buttonCornerRadius
     recommendButton.tintColor = UIColor.greenMainColor
     recommendButton.titleLabel?.textColor = UIColor.oppositeColor

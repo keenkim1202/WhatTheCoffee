@@ -122,6 +122,7 @@ extension CoffeeListViewController: UITableViewDataSource {
     let row = coffeeList[indexPath.row]
     cell.nameLabel.text = row.name
     cell.coffeeImageView.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(row._id).jpg") ?? UIImage.randomCoffeeImage
+    cell.coffeeImageView.layer.cornerRadius = CGFloat(8)
     cell.nameLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
     
     return cell
