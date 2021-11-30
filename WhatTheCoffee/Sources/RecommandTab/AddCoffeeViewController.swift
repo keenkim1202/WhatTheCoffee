@@ -19,7 +19,11 @@ class AddCoffeeViewController: UIViewController {
   }
   
   // MARK: - Properties
-  let imagePicker = UIImagePickerController()
+  let imagePicker: UIImagePickerController = {
+    let imagePicker = UIImagePickerController()
+    imagePicker.allowsEditing = true
+    return imagePicker
+  }()
   let buttonCornerRadius: CGFloat = 25
   
   var environment: Environment? = nil
@@ -42,6 +46,8 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - Configure
   func configure() {
     imagePicker.delegate = self
+    
+    coffeeImageView.layer.cornerRadius = CGFloat(5)
     addImageButton.layer.cornerRadius = buttonCornerRadius
     addImageButton.tintColor = UIColor.greenSubColor
     addImageButton.titleLabel?.textColor = UIColor.oppositeColor
