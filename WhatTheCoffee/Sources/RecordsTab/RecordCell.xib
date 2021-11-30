@@ -34,19 +34,19 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xex-Un-859">
-                                <rect key="frame" x="10" y="10" width="280" height="50"/>
+                                <rect key="frame" x="10" y="10" width="280" height="41.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7v-Ot-Dto">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="23"/>
+                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/11/11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXU-3g-N5C">
-                                        <rect key="frame" x="0.0" y="30" width="280" height="20"/>
-                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="13"/>
+                                        <rect key="frame" x="0.0" y="23" width="280" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

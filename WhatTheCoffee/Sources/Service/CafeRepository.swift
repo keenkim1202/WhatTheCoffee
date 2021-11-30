@@ -24,7 +24,6 @@ final class CafeRepository: CafeRepositoryType {
   
   init(realm: Realm) {
     self.realm = realm
-    print("Realm Location: ", realm.configuration.fileURL ?? "cannot find locaation.")
   }
   
   var count: Int {

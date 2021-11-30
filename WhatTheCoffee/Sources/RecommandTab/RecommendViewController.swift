@@ -68,18 +68,19 @@ class RecommendViewController: UIViewController {
     print("isFirst = \(isFirst)")
     if isFirst == true {
       guard let env = environment else { return }
-      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라라떼", "말차라떼", "모카라떼", "카라멜마끼아또"]
+      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라_라떼", "그린티_라떼", "모카_라떼", "카라멜_마끼아또"]
       for i in 0..<defaultCoffeeList.count {
-        let coffee = Coffee(name: defaultCoffeeList[i])
+        let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
         env.coffeeRepository.add(item: coffee)
         
         let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage.randomCoffeeImage
         saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
       }
       
-      let defaultCafeList: [String] = ["cafe3", "cafe2", "cafe1"]
+      let defaultCafeList: [String] = ["합정_오츠커피", "대부도_엔틸로프", "송도_컵피"]
+      let commentList: [String] = ["아인슈페너 맛집", "라떼 맛집으로 소문남", "카페 분위기를 중요시하는 사람이라면 필수 방문"]
       for i in 0..<defaultCafeList.count {
-        let cafe = Cafe(name: defaultCafeList[i], comment: "디저트가 매우 맛있음! (특히 당근케이크)", rate: 5 - i)
+        let cafe = Cafe(name: defaultCafeList[i].replacingOccurrences(of: "_", with: " "), comment: commentList[i], rate: 5 - i)
         env.cafeRepository.add(item: cafe)
         
         let image = UIImage(named: defaultCafeList[i]) ?? UIImage.defaultCafeImage

@@ -95,8 +95,8 @@ class AddRecordViewController: UIViewController {
   
   func configureTextView() {
     commentTextView.delegate = self
-    commentTextView.layer.borderWidth = 0.5
-    commentTextView.layer.borderColor = UIColor.placeholderText.cgColor
+    commentTextView.layer.borderWidth = 2
+    commentTextView.layer.borderColor = UIColor.greenSubColor.cgColor
     commentTextView.backgroundColor = .appearanceColor
     commentTextView.layer.cornerRadius = CGFloat(8)
     commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
