@@ -39,6 +39,7 @@ class CoffeeListViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
+    adjustNavigationBarFont()
     tableView.delegate = self
     tableView.dataSource = self
   }
@@ -121,6 +122,7 @@ extension CoffeeListViewController: UITableViewDataSource {
     let row = coffeeList[indexPath.row]
     cell.nameLabel.text = row.name
     cell.coffeeImageView.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(row._id).jpg") ?? UIImage.randomCoffeeImage
+    cell.nameLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
     
     return cell
   }

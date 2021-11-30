@@ -8,22 +8,19 @@
 import UIKit
 
 extension UIFont {
-  class func KyoboHandWriting(type: KyoboHandWritingType, size: CGFloat) -> UIFont! {
-    guard let font = UIFont(name: type.name, size: size) else {
-      return nil
-    }
-    
+  class func GowunBatang(type: GowunBatangType, size: CGFloat) -> UIFont! {
+    guard let font = UIFont(name: type.name, size: size) else { return nil }
     return font
   }
   
-  public enum KyoboHandWritingType {
+  public enum GowunBatangType {
     case regular
+    case bold
     
     var name: String {
       switch self {
-      case .regular:
-        return "Kyobo Handwriting 2019"
-        
+      case .regular: return "GowunBatang-Bold"
+      case .bold:    return "GowunBatang-Regular"
       }
     }
   }

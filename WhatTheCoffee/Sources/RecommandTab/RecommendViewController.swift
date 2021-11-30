@@ -27,7 +27,6 @@ class RecommendViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     checkIsFirst()
     configure()
     fetchData()
@@ -50,6 +49,8 @@ class RecommendViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
+    adjustNavigationBarFont()
+    
     recommendButton.layer.cornerRadius = buttonCornerRadius
     recommendButton.tintColor = UIColor.greenMainColor
     recommendButton.titleLabel?.textColor = UIColor.oppositeColor
@@ -67,7 +68,7 @@ class RecommendViewController: UIViewController {
     print("isFirst = \(isFirst)")
     if isFirst == true {
       guard let env = environment else { return }
-      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라라떼", "녹차라떼", "카페모카", "카라멜마끼아또"]
+      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라라떼", "말차라떼", "모카라떼", "카라멜마끼아또"]
       for i in 0..<defaultCoffeeList.count {
         let coffee = Coffee(name: defaultCoffeeList[i])
         env.coffeeRepository.add(item: coffee)
@@ -134,8 +135,8 @@ class RecommendViewController: UIViewController {
       
       todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage.randomCoffeeImage
       // TODO: 카페모카, 녹차라떼, 에스프레소 출력될 때 폰트가 안먹음... 왜지..
-      todayCoffeeLabel.font = UIFont.KyoboHandWriting(type: .regular, size: 19)
       todayCoffeeLabel.text = randomCoffee.name
+      todayCoffeeLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
       
       todayCoffee = randomCoffee
       

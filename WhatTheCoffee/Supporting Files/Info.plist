@@ -4,7 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Kyobo Handwriting 2019.otf</string>
+		<string>GowunBatang-Bold.ttf</string>
+		<string>GowunBatang-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

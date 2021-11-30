@@ -52,12 +52,15 @@ class AddRecordViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
+    adjustNavigationBarFont()
+    
     if let cafe = cafe {
       viewType = .update
       title = "기록 수정"
       
       let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
       recordImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage.defaultCafeImage
+      recordImageView.layer.cornerRadius = CGFloat(5)
       titleTextField.text = cafe.name
       dateTextField.text = date
       updateRate(Rate.init(rawValue: cafe.rate)!)
@@ -71,6 +74,7 @@ class AddRecordViewController: UIViewController {
       }
     } else {
       title = "기록 추가"
+      recordImageView.layer.cornerRadius = CGFloat(5)
       recordImageView.image = UIImage.defaultCafeImage
       commentTextView.text = commentPlaceholder
       commentTextView.textColor = UIColor.placeholderText
