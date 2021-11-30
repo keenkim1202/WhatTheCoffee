@@ -36,14 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       }
     }
     
-    for family in UIFont.familyNames {
-         print(family)
-         
-         for names in UIFont.fontNames(forFamilyName: family){
-             print("== \(names)")
-         }
-         
-     }
+    sleep(1)
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {
