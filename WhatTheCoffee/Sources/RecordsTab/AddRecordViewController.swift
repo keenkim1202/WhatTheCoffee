@@ -89,6 +89,7 @@ class AddRecordViewController: UIViewController {
   }
   
   func configureTextField() {
+    titleTextField.delegate = self
     dateTextField.setDatePicker(target: self, selector: #selector(datePickerDone))
     dateTextField.textColor = .orangeMainColor
   }
@@ -285,5 +286,15 @@ extension AddRecordViewController: UITextViewDelegate {
       commentTextView.text = commentPlaceholder
       commentTextView.textColor = UIColor.placeholderText
     }
+  }
+}
+
+// MARK: - Extension - UITextFieldDelegate
+extension AddRecordViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == self.titleTextField {
+      self.dateTextField.becomeFirstResponder()
+    } 
+    return true
   }
 }

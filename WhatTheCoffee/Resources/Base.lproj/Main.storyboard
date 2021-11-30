@@ -223,7 +223,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" name="OrangeMainColor"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
                                                                         <color key="value" name="OrangeMainColor"/>
@@ -260,7 +260,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" name="OrangeMainColor"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
                                                                         <color key="value" name="OrangeMainColor"/>
@@ -463,7 +463,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" name="OrangeMainColor"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                             </textView>
                                                         </subviews>
                                                         <constraints>
@@ -932,7 +932,7 @@
                                         </constraints>
                                         <color key="textColor" name="OrangeMainColor"/>
                                         <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                                 <color key="value" name="GreenSubColor"/>
@@ -1056,6 +1056,17 @@
             <point key="canvasLocation" x="2664" y="-1013"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="9oP-gY-PX3">
+            <size key="intrinsicContentSize" width="152.5" height="23.5"/>
+        </designable>
+        <designable name="WRe-dv-C59">
+            <size key="intrinsicContentSize" width="122" height="23.5"/>
+        </designable>
+        <designable name="XmZ-uA-g5P">
+            <size key="intrinsicContentSize" width="110" height="23.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="cafeDefault3" width="1280" height="1280"/>
         <image name="heart" catalog="system" width="128" height="109"/>
