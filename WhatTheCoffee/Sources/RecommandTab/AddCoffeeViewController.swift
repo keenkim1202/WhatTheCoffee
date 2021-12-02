@@ -158,7 +158,7 @@ class AddCoffeeViewController: UIViewController {
     alert.addAction(camera)
     alert.addAction(defaultImage)
     alert.addAction(cancel)
-    present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true, completion: nil)
   }
 }
 
@@ -169,7 +169,7 @@ extension AddCoffeeViewController : UIImagePickerControllerDelegate, UINavigatio
       coffeeImageView.image = image
     }
     
-    dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true, completion: nil)
   }
 }
 

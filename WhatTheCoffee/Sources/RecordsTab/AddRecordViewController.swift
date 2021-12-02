@@ -250,7 +250,7 @@ class AddRecordViewController: UIViewController {
     alert.addAction(camera)
     alert.addAction(defaultImage)
     alert.addAction(cancel)
-    present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true, completion: nil)
   }
   
   @IBAction func onRate(_ sender: UIButton) {
@@ -266,7 +266,7 @@ extension AddRecordViewController : UIImagePickerControllerDelegate, UINavigatio
       recordImageView.image = image
     }
     
-    dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true, completion: nil)
   }
 }
 
