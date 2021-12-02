@@ -37,7 +37,7 @@ class RecommendViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    print(#function)
     fetchData()
     checkIsEmpty()
   }
@@ -109,6 +109,8 @@ class RecommendViewController: UIViewController {
   
   /// component
   @IBAction func onRecommend(_ sender: UIButton) {
+    recommendButton.setTitle("다시 추천 받기", for: .normal)
+    
     if !coffeeList.isEmpty {
       let randomCoffee = randomCoffee()
       
