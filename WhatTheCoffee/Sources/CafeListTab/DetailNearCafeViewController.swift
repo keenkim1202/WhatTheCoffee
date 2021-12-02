@@ -6,9 +6,19 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailNearCafeViewController: UIViewController {
   
+  // MARK: - Properties
+  
+  // MARK: - UI
+  @IBOutlet weak var cafeImageView: UIImageView!
+  @IBOutlet weak var addressLabel: UILabel!
+  @IBOutlet weak var operationLabel: UILabel!
+  @IBOutlet weak var mapView: MKMapView!
+  
+  // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     

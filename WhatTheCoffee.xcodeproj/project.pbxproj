@@ -41,6 +41,7 @@
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
+		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 		1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */; };
 		1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */; };
@@ -84,6 +85,7 @@
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
+		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
 		1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */,
 				1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */,
 				1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */,
+				1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */,
 			);
 			path = CafeListTab;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
+				1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */,
 				1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */,
 				1C1839F9274CB06800AAD04B /* Storage.swift in Sources */,
 				1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */,
