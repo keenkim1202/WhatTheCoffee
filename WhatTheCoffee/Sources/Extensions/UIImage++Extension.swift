@@ -15,4 +15,8 @@ extension UIImage {
   static var defaultCafeImage: UIImage {
     return UIImage(named: "stamp_p_h")!
   }
+  
+  static var NearCafePlaceholder: UIImage {
+    return UIImage(named: "cafeDefault3")!
+  }
 }
