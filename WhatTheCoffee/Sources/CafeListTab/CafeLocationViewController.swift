@@ -10,6 +10,9 @@ import MapKit
 
 class CafeLocationViewController: UIViewController {
   
+  // MARK: - Properties
+  var environment: Environment? = nil
+  
   // MARK: - UI
   @IBOutlet weak var mapView: MKMapView!
   

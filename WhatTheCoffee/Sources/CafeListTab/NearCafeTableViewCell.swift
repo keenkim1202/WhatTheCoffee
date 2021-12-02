@@ -16,6 +16,7 @@ class NearCafeTableViewCell: UITableViewCell {
   @IBOutlet weak var addressLabel: UILabel!
   
   func cellConfigure(row: NearCafe) {
+    cafeImageView.layer.cornerRadius = CGFloat(8)
     nameLabel.text = row.name
     addressLabel.text = row.address
   }
