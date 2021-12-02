@@ -79,6 +79,8 @@ extension NearCafeViewController: UITableViewDataSource {
     let row = dummyList[indexPath.row]
     cell.cellConfigure(row: row)
     cell.cafeImageView.image = UIImage(named: imageList[indexPath.row]) ?? UIImage.NearCafePlaceholder
+    
+    cell.selectionStyle = .none
     return cell
   }
   
