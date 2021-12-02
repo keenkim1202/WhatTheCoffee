@@ -1,5 +1,5 @@
 //
-//  DataManager.swift
+//  ImageDataManager.swift
 //  WhatTheCoffee
 //
 //  Created by KEEN on 2021/11/25.
@@ -25,7 +25,7 @@ extension UIViewController {
       do {
         try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
       } catch {
-        print(error.localizedDescription)
+        errorAlert(error: .failToSaveImage)
       }
     }
     
@@ -39,7 +39,7 @@ extension UIViewController {
           try FileManager.default.removeItem(at: imageURL)
           print("SUCCESS - image deleted.")
         } catch {
-          print("FAILED - fail to delete image.")
+          errorAlert(error: .failToDeleteImage)
         }
       }
       
@@ -57,7 +57,7 @@ extension UIViewController {
           try FileManager.default.removeItem(at: imageURL)
           print("SUCCESS - image deleted.")
         } catch {
-          print("FAILED - fail to delete image.")
+          errorAlert(error: .failToDeleteImage)
         }
       }
       
@@ -65,7 +65,7 @@ extension UIViewController {
         try data.write(to: imageURL)
         print("SUCCESS - image saved.")
       } catch {
-        print("FAILED - fail to save image.")
+        errorAlert(error: .failToSaveImage)
       }
     }
   }
@@ -79,7 +79,7 @@ extension UIViewController {
       do {
         try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
       } catch {
-        print(error.localizedDescription)
+        errorAlert(error: .failToLoadImage)
       }
     }
     
@@ -96,7 +96,7 @@ extension UIViewController {
       do {
         try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
       } catch {
-        print(error.localizedDescription)
+        errorAlert(error: .cannotFindPath)
       }
     }
     
@@ -107,7 +107,7 @@ extension UIViewController {
         try FileManager.default.removeItem(at: imageURL)
         print("REMOVE SUCCESS")
       } catch {
-        print("REMOVE FAILED")
+        errorAlert(error: .failToDeleteImage)
       }
     }
   }
