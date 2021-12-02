@@ -7,9 +7,6 @@
 
 import UIKit
 
-// TODO: 일단 기능 구현해서 완성하는게 우선!! 다 만들고 나서 분리하고 정리하기...
-// TODO: coffee, cafe 이미지 저장 폴더 나누기도 나중에.
-
 class RecommendViewController: UIViewController {
   
   // MARK: - Properties
@@ -37,7 +34,7 @@ class RecommendViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    print(#function)
+    
     fetchData()
     checkIsEmpty()
   }
@@ -64,7 +61,18 @@ class RecommendViewController: UIViewController {
     guard let env = environment else { return }
     coffeeList = env.coffeeRepository.fetch()
     
-    todayCoffeeImage.image = UIImage.randomCoffeeImage
+    if let coffee = todayCoffee {
+      if coffeeList.contains(coffee) {
+        todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
+      } else {
+        todayCoffee = nil
+        todayCoffeeImage.image = UIImage.randomCoffeeImage
+        todayCoffeeLabel.text = "오늘의 커피를 목록에서 삭제하셨어요🥲\n다시 추천 받아보세요!"
+      }
+    } else {
+      todayCoffeeImage.image = UIImage.randomCoffeeImage
+      todayCoffeeLabel.text = "오늘의 커피를 추천받으세요!"
+    }
   }
   
   func randomCoffee() -> Coffee {
@@ -119,7 +127,6 @@ class RecommendViewController: UIViewController {
       todayCoffeeLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
       
       todayCoffee = randomCoffee
-      
     } else {
       showAlert("커피 리스트가 비어있습니다.\n커피 목록에서 추가해주세요!")
     }

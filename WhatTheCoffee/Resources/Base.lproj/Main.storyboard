@@ -685,7 +685,7 @@
                                                     <constraint firstAttribute="width" secondItem="UdJ-cb-c1s" secondAttribute="height" multiplier="1:1" id="8ho-GI-7vz"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피를 추천받아보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-Iq-NJk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 커피를 추천받아보세요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfK-Iq-NJk">
                                                 <rect key="frame" x="0.0" y="260" width="240" height="22"/>
                                                 <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="15"/>
                                                 <color key="textColor" name="OrangeMainColor"/>
