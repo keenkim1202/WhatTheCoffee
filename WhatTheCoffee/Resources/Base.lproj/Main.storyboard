@@ -571,7 +571,7 @@
         <!--근처 카페 찾기-->
         <scene sceneID="GkR-aL-Xcb">
             <objects>
-                <viewController id="YN4-mE-ihz" customClass="NearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nearCafeVC" id="YN4-mE-ihz" customClass="NearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZGQ-j2-Eg4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -579,7 +579,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-Tb-gyo">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nearCafeCell" rowHeight="90" id="vkq-3r-4kj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nearCafeCell" rowHeight="90" id="vkq-3r-4kj" customClass="NearCafeTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vkq-3r-4kj" id="ovO-1j-75y">
@@ -620,6 +620,11 @@
                                                 <constraint firstItem="zKp-Ug-XWe" firstAttribute="top" secondItem="ovO-1j-75y" secondAttribute="top" constant="10" id="svB-uN-oNH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="ExI-VN-rKM" id="CFe-Ka-ZLU"/>
+                                            <outlet property="cafeImageView" destination="zKp-Ug-XWe" id="HRy-Zj-PTw"/>
+                                            <outlet property="nameLabel" destination="9kg-Gn-fe7" id="TMW-zj-s9n"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -634,7 +639,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="근처 카페 찾기" id="doh-LV-rTI">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="6UZ-Xa-BRp">
+                        <barButtonItem key="rightBarButtonItem" title="지도 보기" id="6UZ-Xa-BRp">
                             <connections>
                                 <action selector="onCafeLocation:" destination="YN4-mE-ihz" id="LaT-JK-reo"/>
                             </connections>
@@ -651,31 +656,31 @@
         <!--카페 정보-->
         <scene sceneID="EUs-62-l3c">
             <objects>
-                <viewController id="vV2-Re-cHq" customClass="DetailNearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailNearCafeVC" id="vV2-Re-cHq" customClass="DetailNearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KYE-w0-Xou">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가게 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW7-wZ-5yX">
-                                <rect key="frame" x="20" y="74" width="374" height="25"/>
+                                <rect key="frame" x="20" y="118" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0B-NA-miv">
-                                <rect key="frame" x="20" y="283.5" width="374" height="25"/>
+                                <rect key="frame" x="20" y="327.5" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aSz-3r-7sC">
-                                <rect key="frame" x="20" y="318.5" width="374" height="288"/>
+                                <rect key="frame" x="20" y="362.5" width="374" height="288"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="aSz-3r-7sC" secondAttribute="height" multiplier="1.3:1" id="nxQ-lV-iHZ"/>
                                 </constraints>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysR-LI-Phx">
-                                <rect key="frame" x="20" y="109" width="374" height="124.5"/>
+                                <rect key="frame" x="20" y="153" width="374" height="124.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="5Ve-PD-Fof">
                                         <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
@@ -752,7 +757,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="카페 정보" id="IUK-wh-ubZ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="rK2-bD-f0g"/>
+                        <barButtonItem key="leftBarButtonItem" title="닫기" id="rK2-bD-f0g">
+                            <connections>
+                                <action selector="onClose:" destination="vV2-Re-cHq" id="lSd-zw-IcU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="u10-iq-IgN" id="Y7b-Mg-CSE"/>
@@ -763,18 +772,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rq6-pn-WMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3574" y="1211"/>
+            <point key="canvasLocation" x="3571.0144927536235" y="1930.5803571428571"/>
         </scene>
-        <!--Cafe Location View Controller-->
+        <!--근처 카페 지도-->
         <scene sceneID="L1O-rj-zat">
             <objects>
-                <viewController id="1Cd-pF-wRG" customClass="CafeLocationViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cafeLocationVC" id="1Cd-pF-wRG" customClass="CafeLocationViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K70-nt-U62">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YUc-Zg-G7k">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7oW-u2-hX9"/>
@@ -786,14 +795,20 @@
                             <constraint firstItem="YUc-Zg-G7k" firstAttribute="top" secondItem="7oW-u2-hX9" secondAttribute="top" id="zcs-Ks-iXl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="N11-Zy-8Ea"/>
+                    <navigationItem key="navigationItem" title="근처 카페 지도" id="N11-Zy-8Ea">
+                        <barButtonItem key="leftBarButtonItem" title="닫기" id="p2N-5g-eq6">
+                            <connections>
+                                <action selector="onClose:" destination="1Cd-pF-wRG" id="l3c-Z3-a7Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="YUc-Zg-G7k" id="f1C-S6-KNG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0O-j7-UBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="1211"/>
+            <point key="canvasLocation" x="3571.0144927536235" y="1210.7142857142856"/>
         </scene>
         <!--설정-->
         <scene sceneID="1mj-Rh-4iQ">
@@ -1301,6 +1316,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soD-Q9-AjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="934.78260869565224" y="1211.3839285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6uc-7a-o64">
+            <objects>
+                <navigationController storyboardIdentifier="cafeLocationNAV" automaticallyAdjustsScrollViewInsets="NO" id="oYh-rz-JIl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GBH-0y-5Gv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1Cd-pF-wRG" kind="relationship" relationship="rootViewController" id="22K-OM-fsc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWS-5g-V6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2660.8695652173915" y="1210.7142857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vw2-5f-N9G">
+            <objects>
+                <navigationController storyboardIdentifier="cafeDetailNAV" automaticallyAdjustsScrollViewInsets="NO" id="GUU-SG-n1C" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MTG-Bo-yW4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vV2-Re-cHq" kind="relationship" relationship="rootViewController" id="i8C-0G-NkB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4r-e7-JSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2660.8695652173915" y="1930.5803571428571"/>
         </scene>
     </scenes>
     <designables>
