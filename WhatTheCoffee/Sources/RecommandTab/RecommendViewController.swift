@@ -27,7 +27,10 @@ class RecommendViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    checkIsFirst()
+    
+    if let env = environment {
+      checkIsFirst(env: env)
+    }
     configure()
     fetchData()
   }
@@ -62,32 +65,6 @@ class RecommendViewController: UIViewController {
     coffeeList = env.coffeeRepository.fetch()
     
     todayCoffeeImage.image = UIImage.randomCoffeeImage
-  }
-  
-  func checkIsFirst() {
-    let isFirst = Storage.isFirstTime()
-    print("isFirst = \(isFirst)")
-    if isFirst == true {
-      guard let env = environment else { return }
-      let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라_라떼", "그린티_라떼", "모카_라떼", "카라멜_마끼아또"]
-      for i in 0..<defaultCoffeeList.count {
-        let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
-        env.coffeeRepository.add(item: coffee)
-        
-        let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage.randomCoffeeImage
-        saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
-      }
-      
-      let defaultCafeList: [String] = ["합정_오츠커피", "대부도_엔틸로프", "송도_컵피"]
-      let commentList: [String] = ["아인슈페너 맛집", "라떼 맛집으로 소문남", "카페 분위기를 중요시하는 사람이라면 필수 방문"]
-      for i in 0..<defaultCafeList.count {
-        let cafe = Cafe(name: defaultCafeList[i].replacingOccurrences(of: "_", with: " "), comment: commentList[i], rate: 5 - i)
-        env.cafeRepository.add(item: cafe)
-        
-        let image = UIImage(named: defaultCafeList[i]) ?? UIImage.defaultCafeImage
-        saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: image)
-      }
-    }
   }
   
   func randomCoffee() -> Coffee {
@@ -136,7 +113,6 @@ class RecommendViewController: UIViewController {
       let randomCoffee = randomCoffee()
       
       todayCoffeeImage.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(randomCoffee._id).jpg") ?? UIImage.randomCoffeeImage
-      // TODO: 카페모카, 녹차라떼, 에스프레소 출력될 때 폰트가 안먹음... 왜지..
       todayCoffeeLabel.text = randomCoffee.name
       todayCoffeeLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
       
@@ -146,5 +122,4 @@ class RecommendViewController: UIViewController {
       showAlert("커피 리스트가 비어있습니다.\n커피 목록에서 추가해주세요!")
     }
   }
-  
 }

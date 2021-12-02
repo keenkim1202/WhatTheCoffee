@@ -8,7 +8,6 @@
 import UIKit
 
 // TODO: 상황에 따라 alert문 케이스 나누기
-
 extension UIAlertController {
   enum ContentType: String {
     case error = "⚠️ 오류 🤯"
