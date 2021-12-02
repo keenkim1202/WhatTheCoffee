@@ -31,6 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let env = environment {
           vc.checkIsFirst(env: env)
         }
+        
+      case let vc as NearCafeViewController:
+        vc.environment = environment
+        
       case let vc as RecordsViewController:
         vc.environment = environment
         

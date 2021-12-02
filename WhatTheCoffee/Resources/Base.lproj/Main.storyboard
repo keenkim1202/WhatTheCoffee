@@ -586,7 +586,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="384.5" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="zKp-Ug-XWe">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="zKp-Ug-XWe">
                                                     <rect key="frame" x="10" y="10" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="zKp-Ug-XWe" secondAttribute="height" multiplier="1:1" id="cNS-bv-wjL"/>
@@ -682,7 +682,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysR-LI-Phx">
                                 <rect key="frame" x="20" y="153" width="374" height="124.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="5Ve-PD-Fof">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="5Ve-PD-Fof">
                                         <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
                                         <color key="backgroundColor" name="AppearanceColor"/>
                                         <constraints>
@@ -724,7 +724,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.98791980350982189" blue="0.86823751252881598" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="GreenMainColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5Ve-PD-Fof" secondAttribute="bottom" constant="10" id="5Wb-6a-Txh"/>
                                     <constraint firstItem="5Ve-PD-Fof" firstAttribute="leading" secondItem="ysR-LI-Phx" secondAttribute="leading" constant="10" id="LRe-vq-HqS"/>
@@ -765,6 +765,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="u10-iq-IgN" id="Y7b-Mg-CSE"/>
+                        <outlet property="backgroundView" destination="ysR-LI-Phx" id="jka-C9-xuW"/>
                         <outlet property="cafeImageView" destination="5Ve-PD-Fof" id="P4b-Cp-XC0"/>
                         <outlet property="mapView" destination="aSz-3r-7sC" id="fE4-67-FTF"/>
                         <outlet property="operationLabel" destination="8Sa-LR-gsC" id="3fq-0V-aHV"/>

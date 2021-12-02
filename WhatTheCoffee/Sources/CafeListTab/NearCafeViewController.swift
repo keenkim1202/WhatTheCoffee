@@ -10,7 +10,8 @@ import UIKit
 class NearCafeViewController: UIViewController {
   
   // MARK: - Properties
-  let imageList: [String] = ["할리스", "투썸", "스벅", "탐탐", "커피빈", "이디야"]
+  var environment: Environment? = nil
+  let imageList: [String] = ["할리스", "투썸플레이스", "스타벅스", "탐앤탐스", "커피빈", "이디야"]
   let dummyList: [NearCafe] = [
     NearCafe(name: "할리스", address: "서울시 00구 00동", operationTime: "09:00 - 22:00"),
     NearCafe(name: "투썸플레이스", address: "서울시 11구 11동", operationTime: "08:00 - 21:00"),
@@ -56,8 +57,12 @@ extension NearCafeViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "detailNearCafeVC") as? DetailNearCafeViewController else { return }
-    let nav = UINavigationController(rootViewController: vc)
+    guard let environment = environment else { return }
+    vc.environment = environment
+    vc.nearCafe = dummyList[indexPath.row]
     
+    let nav = UINavigationController(rootViewController: vc)
+    nav.title = dummyList[indexPath.row].name
     nav.modalPresentationStyle = .fullScreen
     self.present(nav, animated: true, completion: nil)
   }
