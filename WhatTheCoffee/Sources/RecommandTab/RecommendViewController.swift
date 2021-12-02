@@ -25,9 +25,6 @@ class RecommendViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    if let env = environment {
-      checkIsFirst(env: env)
-    }
     configure()
     fetchData()
   }

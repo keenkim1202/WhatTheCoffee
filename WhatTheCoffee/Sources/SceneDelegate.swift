@@ -28,6 +28,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       case let vc as RecommendViewController:
         vc.environment = environment
         
+        if let env = environment {
+          vc.checkIsFirst(env: env)
+        }
       case let vc as RecordsViewController:
         vc.environment = environment
         
