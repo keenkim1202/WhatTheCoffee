@@ -43,6 +43,7 @@
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
+		1CC914E92758BD0E002BD76D /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E82758BD0E002BD76D /* SearchResultViewController.swift */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 		1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */; };
 		1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */; };
@@ -88,6 +89,7 @@
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
 		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
 		1CC914E62758B59E002BD76D /* NearCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafe.swift; sourceTree = "<group>"; };
+		1CC914E82758BD0E002BD76D /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
 		1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */,
 				1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */,
 				1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */,
+				1CC914E82758BD0E002BD76D /* SearchResultViewController.swift */,
 			);
 			path = CafeListTab;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */,
 				1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */,
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
+				1CC914E92758BD0E002BD76D /* SearchResultViewController.swift in Sources */,
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
