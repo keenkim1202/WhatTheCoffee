@@ -30,6 +30,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="L6e-BB-yDR" kind="relationship" relationship="viewControllers" id="Psw-oJ-R2W"/>
+                        <segue destination="hyh-IX-Tff" kind="relationship" relationship="viewControllers" id="iQQ-hs-nB6"/>
                         <segue destination="Pul-1U-Bo9" kind="relationship" relationship="viewControllers" id="2Tc-sn-cTf"/>
                     </connections>
                 </tabBarController>
@@ -567,6 +568,233 @@
             </objects>
             <point key="canvasLocation" x="935" y="453"/>
         </scene>
+        <!--근처 카페 찾기-->
+        <scene sceneID="GkR-aL-Xcb">
+            <objects>
+                <viewController id="YN4-mE-ihz" customClass="NearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZGQ-j2-Eg4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-Tb-gyo">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nearCafeCell" rowHeight="90" id="vkq-3r-4kj">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vkq-3r-4kj" id="ovO-1j-75y">
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="zKp-Ug-XWe">
+                                                    <rect key="frame" x="10" y="10" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zKp-Ug-XWe" secondAttribute="height" multiplier="1:1" id="cNS-bv-wjL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-G7-IOT">
+                                                    <rect key="frame" x="90" y="20" width="284.5" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kg-Gn-fe7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="284.5" height="25"/>
+                                                            <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExI-VN-rKM">
+                                                            <rect key="frame" x="0.0" y="25" width="284.5" height="25"/>
+                                                            <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
+                                                            <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="b6b-G7-IOT" secondAttribute="trailing" constant="10" id="4Wj-MI-OMM"/>
+                                                <constraint firstAttribute="bottom" secondItem="zKp-Ug-XWe" secondAttribute="bottom" constant="10" id="9he-KP-Usg"/>
+                                                <constraint firstItem="zKp-Ug-XWe" firstAttribute="leading" secondItem="ovO-1j-75y" secondAttribute="leading" constant="10" id="BSy-Cf-Qbt"/>
+                                                <constraint firstAttribute="bottom" secondItem="b6b-G7-IOT" secondAttribute="bottom" constant="20" id="hjW-mO-CFC"/>
+                                                <constraint firstItem="b6b-G7-IOT" firstAttribute="top" secondItem="ovO-1j-75y" secondAttribute="top" constant="20" id="kZZ-RP-Pp5"/>
+                                                <constraint firstItem="b6b-G7-IOT" firstAttribute="leading" secondItem="zKp-Ug-XWe" secondAttribute="trailing" constant="10" id="r3W-vN-Nh7"/>
+                                                <constraint firstItem="zKp-Ug-XWe" firstAttribute="top" secondItem="ovO-1j-75y" secondAttribute="top" constant="10" id="svB-uN-oNH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="axq-cU-5zd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="axq-cU-5zd" firstAttribute="bottom" secondItem="s3d-Tb-gyo" secondAttribute="bottom" id="BwZ-Uu-Ik9"/>
+                            <constraint firstItem="axq-cU-5zd" firstAttribute="trailing" secondItem="s3d-Tb-gyo" secondAttribute="trailing" id="HYP-ma-ub1"/>
+                            <constraint firstItem="s3d-Tb-gyo" firstAttribute="top" secondItem="axq-cU-5zd" secondAttribute="top" id="Uo3-Oi-AO4"/>
+                            <constraint firstItem="s3d-Tb-gyo" firstAttribute="leading" secondItem="axq-cU-5zd" secondAttribute="leading" id="VE0-0d-naT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="근처 카페 찾기" id="doh-LV-rTI">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="6UZ-Xa-BRp">
+                            <connections>
+                                <action selector="onCafeLocation:" destination="YN4-mE-ihz" id="LaT-JK-reo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="s3d-Tb-gyo" id="SRw-dx-MDb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iK-if-nNZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1844.9275362318842" y="1211.3839285714284"/>
+        </scene>
+        <!--카페 정보-->
+        <scene sceneID="EUs-62-l3c">
+            <objects>
+                <viewController id="vV2-Re-cHq" customClass="DetailNearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KYE-w0-Xou">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가게 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW7-wZ-5yX">
+                                <rect key="frame" x="20" y="74" width="374" height="25"/>
+                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0B-NA-miv">
+                                <rect key="frame" x="20" y="283.5" width="374" height="25"/>
+                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aSz-3r-7sC">
+                                <rect key="frame" x="20" y="318.5" width="374" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aSz-3r-7sC" secondAttribute="height" multiplier="1.3:1" id="nxQ-lV-iHZ"/>
+                                </constraints>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysR-LI-Phx">
+                                <rect key="frame" x="20" y="109" width="374" height="124.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="5Ve-PD-Fof">
+                                        <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
+                                        <color key="backgroundColor" name="AppearanceColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5Ve-PD-Fof" secondAttribute="height" multiplier="1:1" id="luE-Uu-1YN"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="R9Q-Wr-ZCr">
+                                        <rect key="frame" x="129.5" y="15" width="234.5" height="42.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="상세 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-Df-pd0">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="22"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00시 00구 00동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u10-iq-IgN">
+                                                <rect key="frame" x="0.0" y="22" width="93" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="14"/>
+                                                <color key="textColor" name="OrangeMainColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-0q-aLx">
+                                        <rect key="frame" x="129.5" y="67.5" width="234.5" height="42.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="운영 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kel-id-OiI">
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="22"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 - 10:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-LR-gsC">
+                                                <rect key="frame" x="0.0" y="22" width="75.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="14"/>
+                                                <color key="textColor" name="OrangeMainColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.98791980350982189" blue="0.86823751252881598" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Ve-PD-Fof" secondAttribute="bottom" constant="10" id="5Wb-6a-Txh"/>
+                                    <constraint firstItem="5Ve-PD-Fof" firstAttribute="leading" secondItem="ysR-LI-Phx" secondAttribute="leading" constant="10" id="LRe-vq-HqS"/>
+                                    <constraint firstItem="5Ve-PD-Fof" firstAttribute="top" secondItem="ysR-LI-Phx" secondAttribute="top" constant="10" id="Msv-r0-Mvq"/>
+                                    <constraint firstItem="R9Q-Wr-ZCr" firstAttribute="top" secondItem="ysR-LI-Phx" secondAttribute="top" constant="15" id="RQ4-Mx-59p"/>
+                                    <constraint firstAttribute="trailing" secondItem="R9Q-Wr-ZCr" secondAttribute="trailing" constant="10" id="Zbm-hM-sgk"/>
+                                    <constraint firstItem="R9Q-Wr-ZCr" firstAttribute="leading" secondItem="5Ve-PD-Fof" secondAttribute="trailing" constant="15" id="aXx-32-dRY"/>
+                                    <constraint firstItem="VAM-0q-aLx" firstAttribute="top" secondItem="R9Q-Wr-ZCr" secondAttribute="bottom" constant="10" id="dqH-5Y-cXh"/>
+                                    <constraint firstAttribute="width" secondItem="ysR-LI-Phx" secondAttribute="height" multiplier="3:1" id="dtT-F8-fV9"/>
+                                    <constraint firstItem="VAM-0q-aLx" firstAttribute="leading" secondItem="5Ve-PD-Fof" secondAttribute="trailing" constant="15" id="eTJ-02-pbG"/>
+                                    <constraint firstAttribute="trailing" secondItem="VAM-0q-aLx" secondAttribute="trailing" constant="10" id="rio-tL-jT8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Mhm-xh-3QU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ysR-LI-Phx" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="0HJ-3N-HEq"/>
+                            <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="aSz-3r-7sC" secondAttribute="trailing" constant="20" id="1Tp-Pk-OMY"/>
+                            <constraint firstItem="cW7-wZ-5yX" firstAttribute="top" secondItem="Mhm-xh-3QU" secondAttribute="top" constant="30" id="9Pn-Xu-Vm3"/>
+                            <constraint firstItem="cW7-wZ-5yX" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="Cse-rh-JqS"/>
+                            <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="cW7-wZ-5yX" secondAttribute="trailing" constant="20" id="M9w-9V-Gxi"/>
+                            <constraint firstItem="E0B-NA-miv" firstAttribute="top" secondItem="ysR-LI-Phx" secondAttribute="bottom" constant="50" id="QIb-na-NYA"/>
+                            <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="ysR-LI-Phx" secondAttribute="trailing" constant="20" id="Qub-Ea-6aN"/>
+                            <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="E0B-NA-miv" secondAttribute="trailing" constant="20" id="TIa-x6-pVp"/>
+                            <constraint firstItem="aSz-3r-7sC" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="UcR-g3-xVv"/>
+                            <constraint firstItem="aSz-3r-7sC" firstAttribute="top" secondItem="E0B-NA-miv" secondAttribute="bottom" constant="10" id="dGo-an-JNV"/>
+                            <constraint firstItem="ysR-LI-Phx" firstAttribute="top" secondItem="cW7-wZ-5yX" secondAttribute="bottom" constant="10" id="e5k-wg-yiZ"/>
+                            <constraint firstItem="E0B-NA-miv" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="tsP-ye-1Du"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="카페 정보" id="IUK-wh-ubZ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="rK2-bD-f0g"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="u10-iq-IgN" id="Y7b-Mg-CSE"/>
+                        <outlet property="cafeImageView" destination="5Ve-PD-Fof" id="P4b-Cp-XC0"/>
+                        <outlet property="mapView" destination="aSz-3r-7sC" id="fE4-67-FTF"/>
+                        <outlet property="operationLabel" destination="8Sa-LR-gsC" id="3fq-0V-aHV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rq6-pn-WMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3574" y="1211"/>
+        </scene>
+        <!--Cafe Location View Controller-->
+        <scene sceneID="L1O-rj-zat">
+            <objects>
+                <viewController id="1Cd-pF-wRG" customClass="CafeLocationViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K70-nt-U62">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YUc-Zg-G7k">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7oW-u2-hX9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YUc-Zg-G7k" firstAttribute="leading" secondItem="7oW-u2-hX9" secondAttribute="leading" id="ZjN-AM-X8k"/>
+                            <constraint firstItem="7oW-u2-hX9" firstAttribute="trailing" secondItem="YUc-Zg-G7k" secondAttribute="trailing" id="ZkY-Nm-4dU"/>
+                            <constraint firstItem="7oW-u2-hX9" firstAttribute="bottom" secondItem="YUc-Zg-G7k" secondAttribute="bottom" id="ynz-4P-hX1"/>
+                            <constraint firstItem="YUc-Zg-G7k" firstAttribute="top" secondItem="7oW-u2-hX9" secondAttribute="top" id="zcs-Ks-iXl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="N11-Zy-8Ea"/>
+                    <connections>
+                        <outlet property="mapView" destination="YUc-Zg-G7k" id="f1C-S6-KNG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0O-j7-UBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2662" y="1211"/>
+        </scene>
         <!--설정-->
         <scene sceneID="1mj-Rh-4iQ">
             <objects>
@@ -1055,6 +1283,25 @@
             </objects>
             <point key="canvasLocation" x="2664" y="-1013"/>
         </scene>
+        <!--근처 카페-->
+        <scene sceneID="BjQ-KE-n6d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hyh-IX-Tff" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="근처 카페" image="mappin.circle" catalog="system" selectedImage="mappin.circle.fill" id="8Wy-zv-Ggc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zr2-xa-pm5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YN4-mE-ihz" kind="relationship" relationship="rootViewController" id="fz7-VY-RmB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="soD-Q9-AjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934.78260869565224" y="1211.3839285714284"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="9oP-gY-PX3">
@@ -1074,6 +1321,8 @@
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="mappin.circle" catalog="system" width="128" height="121"/>
+        <image name="mappin.circle.fill" catalog="system" width="128" height="121"/>
         <image name="random_coffee" width="772" height="758"/>
         <image name="star1" width="330" height="330"/>
         <image name="star1_deselected" width="331" height="330"/>
@@ -1102,6 +1351,9 @@
         <namedColor name="OrangeMainColor">
             <color red="0.83099997043609619" green="0.38400000333786011" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
