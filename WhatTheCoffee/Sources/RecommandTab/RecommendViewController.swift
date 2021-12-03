@@ -64,7 +64,7 @@ class RecommendViewController: UIViewController {
       } else {
         todayCoffee = nil
         todayCoffeeImage.image = UIImage.randomCoffeeImage
-        todayCoffeeLabel.text = "오늘의 커피를 목록에서 삭제하셨어요🥲\n다시 추천 받아보세요!"
+        todayCoffeeLabel.text = "오늘의 커피를\n목록에서 삭제하셨어요🥲\n다시 추천 받아보세요!"
       }
     } else {
       todayCoffeeImage.image = UIImage.randomCoffeeImage
