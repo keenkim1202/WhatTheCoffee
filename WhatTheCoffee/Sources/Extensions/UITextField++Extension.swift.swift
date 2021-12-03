@@ -11,6 +11,7 @@ extension UITextField {
   func setDatePicker(target: Any, selector: Selector) {
     let SCwidth = self.bounds.width
     let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: SCwidth, height: 216))
+    datePicker.locale = Locale(identifier: "ko-KR")
     datePicker.datePickerMode = .date
     datePicker.preferredDatePickerStyle  = .wheels
     datePicker.maximumDate = Date()
