@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class NearCafeViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
+  var locationManger = CLLocationManager()
   var nearCafeList: [NearCafe] = [] {
     didSet {
       if !nearCafeList.isEmpty {
@@ -21,6 +23,8 @@ class NearCafeViewController: UIViewController {
       tableView.reloadData()
     }
   }
+  var longitude: Double?
+  var latitude: Double?
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -29,13 +33,13 @@ class NearCafeViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    print(#function)
     configure()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    print(#function)
     fetchData()
   }
   
@@ -43,23 +47,40 @@ class NearCafeViewController: UIViewController {
   func configure() {
     tableView.delegate = self
     tableView.dataSource = self
+    
+    locationManger.delegate = self
+    locationManger.desiredAccuracy = kCLLocationAccuracyBest
+    locationManger.requestWhenInUseAuthorization()
+    
+    // 아이폰 설정에서의 위치 서비스가 켜진 상태라면
+    if CLLocationManager.locationServicesEnabled() {
+        print("위치 서비스 On 상태")
+     locationManger.startUpdatingLocation() //위치 정보 받아오기 시작
+        print(locationManger.location?.coordinate)
+    } else {
+        print("위치 서비스 Off 상태")
+    }
   }
   
   func fetchData() {
     nearCafeList = []
-    APIService.shared.fetchCafeInfo(pos: (37.654893784621144,127.06157902459952), query: "스타벅스") { code, json in
-      let storeList = json["documents"]
-      print("JSON - ", json)
-      _ = storeList.map {
-        let addressName = $0.1["road_address_name"].stringValue
-        let placeUrl = $0.1["pace_url"].stringValue
-        let placeName = $0.1["place_name"].stringValue
-        let x = $0.1["x"].doubleValue
-        let y = $0.1["y"].doubleValue
-        
-        let cafe = NearCafe(name: placeName, address: addressName, point: (x, y), placeUrl: placeUrl)
-        self.nearCafeList.append(cafe)
+    
+    if let latitude = latitude, let longitude = longitude {
+      APIService.shared.fetchCafeInfo(pos: (latitude,longitude), query: "스타벅스") { code, json in
+        let storeList = json["documents"]
+        _ = storeList.map {
+          let addressName = $0.1["road_address_name"].stringValue
+          let placeUrl = $0.1["pace_url"].stringValue
+          let placeName = $0.1["place_name"].stringValue
+          let x = $0.1["x"].doubleValue
+          let y = $0.1["y"].doubleValue
+          
+          let cafe = NearCafe(name: placeName, address: addressName, point: (x, y), placeUrl: placeUrl)
+          self.nearCafeList.append(cafe)
+        }
       }
+    } else {
+      print("현재 위치 정보가 없음. 근처 카페 목록 검색 불가.")
     }
   }
   
@@ -109,6 +130,23 @@ extension NearCafeViewController: UITableViewDataSource {
     cell.selectionStyle = .none
     return cell
   }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension NearCafeViewController: CLLocationManagerDelegate {
+  // 위치 정보 계속 업데이트 -> 위도 경도 받아옴
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    print("didUpdateLocations")
+    if let location = locations.first {
+      latitude = location.coordinate.latitude
+      longitude = location.coordinate.longitude
+      print("위도: \(location.coordinate.latitude)")
+      print("경도: \(location.coordinate.longitude)")
+    }
+  }
   
-  
+  // 위도 경도 받아오기 에러
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    print(error)
+  }
 }
