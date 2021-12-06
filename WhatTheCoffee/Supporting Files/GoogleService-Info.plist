@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>8104301707-lb7m132i95illl53kfg6i5ucjik0at73.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.8104301707-lb7m132i95illl53kfg6i5ucjik0at73</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD0JVvAAbmFkDV4yPxh9Z7h_6S0i6sZ8xs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>8104301707</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>heyziin.WhatTheCoffee</string>
+	<key>PROJECT_ID</key>
+	<string>whatthecoffee-65b15</string>
+	<key>STORAGE_BUCKET</key>
+	<string>whatthecoffee-65b15.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:8104301707:ios:302c0fc0d9f3fcc3b3708e</string>
+</dict>
+</plist>
