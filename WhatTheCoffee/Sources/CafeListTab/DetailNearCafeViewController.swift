@@ -38,7 +38,7 @@ class DetailNearCafeViewController: UIViewController {
       self.navigationItem.title = cafe.name
       cafeImageView.image = UIImage(named: cafe.name) ?? UIImage.NearCafePlaceholder
       addressLabel.text = cafe.address
-      operationLabel.text = cafe.operationTime
+      operationLabel.text = "상세보기"
     }
   }
   
