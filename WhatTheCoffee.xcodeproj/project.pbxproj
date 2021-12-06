@@ -41,6 +41,7 @@
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
+		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
@@ -52,6 +53,11 @@
 		1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */; };
 		1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */; };
 		1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCF0F962756055600B45F07 /* TextFieldEffects */; };
+		1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD5EA66275DE3CD00308DB2 /* Alamofire */; };
+		1CD5EA6A275DE3FD00308DB2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD5EA69275DE3FD00308DB2 /* SwiftyJSON */; };
+		1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6B275DE43600308DB2 /* APIService.swift */; };
+		1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */; };
+		1CD5EA72275DF8F300308DB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CD5EA71275DF8F300308DB2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +93,7 @@
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
+		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
 		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
 		1CC914E62758B59E002BD76D /* NearCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafe.swift; sourceTree = "<group>"; };
@@ -97,6 +104,9 @@
 		1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
+		1CD5EA6B275DE43600308DB2 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle++Extension.swift"; sourceTree = "<group>"; };
+		1CD5EA71275DF8F300308DB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E3C7DA5F0797DCAAAD76ECA /* Pods-WhatTheCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.release.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.release.xcconfig"; sourceTree = "<group>"; };
 		98DF2435BD03B3B80855BFD1 /* Pods-WhatTheCoffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.debug.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.debug.xcconfig"; sourceTree = "<group>"; };
 		CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatTheCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,8 +118,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
+				1CD5EA6A275DE3FD00308DB2 /* SwiftyJSON in Frameworks */,
 				1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */,
 				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
+				1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */,
 				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
 				05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */,
 			);
@@ -151,7 +163,9 @@
 			children = (
 				1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */,
 				1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */,
+				1CD5EA71275DF8F300308DB2 /* GoogleService-Info.plist */,
 				1C2206452744B41B00FDBBEF /* Info.plist */,
+				1C8D476F275DFD2400A4F486 /* APIKEY.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -227,6 +241,7 @@
 				1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */,
 				1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */,
 				1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */,
+				1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +265,7 @@
 				1C55565B274FA79C00B5A145 /* CafeRepository.swift */,
 				1C605BDF274B76B0000E94D0 /* Environment.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
+				1CD5EA6B275DE43600308DB2 /* APIService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -278,7 +294,6 @@
 				98DF2435BD03B3B80855BFD1 /* Pods-WhatTheCoffee.debug.xcconfig */,
 				1E3C7DA5F0797DCAAAD76ECA /* Pods-WhatTheCoffee.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -305,6 +320,8 @@
 				1C37C395274550B900EC3CA3 /* RealmSwift */,
 				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
 				1CCF0F962756055600B45F07 /* TextFieldEffects */,
+				1CD5EA66275DE3CD00308DB2 /* Alamofire */,
+				1CD5EA69275DE3FD00308DB2 /* SwiftyJSON */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -335,9 +352,11 @@
 			);
 			mainGroup = 1C22062B2744B41A00FDBBEF;
 			packageReferences = (
-				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
-				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
-				1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects.git" */,
+				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1CD5EA68275DE3FD00308DB2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
 			projectDirPath = "";
@@ -354,11 +373,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
+				1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */,
 				1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */,
 				1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */,
 				1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */,
 				1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */,
 				1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */,
+				1CD5EA72275DF8F300308DB2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,8 +460,10 @@
 				1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */,
 				1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */,
 				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
+				1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */,
 				1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */,
 				1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */,
+				1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */,
 				1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
 				1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */,
@@ -672,7 +695,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
+		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -680,7 +703,7 @@
 				version = 10.19.0;
 			};
 		};
-		1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+		1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -688,7 +711,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects.git" */ = {
+		1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
 			requirement = {
@@ -696,28 +719,54 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		1CD5EA68275DE3FD00308DB2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		1C37C393274550B900EC3CA3 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
 		1C37C395274550B900EC3CA3 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
+			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 		1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
+			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 		1CCF0F962756055600B45F07 /* TextFieldEffects */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects.git" */;
+			package = 1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
 			productName = TextFieldEffects;
+		};
+		1CD5EA66275DE3CD00308DB2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1CD5EA69275DE3FD00308DB2 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CD5EA68275DE3FD00308DB2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

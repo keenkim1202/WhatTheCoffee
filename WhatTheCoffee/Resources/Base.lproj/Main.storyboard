@@ -628,14 +628,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="근처 카페를 찾지 못하였어요 🥲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmZ-ln-30i">
+                                <rect key="frame" x="10" y="439.5" width="394" height="22"/>
+                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                <color key="textColor" name="OrangeMainColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="axq-cU-5zd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="axq-cU-5zd" firstAttribute="bottom" secondItem="s3d-Tb-gyo" secondAttribute="bottom" id="BwZ-Uu-Ik9"/>
                             <constraint firstItem="axq-cU-5zd" firstAttribute="trailing" secondItem="s3d-Tb-gyo" secondAttribute="trailing" id="HYP-ma-ub1"/>
+                            <constraint firstItem="hmZ-ln-30i" firstAttribute="leading" secondItem="axq-cU-5zd" secondAttribute="leading" constant="10" id="Qjo-QO-KsT"/>
                             <constraint firstItem="s3d-Tb-gyo" firstAttribute="top" secondItem="axq-cU-5zd" secondAttribute="top" id="Uo3-Oi-AO4"/>
                             <constraint firstItem="s3d-Tb-gyo" firstAttribute="leading" secondItem="axq-cU-5zd" secondAttribute="leading" id="VE0-0d-naT"/>
+                            <constraint firstItem="hmZ-ln-30i" firstAttribute="centerX" secondItem="axq-cU-5zd" secondAttribute="centerX" id="W0g-pV-5WU"/>
+                            <constraint firstItem="hmZ-ln-30i" firstAttribute="centerY" secondItem="axq-cU-5zd" secondAttribute="centerY" id="p6b-2e-xzh"/>
+                            <constraint firstItem="axq-cU-5zd" firstAttribute="trailing" secondItem="hmZ-ln-30i" secondAttribute="trailing" constant="10" id="scj-3p-9aL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="근처 카페 찾기" id="doh-LV-rTI">
@@ -646,6 +656,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emptyLabel" destination="hmZ-ln-30i" id="Wqc-QL-fRG"/>
                         <outlet property="tableView" destination="s3d-Tb-gyo" id="SRw-dx-MDb"/>
                     </connections>
                 </viewController>

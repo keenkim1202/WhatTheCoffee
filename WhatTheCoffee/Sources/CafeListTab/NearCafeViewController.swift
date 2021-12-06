@@ -11,18 +11,20 @@ class NearCafeViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
-  let imageList: [String] = ["할리스", "투썸플레이스", "스타벅스", "탐앤탐스", "커피빈", "이디야"]
-  let dummyList: [NearCafe] = [
-    NearCafe(name: "할리스", address: "서울시 00구 00동", operationTime: "09:00 - 22:00"),
-    NearCafe(name: "투썸플레이스", address: "서울시 11구 11동", operationTime: "08:00 - 21:00"),
-    NearCafe(name: "스타벅스", address: "서울시 22구 22동", operationTime: "08:30 - 21:30"),
-    NearCafe(name: "탐앤탐스", address: "서울시 33구 33동", operationTime: "07:00 - 22:30"),
-    NearCafe(name: "커피빈", address: "서울시 44구 44동", operationTime: "07:30 - 21:00"),
-    NearCafe(name: "이디야", address: "서울시 55구 55동", operationTime: "10:00 - 23:00")
-  ]
+  var nearCafeList: [NearCafe] = [] {
+    didSet {
+      if !nearCafeList.isEmpty {
+        emptyLabel.textColor = .clear
+      } else {
+        emptyLabel.textColor = .systemYellow
+      }
+      tableView.reloadData()
+    }
+  }
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var emptyLabel: UILabel!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
@@ -31,10 +33,34 @@ class NearCafeViewController: UIViewController {
     configure()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    fetchData()
+  }
+  
   // MARK: - Configure
   func configure() {
     tableView.delegate = self
     tableView.dataSource = self
+  }
+  
+  func fetchData() {
+    nearCafeList = []
+    APIService.shared.fetchCafeInfo(pos: (37.654893784621144,127.06157902459952), query: "스타벅스") { code, json in
+      let storeList = json["documents"]
+      print("JSON - ", json)
+      _ = storeList.map {
+        let addressName = $0.1["road_address_name"].stringValue
+        let placeUrl = $0.1["pace_url"].stringValue
+        let placeName = $0.1["place_name"].stringValue
+        let x = $0.1["x"].doubleValue
+        let y = $0.1["y"].doubleValue
+        
+        let cafe = NearCafe(name: placeName, address: addressName, point: (x, y), placeUrl: placeUrl)
+        self.nearCafeList.append(cafe)
+      }
+    }
   }
   
   // MARK: - Action
@@ -59,10 +85,10 @@ extension NearCafeViewController: UITableViewDelegate {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "detailNearCafeVC") as? DetailNearCafeViewController else { return }
     guard let environment = environment else { return }
     vc.environment = environment
-    vc.nearCafe = dummyList[indexPath.row]
+    vc.nearCafe = nearCafeList[indexPath.row]
     
     let nav = UINavigationController(rootViewController: vc)
-    nav.title = dummyList[indexPath.row].name
+    nav.title = nearCafeList[indexPath.row].name
     nav.modalPresentationStyle = .fullScreen
     self.present(nav, animated: true, completion: nil)
   }
@@ -71,14 +97,14 @@ extension NearCafeViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension NearCafeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dummyList.count
+    return nearCafeList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: NearCafeTableViewCell.identifier) as? NearCafeTableViewCell else { return UITableViewCell() }
-    let row = dummyList[indexPath.row]
+    let row = nearCafeList[indexPath.row]
     cell.cellConfigure(row: row)
-    cell.cafeImageView.image = UIImage(named: imageList[indexPath.row]) ?? UIImage.NearCafePlaceholder
+    cell.cafeImageView.image = UIImage.NearCafePlaceholder
     
     cell.selectionStyle = .none
     return cell

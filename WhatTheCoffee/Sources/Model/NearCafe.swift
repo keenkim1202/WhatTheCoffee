@@ -10,5 +10,6 @@ import Foundation
 struct NearCafe {
   var name: String
   var address: String
-  var operationTime: String
+  var point: (Double, Double)
+  var placeUrl: String
 }
