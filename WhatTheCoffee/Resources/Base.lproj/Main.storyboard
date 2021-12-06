@@ -1316,8 +1316,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hyh-IX-Tff" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="근처 카페" image="mappin.circle" catalog="system" selectedImage="mappin.circle.fill" id="8Wy-zv-Ggc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zr2-xa-pm5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zr2-xa-pm5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
