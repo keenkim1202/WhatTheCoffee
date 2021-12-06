@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RecommendViewController: UIViewController {
   
@@ -34,6 +35,15 @@ class RecommendViewController: UIViewController {
     
     fetchData()
     checkIsEmpty()
+//    firebaseLogEvent()
+  }
+  
+  func firebaseLogEvent() {
+    Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+      AnalyticsParameterItemID: "id-\(title!)",
+      AnalyticsParameterItemName: title!,
+      AnalyticsParameterContentType: "cont",
+    ])
   }
   
   func checkIsEmpty() {
