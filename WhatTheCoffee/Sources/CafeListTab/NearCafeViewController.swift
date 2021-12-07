@@ -26,7 +26,7 @@ class NearCafeViewController: UIViewController {
   
   var userLocation: CLLocation? {
      didSet {
-       fetchData()
+       fetchData(query: "스타벅스") // temporary
      }
   }
   
@@ -44,6 +44,16 @@ class NearCafeViewController: UIViewController {
   // MARK: - Configure
   func configure() {
     adjustNavigationBarFont()
+    
+    let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchNearCafeViewController
+    let searchController = UISearchController(searchResultsController: searchVC)
+
+    searchController.delegate = self
+    searchController.searchBar.delegate = self
+    searchController.searchResultsUpdater = self
+    
+    self.definesPresentationContext = true
+    self.navigationItem.searchController = searchController
     
     tableView.delegate = self
     tableView.dataSource = self
@@ -64,7 +74,7 @@ class NearCafeViewController: UIViewController {
     }
   }
   
-  func fetchData() {
+  func fetchData(query: String) {
     print(#function)
     nearCafeList = []
     
@@ -72,7 +82,7 @@ class NearCafeViewController: UIViewController {
       let latitude = location.coordinate.latitude
       let longitude = location.coordinate.longitude
       
-      APIService.shared.fetchCafeInfo(pos: (latitude,longitude), query: "스타벅스") { code, json in
+      APIService.shared.fetchCafeInfo(pos: (latitude,longitude), query: query) { code, json in
         let storeList = json["documents"]
         _ = storeList.map {
           let addressName = $0.1["road_address_name"].stringValue
@@ -138,7 +148,7 @@ extension NearCafeViewController: UITableViewDataSource {
   }
 }
 
-// MARK: - CLLocationManagerDelegate
+// MARK: - CLLocationManagerDelegate -
 extension NearCafeViewController: CLLocationManagerDelegate {
   // 위치 정보 계속 업데이트 -> 위도 경도 받아옴
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -153,4 +163,30 @@ extension NearCafeViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print(error)
   }
+}
+
+// MARK: - UISearchResultsUpdating -
+extension NearCafeViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchVC = searchController.searchResultsController as! SearchNearCafeViewController
+    guard let query = searchController.searchBar.text else { return }
+    
+    searchVC.queryText = query
+  }
+}
+
+// MARK: - UISearchBarDelegate -
+extension NearCafeViewController: UISearchBarDelegate {
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    self.becomeFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    tableView.reloadData()
+  }
+}
+
+// MARK: - UISearchControllerDelegate -
+extension NearCafeViewController: UISearchControllerDelegate {
+  
 }
