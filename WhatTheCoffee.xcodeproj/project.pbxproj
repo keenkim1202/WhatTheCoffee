@@ -45,7 +45,7 @@
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
-		1CC914E92758BD0E002BD76D /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E82758BD0E002BD76D /* SearchResultViewController.swift */; };
+		1CC914E92758BD0E002BD76D /* SearchNearCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E82758BD0E002BD76D /* SearchNearCafeViewController.swift */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 		1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */; };
 		1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */; };
@@ -58,6 +58,7 @@
 		1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6B275DE43600308DB2 /* APIService.swift */; };
 		1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */; };
 		1CD5EA72275DF8F300308DB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CD5EA71275DF8F300308DB2 /* GoogleService-Info.plist */; };
+		1CE7E9C6275E08A50094CFCB /* SearchNearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE7E9C5275E08A50094CFCB /* SearchNearCafeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,7 +98,7 @@
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
 		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
 		1CC914E62758B59E002BD76D /* NearCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafe.swift; sourceTree = "<group>"; };
-		1CC914E82758BD0E002BD76D /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		1CC914E82758BD0E002BD76D /* SearchNearCafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNearCafeViewController.swift; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
 		1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		1CD5EA6B275DE43600308DB2 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle++Extension.swift"; sourceTree = "<group>"; };
 		1CD5EA71275DF8F300308DB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1CE7E9C5275E08A50094CFCB /* SearchNearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNearCafeTableViewCell.swift; sourceTree = "<group>"; };
 		1E3C7DA5F0797DCAAAD76ECA /* Pods-WhatTheCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.release.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.release.xcconfig"; sourceTree = "<group>"; };
 		98DF2435BD03B3B80855BFD1 /* Pods-WhatTheCoffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.debug.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.debug.xcconfig"; sourceTree = "<group>"; };
 		CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatTheCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,7 +216,8 @@
 				1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */,
 				1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */,
 				1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */,
-				1CC914E82758BD0E002BD76D /* SearchResultViewController.swift */,
+				1CC914E82758BD0E002BD76D /* SearchNearCafeViewController.swift */,
+				1CE7E9C5275E08A50094CFCB /* SearchNearCafeTableViewCell.swift */,
 			);
 			path = CafeListTab;
 			sourceTree = "<group>";
@@ -441,7 +444,7 @@
 				1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */,
 				1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */,
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
-				1CC914E92758BD0E002BD76D /* SearchResultViewController.swift in Sources */,
+				1CC914E92758BD0E002BD76D /* SearchNearCafeViewController.swift in Sources */,
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
@@ -458,6 +461,7 @@
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
 				1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */,
 				1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */,
+				1CE7E9C6275E08A50094CFCB /* SearchNearCafeTableViewCell.swift in Sources */,
 				1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */,
 				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
 				1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */,
