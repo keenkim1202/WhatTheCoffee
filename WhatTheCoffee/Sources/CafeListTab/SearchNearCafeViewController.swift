@@ -9,6 +9,8 @@ import UIKit
 
 class SearchNearCafeViewController: UIViewController {
   
+  var queryText: String?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
