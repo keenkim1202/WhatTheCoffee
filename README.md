@@ -21,7 +21,11 @@
 - ✅ Tab2는 업데이트 시 추가될 예정입니다.
 
 # 📌 사용 라이브러리 & API
-<img src="https://user-images.githubusercontent.com/59866819/142140284-114f301c-1b6a-4a55-9f42-354cc218c72a.png" />
+- [Realm](https://github.com/realm/realm-cocoa)
+- [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager)
+- [Alamofire](https://github.com/Alamofire/Alamofire)
+- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+- [TextFieldEffects](https://github.com/raulriera/TextFieldEffects)
 
 
 # 📌 전체적 구조 잡기
