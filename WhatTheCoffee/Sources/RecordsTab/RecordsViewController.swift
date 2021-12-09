@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class RecordsViewController: UIViewController {
   
@@ -67,7 +68,7 @@ class RecordsViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    Analytics.logEvent("TAB_records", parameters: nil)
     fetchData()
     checkIsEmpty()
   }

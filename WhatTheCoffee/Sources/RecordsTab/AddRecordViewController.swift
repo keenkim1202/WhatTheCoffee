@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-// TODO: 좀 더 깔끔하게 정리할 수 있을 것 같음. 나중에 수정하기
+import FirebaseAnalytics
 
 class AddRecordViewController: UIViewController {
   
@@ -221,11 +220,13 @@ class AddRecordViewController: UIViewController {
       showAlert("별점을 체크해주세요.")
     } else {
       saveData()
+      Analytics.logEvent("ADD_newRecord", parameters: nil)
       self.dismiss(animated: true, completion: nil)
     }
   }
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {
+    Analytics.logEvent("CANCEL_newRecord", parameters: nil)
     self.dismiss(animated: true, completion: nil)
   }
   

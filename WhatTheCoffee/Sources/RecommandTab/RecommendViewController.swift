@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class RecommendViewController: UIViewController {
   
@@ -31,7 +32,7 @@ class RecommendViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    Analytics.logEvent("TAB_recommend", parameters: nil)
     fetchData()
     checkIsEmpty()
   }

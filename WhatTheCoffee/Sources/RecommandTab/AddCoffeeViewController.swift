@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import FirebaseAnalytics
 
 // TODO: 카메라 및 사진첩 접근 권한 묻도록 설정하기.
 
@@ -122,6 +123,7 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - Actions
   /// navigationBarButton
   @objc func onCancel() {
+    Analytics.logEvent("CANCEL_newCoffee", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -130,9 +132,10 @@ class AddCoffeeViewController: UIViewController {
     guard let text = nameTextField.text else { return }
     
     if text.isEmpty {
-      showAlert("카페명을 입력해주세요.")
+      showAlert("커피명을 입력해주세요.")
     } else {
       saveData()
+      Analytics.logEvent("ADD_newCoffee", parameters: ["커피명": text])
       self.navigationController?.popViewController(animated: true)
     }
   }
