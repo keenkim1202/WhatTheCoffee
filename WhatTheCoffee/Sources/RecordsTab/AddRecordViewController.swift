@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TextFieldEffects
 import FirebaseAnalytics
 
 class AddRecordViewController: UIViewController {
@@ -29,10 +30,10 @@ class AddRecordViewController: UIViewController {
   // MARK: - UI
   @IBOutlet weak var recordImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
-  @IBOutlet weak var titleTextField: UITextField!
+  @IBOutlet weak var titleTextField: IsaoTextField!
   @IBOutlet weak var commentTextView: UITextView!
   
-  @IBOutlet weak var dateTextField: UITextField!
+  @IBOutlet weak var dateTextField: IsaoTextField!
   @IBOutlet weak var verygoodButton: UIButton!
   @IBOutlet weak var goodButton: UIButton!
   @IBOutlet weak var sosoButton: UIButton!

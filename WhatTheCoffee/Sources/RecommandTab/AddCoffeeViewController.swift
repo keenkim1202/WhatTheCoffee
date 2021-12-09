@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import FirebaseAnalytics
+import TextFieldEffects
 
 // TODO: 카메라 및 사진첩 접근 권한 묻도록 설정하기.
 
@@ -34,7 +35,7 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - UI
   @IBOutlet weak var coffeeImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
-  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var nameTextField: IsaoTextField!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
