@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAnalytics
 
 class NearCafeViewController: UIViewController {
   
@@ -26,7 +27,7 @@ class NearCafeViewController: UIViewController {
   
   var userLocation: CLLocation? {
      didSet {
-       fetchData(query: "스타벅스") // temporary
+       fetchData(query: "카페") // temporary
      }
   }
   
@@ -41,16 +42,20 @@ class NearCafeViewController: UIViewController {
     configure()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    Analytics.logEvent("TAB_nearCafe", parameters: nil)
+  }
+  
   // MARK: - Configure
   func configure() {
     adjustNavigationBarFont()
     
-    let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! SearchNearCafeViewController
-    let searchController = UISearchController(searchResultsController: searchVC)
+    let searchController = UISearchController()
 
+    searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
     searchController.delegate = self
     searchController.searchBar.delegate = self
-    searchController.searchResultsUpdater = self
     
     self.definesPresentationContext = true
     self.navigationItem.searchController = searchController
@@ -165,18 +170,15 @@ extension NearCafeViewController: CLLocationManagerDelegate {
   }
 }
 
-// MARK: - UISearchResultsUpdating -
-extension NearCafeViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    let searchVC = searchController.searchResultsController as! SearchNearCafeViewController
-    guard let query = searchController.searchBar.text else { return }
-    
-    searchVC.queryText = query
-  }
-}
-
 // MARK: - UISearchBarDelegate -
 extension NearCafeViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.endEditing(true)
+    guard let query = searchBar.text else { return }
+
+    fetchData(query: query)
+  }
+  
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     self.becomeFirstResponder()
   }
