@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import WebKit
 
 class DetailNearCafeViewController: UIViewController {
   
@@ -16,9 +17,8 @@ class DetailNearCafeViewController: UIViewController {
   let imageList: [String] = ["할리스", "투썸플레이스", "스타벅스", "탐앤탐스", "커피빈", "이디야"]
   
   // MARK: - UI
-  @IBOutlet weak var cafeImageView: UIImageView!
   @IBOutlet weak var addressLabel: UILabel!
-  @IBOutlet weak var operationLabel: UILabel!
+  @IBOutlet weak var detailInfoButton: UIButton!
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var backgroundView: UIView!
   
@@ -30,21 +30,30 @@ class DetailNearCafeViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    cafeImageView.layer.cornerRadius = CGFloat(8)
+    detailInfoButton.layer.cornerRadius = CGFloat(8)
     backgroundView.layer.cornerRadius = CGFloat(8)
     mapView.layer.cornerRadius = CGFloat(8)
     
     if let cafe = nearCafe {
       self.navigationItem.title = cafe.name
-      cafeImageView.image = UIImage(named: cafe.name) ?? UIImage.NearCafePlaceholder
       addressLabel.text = cafe.address
-      operationLabel.text = "상세보기"
     }
   }
   
   // MARK: - Action
   @IBAction func onClose(_ sender: UIBarButtonItem) {
     self.dismiss(animated: true, completion: nil)
+  }
+  
+  @IBAction func onDetailInfo(_ sender: UIButton) {
+    print("clicked")
+    guard let nearCafe = nearCafe else { return }
+    print("nearCafe OK.")
+    guard let detailSettingVC = self.storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as? SettingDetailViewController else { return }
+    print("vc OK.")
+    detailSettingVC.url = nearCafe.placeUrl
+    print(nearCafe.placeUrl)
+    self.present(detailSettingVC, animated: true, completion: nil)
   }
   
 }

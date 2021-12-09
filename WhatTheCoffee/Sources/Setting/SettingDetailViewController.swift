@@ -12,6 +12,7 @@ class SettingDetailViewController: UIViewController {
   
   // MARK: - Properties
   var index: Int?
+  var url: String?
   
   // MARK: - UI
   @IBOutlet weak var webView: WKWebView!
@@ -24,8 +25,10 @@ class SettingDetailViewController: UIViewController {
       loadWeb(link: "https://www.instagram.com/what.the_coffee/?hl=ko")
     } else if index == 1 {
       loadWeb(link: "https://ossified-gas-bd2.notion.site/859dcf874bcf499c8d35b77d5a2877fe")
-    } else {
+    } else if index == 2 {
       loadWeb(link: "https://ossified-gas-bd2.notion.site/ff69f40b6f6940f0ba2282ada37b2546")
+    } else {
+      loadWeb(link: url!)
     }
   }
   

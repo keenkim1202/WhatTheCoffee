@@ -692,18 +692,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysR-LI-Phx">
                                 <rect key="frame" x="20" y="153" width="374" height="124.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="5Ve-PD-Fof">
-                                        <rect key="frame" x="10" y="10" width="104.5" height="104.5"/>
-                                        <color key="backgroundColor" name="AppearanceColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="5Ve-PD-Fof" secondAttribute="height" multiplier="1:1" id="luE-Uu-1YN"/>
-                                        </constraints>
-                                    </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="R9Q-Wr-ZCr">
-                                        <rect key="frame" x="129.5" y="15" width="234.5" height="42.5"/>
+                                        <rect key="frame" x="10" y="15" width="354" height="42.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="상세 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-Df-pd0">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKU-Df-pd0">
+                                                <rect key="frame" x="0.0" y="0.0" width="28" height="22"/>
                                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -716,36 +709,28 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VAM-0q-aLx">
-                                        <rect key="frame" x="129.5" y="67.5" width="234.5" height="42.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="운영 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kel-id-OiI">
-                                                <rect key="frame" x="0.0" y="0.0" width="59" height="22"/>
-                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 - 10:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sa-LR-gsC">
-                                                <rect key="frame" x="0.0" y="22" width="75.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="14"/>
-                                                <color key="textColor" name="OrangeMainColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe9-f6-zDb">
+                                        <rect key="frame" x="0.0" y="77.5" width="374" height="37"/>
+                                        <color key="backgroundColor" name="GreenMainColor"/>
+                                        <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="상세 정보 보기">
+                                            <color key="titleColor" name="GreenSubColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onDetailInfo:" destination="vV2-Re-cHq" eventType="touchUpInside" id="dxP-Ug-LUD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" name="GreenMainColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="5Ve-PD-Fof" secondAttribute="bottom" constant="10" id="5Wb-6a-Txh"/>
-                                    <constraint firstItem="5Ve-PD-Fof" firstAttribute="leading" secondItem="ysR-LI-Phx" secondAttribute="leading" constant="10" id="LRe-vq-HqS"/>
-                                    <constraint firstItem="5Ve-PD-Fof" firstAttribute="top" secondItem="ysR-LI-Phx" secondAttribute="top" constant="10" id="Msv-r0-Mvq"/>
+                                    <constraint firstItem="R9Q-Wr-ZCr" firstAttribute="leading" secondItem="ysR-LI-Phx" secondAttribute="leading" constant="10" id="5pP-wI-bfm"/>
+                                    <constraint firstAttribute="trailing" secondItem="fe9-f6-zDb" secondAttribute="trailing" id="7Iy-Ys-ruh"/>
+                                    <constraint firstItem="fe9-f6-zDb" firstAttribute="leading" secondItem="ysR-LI-Phx" secondAttribute="leading" id="ASv-qB-kTX"/>
                                     <constraint firstItem="R9Q-Wr-ZCr" firstAttribute="top" secondItem="ysR-LI-Phx" secondAttribute="top" constant="15" id="RQ4-Mx-59p"/>
                                     <constraint firstAttribute="trailing" secondItem="R9Q-Wr-ZCr" secondAttribute="trailing" constant="10" id="Zbm-hM-sgk"/>
-                                    <constraint firstItem="R9Q-Wr-ZCr" firstAttribute="leading" secondItem="5Ve-PD-Fof" secondAttribute="trailing" constant="15" id="aXx-32-dRY"/>
-                                    <constraint firstItem="VAM-0q-aLx" firstAttribute="top" secondItem="R9Q-Wr-ZCr" secondAttribute="bottom" constant="10" id="dqH-5Y-cXh"/>
                                     <constraint firstAttribute="width" secondItem="ysR-LI-Phx" secondAttribute="height" multiplier="3:1" id="dtT-F8-fV9"/>
-                                    <constraint firstItem="VAM-0q-aLx" firstAttribute="leading" secondItem="5Ve-PD-Fof" secondAttribute="trailing" constant="15" id="eTJ-02-pbG"/>
-                                    <constraint firstAttribute="trailing" secondItem="VAM-0q-aLx" secondAttribute="trailing" constant="10" id="rio-tL-jT8"/>
+                                    <constraint firstAttribute="bottom" secondItem="fe9-f6-zDb" secondAttribute="bottom" constant="10" id="f0I-t7-EQJ"/>
+                                    <constraint firstItem="fe9-f6-zDb" firstAttribute="top" secondItem="R9Q-Wr-ZCr" secondAttribute="bottom" constant="20" id="xJQ-nL-bOt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -776,9 +761,8 @@
                     <connections>
                         <outlet property="addressLabel" destination="u10-iq-IgN" id="Y7b-Mg-CSE"/>
                         <outlet property="backgroundView" destination="ysR-LI-Phx" id="jka-C9-xuW"/>
-                        <outlet property="cafeImageView" destination="5Ve-PD-Fof" id="P4b-Cp-XC0"/>
+                        <outlet property="detailInfoButton" destination="fe9-f6-zDb" id="LCe-AR-Rc2"/>
                         <outlet property="mapView" destination="aSz-3r-7sC" id="fE4-67-FTF"/>
-                        <outlet property="operationLabel" destination="8Sa-LR-gsC" id="3fq-0V-aHV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rq6-pn-WMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1345,88 +1329,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWS-5g-V6b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2660.8695652173915" y="1210.7142857142856"/>
-        </scene>
-        <!--Search Near Cafe View Controller-->
-        <scene sceneID="F62-nx-aMC">
-            <objects>
-                <viewController storyboardIdentifier="searchVC" id="a2m-xD-jlI" customClass="SearchNearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ebW-EA-4xa">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eas-B3-jJC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchNearCafeCell" rowHeight="90" id="oVF-IX-0h7" customClass="SearchNearCafeTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oVF-IX-0h7" id="y3E-h3-sS7">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-i4-Xt2">
-                                                    <rect key="frame" x="10" y="10" width="70" height="70"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="tvI-i4-Xt2" secondAttribute="height" multiplier="1:1" id="TQg-CY-NFh"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YQE-vg-drJ">
-                                                    <rect key="frame" x="90" y="20" width="284.5" height="50"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78B-Mu-zVM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="284.5" height="31"/>
-                                                            <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmW-q8-2DG">
-                                                            <rect key="frame" x="0.0" y="31" width="284.5" height="19"/>
-                                                            <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="fmW-q8-2DG" firstAttribute="leading" secondItem="YQE-vg-drJ" secondAttribute="leading" id="C0J-Qd-QxF"/>
-                                                        <constraint firstAttribute="trailing" secondItem="78B-Mu-zVM" secondAttribute="trailing" id="COe-7H-b75"/>
-                                                        <constraint firstAttribute="trailing" secondItem="fmW-q8-2DG" secondAttribute="trailing" id="fL7-gg-KUr"/>
-                                                        <constraint firstItem="78B-Mu-zVM" firstAttribute="leading" secondItem="YQE-vg-drJ" secondAttribute="leading" id="n1e-ur-1It"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="tvI-i4-Xt2" firstAttribute="leading" secondItem="y3E-h3-sS7" secondAttribute="leading" constant="10" id="9zD-IQ-Iru"/>
-                                                <constraint firstAttribute="trailing" secondItem="YQE-vg-drJ" secondAttribute="trailing" constant="10" id="L6Z-KW-LP9"/>
-                                                <constraint firstAttribute="bottom" secondItem="tvI-i4-Xt2" secondAttribute="bottom" constant="10" id="TrI-Gg-BFK"/>
-                                                <constraint firstItem="YQE-vg-drJ" firstAttribute="top" secondItem="y3E-h3-sS7" secondAttribute="top" constant="20" id="U5s-tc-hO6"/>
-                                                <constraint firstAttribute="bottom" secondItem="YQE-vg-drJ" secondAttribute="bottom" constant="20" id="b76-Yh-4x3"/>
-                                                <constraint firstItem="YQE-vg-drJ" firstAttribute="leading" secondItem="tvI-i4-Xt2" secondAttribute="trailing" constant="10" id="ihs-i4-P2a"/>
-                                                <constraint firstItem="tvI-i4-Xt2" firstAttribute="top" secondItem="y3E-h3-sS7" secondAttribute="top" constant="10" id="wPA-k1-5E4"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="addressLabel" destination="fmW-q8-2DG" id="feB-OR-Flh"/>
-                                            <outlet property="cafeImageView" destination="tvI-i4-Xt2" id="TUA-cX-2AZ"/>
-                                            <outlet property="cafeNameLabel" destination="78B-Mu-zVM" id="8Pf-d1-wWJ"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="rcU-tU-c4Q"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="eas-B3-jJC" firstAttribute="leading" secondItem="rcU-tU-c4Q" secondAttribute="leading" id="Lwu-kj-Zey"/>
-                            <constraint firstItem="eas-B3-jJC" firstAttribute="top" secondItem="rcU-tU-c4Q" secondAttribute="top" id="PJ1-s0-C1P"/>
-                            <constraint firstItem="rcU-tU-c4Q" firstAttribute="trailing" secondItem="eas-B3-jJC" secondAttribute="trailing" id="ddY-ti-C5z"/>
-                            <constraint firstItem="rcU-tU-c4Q" firstAttribute="bottom" secondItem="eas-B3-jJC" secondAttribute="bottom" id="hN0-bm-r32"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="erf-r1-SqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1844.9275362318842" y="1930.5803571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vw2-5f-N9G">
