@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AppTrackingTransparency
+import FirebaseAnalytics
 import Realm
 import RealmSwift
 
@@ -50,6 +52,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
   
   func sceneDidBecomeActive(_ scene: UIScene) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      // ATT Framework
+      ATTrackingManager.requestTrackingAuthorization { status in
+        switch status {
+        case .notDetermined:
+          print("Not Determined")
+          Analytics.setAnalyticsCollectionEnabled(false)
+        case .restricted:
+          print("restricted")
+          Analytics.setAnalyticsCollectionEnabled(false)
+        case .denied:
+          print("denied")
+          Analytics.setAnalyticsCollectionEnabled(false)
+        case .authorized:
+          print("authorized")
+          Analytics.setAnalyticsCollectionEnabled(true)
+        @unknown default:
+          print("unknown")
+          Analytics.setAnalyticsCollectionEnabled(false)
+        }
+      }
+    }
   }
   
   func sceneWillResignActive(_ scene: UIScene) {

@@ -216,7 +216,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="카페 이름이 무엇인가요?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-gY-PX3" customClass="IsaoTextField" customModule="TextFieldEffects">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="카페 이름이 무엇인가요?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-gY-PX3" customClass="IsaoTextField" customModule="WhatTheCoffee" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="52" width="354" height="50"/>
                                                                 <color key="backgroundColor" name="AppearanceColor"/>
                                                                 <constraints>
@@ -254,7 +254,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="언제 방문하셨나요?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRe-dv-C59" customClass="IsaoTextField" customModule="TextFieldEffects">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="언제 방문하셨나요?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRe-dv-C59" customClass="IsaoTextField" customModule="WhatTheCoffee" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="52.5" width="354" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="LFf-CZ-7qJ"/>
@@ -536,11 +536,11 @@
                         <outlet property="addImageButton" destination="LxD-ZJ-dUd" id="tPx-qv-uwf"/>
                         <outlet property="badButton" destination="uQ8-64-Ria" id="R4i-rD-TGr"/>
                         <outlet property="commentTextView" destination="f8n-s5-gDg" id="vYK-I3-7gP"/>
-                        <outlet property="dateTextField" destination="WRe-dv-C59" id="4hP-3I-Wm2"/>
+                        <outlet property="dateTextField" destination="WRe-dv-C59" id="l83-Mw-x4u"/>
                         <outlet property="goodButton" destination="LRh-Qg-qxF" id="krh-2h-X39"/>
                         <outlet property="recordImageView" destination="FFm-Wx-1u5" id="LSK-5L-cYg"/>
                         <outlet property="sosoButton" destination="u2S-Oy-BS7" id="nDm-CE-DMQ"/>
-                        <outlet property="titleTextField" destination="9oP-gY-PX3" id="M4Q-vl-k63"/>
+                        <outlet property="titleTextField" destination="9oP-gY-PX3" id="cbI-ON-WlG"/>
                         <outlet property="verybadButton" destination="0YD-hF-5Ws" id="3MO-pa-xMP"/>
                         <outlet property="verygoodButton" destination="Vcp-F0-Cdd" id="iI8-oN-JM9"/>
                     </connections>
@@ -1163,7 +1163,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="어떤 커피 인가요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmZ-uA-g5P" customClass="IsaoTextField" customModule="TextFieldEffects">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="어떤 커피 인가요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmZ-uA-g5P" customClass="IsaoTextField" customModule="WhatTheCoffee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="42" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="95e-v6-kq5"/>
@@ -1212,7 +1212,7 @@
                     <connections>
                         <outlet property="addImageButton" destination="nVq-e1-sj4" id="nAR-Dk-mL0"/>
                         <outlet property="coffeeImageView" destination="UTu-am-Yy7" id="s1O-nt-SUk"/>
-                        <outlet property="nameTextField" destination="XmZ-uA-g5P" id="hSo-9R-4BP"/>
+                        <outlet property="nameTextField" destination="XmZ-uA-g5P" id="tEA-sM-CJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjn-7B-mgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
