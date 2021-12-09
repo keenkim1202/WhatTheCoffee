@@ -11,6 +11,8 @@ class SearchNearCafeTableViewCell: UITableViewCell {
 
   static let identifier = "searchNearCafeCell"
   
+  @IBOutlet weak var cafeImageView: UIImageView!
+  @IBOutlet weak var cafeNameLabel: UILabel!
+  @IBOutlet weak var addressLabel: UILabel!
   
-
 }

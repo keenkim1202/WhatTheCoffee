@@ -623,7 +623,7 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="ExI-VN-rKM" id="CFe-Ka-ZLU"/>
                                             <outlet property="cafeImageView" destination="zKp-Ug-XWe" id="HRy-Zj-PTw"/>
-                                            <outlet property="nameLabel" destination="9kg-Gn-fe7" id="TMW-zj-s9n"/>
+                                            <outlet property="cafeNameLabel" destination="9kg-Gn-fe7" id="D8h-xZ-iIq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -640,11 +640,10 @@
                         <constraints>
                             <constraint firstItem="axq-cU-5zd" firstAttribute="bottom" secondItem="s3d-Tb-gyo" secondAttribute="bottom" id="BwZ-Uu-Ik9"/>
                             <constraint firstItem="axq-cU-5zd" firstAttribute="trailing" secondItem="s3d-Tb-gyo" secondAttribute="trailing" id="HYP-ma-ub1"/>
+                            <constraint firstItem="hmZ-ln-30i" firstAttribute="centerY" secondItem="axq-cU-5zd" secondAttribute="centerY" id="PHc-EC-q5X"/>
                             <constraint firstItem="hmZ-ln-30i" firstAttribute="leading" secondItem="axq-cU-5zd" secondAttribute="leading" constant="10" id="Qjo-QO-KsT"/>
                             <constraint firstItem="s3d-Tb-gyo" firstAttribute="top" secondItem="axq-cU-5zd" secondAttribute="top" id="Uo3-Oi-AO4"/>
                             <constraint firstItem="s3d-Tb-gyo" firstAttribute="leading" secondItem="axq-cU-5zd" secondAttribute="leading" id="VE0-0d-naT"/>
-                            <constraint firstItem="hmZ-ln-30i" firstAttribute="centerX" secondItem="axq-cU-5zd" secondAttribute="centerX" id="W0g-pV-5WU"/>
-                            <constraint firstItem="hmZ-ln-30i" firstAttribute="centerY" secondItem="axq-cU-5zd" secondAttribute="centerY" id="p6b-2e-xzh"/>
                             <constraint firstItem="axq-cU-5zd" firstAttribute="trailing" secondItem="hmZ-ln-30i" secondAttribute="trailing" constant="10" id="scj-3p-9aL"/>
                         </constraints>
                     </view>
@@ -1359,7 +1358,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchNearCafeCell" rowHeight="90" id="oVF-IX-0h7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchNearCafeCell" rowHeight="90" id="oVF-IX-0h7" customClass="SearchNearCafeTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oVF-IX-0h7" id="y3E-h3-sS7">
@@ -1375,19 +1374,25 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YQE-vg-drJ">
                                                     <rect key="frame" x="90" y="20" width="284.5" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78B-Mu-zVM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="31"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78B-Mu-zVM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="284.5" height="31"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmW-q8-2DG">
-                                                            <rect key="frame" x="0.0" y="31" width="30.5" height="19"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmW-q8-2DG">
+                                                            <rect key="frame" x="0.0" y="31" width="284.5" height="19"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="fmW-q8-2DG" firstAttribute="leading" secondItem="YQE-vg-drJ" secondAttribute="leading" id="C0J-Qd-QxF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="78B-Mu-zVM" secondAttribute="trailing" id="COe-7H-b75"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fmW-q8-2DG" secondAttribute="trailing" id="fL7-gg-KUr"/>
+                                                        <constraint firstItem="78B-Mu-zVM" firstAttribute="leading" secondItem="YQE-vg-drJ" secondAttribute="leading" id="n1e-ur-1It"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -1400,6 +1405,11 @@
                                                 <constraint firstItem="tvI-i4-Xt2" firstAttribute="top" secondItem="y3E-h3-sS7" secondAttribute="top" constant="10" id="wPA-k1-5E4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="fmW-q8-2DG" id="feB-OR-Flh"/>
+                                            <outlet property="cafeImageView" destination="tvI-i4-Xt2" id="TUA-cX-2AZ"/>
+                                            <outlet property="cafeNameLabel" destination="78B-Mu-zVM" id="8Pf-d1-wWJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
