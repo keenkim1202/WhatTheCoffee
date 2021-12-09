@@ -91,7 +91,7 @@ class NearCafeViewController: UIViewController {
           let x = $0.1["x"].doubleValue
           let y = $0.1["y"].doubleValue
           
-          let cafe = NearCafe(name: placeName, address: addressName, point: (x, y), placeUrl: placeUrl)
+          let cafe = NearCafe(name: placeName, address: addressName, latitude: x, longitude: y, placeUrl: placeUrl)
           self.nearCafeList.append(cafe)
         }
       }
