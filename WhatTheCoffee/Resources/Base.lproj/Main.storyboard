@@ -170,10 +170,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-te-qHT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1093.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1110"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Fif-7G-ljN">
-                                                <rect key="frame" x="20" y="20" width="374" height="1053.5"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="1070"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="I8h-MU-vid">
                                                         <rect key="frame" x="10" y="0.0" width="354" height="379.5"/>
@@ -208,16 +208,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1KP-dx-G9t">
-                                                        <rect key="frame" x="10" y="419.5" width="354" height="98.5"/>
+                                                        <rect key="frame" x="10" y="419.5" width="354" height="102"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCt-Vn-WbB">
-                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="33.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="37"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="카페 이름이 무엇인가요?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-gY-PX3" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                                <rect key="frame" x="0.0" y="48.5" width="354" height="50"/>
+                                                                <rect key="frame" x="0.0" y="52" width="354" height="50"/>
                                                                 <color key="backgroundColor" name="AppearanceColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="tdd-xs-tf1"/>
@@ -246,16 +246,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lZr-46-TKv">
-                                                        <rect key="frame" x="10" y="558" width="354" height="98.5"/>
+                                                        <rect key="frame" x="10" y="561.5" width="354" height="102.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방문일" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LR-Ft-gUx">
-                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="33.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="37.5"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="언제 방문하셨나요?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRe-dv-C59" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                                <rect key="frame" x="0.0" y="48.5" width="354" height="50"/>
+                                                                <rect key="frame" x="0.0" y="52.5" width="354" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="LFf-CZ-7qJ"/>
                                                                 </constraints>
@@ -283,16 +283,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-vH-VUA">
-                                                        <rect key="frame" x="0.0" y="696.5" width="374" height="107.5"/>
+                                                        <rect key="frame" x="0.0" y="704" width="374" height="112"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평점" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V11-db-jf7">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="22"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="iZo-s4-XJq">
-                                                                <rect key="frame" x="0.0" y="27.5" width="374" height="80"/>
+                                                                <rect key="frame" x="0.0" y="32" width="374" height="80"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bi6-1T-HKT">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="80"/>
@@ -448,16 +448,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BXZ-9K-kk3">
-                                                        <rect key="frame" x="10" y="844" width="354" height="209.5"/>
+                                                        <rect key="frame" x="10" y="856" width="354" height="214"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="코멘트" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUX-xV-5Np">
-                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="17.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="22"/>
                                                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="f8n-s5-gDg">
-                                                                <rect key="frame" x="0.0" y="32.5" width="354" height="177"/>
+                                                                <rect key="frame" x="0.0" y="37" width="354" height="177"/>
                                                                 <color key="backgroundColor" name="AppearanceColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="f8n-s5-gDg" secondAttribute="height" multiplier="2:1" id="l5a-HY-PCC"/>
@@ -1172,16 +1172,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-TA-pbX">
-                                <rect key="frame" x="20" y="429" width="374" height="87.5"/>
+                                <rect key="frame" x="20" y="429" width="374" height="92"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4J-VX-NYw">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="22"/>
                                         <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="어떤 커피 인가요?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XmZ-uA-g5P" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                        <rect key="frame" x="0.0" y="37.5" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="42" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="95e-v6-kq5"/>
                                         </constraints>
@@ -1350,7 +1350,7 @@
         <!--Search Near Cafe View Controller-->
         <scene sceneID="F62-nx-aMC">
             <objects>
-                <viewController id="a2m-xD-jlI" customClass="SearchNearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchVC" id="a2m-xD-jlI" customClass="SearchNearCafeViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ebW-EA-4xa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1359,20 +1359,46 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchNearCafeCell" rowHeight="90" id="oVF-IX-0h7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchNearCafeCell" rowHeight="90" id="oVF-IX-0h7">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oVF-IX-0h7" id="y3E-h3-sS7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-i4-Xt2">
-                                                    <rect key="frame" x="0.0" y="-49" width="240" height="128"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="tvI-i4-Xt2">
+                                                    <rect key="frame" x="10" y="10" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tvI-i4-Xt2" secondAttribute="height" multiplier="1:1" id="TQg-CY-NFh"/>
                                                     </constraints>
                                                 </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YQE-vg-drJ">
+                                                    <rect key="frame" x="90" y="20" width="284.5" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78B-Mu-zVM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="31"/>
+                                                            <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmW-q8-2DG">
+                                                            <rect key="frame" x="0.0" y="31" width="30.5" height="19"/>
+                                                            <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tvI-i4-Xt2" firstAttribute="leading" secondItem="y3E-h3-sS7" secondAttribute="leading" constant="10" id="9zD-IQ-Iru"/>
+                                                <constraint firstAttribute="trailing" secondItem="YQE-vg-drJ" secondAttribute="trailing" constant="10" id="L6Z-KW-LP9"/>
+                                                <constraint firstAttribute="bottom" secondItem="tvI-i4-Xt2" secondAttribute="bottom" constant="10" id="TrI-Gg-BFK"/>
+                                                <constraint firstItem="YQE-vg-drJ" firstAttribute="top" secondItem="y3E-h3-sS7" secondAttribute="top" constant="20" id="U5s-tc-hO6"/>
+                                                <constraint firstAttribute="bottom" secondItem="YQE-vg-drJ" secondAttribute="bottom" constant="20" id="b76-Yh-4x3"/>
+                                                <constraint firstItem="YQE-vg-drJ" firstAttribute="leading" secondItem="tvI-i4-Xt2" secondAttribute="trailing" constant="10" id="ihs-i4-P2a"/>
+                                                <constraint firstItem="tvI-i4-Xt2" firstAttribute="top" secondItem="y3E-h3-sS7" secondAttribute="top" constant="10" id="wPA-k1-5E4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -1390,7 +1416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erf-r1-SqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="1931"/>
+            <point key="canvasLocation" x="1844.9275362318842" y="1930.5803571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vw2-5f-N9G">
@@ -1413,13 +1439,13 @@
     </scenes>
     <designables>
         <designable name="9oP-gY-PX3">
-            <size key="intrinsicContentSize" width="146.5" height="19"/>
+            <size key="intrinsicContentSize" width="152.5" height="23.5"/>
         </designable>
         <designable name="WRe-dv-C59">
-            <size key="intrinsicContentSize" width="116.5" height="19"/>
+            <size key="intrinsicContentSize" width="122" height="23.5"/>
         </designable>
         <designable name="XmZ-uA-g5P">
-            <size key="intrinsicContentSize" width="108" height="19"/>
+            <size key="intrinsicContentSize" width="110" height="23.5"/>
         </designable>
     </designables>
     <resources>
