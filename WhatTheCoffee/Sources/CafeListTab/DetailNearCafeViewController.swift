@@ -26,6 +26,7 @@ class DetailNearCafeViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    adjustNavigationBarFont()
     configure()
   }
   

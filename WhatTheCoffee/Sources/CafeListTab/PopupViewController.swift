@@ -42,11 +42,11 @@ class PopupViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
+    adjustNavigationBarFont()
+
     backgroundView.layer.cornerRadius = CGFloat(8)
     closeButton.layer.cornerRadius = CGFloat(8)
     detailButton.layer.cornerRadius = CGFloat(15)
-    
-    
   }
   
   // MARK: - Action
