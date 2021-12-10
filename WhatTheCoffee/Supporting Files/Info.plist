@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>커피/카페 이미지 추가를 위해 카메라에 접근하고자 합니다.</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>사용자에게 최적한 앱 사용을 위해 앱 분석에 관한 정보를 수집합니다.</string>
+	<string>앱 사용성 향상을 위해 앱 분석에 사용됩니다.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>커피/카페 사진 추가를 위해 카메라에 접근하고자 합니다.</string>
 	<key>NMFClientId</key>
 	<string>rkft96del5</string>
 	<key>NSAppTransportSecurity</key>
