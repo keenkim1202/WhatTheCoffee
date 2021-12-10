@@ -36,12 +36,15 @@ class NearCafeViewController: UIViewController {
     super.viewDidLoad()
     print(#function)
     configure()
-    configureLocationManager()
+    locationManger.requestWhenInUseAuthorization()
+//    configureLocationManager()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     Analytics.logEvent("TAB_nearCafe", parameters: nil)
+    
+    configureLocationManager()
   }
   
   // MARK: - Configure
