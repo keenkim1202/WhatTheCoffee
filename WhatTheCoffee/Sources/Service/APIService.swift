@@ -24,7 +24,7 @@ class APIService {
     let params: Parameters = [
       "x": "\(pos.y)",
       "y": "\(pos.x)",
-      "radius": 20000,
+      "radius": 30000,
       "query": query,
       "category_group_code": "CE7"
     ]
