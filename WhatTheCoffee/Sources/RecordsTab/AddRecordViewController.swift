@@ -114,7 +114,7 @@ class AddRecordViewController: UIViewController {
       imagePicker.sourceType = .camera
       self.present(imagePicker, animated: false, completion: nil)
     } else {
-      showAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
+      showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
   }
   
@@ -216,9 +216,9 @@ class AddRecordViewController: UIViewController {
   @IBAction func onDone(_ sender: UIBarButtonItem) {
     guard let text = titleTextField.text else { return }
     if text.isEmpty {
-      showAlert("카페명을 입력해주세요.")
+      showErrorAlert("카페명을 입력해주세요.")
     } else if rate == nil {
-      showAlert("별점을 체크해주세요.")
+      showErrorAlert("별점을 체크해주세요.")
     } else {
       saveData()
       Analytics.logEvent("ADD_newRecord", parameters: nil)

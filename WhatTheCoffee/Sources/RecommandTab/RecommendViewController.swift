@@ -103,6 +103,17 @@ class RecommendViewController: UIViewController {
   
   // MARK: - Actions
   /// barButtonItems
+  
+  @IBAction func onInfo(_ sender: UIBarButtonItem) {
+    let vc = storyboard?.instantiateViewController(withIdentifier: "settingVC") as! SettingViewController
+    guard let env = environment else { return }
+    vc.environment = env
+    
+    let nav = UINavigationController(rootViewController: vc)
+    nav.modalPresentationStyle = .fullScreen
+    self.present(nav, animated: true, completion: nil)
+  }
+  
   @IBAction func onCoffeeList(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
@@ -126,7 +137,7 @@ class RecommendViewController: UIViewController {
       
       todayCoffee = randomCoffee
     } else {
-      showAlert("커피 리스트가 비어있습니다.\n커피 목록에서 추가해주세요!")
+      showErrorAlert("커피 리스트가 비어있습니다.\n커피 목록에서 추가해주세요!")
     }
   }
 }
