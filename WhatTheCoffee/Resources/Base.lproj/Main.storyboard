@@ -648,6 +648,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="근처 카페 찾기" id="doh-LV-rTI">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="CWs-96-fGh"/>
                         <barButtonItem key="rightBarButtonItem" title="지도 보기" id="6UZ-Xa-BRp">
                             <connections>
                                 <action selector="onCafeLocation:" destination="YN4-mE-ihz" id="LaT-JK-reo"/>

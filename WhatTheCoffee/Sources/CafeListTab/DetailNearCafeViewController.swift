@@ -14,7 +14,6 @@ class DetailNearCafeViewController: UIViewController {
   // MARK: - Properties
   var environment: Environment? = nil
   var nearCafe: NearCafe?
-  let imageList: [String] = ["할리스", "투썸플레이스", "스타벅스", "탐앤탐스", "커피빈", "이디야"]
   
   // MARK: - UI
   @IBOutlet weak var addressLabel: UILabel!
