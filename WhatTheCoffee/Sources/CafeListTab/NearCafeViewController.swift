@@ -142,7 +142,7 @@ class NearCafeViewController: UIViewController {
       nav.modalPresentationStyle = .fullScreen
       self.present(nav, animated: true, completion: nil)
     } else {
-      showAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
+      showErrorAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
     }
   }
 }

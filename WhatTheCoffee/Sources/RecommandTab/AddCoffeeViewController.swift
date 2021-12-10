@@ -117,7 +117,7 @@ class AddCoffeeViewController: UIViewController {
       imagePicker.sourceType = .camera
       self.present(imagePicker, animated: false, completion: nil)
     } else {
-      showAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
+      showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
   }
   
@@ -133,7 +133,7 @@ class AddCoffeeViewController: UIViewController {
     guard let text = nameTextField.text else { return }
     
     if text.isEmpty {
-      showAlert("커피명을 입력해주세요.")
+      showErrorAlert("커피명을 입력해주세요.")
     } else {
       saveData()
       Analytics.logEvent("ADD_newCoffee", parameters: ["커피명": text])

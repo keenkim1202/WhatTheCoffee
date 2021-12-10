@@ -128,7 +128,7 @@ class RecordsViewController: UIViewController {
         self.dictionarySelectedIndexPath.removeAll()
       }
     } else {
-      showAlert("삭제할 기록을 선택해주세요.")
+      showErrorAlert("삭제할 기록을 선택해주세요.")
     }
   }
   
