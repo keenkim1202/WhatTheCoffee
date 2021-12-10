@@ -777,17 +777,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YUc-Zg-G7k">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-Dd-hNJ" customClass="NMFMapView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                            </mapView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7oW-u2-hX9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YUc-Zg-G7k" firstAttribute="leading" secondItem="7oW-u2-hX9" secondAttribute="leading" id="ZjN-AM-X8k"/>
-                            <constraint firstItem="7oW-u2-hX9" firstAttribute="trailing" secondItem="YUc-Zg-G7k" secondAttribute="trailing" id="ZkY-Nm-4dU"/>
-                            <constraint firstItem="7oW-u2-hX9" firstAttribute="bottom" secondItem="YUc-Zg-G7k" secondAttribute="bottom" id="ynz-4P-hX1"/>
-                            <constraint firstItem="YUc-Zg-G7k" firstAttribute="top" secondItem="7oW-u2-hX9" secondAttribute="top" id="zcs-Ks-iXl"/>
+                            <constraint firstItem="7oW-u2-hX9" firstAttribute="trailing" secondItem="Jdv-Dd-hNJ" secondAttribute="trailing" id="P77-pZ-stx"/>
+                            <constraint firstItem="Jdv-Dd-hNJ" firstAttribute="leading" secondItem="7oW-u2-hX9" secondAttribute="leading" id="lgK-gC-evh"/>
+                            <constraint firstItem="Jdv-Dd-hNJ" firstAttribute="top" secondItem="7oW-u2-hX9" secondAttribute="top" id="pdv-ct-rZg"/>
+                            <constraint firstItem="7oW-u2-hX9" firstAttribute="bottom" secondItem="Jdv-Dd-hNJ" secondAttribute="bottom" id="v29-0A-qOf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="근처 카페 지도" id="N11-Zy-8Ea">
@@ -798,7 +799,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="YUc-Zg-G7k" id="f1C-S6-KNG"/>
+                        <outlet property="mapView" destination="Jdv-Dd-hNJ" id="kuI-mV-4pw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0O-j7-UBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

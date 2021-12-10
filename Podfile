@@ -6,7 +6,7 @@ target 'WhatTheCoffee' do
   use_frameworks!
 
   # Pods for WhatTheCoffee
-
+  pod 'NMapsMap'
   pod 'Firebase/Analytics'
 
 end
