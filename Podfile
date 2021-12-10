@@ -8,5 +8,5 @@ target 'WhatTheCoffee' do
   # Pods for WhatTheCoffee
   pod 'NMapsMap'
   pod 'Firebase/Analytics'
-
+  pod 'Firebase/Crashlytics'
 end
