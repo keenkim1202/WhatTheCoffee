@@ -90,7 +90,6 @@ class CafeLocationViewController: UIViewController {
           self.present(popupVC, animated: false, completion: nil)
         }
       }
-      
       return true
     }
     
