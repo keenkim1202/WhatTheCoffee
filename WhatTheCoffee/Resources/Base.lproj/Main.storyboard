@@ -595,12 +595,27 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-G7-IOT">
                                                     <rect key="frame" x="90" y="20" width="284.5" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kg-Gn-fe7">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcI-qM-JkE">
                                                             <rect key="frame" x="0.0" y="0.0" width="284.5" height="25"/>
-                                                            <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kg-Gn-fe7">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="248.5" height="25"/>
+                                                                    <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="100m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imb-Tz-ltf">
+                                                                    <rect key="frame" x="248.5" y="0.0" width="36" height="25"/>
+                                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="14"/>
+                                                                    <color key="textColor" name="OrangeMainColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="Imb-Tz-ltf" secondAttribute="trailing" id="J43-a0-9e7"/>
+                                                                <constraint firstItem="9kg-Gn-fe7" firstAttribute="leading" secondItem="OcI-qM-JkE" secondAttribute="leading" id="M8v-mw-Dt6"/>
+                                                            </constraints>
+                                                        </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExI-VN-rKM">
                                                             <rect key="frame" x="0.0" y="25" width="284.5" height="25"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
@@ -624,11 +639,12 @@
                                             <outlet property="addressLabel" destination="ExI-VN-rKM" id="CFe-Ka-ZLU"/>
                                             <outlet property="cafeImageView" destination="zKp-Ug-XWe" id="HRy-Zj-PTw"/>
                                             <outlet property="cafeNameLabel" destination="9kg-Gn-fe7" id="D8h-xZ-iIq"/>
+                                            <outlet property="distanceLabel" destination="Imb-Tz-ltf" id="uJ9-FE-qnZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="근처 카페를 찾지 못하였어요 🥲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmZ-ln-30i">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="근처 카페를 찾지 못하였어요 🥲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmZ-ln-30i">
                                 <rect key="frame" x="10" y="439.5" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                 <color key="textColor" name="OrangeMainColor"/>
