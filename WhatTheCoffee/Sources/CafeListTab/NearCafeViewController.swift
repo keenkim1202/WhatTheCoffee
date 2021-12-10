@@ -25,8 +25,9 @@ class NearCafeViewController: UIViewController {
     }
   }
   
-  var userLocation: CLLocation? {
+  var userCoordinate: CLLocationCoordinate2D? {
      didSet {
+       print("현재위치: \(userCoordinate!)")
        fetchData(query: "카페") // temporary
      }
   }
@@ -40,6 +41,7 @@ class NearCafeViewController: UIViewController {
     super.viewDidLoad()
     print(#function)
     configure()
+    configureLocationManager()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +64,9 @@ class NearCafeViewController: UIViewController {
     
     tableView.delegate = self
     tableView.dataSource = self
-    
+  }
+  
+  func configureLocationManager() {
     locationManger.delegate = self
     locationManger.desiredAccuracy = kCLLocationAccuracyBest
     locationManger.requestWhenInUseAuthorization()
@@ -72,7 +76,7 @@ class NearCafeViewController: UIViewController {
      locationManger.startUpdatingLocation()
       
       if let location = locationManger.location {
-        userLocation = location
+        userCoordinate = location.coordinate
       }
     } else {
         print("위치 서비스 Off 상태")
@@ -83,9 +87,9 @@ class NearCafeViewController: UIViewController {
     print(#function)
     nearCafeList = []
     
-    if let location = userLocation {
-      let latitude = location.coordinate.latitude
-      let longitude = location.coordinate.longitude
+    if let coor = userCoordinate {
+      let latitude = coor.latitude
+      let longitude = coor.longitude
       
       APIService.shared.fetchCafeInfo(pos: (latitude,longitude), query: query) { code, json in
         let storeList = json["documents"]
@@ -95,7 +99,7 @@ class NearCafeViewController: UIViewController {
           let placeName = $0.1["place_name"].stringValue
           let x = $0.1["x"].doubleValue
           let y = $0.1["y"].doubleValue
-          print(x,y)
+          
           let cafe = NearCafe(name: placeName, address: addressName, latitude: y, longitude: x, placeUrl: placeUrl)
           self.nearCafeList.append(cafe)
         }
@@ -107,11 +111,11 @@ class NearCafeViewController: UIViewController {
   
   // MARK: - Action
   @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
-
     if !nearCafeList.isEmpty {
       guard let vc = storyboard?.instantiateViewController(withIdentifier: "cafeLocationVC") as? CafeLocationViewController else { return }
       vc.nearCafeLists = nearCafeList
-      
+      vc.myLocation = userCoordinate
+  
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
       self.present(nav, animated: true, completion: nil)
@@ -162,11 +166,11 @@ extension NearCafeViewController: UITableViewDataSource {
 extension NearCafeViewController: CLLocationManagerDelegate {
   // 위치 정보 계속 업데이트 -> 위도 경도 받아옴
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("didUpdateLocations")
-    if let location = locations.first {
-      print("위도: \(location.coordinate.latitude)")
-      print("경도: \(location.coordinate.longitude)")
-    }
+//    print("didUpdateLocations")
+//    if let location = locations.first {
+//      print("위도: \(location.coordinate.latitude)")
+//      print("경도: \(location.coordinate.longitude)")
+//    }
   }
   
   // 위도 경도 받아오기 에러

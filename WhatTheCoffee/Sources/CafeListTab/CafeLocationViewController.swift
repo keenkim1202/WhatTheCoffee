@@ -14,6 +14,7 @@ class CafeLocationViewController: UIViewController {
   // MARK: - Properties
   var environment: Environment? = nil
   var nearCafeLists: [NearCafe] = []
+  var myLocation: CLLocationCoordinate2D?
   
   // MARK: - UI
   @IBOutlet weak var mapView: NMFMapView!
@@ -24,7 +25,8 @@ class CafeLocationViewController: UIViewController {
     
     if !nearCafeLists.isEmpty {
       print(nearCafeLists.first!.latitude, nearCafeLists.first!.longitude)
-      moveCamera(lat: nearCafeLists.first!.latitude, long: nearCafeLists.first!.longitude)
+      mapView.positionMode = .direction
+      moveCamera(lat: myLocation!.latitude, long: myLocation!.longitude)
       
       for cafe in nearCafeLists {
         let latitude = cafe.latitude
