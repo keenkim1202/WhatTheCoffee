@@ -46,13 +46,10 @@ class DetailNearCafeViewController: UIViewController {
   }
   
   @IBAction func onDetailInfo(_ sender: UIButton) {
-    print("clicked")
     guard let nearCafe = nearCafe else { return }
-    print("nearCafe OK.")
     guard let detailSettingVC = self.storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as? SettingDetailViewController else { return }
-    print("vc OK.")
+    
     detailSettingVC.url = nearCafe.placeUrl
-    print(nearCafe.placeUrl)
     self.present(detailSettingVC, animated: true, completion: nil)
   }
   
