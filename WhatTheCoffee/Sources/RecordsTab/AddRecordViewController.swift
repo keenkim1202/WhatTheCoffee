@@ -30,6 +30,7 @@ class AddRecordViewController: UIViewController {
   // MARK: - UI
   @IBOutlet weak var recordImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
+  
   @IBOutlet weak var titleTextField: IsaoTextField!
   @IBOutlet weak var commentTextView: UITextView!
   
