@@ -95,8 +95,8 @@ class NearCafeViewController: UIViewController {
           let placeName = $0.1["place_name"].stringValue
           let x = $0.1["x"].doubleValue
           let y = $0.1["y"].doubleValue
-          
-          let cafe = NearCafe(name: placeName, address: addressName, latitude: x, longitude: y, placeUrl: placeUrl)
+          print(x,y)
+          let cafe = NearCafe(name: placeName, address: addressName, latitude: y, longitude: x, placeUrl: placeUrl)
           self.nearCafeList.append(cafe)
         }
       }
@@ -107,13 +107,18 @@ class NearCafeViewController: UIViewController {
   
   // MARK: - Action
   @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
-    guard let vc = storyboard?.instantiateViewController(withIdentifier: "cafeLocationVC") as? CafeLocationViewController else { return }
-    let nav = UINavigationController(rootViewController: vc)
-    
-    nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+
+    if !nearCafeList.isEmpty {
+      guard let vc = storyboard?.instantiateViewController(withIdentifier: "cafeLocationVC") as? CafeLocationViewController else { return }
+      vc.nearCafeLists = nearCafeList
+      
+      let nav = UINavigationController(rootViewController: vc)
+      nav.modalPresentationStyle = .fullScreen
+      self.present(nav, animated: true, completion: nil)
+    } else {
+      showAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
+    }
   }
-  
 }
 
 // MARK: - Extension
