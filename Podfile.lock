@@ -86,10 +86,12 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - NMapsMap (3.14.0)
   - PromisesObjC (2.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - NMapsMap
 
 SPEC REPOS:
   trunk:
@@ -102,6 +104,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - nanopb
+    - NMapsMap
     - PromisesObjC
 
 SPEC CHECKSUMS:
@@ -114,8 +117,9 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 4a11121bed9a9f3fdb33fbbc8eafd4a316431710
+PODFILE CHECKSUM: ee134c1cf24c995ac9fad8081ec59c5760761094
 
 COCOAPODS: 1.11.2

@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import NMapsMap
 
 class CafeLocationViewController: UIViewController {
   
@@ -14,11 +15,12 @@ class CafeLocationViewController: UIViewController {
   var environment: Environment? = nil
   
   // MARK: - UI
-  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var mapView: NMFMapView!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     
   }
   
