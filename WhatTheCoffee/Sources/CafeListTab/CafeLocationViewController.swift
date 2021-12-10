@@ -32,7 +32,8 @@ class CafeLocationViewController: UIViewController {
       for cafe in nearCafeLists {
         let latitude = cafe.latitude
         let longitude = cafe.longitude
-        pinMaker(lat: latitude, long: longitude)
+        let name = cafe.name
+        pinMaker(lat: latitude, long: longitude, caption: name)
       }
     } else {
       print("cafeList is empty.")
@@ -76,7 +77,7 @@ class CafeLocationViewController: UIViewController {
   }
   
   // MARK: 지도에 pin 찍기
-  func pinMaker(lat: Double, long: Double) {
+  func pinMaker(lat: Double, long: Double, caption: String) {
     let marker = NMFMarker(position: NMGLatLng(lat: lat, lng: long))
     marker.touchHandler = { (overlay) in
       print("마커 클릭됨")
@@ -84,8 +85,12 @@ class CafeLocationViewController: UIViewController {
     }
     
     marker.iconImage = NMFOverlayImage(name: "coffee_marker_shadow")
+//    marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
+//    marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
     marker.width = 30
     marker.height = 33
+    marker.anchor = CGPoint(x: 1, y: 1)
+    marker.captionText = caption
     marker.mapView = naverMapView.mapView
   }
   
