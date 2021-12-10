@@ -81,12 +81,20 @@ class CafeLocationViewController: UIViewController {
     let marker = NMFMarker(position: NMGLatLng(lat: lat, lng: long))
     marker.touchHandler = { (overlay) in
       print("마커 클릭됨")
+      
+      self.nearCafeLists.forEach { cafe in
+        if cafe.name == caption {
+          guard let popupVC = self.storyboard?.instantiateViewController(withIdentifier: "popupVC") as? PopupViewController else { return }
+          popupVC.cafe = cafe
+          popupVC.modalPresentationStyle = .overFullScreen
+          self.present(popupVC, animated: false, completion: nil)
+        }
+      }
+      
       return true
     }
     
     marker.iconImage = NMFOverlayImage(name: "coffee_marker_shadow")
-//    marker.width = CGFloat(NMF_MARKER_SIZE_AUTO)
-//    marker.height = CGFloat(NMF_MARKER_SIZE_AUTO)
     marker.width = 30
     marker.height = 33
     marker.anchor = CGPoint(x: 1, y: 1)
