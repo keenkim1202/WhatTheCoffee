@@ -19,16 +19,7 @@ class NearCafeViewController: UIViewController {
   var page: Int = 1
   var pageableCount: Int = 0
   var isEnd: Bool = false
-  var nearCafeList: [NearCafe] = [] {
-    didSet {
-      if !nearCafeList.isEmpty {
-        emptyLabel.textColor = .clear
-      } else {
-        emptyLabel.textColor = .systemYellow
-      }
-//      tableView.reloadData()
-    }
-  }
+  var nearCafeList: [NearCafe] = []
   
   var userCoordinate: CLLocationCoordinate2D? {
      didSet {
@@ -108,31 +99,37 @@ class NearCafeViewController: UIViewController {
             let placeName = $0.1["place_name"].stringValue
             let x = $0.1["x"].doubleValue
             let y = $0.1["y"].doubleValue
+            let distance = $0.1["distance"].stringValue
             
-            let cafe = NearCafe(name: placeName, address: addressName, latitude: y, longitude: x, placeUrl: placeUrl)
+            let cafe = NearCafe(name: placeName, address: addressName, latitude: y, longitude: x, placeUrl: placeUrl, distance: distance)
             self.nearCafeList.append(cafe)
           }
 
           DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.checkDataIsEmpty()
           }
         }
       }
     } else {
       print("현재 위치 정보가 없음. 근처 카페 목록 검색 불가.")
     }
-    
-//    print("cafeCount: ", nearCafeList.count)
-//    print("page: \(page), isEnd: \(isEnd), total: \(totalCount)")
   }
-
+  
+  func checkDataIsEmpty() {
+    if !nearCafeList.isEmpty {
+      emptyLabel.isHidden = true
+    } else {
+      emptyLabel.isHidden = false
+    }
+  }
+  
   // MARK: - Action
   @IBAction func onRedo(_ sender: UIBarButtonItem) {
     nearCafeList.removeAll()
     pageableCount = 0
     page = 1
-    fetchData(query: queryText ?? "카페")
-//    fetchData(query: "카페")
+    fetchData(query: "카페")
   }
   
   @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
@@ -172,17 +169,7 @@ extension NearCafeViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSourcePrefetching
 extension NearCafeViewController: UITableViewDataSourcePrefetching {
-  // TODO: 수정...
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-    
-    // totalCount: 검색한 카페 갯수
-    // isEnd: 마지막 페이지 인지 체크
-    // page: 현재 페이지
-    // pageable_count: 최대 페이지수
-    
-    // page가 pagable_count가 될때까지 증가시키면서 prefetch하기. 만약 isEnd가 true 이면 prefetch 하지 않음.
-    
-    // prefetch 타이밍은 테이블뷰의 indexPath.row가 nearCafe의 갯수 -1 과 같을때!
     for indexPath in indexPaths {
         
       if (nearCafeList.count - 1 == indexPath.row) {
@@ -192,15 +179,14 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
           
           if let text = queryText {
             self.fetchData(query: text, page: page)
-            print("fetched - \(page) of \(pageableCount)")
+//            print("fetched - \(page) of \(pageableCount)")
           } else {
             self.fetchData(query: "카페", page: page)
           }
         } else {
-          print("마지막 페이지: \(page)")
+//          print("마지막 페이지: \(page)")
         }
-
-        print("prefetched IndexPath: \(indexPath)")
+//        print("prefetched IndexPath: \(indexPath)")
       }
   }
   }

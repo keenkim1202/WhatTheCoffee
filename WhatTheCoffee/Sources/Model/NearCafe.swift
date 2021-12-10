@@ -13,4 +13,5 @@ struct NearCafe {
   var latitude: Double
   var longitude: Double
   var placeUrl: String
+  var distance: String
 }
