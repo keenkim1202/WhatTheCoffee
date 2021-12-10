@@ -309,6 +309,7 @@
 				1C2206312744B41A00FDBBEF /* Frameworks */,
 				1C2206322744B41A00FDBBEF /* Resources */,
 				89C62A018915BB11F04E3D8A /* [CP] Embed Pods Frameworks */,
+				1C25DEB627639B28005F812E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -386,6 +387,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1C25DEB627639B28005F812E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		740B41D2FB8F9E65C2DC79EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +630,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
