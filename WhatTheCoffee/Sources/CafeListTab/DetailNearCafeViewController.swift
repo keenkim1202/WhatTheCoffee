@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import WebKit
+import CoreLocation
 
 class DetailNearCafeViewController: UIViewController {
   

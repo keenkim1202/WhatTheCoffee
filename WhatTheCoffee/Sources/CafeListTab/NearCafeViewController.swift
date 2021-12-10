@@ -27,7 +27,6 @@ class NearCafeViewController: UIViewController {
   
   var userCoordinate: CLLocationCoordinate2D? {
      didSet {
-       print("현재위치: \(userCoordinate!)")
        fetchData(query: "카페") // temporary
      }
   }
