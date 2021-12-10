@@ -13,7 +13,7 @@ class APIService {
   static let shared = APIService()
   typealias CompletionHandler = (Int, JSON) -> ()
 
-  func fetchCafeInfo(pos: (x: Double, y: Double), query: String, result: @escaping CompletionHandler) {
+  func fetchCafeInfo(pos: (x: Double, y: Double), query: String, page: Int, result: @escaping CompletionHandler) {
     let url = "https://dapi.kakao.com/v2/local/search/keyword.json"
 
     let header: HTTPHeaders = [
@@ -24,9 +24,10 @@ class APIService {
     let params: Parameters = [
       "x": "\(pos.y)",
       "y": "\(pos.x)",
-      "radius": 30000,
+      "radius": 2000,
       "query": query,
-      "category_group_code": "CE7"
+      "category_group_code": "CE7",
+      "page": page
     ]
     
     AF.request(
