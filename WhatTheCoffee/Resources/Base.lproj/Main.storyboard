@@ -684,12 +684,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aSz-3r-7sC">
-                                <rect key="frame" x="20" y="362.5" width="374" height="288"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="aSz-3r-7sC" secondAttribute="height" multiplier="1.3:1" id="nxQ-lV-iHZ"/>
-                                </constraints>
-                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysR-LI-Phx">
                                 <rect key="frame" x="20" y="153" width="374" height="124.5"/>
                                 <subviews>
@@ -734,21 +728,28 @@
                                     <constraint firstItem="fe9-f6-zDb" firstAttribute="top" secondItem="R9Q-Wr-ZCr" secondAttribute="bottom" constant="20" id="xJQ-nL-bOt"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoL-bq-6DS" customClass="NMFNaverMapView">
+                                <rect key="frame" x="20" y="362.5" width="374" height="288"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GoL-bq-6DS" secondAttribute="height" multiplier="1.3:1" id="gJh-8E-iMp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mhm-xh-3QU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ysR-LI-Phx" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="0HJ-3N-HEq"/>
-                            <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="aSz-3r-7sC" secondAttribute="trailing" constant="20" id="1Tp-Pk-OMY"/>
                             <constraint firstItem="cW7-wZ-5yX" firstAttribute="top" secondItem="Mhm-xh-3QU" secondAttribute="top" constant="30" id="9Pn-Xu-Vm3"/>
                             <constraint firstItem="cW7-wZ-5yX" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="Cse-rh-JqS"/>
                             <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="cW7-wZ-5yX" secondAttribute="trailing" constant="20" id="M9w-9V-Gxi"/>
                             <constraint firstItem="E0B-NA-miv" firstAttribute="top" secondItem="ysR-LI-Phx" secondAttribute="bottom" constant="50" id="QIb-na-NYA"/>
                             <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="ysR-LI-Phx" secondAttribute="trailing" constant="20" id="Qub-Ea-6aN"/>
+                            <constraint firstItem="GoL-bq-6DS" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="SV8-oo-Y51"/>
+                            <constraint firstItem="GoL-bq-6DS" firstAttribute="top" secondItem="E0B-NA-miv" secondAttribute="bottom" constant="10" id="T5F-Xd-a4a"/>
                             <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="E0B-NA-miv" secondAttribute="trailing" constant="20" id="TIa-x6-pVp"/>
-                            <constraint firstItem="aSz-3r-7sC" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="UcR-g3-xVv"/>
-                            <constraint firstItem="aSz-3r-7sC" firstAttribute="top" secondItem="E0B-NA-miv" secondAttribute="bottom" constant="10" id="dGo-an-JNV"/>
                             <constraint firstItem="ysR-LI-Phx" firstAttribute="top" secondItem="cW7-wZ-5yX" secondAttribute="bottom" constant="10" id="e5k-wg-yiZ"/>
+                            <constraint firstItem="Mhm-xh-3QU" firstAttribute="trailing" secondItem="GoL-bq-6DS" secondAttribute="trailing" constant="20" id="qrN-Wh-O3U"/>
                             <constraint firstItem="E0B-NA-miv" firstAttribute="leading" secondItem="Mhm-xh-3QU" secondAttribute="leading" constant="20" id="tsP-ye-1Du"/>
                         </constraints>
                     </view>
@@ -763,7 +764,7 @@
                         <outlet property="addressLabel" destination="u10-iq-IgN" id="Y7b-Mg-CSE"/>
                         <outlet property="backgroundView" destination="ysR-LI-Phx" id="jka-C9-xuW"/>
                         <outlet property="detailInfoButton" destination="fe9-f6-zDb" id="LCe-AR-Rc2"/>
-                        <outlet property="mapView" destination="aSz-3r-7sC" id="fE4-67-FTF"/>
+                        <outlet property="naverMapView" destination="GoL-bq-6DS" id="poN-me-dHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rq6-pn-WMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
