@@ -17,7 +17,7 @@ class NearCafeViewController: UIViewController {
   var locationManger = CLLocationManager()
   var queryText: String?
   var page: Int = 1
-  var totalCount: Int = 0
+  var pageableCount: Int = 0
   var isEnd: Bool = false
   var nearCafeList: [NearCafe] = [] {
     didSet {
@@ -98,7 +98,7 @@ class NearCafeViewController: UIViewController {
       DispatchQueue.global().async {
         APIService.shared.fetchCafeInfo(pos: (latitude,longitude), query: query, page: page) { code, json in
           let meta = json["meta"]
-          self.totalCount = meta["total_count"].intValue
+          self.pageableCount = meta["pageable_count"].intValue
           self.isEnd = meta["isEnd"].boolValue
           
           let storeList = json["documents"]
@@ -122,14 +122,17 @@ class NearCafeViewController: UIViewController {
       print("현재 위치 정보가 없음. 근처 카페 목록 검색 불가.")
     }
     
-    print("cafeCount: ", nearCafeList.count)
-    print("page - ", page)
-    print("isEnd: \(isEnd), total: \(totalCount)")
+//    print("cafeCount: ", nearCafeList.count)
+//    print("page: \(page), isEnd: \(isEnd), total: \(totalCount)")
   }
 
   // MARK: - Action
   @IBAction func onRedo(_ sender: UIBarButtonItem) {
-    fetchData(query: "카페")
+    nearCafeList.removeAll()
+    pageableCount = 0
+    page = 1
+    fetchData(query: queryText ?? "카페")
+//    fetchData(query: "카페")
   }
   
   @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
@@ -183,13 +186,13 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
     for indexPath in indexPaths {
         
       if (nearCafeList.count - 1 == indexPath.row) {
-        
-        if isEnd == false {
+        // pageable_count > perpage * page
+        if pageableCount > perPage * page {
           page += 1
           
           if let text = queryText {
             self.fetchData(query: text, page: page)
-            print("fetched - \(page) of \(totalCount)")
+            print("fetched - \(page) of \(pageableCount)")
           } else {
             self.fetchData(query: "카페", page: page)
           }
@@ -203,7 +206,7 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
   }
   
   func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-    print("최소 - \(indexPaths)")
+//    print("최소 - \(indexPaths)")
   }
 }
 
@@ -242,7 +245,7 @@ extension NearCafeViewController: UISearchBarDelegate {
     searchBar.endEditing(true)
     guard let query = searchBar.text else { return }
     nearCafeList.removeAll()
-    totalCount = 0
+    pageableCount = 0
     page = 1
     fetchData(query: query)
     queryText = query
