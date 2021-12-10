@@ -112,11 +112,11 @@ class CafeLocationViewController: UIViewController {
 extension CafeLocationViewController: CLLocationManagerDelegate {
   // 위치 정보 계속 업데이트 -> 위도 경도 받아옴
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("didUpdateLocations")
+//    print("didUpdateLocations")
     if let location = locations.first {
       myLocation = location.coordinate
-      print("위도: \(location.coordinate.latitude)")
-      print("경도: \(location.coordinate.longitude)")
+//      print("위도: \(location.coordinate.latitude)")
+//      print("경도: \(location.coordinate.longitude)")
     }
   }
   

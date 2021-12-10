@@ -15,7 +15,7 @@ class APIService {
 
   func fetchCafeInfo(pos: (x: Double, y: Double), query: String, page: Int, result: @escaping CompletionHandler) {
     let url = "https://dapi.kakao.com/v2/local/search/keyword.json"
-
+    print("\(pos.x), \(pos.y)")
     let header: HTTPHeaders = [
       "Authorization": Bundle.main.apiKey,
       "Content-Type": "multipart/form-data"
@@ -27,6 +27,7 @@ class APIService {
       "radius": 2000,
       "query": query,
       "category_group_code": "CE7",
+      "sort": "distance",
       "page": page
     ]
     
