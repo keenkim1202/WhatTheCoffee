@@ -109,6 +109,11 @@ class NearCafeViewController: UIViewController {
   }
   
   // MARK: - Action
+  
+  @IBAction func onRedo(_ sender: UIBarButtonItem) {
+    fetchData(query: "카페")
+  }
+  
   @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
     if !nearCafeList.isEmpty {
       guard let vc = storyboard?.instantiateViewController(withIdentifier: "cafeLocationVC") as? CafeLocationViewController else { return }
