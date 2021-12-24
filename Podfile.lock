@@ -98,11 +98,15 @@ PODS:
   - nanopb/encode (2.30908.0)
   - NMapsMap (3.14.0)
   - PromisesObjC (2.0.0)
+  - SwiftyJSON (5.0.0)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
   - NMapsMap
+  - SwiftyJSON (= 5.0.0)
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
@@ -118,6 +122,8 @@ SPEC REPOS:
     - nanopb
     - NMapsMap
     - PromisesObjC
+    - SwiftyJSON
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
@@ -132,7 +138,9 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: fd3033043b44694c1c0272e13940884b55f3402f
+PODFILE CHECKSUM: 715e57164133a3d065ef722ef0c4f47f03fb2016
 
 COCOAPODS: 1.11.2

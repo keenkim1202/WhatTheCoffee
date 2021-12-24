@@ -54,9 +54,7 @@
 		1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */; };
 		1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */; };
 		1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */; };
-		1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCF0F962756055600B45F07 /* TextFieldEffects */; };
 		1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD5EA66275DE3CD00308DB2 /* Alamofire */; };
-		1CD5EA6A275DE3FD00308DB2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD5EA69275DE3FD00308DB2 /* SwiftyJSON */; };
 		1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6B275DE43600308DB2 /* APIService.swift */; };
 		1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */; };
 /* End PBXBuildFile section */
@@ -121,8 +119,6 @@
 			files = (
 				1C25DEBA2763B102005F812E /* libswift_Concurrency.tbd in Frameworks */,
 				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
-				1CD5EA6A275DE3FD00308DB2 /* SwiftyJSON in Frameworks */,
-				1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */,
 				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
 				1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */,
 				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
@@ -324,9 +320,7 @@
 				1C37C393274550B900EC3CA3 /* Realm */,
 				1C37C395274550B900EC3CA3 /* RealmSwift */,
 				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
-				1CCF0F962756055600B45F07 /* TextFieldEffects */,
 				1CD5EA66275DE3CD00308DB2 /* Alamofire */,
-				1CD5EA69275DE3FD00308DB2 /* SwiftyJSON */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -359,9 +353,7 @@
 			packageReferences = (
 				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				1CD5EA68275DE3FD00308DB2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
 			projectDirPath = "";
@@ -748,28 +740,12 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
-			};
-		};
-		1CD5EA68275DE3FD00308DB2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
-			requirement = {
-				kind = exactVersion;
-				version = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -790,20 +766,10 @@
 			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		1CCF0F962756055600B45F07 /* TextFieldEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
-			productName = TextFieldEffects;
-		};
 		1CD5EA66275DE3CD00308DB2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		1CD5EA69275DE3FD00308DB2 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CD5EA68275DE3FD00308DB2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
