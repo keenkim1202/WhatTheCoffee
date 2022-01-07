@@ -11,7 +11,7 @@ class SettingViewController: UIViewController {
   
   // MARK: - Properties
   var environment: Environment?
-  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "☕️ 기본 커피 이미지 불러오기"]
+  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기"]
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -46,19 +46,28 @@ extension SettingViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.row == 3 {
-      self.addAlert("커피목록에 존재여부와 관계없이\n 기존 이미지 모두 추가됩니다.\n그래도 추가하시겠습니까?") {
+    if indexPath.section == 3 {
+      self.addAlert("🧊 아이스 커피 재추가", "커피목록에 존재여부와 관계없이\n 기존 이미지 모두 추가됩니다.") {
         if let env = self.environment {
-          self.saveDefaultCoffee(env: env)
+          self.saveDefaultIceCoffee(env: env)
           self.showSuccessAlert("재추가에 성공하였습니다.")
         } else {
           self.showErrorAlert("재추가에 실패하였습니다.")
         }
       }
-    } else {
+    } else if indexPath.section == 4 {
+      self.addAlert("☕️ 핫 커피 재추가", "커피목록에 존재여부와 관계없이\n 기존 이미지 모두 추가됩니다.") {
+        if let env = self.environment {
+          self.saveDefaultHotCoffee(env: env)
+          self.showSuccessAlert("재추가에 성공하였습니다.")
+        } else {
+          self.showErrorAlert("재추가에 실패하였습니다.")
+        }
+      }
+    }else {
       let vc = storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as! SettingDetailViewController
-      vc.title = settingList[indexPath.row]
-      vc.index = indexPath.row
+      vc.title = settingList[indexPath.section]
+      vc.index = indexPath.section
       
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
@@ -69,13 +78,17 @@ extension SettingViewController: UITableViewDelegate {
 
 // MARK: - TableViewDataSource
 extension SettingViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return settingList.count
+  }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as? SettingTableViewCell else { return UITableViewCell() }
-    cell.titleLabel.text = settingList[indexPath.row]
+    
+    cell.titleLabel.text = settingList[indexPath.section]
     return cell
   }
 }

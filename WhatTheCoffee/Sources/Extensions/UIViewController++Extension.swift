@@ -13,13 +13,25 @@ extension UIViewController {
     let isFirst = Storage.isFirstTime()
     print("isFirst = \(isFirst)")
     if isFirst == true {
-      saveDefaultCoffee(env: env)
+      saveDefaultIceCoffee(env: env)
+      saveDefaultHotCoffee(env: env)
       saveDefaultCafe(env: env)
     }
   }
   
-  func saveDefaultCoffee(env: Environment) {
+  func saveDefaultIceCoffee(env: Environment) {
     let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라_라떼", "그린티_라떼", "모카_라떼", "카라멜_마끼아또"]
+    for i in 0..<defaultCoffeeList.count {
+      let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
+      env.coffeeRepository.add(item: coffee)
+      
+      let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage.randomCoffeeImage
+      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
+    }
+  }
+  
+  func saveDefaultHotCoffee(env: Environment) {
+    let defaultCoffeeList: [String] = ["따뜻한_아메리카노", "따뜻한_라떼", "따뜻한_바닐라_라떼", "따뜻한_모카_라떼", "따뜻한_카라멜_마끼아또"]
     for i in 0..<defaultCoffeeList.count {
       let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
       env.coffeeRepository.add(item: coffee)
@@ -64,8 +76,8 @@ extension UIViewController {
   typealias CompletionHandler = () -> Void
   
   // TODO: deleteAlert, addAlert 비슷함. 코드 줄일 수 있을 것 같음. 나중에 고치기.
-  func addAlert(_ message: String, completion: @escaping CompletionHandler) {
-    let alert = UIAlertController(title: "☕️", message: message, preferredStyle: .alert)
+  func addAlert(_ title: String,_ message: String, completion: @escaping CompletionHandler) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let no = UIAlertAction(title: "아니오", style: .default, handler: nil)
     let yes = UIAlertAction(title: "네", style: .destructive) { _ in
       completion()
