@@ -9,8 +9,6 @@ import UIKit
 import CoreLocation
 import FirebaseAnalytics
 
-// TODO: 앱 최초 실행 시, 위치 정보 허용하면 현재 위치 정보가 없다고 나옴. 그 부분 수정.
-
 class NearCafeViewController: UIViewController {
   
   // MARK: - Properties
@@ -179,20 +177,17 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
     for indexPath in indexPaths {
         
       if (nearCafeList.count - 1 == indexPath.row) {
-        // pageable_count > perpage * page
         if pageableCount > perPage * page {
           page += 1
           
           if let text = queryText {
             self.fetchData(query: text, page: page)
-//            print("fetched - \(page) of \(pageableCount)")
           } else {
             self.fetchData(query: "카페", page: page)
           }
         } else {
 //          print("마지막 페이지: \(page)")
         }
-//        print("prefetched IndexPath: \(indexPath)")
       }
   }
   }
@@ -239,7 +234,6 @@ extension NearCafeViewController: CLLocationManagerDelegate {
     switch status {
     case .authorizedAlways, .authorizedWhenInUse:
       print("GPS 권한 설정됨")
-      // self.locationManager.startUpdatingLocation() // 중요!
       configureLocationManager()
     case .restricted, .notDetermined:
       print("GPS 권한 설정되지 않음")
