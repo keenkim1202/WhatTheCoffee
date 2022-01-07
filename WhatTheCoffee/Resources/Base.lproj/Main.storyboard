@@ -956,7 +956,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I5h-oq-FzC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="685"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingCell" rowHeight="70" id="5R3-gU-Kv2" customClass="SettingTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49.5" width="374" height="70"/>
@@ -984,13 +984,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHm-0v-SQz">
+                                <rect key="frame" x="0.0" y="773" width="414" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X40-qT-Bod">
+                                        <rect key="frame" x="20" y="11" width="374" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="X40-qT-Bod" secondAttribute="trailing" constant="20" id="KRB-bp-yhH"/>
+                                    <constraint firstAttribute="height" constant="40" id="aL1-TY-mFi"/>
+                                    <constraint firstItem="X40-qT-Bod" firstAttribute="leading" secondItem="gHm-0v-SQz" secondAttribute="leading" constant="20" id="hCq-r2-QWI"/>
+                                    <constraint firstItem="X40-qT-Bod" firstAttribute="centerY" secondItem="gHm-0v-SQz" secondAttribute="centerY" id="xfM-z3-fnv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pwx-5C-5g0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pwx-5C-5g0" firstAttribute="trailing" secondItem="gHm-0v-SQz" secondAttribute="trailing" id="4F8-gP-Qk9"/>
+                            <constraint firstItem="gHm-0v-SQz" firstAttribute="top" secondItem="I5h-oq-FzC" secondAttribute="bottom" id="8JS-v6-23C"/>
                             <constraint firstItem="I5h-oq-FzC" firstAttribute="top" secondItem="pwx-5C-5g0" secondAttribute="top" id="CTL-7C-Hbr"/>
-                            <constraint firstItem="pwx-5C-5g0" firstAttribute="bottom" secondItem="I5h-oq-FzC" secondAttribute="bottom" id="IE6-B4-5FH"/>
+                            <constraint firstItem="pwx-5C-5g0" firstAttribute="bottom" secondItem="I5h-oq-FzC" secondAttribute="bottom" constant="40" id="IE6-B4-5FH"/>
                             <constraint firstItem="I5h-oq-FzC" firstAttribute="leading" secondItem="pwx-5C-5g0" secondAttribute="leading" id="U9I-hi-icL"/>
+                            <constraint firstItem="gHm-0v-SQz" firstAttribute="leading" secondItem="pwx-5C-5g0" secondAttribute="leading" id="Xvp-eo-xem"/>
+                            <constraint firstItem="pwx-5C-5g0" firstAttribute="bottom" secondItem="gHm-0v-SQz" secondAttribute="bottom" id="arf-TQ-eep"/>
                             <constraint firstItem="pwx-5C-5g0" firstAttribute="trailing" secondItem="I5h-oq-FzC" secondAttribute="trailing" id="hii-KX-K9Z"/>
                         </constraints>
                     </view>
@@ -1005,11 +1027,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="I5h-oq-FzC" id="yW4-Jc-JzC"/>
+                        <outlet property="versionLabel" destination="X40-qT-Bod" id="1Zo-Mc-2Nu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRF-ri-D9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2661" y="-1013"/>
+            <point key="canvasLocation" x="2660.8695652173915" y="-1013.1696428571428"/>
         </scene>
         <!--Setting Detail View Controller-->
         <scene sceneID="H7l-yQ-a21">
@@ -1569,6 +1592,9 @@
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
