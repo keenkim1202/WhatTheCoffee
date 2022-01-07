@@ -625,16 +625,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "왓더커피";
-				INFOPLIST_KEY_NSCameraUsageDescription = "커피/카페 사진 추가를 위해 카메라에 접근하고자 합니다.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "커피/카페 사진을 추가하기 위해 카메라에 접근하고자 합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 중심으로 근처 카페를 정보를 가져오려 합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진첩 접근 권한을 허용하시겠습니까?";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "앱 사용성 향상을 위해 앱 분석에 사용됩니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -650,7 +650,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -667,15 +667,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "왓더커피";
-				INFOPLIST_KEY_NSCameraUsageDescription = "커피/카페 사진 추가를 위해 카메라에 접근하고자 합니다.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "커피/카페 사진을 추가하기 위해 카메라에 접근하고자 합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 중심으로 근처 카페를 정보를 가져오려 합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진첩 접근 권한을 허용하시겠습니까?";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "앱 사용성 향상을 위해 앱 분석에 사용됩니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -691,7 +691,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

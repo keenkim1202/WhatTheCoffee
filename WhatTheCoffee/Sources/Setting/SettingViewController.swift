@@ -15,6 +15,7 @@ class SettingViewController: UIViewController {
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var versionLabel: UILabel!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
@@ -29,6 +30,17 @@ class SettingViewController: UIViewController {
     tableView.dataSource = self
     
     adjustNavigationBarFont()
+    versionLabel.text = versionInfo()
+  }
+  
+  func versionInfo() -> String {
+    guard
+      let dictionary = Bundle.main.infoDictionary,
+      let version = dictionary["CFBundleShortVersionString"] as? String
+    else { return "" }
+    
+    let versionAndBuild: String = "v \(version)"
+    return versionAndBuild
   }
   
   // MARK: - Action
