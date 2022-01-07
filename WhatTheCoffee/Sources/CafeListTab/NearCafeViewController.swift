@@ -9,6 +9,8 @@ import UIKit
 import CoreLocation
 import FirebaseAnalytics
 
+// TODO: 앱 최초 실행 시, 위치 정보 허용하면 현재 위치 정보가 없다고 나옴. 그 부분 수정.
+
 class NearCafeViewController: UIViewController {
   
   // MARK: - Properties
@@ -109,6 +111,7 @@ class NearCafeViewController: UIViewController {
           }
 
           DispatchQueue.main.async {
+            self.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             self.tableView.reloadData()
             self.checkDataIsEmpty()
           }
@@ -218,6 +221,10 @@ extension NearCafeViewController: UITableViewDataSource {
 
 // MARK: - CLLocationManagerDelegate -
 extension NearCafeViewController: CLLocationManagerDelegate {
+  func getLocationUsagePermission() {
+    self.locationManger.requestWhenInUseAuthorization()
+  }
+  
   // 위치 정보 계속 업데이트 -> 위도 경도 받아옴
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
   }
@@ -226,6 +233,25 @@ extension NearCafeViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print(error)
   }
+  
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    //location5
+    switch status {
+    case .authorizedAlways, .authorizedWhenInUse:
+      print("GPS 권한 설정됨")
+      // self.locationManager.startUpdatingLocation() // 중요!
+      configureLocationManager()
+    case .restricted, .notDetermined:
+      print("GPS 권한 설정되지 않음")
+      getLocationUsagePermission()
+    case .denied:
+      print("GPS 권한 요청 거부됨")
+      getLocationUsagePermission()
+    default:
+      print("GPS: Default")
+    }
+  }
+
 }
 
 // MARK: - UISearchBarDelegate -
