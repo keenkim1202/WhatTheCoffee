@@ -87,7 +87,11 @@ class DetailNearCafeViewController: UIViewController {
     guard let detailSettingVC = self.storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as? SettingDetailViewController else { return }
     
     detailSettingVC.url = nearCafe.placeUrl
-    self.present(detailSettingVC, animated: true, completion: nil)
+    detailSettingVC.title = nearCafe.name
+    
+    let nav = UINavigationController(rootViewController: detailSettingVC)
+    nav.modalPresentationStyle = .fullScreen
+    self.present(nav, animated: true, completion: nil)
   }
   
 }

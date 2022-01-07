@@ -29,7 +29,6 @@ class PopupViewController: UIViewController {
       nameLabel.text = cafe.name
       addressLabel.text = cafe.address
     }
-    
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,7 +58,11 @@ class PopupViewController: UIViewController {
     guard let detailSettingVC = self.storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as? SettingDetailViewController else { return }
     
     detailSettingVC.url = nearCafe.placeUrl
-    self.present(detailSettingVC, animated: true, completion: nil)
+    detailSettingVC.title = nearCafe.name
+    
+    let nav = UINavigationController(rootViewController: detailSettingVC)
+    nav.modalPresentationStyle = .fullScreen
+    self.present(nav, animated: true, completion: nil)
   }
   
 }
