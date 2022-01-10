@@ -20,23 +20,25 @@ extension UIViewController {
   }
   
   func saveDefaultIceCoffee(env: Environment) {
-    let defaultCoffeeList: [String] = ["아이스_아메리카노", "아이스_라떼", "아이스_바닐라_라떼", "아이스_그린티_라떼", "아이스_모카_라떼", "아이스_카라멜_마끼아또"]
-    for i in 0..<defaultCoffeeList.count {
-      let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
+    let iceCoffeeList = CoffeeNameList.defaultIceCoffeeList
+    
+    for i in 0..<iceCoffeeList.count {
+      let coffee = Coffee(name: iceCoffeeList[i].replacingOccurrences(of: "_", with: " "))
       env.coffeeRepository.add(item: coffee)
       
-      let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage.randomCoffeeImage
+      let image = UIImage(named: iceCoffeeList[i]) ?? UIImage.randomCoffeeImage
       saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
     }
   }
   
   func saveDefaultHotCoffee(env: Environment) {
-    let defaultCoffeeList: [String] = ["따뜻한_아메리카노", "에스프레소", "따뜻한_라떼", "따뜻한_바닐라_라떼", "따뜻한_모카_라떼", "따뜻한_카라멜_마끼아또"]
-    for i in 0..<defaultCoffeeList.count {
-      let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
+    let hotCoffeeList = CoffeeNameList.defaultHotCoffeeList
+    
+    for i in 0..<hotCoffeeList.count {
+      let coffee = Coffee(name: hotCoffeeList[i].replacingOccurrences(of: "_", with: " "))
       env.coffeeRepository.add(item: coffee)
       
-      let image = UIImage(named: defaultCoffeeList[i]) ?? UIImage.randomCoffeeImage
+      let image = UIImage(named: hotCoffeeList[i]) ?? UIImage.randomCoffeeImage
       saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
     }
   }
@@ -111,7 +113,7 @@ extension UIViewController {
     ]
     
     let BarButtonTextAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont(name: "GowunBatang-Bold", size: 16)!
+      .font: UIFont(name: "GowunBatang-Bold", size: 16)!
     ]
     
     if let leftBarButtons = self.navigationItem.leftBarButtonItems {

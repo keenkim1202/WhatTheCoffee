@@ -1,5 +1,5 @@
 //
-//  UItableView++Extension.swift
+//  UITableView++Extension.swift
 //  WhatTheCoffee
 //
 //  Created by KEEN on 2022/01/10.

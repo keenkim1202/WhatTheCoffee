@@ -45,6 +45,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       }
     }
     
+    let settingVC = SettingViewController()
+    settingVC.environment = environment
+    
     sleep(1)
   }
   
