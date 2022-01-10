@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAnalytics
 
-class RecommendViewController: UIViewController {
+class RecommendViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
@@ -47,8 +47,6 @@ class RecommendViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
-    
     todayCoffeeImage.layer.cornerRadius = CGFloat(5)
     recommendButton.layer.cornerRadius = buttonCornerRadius
     recommendButton.tintColor = UIColor.greenMainColor

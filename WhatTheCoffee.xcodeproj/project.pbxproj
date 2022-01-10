@@ -16,6 +16,13 @@
 		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
 		1C25DEBA2763B102005F812E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
 		1C25DEBE2763B25F005F812E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C25DEBD2763B25E005F812E /* GoogleService-Info.plist */; };
+		1C2DA392278822E4005183B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA391278822E4005183B2 /* SystemConfiguration.framework */; };
+		1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA393278822EB005183B2 /* CoreLocation.framework */; };
+		1C2DA396278822F3005183B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA395278822F3005183B2 /* QuartzCore.framework */; };
+		1C2DA398278822FA005183B2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA397278822FA005183B2 /* libc++.tbd */; };
+		1C2DA39A27882300005183B2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA39927882300005183B2 /* libxml2.tbd */; };
+		1C2DA39C27882307005183B2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA39B27882307005183B2 /* libsqlite3.tbd */; };
+		1C2DA39E27882322005183B2 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA39D27882322005183B2 /* Metal.framework */; };
 		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
 		1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */; };
 		1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */; };
@@ -43,8 +50,10 @@
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
+		1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B6278C021100424504 /* BaseViewController.swift */; };
 		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
+		1CA82CDC278825D6004A830B /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA82CDB278825D6004A830B /* TextFieldEffects */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
@@ -70,6 +79,14 @@
 		1C2206452744B41B00FDBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		1C25DEBD2763B25E005F812E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C2DA38F278822DD005183B2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1C2DA391278822E4005183B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1C2DA393278822EB005183B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1C2DA395278822F3005183B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1C2DA397278822FA005183B2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		1C2DA39927882300005183B2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		1C2DA39B27882307005183B2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1C2DA39D27882322005183B2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewController.swift; sourceTree = "<group>"; };
 		1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +111,7 @@
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
+		1C7BC3B6278C021100424504 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
@@ -117,12 +135,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C2DA39C27882307005183B2 /* libsqlite3.tbd in Frameworks */,
+				1C2DA39A27882300005183B2 /* libxml2.tbd in Frameworks */,
+				1C2DA398278822FA005183B2 /* libc++.tbd in Frameworks */,
+				1C2DA396278822F3005183B2 /* QuartzCore.framework in Frameworks */,
+				1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */,
+				1C2DA39E27882322005183B2 /* Metal.framework in Frameworks */,
+				1C2DA392278822E4005183B2 /* SystemConfiguration.framework in Frameworks */,
 				1C25DEBA2763B102005F812E /* libswift_Concurrency.tbd in Frameworks */,
 				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
 				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
 				1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */,
 				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
 				05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */,
+				1CA82CDC278825D6004A830B /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +207,7 @@
 				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
 				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
 				1C37C36C2744E7E300EC3CA3 /* RecordsTab */,
+				1C7BC3B6278C021100424504 /* BaseViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -282,6 +309,14 @@
 		8C7E63E2136E8C4D1F3606F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C2DA39D27882322005183B2 /* Metal.framework */,
+				1C2DA39B27882307005183B2 /* libsqlite3.tbd */,
+				1C2DA39927882300005183B2 /* libxml2.tbd */,
+				1C2DA397278822FA005183B2 /* libc++.tbd */,
+				1C2DA395278822F3005183B2 /* QuartzCore.framework */,
+				1C2DA393278822EB005183B2 /* CoreLocation.framework */,
+				1C2DA391278822E4005183B2 /* SystemConfiguration.framework */,
+				1C2DA38F278822DD005183B2 /* OpenGLES.framework */,
 				1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */,
 				CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */,
 			);
@@ -321,6 +356,7 @@
 				1C37C395274550B900EC3CA3 /* RealmSwift */,
 				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
 				1CD5EA66275DE3CD00308DB2 /* Alamofire */,
+				1CA82CDB278825D6004A830B /* TextFieldEffects */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -354,6 +390,7 @@
 				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
 			projectDirPath = "";
@@ -459,6 +496,7 @@
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
+				1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
@@ -625,7 +663,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -667,7 +705,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
@@ -740,6 +778,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -765,6 +811,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		1CA82CDB278825D6004A830B /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 		1CD5EA66275DE3CD00308DB2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

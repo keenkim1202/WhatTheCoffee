@@ -9,7 +9,7 @@ import UIKit
 import TextFieldEffects
 import FirebaseAnalytics
 
-class AddRecordViewController: UIViewController {
+class AddRecordViewController: BaseViewController {
   
   // MARK: - ViewType
   enum ViewType {
@@ -53,8 +53,6 @@ class AddRecordViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
-    
     if let cafe = cafe {
       viewType = .update
       title = "기록 수정"

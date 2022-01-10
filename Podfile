@@ -10,5 +10,4 @@ target 'WhatTheCoffee' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'SwiftyJSON', '5.0.0'
-  pod 'TextFieldEffects'
 end

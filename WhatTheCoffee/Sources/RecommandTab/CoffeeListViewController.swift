@@ -12,7 +12,7 @@ import RealmSwift
 // TODO: 커피 정렬하기 - 등록일 순 > 가나다 순
 // TODO: 커피 이미지랑 카페기록 이미지 각자 폴더 만들어서 저장하도록 하기
 
-class CoffeeListViewController: UIViewController {
+class CoffeeListViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
@@ -39,7 +39,6 @@ class CoffeeListViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
     tableView.delegate = self
     tableView.dataSource = self
   }

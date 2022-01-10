@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAnalytics
 
-class RecordsViewController: UIViewController {
+class RecordsViewController: BaseViewController {
   
   // MARK: - ModeType
   enum ModeType {
@@ -88,8 +88,6 @@ class RecordsViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
-    
     let layout = UICollectionViewFlowLayout()
     recordCollectionView.collectionViewLayout = layout
     
