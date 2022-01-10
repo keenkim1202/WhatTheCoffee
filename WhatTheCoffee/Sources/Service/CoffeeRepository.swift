@@ -16,6 +16,7 @@ protocol CoffeeRepositoryType {
   func update(item: Coffee, new: Coffee)
   func remove(item: Coffee)
   func fetch() -> [Coffee]
+  func isContain(item: Coffee) -> Bool
 }
 
 final class CoffeeRepository: CoffeeRepositoryType {
@@ -60,5 +61,9 @@ final class CoffeeRepository: CoffeeRepositoryType {
     return realm.objects(Coffee.self)
       .map { $0 }
       .sorted(by: {$0.name < $1.name})
+  }
+  
+  func isContain(item: Coffee) -> Bool {
+    return realm.objects(Coffee.self).contains(item) ? true : false
   }
 }

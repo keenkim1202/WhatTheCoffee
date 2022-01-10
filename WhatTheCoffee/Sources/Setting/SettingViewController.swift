@@ -11,7 +11,7 @@ class SettingViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment?
-  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기"]
+  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기", "개별 이미지 추가하기"]
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -54,7 +54,7 @@ class SettingViewController: BaseViewController {
 // MARK: - TableViewDelegate
 extension SettingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 70
+    return 60
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,7 +76,17 @@ extension SettingViewController: UITableViewDelegate {
           self.showErrorAlert("재추가에 실패하였습니다.")
         }
       }
-    }else {
+    } else if indexPath.section == 5 {
+      guard let env = environment else { return }
+      
+      let vc = storyboard?.instantiateViewController(withIdentifier: "addDefaultImageVC") as! AddDefaultImageViewController
+      vc.title = settingList[indexPath.section]
+      vc.environment = env
+      
+      let nav = UINavigationController(rootViewController: vc)
+      nav.modalPresentationStyle = .fullScreen
+      self.present(nav, animated: true, completion: nil)
+    } else {
       let vc = storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as! SettingDetailViewController
       vc.title = settingList[indexPath.section]
       vc.index = indexPath.section
