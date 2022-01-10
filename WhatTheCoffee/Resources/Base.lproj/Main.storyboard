@@ -1002,18 +1002,26 @@
                                     <constraint firstItem="X40-qT-Bod" firstAttribute="centerY" secondItem="gHm-0v-SQz" secondAttribute="centerY" id="xfM-z3-fnv"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wZ-q8-DOf">
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                                <color key="backgroundColor" name="VersionBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pwx-5C-5g0"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="AppearanceColor"/>
                         <constraints>
                             <constraint firstItem="pwx-5C-5g0" firstAttribute="trailing" secondItem="gHm-0v-SQz" secondAttribute="trailing" id="4F8-gP-Qk9"/>
                             <constraint firstItem="gHm-0v-SQz" firstAttribute="top" secondItem="I5h-oq-FzC" secondAttribute="bottom" id="8JS-v6-23C"/>
                             <constraint firstItem="I5h-oq-FzC" firstAttribute="top" secondItem="pwx-5C-5g0" secondAttribute="top" id="CTL-7C-Hbr"/>
                             <constraint firstItem="pwx-5C-5g0" firstAttribute="bottom" secondItem="I5h-oq-FzC" secondAttribute="bottom" constant="40" id="IE6-B4-5FH"/>
                             <constraint firstItem="I5h-oq-FzC" firstAttribute="leading" secondItem="pwx-5C-5g0" secondAttribute="leading" id="U9I-hi-icL"/>
+                            <constraint firstItem="pwx-5C-5g0" firstAttribute="trailing" secondItem="8wZ-q8-DOf" secondAttribute="trailing" id="Wif-e1-iZK"/>
                             <constraint firstItem="gHm-0v-SQz" firstAttribute="leading" secondItem="pwx-5C-5g0" secondAttribute="leading" id="Xvp-eo-xem"/>
                             <constraint firstItem="pwx-5C-5g0" firstAttribute="bottom" secondItem="gHm-0v-SQz" secondAttribute="bottom" id="arf-TQ-eep"/>
                             <constraint firstItem="pwx-5C-5g0" firstAttribute="trailing" secondItem="I5h-oq-FzC" secondAttribute="trailing" id="hii-KX-K9Z"/>
+                            <constraint firstItem="8wZ-q8-DOf" firstAttribute="top" secondItem="gHm-0v-SQz" secondAttribute="bottom" id="nka-JN-dPp"/>
+                            <constraint firstAttribute="bottom" secondItem="8wZ-q8-DOf" secondAttribute="bottom" id="p3Z-gb-QOk"/>
+                            <constraint firstItem="8wZ-q8-DOf" firstAttribute="leading" secondItem="pwx-5C-5g0" secondAttribute="leading" id="tvA-iA-9xZ"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -1591,7 +1599,7 @@
             <color red="0.83099997043609619" green="0.38400000333786011" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="VersionBackgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
