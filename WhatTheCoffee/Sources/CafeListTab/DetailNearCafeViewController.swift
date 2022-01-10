@@ -11,7 +11,7 @@ import WebKit
 import NMapsMap
 import CoreLocation
 
-class DetailNearCafeViewController: UIViewController {
+class DetailNearCafeViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
@@ -26,7 +26,7 @@ class DetailNearCafeViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    adjustNavigationBarFont()
+
     configure()
   }
   

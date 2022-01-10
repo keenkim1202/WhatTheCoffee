@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class SettingDetailViewController: UIViewController {
+class SettingDetailViewController: BaseViewController {
   
   // MARK: - Properties
   var index: Int?

@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import FirebaseAnalytics
 
-class NearCafeViewController: UIViewController {
+class NearCafeViewController: BaseViewController {
   
   // MARK: - Properties
   let perPage: Int = 15
@@ -49,8 +49,6 @@ class NearCafeViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
-    
     let searchController = UISearchController()
 
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)

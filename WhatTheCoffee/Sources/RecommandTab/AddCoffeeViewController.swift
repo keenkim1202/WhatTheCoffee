@@ -12,7 +12,7 @@ import TextFieldEffects
 
 // TODO: 카메라 및 사진첩 접근 권한 묻도록 설정하기.
 
-class AddCoffeeViewController: UIViewController {
+class AddCoffeeViewController: BaseViewController {
   
   // MARK: - Enum
   enum ViewType {
@@ -57,7 +57,6 @@ class AddCoffeeViewController: UIViewController {
   }
   
   func configureNAV() {
-    adjustNavigationBarFont()
     let cancelBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onCancel))
     let saveBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(onSave))
     

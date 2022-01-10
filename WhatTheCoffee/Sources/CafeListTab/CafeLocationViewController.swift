@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import NMapsMap
 
-class CafeLocationViewController: UIViewController {
+class CafeLocationViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
@@ -23,7 +23,6 @@ class CafeLocationViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    adjustNavigationBarFont()
     configureLocationManager()
     
     if !nearCafeLists.isEmpty {
