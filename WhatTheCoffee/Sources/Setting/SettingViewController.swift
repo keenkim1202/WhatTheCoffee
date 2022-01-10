@@ -11,7 +11,7 @@ class SettingViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment?
-  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기", "개별 이미지 추가하기"]
+  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기", "☝️ 개별 이미지 추가하기"]
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
