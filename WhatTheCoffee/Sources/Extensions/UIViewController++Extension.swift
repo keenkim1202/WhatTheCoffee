@@ -20,7 +20,7 @@ extension UIViewController {
   }
   
   func saveDefaultIceCoffee(env: Environment) {
-    let defaultCoffeeList: [String] = ["아메리카노", "에스프레소", "라떼", "바닐라_라떼", "그린티_라떼", "모카_라떼", "카라멜_마끼아또"]
+    let defaultCoffeeList: [String] = ["아이스_아메리카노", "아이스_라떼", "아이스_바닐라_라떼", "아이스_그린티_라떼", "아이스_모카_라떼", "아이스_카라멜_마끼아또"]
     for i in 0..<defaultCoffeeList.count {
       let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
       env.coffeeRepository.add(item: coffee)
@@ -31,7 +31,7 @@ extension UIViewController {
   }
   
   func saveDefaultHotCoffee(env: Environment) {
-    let defaultCoffeeList: [String] = ["따뜻한_아메리카노", "따뜻한_라떼", "따뜻한_바닐라_라떼", "따뜻한_모카_라떼", "따뜻한_카라멜_마끼아또"]
+    let defaultCoffeeList: [String] = ["따뜻한_아메리카노", "에스프레소", "따뜻한_라떼", "따뜻한_바닐라_라떼", "따뜻한_모카_라떼", "따뜻한_카라멜_마끼아또"]
     for i in 0..<defaultCoffeeList.count {
       let coffee = Coffee(name: defaultCoffeeList[i].replacingOccurrences(of: "_", with: " "))
       env.coffeeRepository.add(item: coffee)
