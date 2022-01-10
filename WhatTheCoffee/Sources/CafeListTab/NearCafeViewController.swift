@@ -21,11 +21,7 @@ class NearCafeViewController: BaseViewController {
   var isEnd: Bool = false
   var nearCafeList: [NearCafe] = []
   
-  var userCoordinate: CLLocationCoordinate2D? {
-     didSet {
-       fetchData(query: "카페")
-     }
-  }
+  var userCoordinate: CLLocationCoordinate2D?
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -34,17 +30,18 @@ class NearCafeViewController: BaseViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(#function)
+    
     configure()
     locationManger.requestWhenInUseAuthorization()
-//    configureLocationManager()
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    print(#function)
     super.viewWillAppear(animated)
     Analytics.logEvent("TAB_nearCafe", parameters: nil)
     
     configureLocationManager()
+    fetchData()
   }
   
   // MARK: - Configure
@@ -64,23 +61,25 @@ class NearCafeViewController: BaseViewController {
   }
   
   func configureLocationManager() {
+    print(#function)
+    
     locationManger.delegate = self
     locationManger.desiredAccuracy = kCLLocationAccuracyBest
     locationManger.requestWhenInUseAuthorization()
     
     if CLLocationManager.locationServicesEnabled() {
-        print("위치 서비스 On 상태")
-     locationManger.startUpdatingLocation()
+      print("위치 서비스 On 상태")
+      locationManger.startUpdatingLocation()
       
       if let location = locationManger.location {
         userCoordinate = location.coordinate
       }
     } else {
-        print("위치 서비스 Off 상태")
+      print("위치 서비스 Off 상태")
     }
   }
   
-  func fetchData(query: String, page: Int = 1) {
+  func fetchData(query: String = "카페", page: Int = 1) {
     print(#function)
     
     if let coor = userCoordinate {
@@ -107,7 +106,6 @@ class NearCafeViewController: BaseViewController {
           }
 
           DispatchQueue.main.async {
-            self.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             self.tableView.reloadData()
             self.checkDataIsEmpty()
           }
@@ -131,7 +129,8 @@ class NearCafeViewController: BaseViewController {
     nearCafeList.removeAll()
     pageableCount = 0
     page = 1
-    fetchData(query: "카페")
+    self.tableView.scroll(to: .top, animated: true)
+    fetchData()
   }
   
   @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
@@ -181,10 +180,10 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
           if let text = queryText {
             self.fetchData(query: text, page: page)
           } else {
-            self.fetchData(query: "카페", page: page)
+            self.fetchData(page: page)
           }
         } else {
-//          print("마지막 페이지: \(page)")
+         // print("마지막 페이지: \(page)")
         }
       }
   }
@@ -233,6 +232,7 @@ extension NearCafeViewController: CLLocationManagerDelegate {
     case .authorizedAlways, .authorizedWhenInUse:
       print("GPS 권한 설정됨")
       configureLocationManager()
+      fetchData()
     case .restricted, .notDetermined:
       print("GPS 권한 설정되지 않음")
       getLocationUsagePermission()
