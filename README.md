@@ -5,7 +5,7 @@
 
 
 
-# [TIL](https://ossified-gas-bd2.notion.site/2967f50a8f644f29af1b96d5981b2046?v=e7237813ce724507847d8d90f8af25b4)
+# [TIL](https://ossified-gas-bd2.notion.site/37b9b32e499a456790d325d83fbc4103?v=17c238af5c0347648375e9c7e33d5e75)
 - 제목에 연결된 링크를 통해 확인하실 수 있습니다.
 - 달력에 날짜마다 하위 페이지를 생성하여 작성하였습니다.
 - 원하는 날짜의 페이지를 선하여 작성 내용을 확인하실 수 있습니다.
