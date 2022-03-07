@@ -8,6 +8,9 @@
 import UIKit
 import FirebaseAnalytics
 
+// TODO: searchBar 글씨체 수정 가능한지 찾아보기
+// TODO: searchBar 화면 초기에는 안보이고, 아래로 스크롤 시에 나타나도록 하는 것 찾아보기
+
 class RecordsViewController: BaseViewController {
   
   // MARK: - ModeType
@@ -226,11 +229,7 @@ extension RecordsViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.endEditing(true)
     guard let query = searchBar.text else { return }
-    // nearCafeList.removeAll()
-    // pageableCount = 0
-    // page = 1
-    // fetchData(query: query)
-    // queryText = query
+    // TODO: 검색 관련 코드 작성하기
   }
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
