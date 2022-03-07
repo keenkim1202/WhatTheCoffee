@@ -31,4 +31,8 @@ extension UIColor {
   public class var appearanceColor: UIColor {
     return UIColor(named: "AppearanceColor")!
   }
+  
+  public class var versionBackgroundColor: UIColor {
+    return UIColor(named: "VersionBackgroundColor")!
+  }
 }

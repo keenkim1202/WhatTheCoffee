@@ -7,10 +7,12 @@
 
 import UIKit
 import AVFoundation
+import FirebaseAnalytics
+import TextFieldEffects
 
 // TODO: 카메라 및 사진첩 접근 권한 묻도록 설정하기.
 
-class AddCoffeeViewController: UIViewController {
+class AddCoffeeViewController: BaseViewController {
   
   // MARK: - Enum
   enum ViewType {
@@ -33,7 +35,7 @@ class AddCoffeeViewController: UIViewController {
   // MARK: - UI
   @IBOutlet weak var coffeeImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
-  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var nameTextField: IsaoTextField!
   
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
@@ -55,7 +57,6 @@ class AddCoffeeViewController: UIViewController {
   }
   
   func configureNAV() {
-    adjustNavigationBarFont()
     let cancelBarButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onCancel))
     let saveBarButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(onSave))
     
@@ -115,13 +116,14 @@ class AddCoffeeViewController: UIViewController {
       imagePicker.sourceType = .camera
       self.present(imagePicker, animated: false, completion: nil)
     } else {
-      showAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
+      showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
   }
   
   // MARK: - Actions
   /// navigationBarButton
   @objc func onCancel() {
+    Analytics.logEvent("CANCEL_newCoffee", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -130,9 +132,10 @@ class AddCoffeeViewController: UIViewController {
     guard let text = nameTextField.text else { return }
     
     if text.isEmpty {
-      showAlert("카페명을 입력해주세요.")
+      showErrorAlert("커피명을 입력해주세요.")
     } else {
       saveData()
+      Analytics.logEvent("ADD_newCoffee", parameters: ["커피명": text])
       self.navigationController?.popViewController(animated: true)
     }
   }

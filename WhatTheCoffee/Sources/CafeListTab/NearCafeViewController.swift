@@ -6,12 +6,268 @@
 //
 
 import UIKit
+import CoreLocation
+import FirebaseAnalytics
 
-class NearCafeViewController: UIViewController {
+class NearCafeViewController: BaseViewController {
   
+  // MARK: - Properties
+  let perPage: Int = 15
+  var environment: Environment? = nil
+  var locationManger = CLLocationManager()
+  var queryText: String?
+  var page: Int = 1
+  var pageableCount: Int = 0
+  var isEnd: Bool = false
+  var nearCafeList: [NearCafe] = []
+  
+  var userCoordinate: CLLocationCoordinate2D?
+  
+  // MARK: - UI
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var emptyLabel: UILabel!
+  
+  // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configure()
+    locationManger.requestWhenInUseAuthorization()
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    print(#function)
+    super.viewWillAppear(animated)
+    Analytics.logEvent("TAB_nearCafe", parameters: nil)
+    
+    configureLocationManager()
+    fetchData()
+  }
+  
+  // MARK: - Configure
+  func configure() {
+    let searchController = UISearchController()
+
+    searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
+    searchController.delegate = self
+    searchController.searchBar.delegate = self
+    
+    self.definesPresentationContext = true
+    self.navigationItem.searchController = searchController
+    
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.prefetchDataSource = self
+  }
+  
+  func configureLocationManager() {
+    print(#function)
+    
+    locationManger.delegate = self
+    locationManger.desiredAccuracy = kCLLocationAccuracyBest
+    locationManger.requestWhenInUseAuthorization()
+    
+    if CLLocationManager.locationServicesEnabled() {
+      print("위치 서비스 On 상태")
+      locationManger.startUpdatingLocation()
+      
+      if let location = locationManger.location {
+        userCoordinate = location.coordinate
+      }
+    } else {
+      print("위치 서비스 Off 상태")
+    }
+  }
+  
+  func fetchData(query: String = "카페", page: Int = 1) {
+    print(#function)
+    
+    if let coor = userCoordinate {
+      let latitude = coor.latitude
+      let longitude = coor.longitude
+      
+      DispatchQueue.global().async {
+        APIService.shared.fetchCafeInfo(pos: (latitude,longitude), query: query, page: page) { code, json in
+          let meta = json["meta"]
+          self.pageableCount = meta["pageable_count"].intValue
+          self.isEnd = meta["isEnd"].boolValue
+          
+          let storeList = json["documents"]
+          _ = storeList.map {
+            let addressName = $0.1["road_address_name"].stringValue
+            let placeUrl = $0.1["place_url"].stringValue
+            let placeName = $0.1["place_name"].stringValue
+            let x = $0.1["x"].doubleValue
+            let y = $0.1["y"].doubleValue
+            let distance = $0.1["distance"].stringValue
+            
+            let cafe = NearCafe(name: placeName, address: addressName, latitude: y, longitude: x, placeUrl: placeUrl, distance: distance)
+            self.nearCafeList.append(cafe)
+          }
+
+          DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.checkDataIsEmpty()
+          }
+        }
+      }
+    } else {
+      print("현재 위치 정보가 없음. 근처 카페 목록 검색 불가.")
+    }
+  }
+  
+  func checkDataIsEmpty() {
+    if !nearCafeList.isEmpty {
+      emptyLabel.isHidden = true
+    } else {
+      emptyLabel.isHidden = false
+    }
+  }
+  
+  // MARK: - Action
+  @IBAction func onRedo(_ sender: UIBarButtonItem) {
+    nearCafeList.removeAll()
+    pageableCount = 0
+    page = 1
+    self.tableView.scroll(to: .top, animated: true)
+    fetchData()
+  }
+  
+  @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
+    if !nearCafeList.isEmpty {
+      guard let vc = storyboard?.instantiateViewController(withIdentifier: "cafeLocationVC") as? CafeLocationViewController else { return }
+      vc.nearCafeLists = nearCafeList
+      vc.myLocation = userCoordinate
+  
+      let nav = UINavigationController(rootViewController: vc)
+      nav.modalPresentationStyle = .fullScreen
+      self.present(nav, animated: true, completion: nil)
+    } else {
+      showErrorAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
+    }
+  }
+}
+
+// MARK: - Extension
+// MARK: - UITableViewDelegate
+extension NearCafeViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 90
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let vc = storyboard?.instantiateViewController(withIdentifier: "detailNearCafeVC") as? DetailNearCafeViewController else { return }
+    guard let environment = environment else { return }
+    vc.environment = environment
+    vc.nearCafe = nearCafeList[indexPath.row]
+    
+    let nav = UINavigationController(rootViewController: vc)
+    nav.title = nearCafeList[indexPath.row].name
+    nav.modalPresentationStyle = .fullScreen
+    self.present(nav, animated: true, completion: nil)
+  }
+}
+
+// MARK: - UITableViewDataSourcePrefetching
+extension NearCafeViewController: UITableViewDataSourcePrefetching {
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    for indexPath in indexPaths {
+        
+      if (nearCafeList.count - 1 == indexPath.row) {
+        if pageableCount > perPage * page {
+          page += 1
+          
+          if let text = queryText {
+            self.fetchData(query: text, page: page)
+          } else {
+            self.fetchData(page: page)
+          }
+        } else {
+         // print("마지막 페이지: \(page)")
+        }
+      }
+  }
+  }
+  
+  func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+//    print("최소 - \(indexPaths)")
+  }
+}
+
+// MARK: - UITableViewDataSource
+extension NearCafeViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return nearCafeList.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: NearCafeTableViewCell.identifier) as? NearCafeTableViewCell else { return UITableViewCell() }
+    let row = nearCafeList[indexPath.row]
+    cell.cellConfigure(row: row)
+    cell.cafeImageView.image = UIImage.NearCafePlaceholder
+    
+    cell.selectionStyle = .none
+    return cell
+  }
+}
+
+// MARK: - CLLocationManagerDelegate -
+extension NearCafeViewController: CLLocationManagerDelegate {
+  func getLocationUsagePermission() {
+    self.locationManger.requestWhenInUseAuthorization()
+  }
+  
+  // 위치 정보 계속 업데이트 -> 위도 경도 받아옴
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  }
+  
+  // 위도 경도 받아오기 에러
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    print(error)
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    //location5
+    switch status {
+    case .authorizedAlways, .authorizedWhenInUse:
+      print("GPS 권한 설정됨")
+      configureLocationManager()
+      fetchData()
+    case .restricted, .notDetermined:
+      print("GPS 권한 설정되지 않음")
+      getLocationUsagePermission()
+    case .denied:
+      print("GPS 권한 요청 거부됨")
+      getLocationUsagePermission()
+    default:
+      print("GPS: Default")
+    }
+  }
+
+}
+
+// MARK: - UISearchBarDelegate -
+extension NearCafeViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.endEditing(true)
+    guard let query = searchBar.text else { return }
+    nearCafeList.removeAll()
+    pageableCount = 0
+    page = 1
+    fetchData(query: query)
+    queryText = query
+  }
+  
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    self.becomeFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    self.tableView.reloadData()
+  }
+}
+
+// MARK: - UISearchControllerDelegate -
+extension NearCafeViewController: UISearchControllerDelegate {
   
 }

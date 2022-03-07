@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
-class RecordsViewController: UIViewController {
+class RecordsViewController: BaseViewController {
   
   // MARK: - ModeType
   enum ModeType {
@@ -67,7 +68,7 @@ class RecordsViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    Analytics.logEvent("TAB_records", parameters: nil)
     fetchData()
     checkIsEmpty()
   }
@@ -87,8 +88,6 @@ class RecordsViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
-    
     let layout = UICollectionViewFlowLayout()
     recordCollectionView.collectionViewLayout = layout
     
@@ -127,7 +126,7 @@ class RecordsViewController: UIViewController {
         self.dictionarySelectedIndexPath.removeAll()
       }
     } else {
-      showAlert("삭제할 기록을 선택해주세요.")
+      showErrorAlert("삭제할 기록을 선택해주세요.")
     }
   }
   

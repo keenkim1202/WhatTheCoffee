@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */; };
 		1C1839F9274CB06800AAD04B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839F8274CB06800AAD04B /* Storage.swift */; };
 		1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */; };
 		1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206372744B41A00FDBBEF /* AppDelegate.swift */; };
 		1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206392744B41A00FDBBEF /* SceneDelegate.swift */; };
 		1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C22063D2744B41A00FDBBEF /* Main.storyboard */; };
 		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
+		1C25DEBA2763B102005F812E /* libswift_Concurrency.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1C25DEBE2763B25F005F812E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C25DEBD2763B25E005F812E /* GoogleService-Info.plist */; };
+		1C2DA392278822E4005183B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA391278822E4005183B2 /* SystemConfiguration.framework */; };
+		1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA393278822EB005183B2 /* CoreLocation.framework */; };
+		1C2DA396278822F3005183B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA395278822F3005183B2 /* QuartzCore.framework */; };
+		1C2DA398278822FA005183B2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA397278822FA005183B2 /* libc++.tbd */; };
+		1C2DA39A27882300005183B2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA39927882300005183B2 /* libxml2.tbd */; };
+		1C2DA39C27882307005183B2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA39B27882307005183B2 /* libsqlite3.tbd */; };
+		1C2DA39E27882322005183B2 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA39D27882322005183B2 /* Metal.framework */; };
 		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
 		1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */; };
 		1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */; };
@@ -40,16 +50,26 @@
 		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
-		1CC8F9F3CEB133D762121B32 /* Pods_WhatTheCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4BB2757597F2D168F30813 /* Pods_WhatTheCoffee.framework */; };
+		1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B6278C021100424504 /* BaseViewController.swift */; };
+		1C7BC3B9278C152800424504 /* UITableView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B8278C152800424504 /* UITableView++Extension.swift */; };
+		1C7BC3BB278C21FD00424504 /* AddDefaultImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BA278C21FD00424504 /* AddDefaultImageViewController.swift */; };
+		1C7BC3BD278C225500424504 /* AddDefaultImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BC278C225500424504 /* AddDefaultImageTableViewCell.swift */; };
+		1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BE278C23F400424504 /* CoffeeNameList.swift */; };
+		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
+		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
+		1CA82CDC278825D6004A830B /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA82CDB278825D6004A830B /* TextFieldEffects */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
+		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
+		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 		1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */; };
 		1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */; };
 		1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */; };
 		1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */; };
 		1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */; };
-		1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CCF0F962756055600B45F07 /* TextFieldEffects */; };
-		1CD5EA64275DA44F00308DB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CD5EA63275DA44F00308DB2 /* GoogleService-Info.plist */; };
+		1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD5EA66275DE3CD00308DB2 /* Alamofire */; };
+		1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6B275DE43600308DB2 /* APIService.swift */; };
+		1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +81,16 @@
 		1C22063E2744B41A00FDBBEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C2206402744B41B00FDBBEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2206452744B41B00FDBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
+		1C25DEBD2763B25E005F812E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C2DA38F278822DD005183B2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1C2DA391278822E4005183B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1C2DA393278822EB005183B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1C2DA395278822F3005183B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1C2DA397278822FA005183B2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		1C2DA39927882300005183B2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		1C2DA39B27882307005183B2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1C2DA39D27882322005183B2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewController.swift; sourceTree = "<group>"; };
 		1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewController.swift; sourceTree = "<group>"; };
@@ -85,17 +115,27 @@
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
+		1C7BC3B6278C021100424504 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1C7BC3B8278C152800424504 /* UITableView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView++Extension.swift"; sourceTree = "<group>"; };
+		1C7BC3BA278C21FD00424504 /* AddDefaultImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDefaultImageViewController.swift; sourceTree = "<group>"; };
+		1C7BC3BC278C225500424504 /* AddDefaultImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDefaultImageTableViewCell.swift; sourceTree = "<group>"; };
+		1C7BC3BE278C23F400424504 /* CoffeeNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeNameList.swift; sourceTree = "<group>"; };
+		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
+		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
+		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
+		1CC914E62758B59E002BD76D /* NearCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafe.swift; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
 		1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
 		1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
-		1CD5EA63275DA44F00308DB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		56592ECB570C157238B25CAF /* Pods-WhatTheCoffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.debug.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.debug.xcconfig"; sourceTree = "<group>"; };
-		5B04F823AB43F8317A8EC26E /* Pods-WhatTheCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.release.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.release.xcconfig"; sourceTree = "<group>"; };
-		FF4BB2757597F2D168F30813 /* Pods_WhatTheCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatTheCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CD5EA6B275DE43600308DB2 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle++Extension.swift"; sourceTree = "<group>"; };
+		1E3C7DA5F0797DCAAAD76ECA /* Pods-WhatTheCoffee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.release.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.release.xcconfig"; sourceTree = "<group>"; };
+		98DF2435BD03B3B80855BFD1 /* Pods-WhatTheCoffee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatTheCoffee.debug.xcconfig"; path = "Target Support Files/Pods-WhatTheCoffee/Pods-WhatTheCoffee.debug.xcconfig"; sourceTree = "<group>"; };
+		CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatTheCoffee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,11 +143,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C2DA39C27882307005183B2 /* libsqlite3.tbd in Frameworks */,
+				1C2DA39A27882300005183B2 /* libxml2.tbd in Frameworks */,
+				1C2DA398278822FA005183B2 /* libc++.tbd in Frameworks */,
+				1C2DA396278822F3005183B2 /* QuartzCore.framework in Frameworks */,
+				1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */,
+				1C2DA39E27882322005183B2 /* Metal.framework in Frameworks */,
+				1C2DA392278822E4005183B2 /* SystemConfiguration.framework in Frameworks */,
+				1C25DEBA2763B102005F812E /* libswift_Concurrency.tbd in Frameworks */,
 				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
-				1CCF0F972756055600B45F07 /* TextFieldEffects in Frameworks */,
 				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
+				1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */,
 				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
-				1CC8F9F3CEB133D762121B32 /* Pods_WhatTheCoffee.framework in Frameworks */,
+				05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */,
+				1CA82CDC278825D6004A830B /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,8 +178,8 @@
 			children = (
 				1C2206362744B41A00FDBBEF /* WhatTheCoffee */,
 				1C2206352744B41A00FDBBEF /* Products */,
-				1329B6221F05E501DFF53365 /* Pods */,
-				F2217B81449D3EBAA0EFEC7C /* Frameworks */,
+				982C72A2BD36E461D6EE8D23 /* Pods */,
+				8C7E63E2136E8C4D1F3606F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,7 +207,9 @@
 				1CD5EA63275DA44F00308DB2 /* GoogleService-Info.plist */,
 				1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */,
 				1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */,
+				1C25DEBD2763B25E005F812E /* GoogleService-Info.plist */,
 				1C2206452744B41B00FDBBEF /* Info.plist */,
+				1C8D476F275DFD2400A4F486 /* APIKEY.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -175,6 +226,7 @@
 				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
 				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
 				1C37C36C2744E7E300EC3CA3 /* RecordsTab */,
+				1C7BC3B6278C021100424504 /* BaseViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -206,6 +258,8 @@
 				1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */,
 				1C37C35F2744E6F600EC3CA3 /* DetailNearCafeViewController.swift */,
 				1C37C3612744E70100EC3CA3 /* CafeLocationViewController.swift */,
+				1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */,
+				1C90BDFD27633DD5001618B9 /* PopupViewController.swift */,
 			);
 			path = CafeListTab;
 			sourceTree = "<group>";
@@ -232,6 +286,8 @@
 				1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */,
 				1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */,
 				1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */,
+				1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */,
+				1C7BC3B8278C152800424504 /* UITableView++Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,6 +299,7 @@
 				1C37C38C2745489000EC3CA3 /* Cafe.swift */,
 				1C37C38E274548E800EC3CA3 /* Rate.swift */,
 				1CC914E2275888A2002BD76D /* AppError.swift.swift */,
+				1CC914E62758B59E002BD76D /* NearCafe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,6 +311,7 @@
 				1C55565B274FA79C00B5A145 /* CafeRepository.swift */,
 				1C605BDF274B76B0000E94D0 /* Environment.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
+				1CD5EA6B275DE43600308DB2 /* APIService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -264,16 +322,37 @@
 				1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */,
 				1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */,
 				1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */,
+				1C7BC3BA278C21FD00424504 /* AddDefaultImageViewController.swift */,
+				1C7BC3BC278C225500424504 /* AddDefaultImageTableViewCell.swift */,
+				1C7BC3BE278C23F400424504 /* CoffeeNameList.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		F2217B81449D3EBAA0EFEC7C /* Frameworks */ = {
+		8C7E63E2136E8C4D1F3606F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF4BB2757597F2D168F30813 /* Pods_WhatTheCoffee.framework */,
+				1C2DA39D27882322005183B2 /* Metal.framework */,
+				1C2DA39B27882307005183B2 /* libsqlite3.tbd */,
+				1C2DA39927882300005183B2 /* libxml2.tbd */,
+				1C2DA397278822FA005183B2 /* libc++.tbd */,
+				1C2DA395278822F3005183B2 /* QuartzCore.framework */,
+				1C2DA393278822EB005183B2 /* CoreLocation.framework */,
+				1C2DA391278822E4005183B2 /* SystemConfiguration.framework */,
+				1C2DA38F278822DD005183B2 /* OpenGLES.framework */,
+				1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */,
+				CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		982C72A2BD36E461D6EE8D23 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				98DF2435BD03B3B80855BFD1 /* Pods-WhatTheCoffee.debug.xcconfig */,
+				1E3C7DA5F0797DCAAAD76ECA /* Pods-WhatTheCoffee.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,11 +362,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C2206482744B41B00FDBBEF /* Build configuration list for PBXNativeTarget "WhatTheCoffee" */;
 			buildPhases = (
-				404B2C5A6BDC556510775E14 /* [CP] Check Pods Manifest.lock */,
+				740B41D2FB8F9E65C2DC79EE /* [CP] Check Pods Manifest.lock */,
 				1C2206302744B41A00FDBBEF /* Sources */,
 				1C2206312744B41A00FDBBEF /* Frameworks */,
 				1C2206322744B41A00FDBBEF /* Resources */,
-				F45BBCB1A0405D7B2B7BC982 /* [CP] Embed Pods Frameworks */,
+				89C62A018915BB11F04E3D8A /* [CP] Embed Pods Frameworks */,
+				1C25DEB627639B28005F812E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -298,7 +378,8 @@
 				1C37C393274550B900EC3CA3 /* Realm */,
 				1C37C395274550B900EC3CA3 /* RealmSwift */,
 				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
-				1CCF0F962756055600B45F07 /* TextFieldEffects */,
+				1CD5EA66275DE3CD00308DB2 /* Alamofire */,
+				1CA82CDB278825D6004A830B /* TextFieldEffects */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -329,9 +410,10 @@
 			);
 			mainGroup = 1C22062B2744B41A00FDBBEF;
 			packageReferences = (
-				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */,
-				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
-				1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects.git" */,
+				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = 1C2206352744B41A00FDBBEF /* Products */;
 			projectDirPath = "";
@@ -348,6 +430,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
+				1C25DEBE2763B25F005F812E /* GoogleService-Info.plist in Resources */,
+				1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */,
 				1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */,
 				1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */,
 				1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */,
@@ -360,7 +444,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		404B2C5A6BDC556510775E14 /* [CP] Check Pods Manifest.lock */ = {
+		1C25DEB627639B28005F812E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		740B41D2FB8F9E65C2DC79EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -382,7 +485,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F45BBCB1A0405D7B2B7BC982 /* [CP] Embed Pods Frameworks */ = {
+		89C62A018915BB11F04E3D8A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,22 +520,32 @@
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
+				1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
+				1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */,
 				1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
+				1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */,
 				1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */,
 				1C1839F9274CB06800AAD04B /* Storage.swift in Sources */,
 				1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */,
 				1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */,
 				1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */,
+				1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */,
 				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
+				1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */,
 				1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */,
 				1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */,
+				1C7BC3B9278C152800424504 /* UITableView++Extension.swift in Sources */,
 				1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */,
+				1C7BC3BD278C225500424504 /* AddDefaultImageTableViewCell.swift in Sources */,
+				1C7BC3BB278C21FD00424504 /* AddDefaultImageViewController.swift in Sources */,
 				1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */,
+				1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */,
 				1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */,
 				1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */,
+				1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */,
 				1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
 				1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */,
@@ -572,19 +685,22 @@
 		};
 		1C2206492744B41B00FDBBEF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56592ECB570C157238B25CAF /* Pods-WhatTheCoffee.debug.xcconfig */;
+			baseConfigurationReference = 98DF2435BD03B3B80855BFD1 /* Pods-WhatTheCoffee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "왓더커피";
-				INFOPLIST_KEY_NSCameraUsageDescription = "커피 및 카페 사진 추가를 위해 카메라에 접근하고자 합니다. 카메라 권한을 허용하시겠습니까?";
+				INFOPLIST_KEY_NSCameraUsageDescription = "커피/카페 사진을 추가하기 위해 카메라에 접근하고자 합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 중심으로 근처 카페를 정보를 가져오려 합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진첩 접근 권한을 허용하시겠습니까?";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -596,7 +712,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -607,19 +727,21 @@
 		};
 		1C22064A2744B41B00FDBBEF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B04F823AB43F8317A8EC26E /* Pods-WhatTheCoffee.release.xcconfig */;
+			baseConfigurationReference = 1E3C7DA5F0797DCAAAD76ECA /* Pods-WhatTheCoffee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "왓더커피";
-				INFOPLIST_KEY_NSCameraUsageDescription = "커피 및 카페 사진 추가를 위해 카메라에 접근하고자 합니다. 카메라 권한을 허용하시겠습니까?";
+				INFOPLIST_KEY_NSCameraUsageDescription = "커피/카페 사진을 추가하기 위해 카메라에 접근하고자 합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재 위치를 중심으로 근처 카페를 정보를 가져오려 합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진첩 접근 권한을 허용하시겠습니까?";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -631,7 +753,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
+				MARKETING_VERSION = 1.3;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -680,12 +807,20 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects.git" */ = {
+		1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
+			};
+		};
+		1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -706,10 +841,15 @@
 			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		1CCF0F962756055600B45F07 /* TextFieldEffects */ = {
+		1CA82CDB278825D6004A830B /* TextFieldEffects */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1CCF0F952756055600B45F07 /* XCRemoteSwiftPackageReference "TextFieldEffects.git" */;
+			package = 1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
 			productName = TextFieldEffects;
+		};
+		1CD5EA66275DE3CD00308DB2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
