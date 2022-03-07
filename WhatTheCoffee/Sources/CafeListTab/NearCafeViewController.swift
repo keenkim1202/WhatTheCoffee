@@ -175,7 +175,7 @@ extension NearCafeViewController: UITableViewDelegate {
 extension NearCafeViewController: UITableViewDataSourcePrefetching {
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     for indexPath in indexPaths {
-        
+      
       if (nearCafeList.count - 1 == indexPath.row) {
         if pageableCount > perPage * page {
           page += 1
@@ -186,10 +186,10 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
             self.fetchData(page: page)
           }
         } else {
-         // print("마지막 페이지: \(page)")
+          // print("마지막 페이지: \(page)")
         }
       }
-  }
+    }
   }
   
   func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {

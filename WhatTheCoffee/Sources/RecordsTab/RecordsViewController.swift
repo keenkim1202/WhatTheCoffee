@@ -229,7 +229,10 @@ extension RecordsViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.endEditing(true)
     // TODO: 검색 관련 코드 작성하기
-    // guard let query = searchBar.text else { return }
+    guard let query = searchBar.text else { return }
+    cafeList.removeAll()
+    // realm에서 query에 따라 filtering 하는 코드 작성하기
+    // - CafeRepository에 함수를 만들어야하나??
   }
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
