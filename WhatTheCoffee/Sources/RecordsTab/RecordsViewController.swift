@@ -228,8 +228,8 @@ extension RecordsViewController: UICollectionViewDelegateFlowLayout {
 extension RecordsViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.endEditing(true)
-    guard let query = searchBar.text else { return }
     // TODO: 검색 관련 코드 작성하기
+    // guard let query = searchBar.text else { return }
   }
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
