@@ -6,10 +6,10 @@
 //
 
 import UIKit
+import TextFieldEffects
+import FirebaseAnalytics
 
-// TODO: 좀 더 깔끔하게 정리할 수 있을 것 같음. 나중에 수정하기
-
-class AddRecordViewController: UIViewController {
+class AddRecordViewController: BaseViewController {
   
   // MARK: - ViewType
   enum ViewType {
@@ -30,10 +30,11 @@ class AddRecordViewController: UIViewController {
   // MARK: - UI
   @IBOutlet weak var recordImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
-  @IBOutlet weak var titleTextField: UITextField!
+  
+  @IBOutlet weak var titleTextField: IsaoTextField!
   @IBOutlet weak var commentTextView: UITextView!
   
-  @IBOutlet weak var dateTextField: UITextField!
+  @IBOutlet weak var dateTextField: IsaoTextField!
   @IBOutlet weak var verygoodButton: UIButton!
   @IBOutlet weak var goodButton: UIButton!
   @IBOutlet weak var sosoButton: UIButton!
@@ -52,8 +53,6 @@ class AddRecordViewController: UIViewController {
   
   // MARK: - Configure
   func configure() {
-    adjustNavigationBarFont()
-    
     if let cafe = cafe {
       viewType = .update
       title = "기록 수정"
@@ -114,7 +113,7 @@ class AddRecordViewController: UIViewController {
       imagePicker.sourceType = .camera
       self.present(imagePicker, animated: false, completion: nil)
     } else {
-      showAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
+      showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
   }
   
@@ -216,16 +215,18 @@ class AddRecordViewController: UIViewController {
   @IBAction func onDone(_ sender: UIBarButtonItem) {
     guard let text = titleTextField.text else { return }
     if text.isEmpty {
-      showAlert("카페명을 입력해주세요.")
+      showErrorAlert("카페명을 입력해주세요.")
     } else if rate == nil {
-      showAlert("별점을 체크해주세요.")
+      showErrorAlert("별점을 체크해주세요.")
     } else {
       saveData()
+      Analytics.logEvent("ADD_newRecord", parameters: nil)
       self.dismiss(animated: true, completion: nil)
     }
   }
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {
+    Analytics.logEvent("CANCEL_newRecord", parameters: nil)
     self.dismiss(animated: true, completion: nil)
   }
   

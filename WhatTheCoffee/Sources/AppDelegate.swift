@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import NMapsMap
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    NMFAuthManager.shared().clientId = "rkft96del5"
+    
     // Use Firebase library to configure APIs
     FirebaseApp.configure()
     

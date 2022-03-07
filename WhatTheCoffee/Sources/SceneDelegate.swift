@@ -7,7 +7,7 @@
 
 import UIKit
 import AppTrackingTransparency
-import Firebase
+import FirebaseAnalytics
 import Realm
 import RealmSwift
 
@@ -33,6 +33,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let env = environment {
           vc.checkIsFirst(env: env)
         }
+        
+      case let vc as NearCafeViewController:
+        vc.environment = environment
+        
       case let vc as RecordsViewController:
         vc.environment = environment
         
@@ -40,6 +44,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         break
       }
     }
+    
+    let settingVC = SettingViewController()
+    settingVC.environment = environment
     
     sleep(1)
   }
