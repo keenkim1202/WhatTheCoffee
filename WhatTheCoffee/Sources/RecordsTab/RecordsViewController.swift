@@ -62,7 +62,7 @@ class RecordsViewController: BaseViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    configureSearchController()
     configure()
   }
   
@@ -96,6 +96,19 @@ class RecordsViewController: BaseViewController {
     recordCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
     
     deleteBarButtonItem.tintColor = .red
+  }
+  
+  func configureSearchController() {
+    let searchController = UISearchController()
+
+    searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
+    searchController.delegate = self
+    searchController.searchBar.delegate = self
+    searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
+    
+    self.definesPresentationContext = true
+    self.navigationItem.searchController = searchController
+    
   }
   
   func changeDeleteButtonState() {
@@ -206,4 +219,30 @@ extension RecordsViewController: UICollectionViewDelegateFlowLayout {
     
     return CGSize(width: width, height: width)
   }
+}
+
+// MARK: - UISearchBarDelegate -
+extension RecordsViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.endEditing(true)
+    guard let query = searchBar.text else { return }
+    // nearCafeList.removeAll()
+    // pageableCount = 0
+    // page = 1
+    // fetchData(query: query)
+    // queryText = query
+  }
+  
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    self.becomeFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    // self.tableView.reloadData()
+  }
+}
+
+// MARK: - UISearchControllerDelegate -
+extension RecordsViewController: UISearchControllerDelegate {
+  
 }

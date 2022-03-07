@@ -31,6 +31,7 @@ class NearCafeViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configureSearchController()
     configure()
     locationManger.requestWhenInUseAuthorization()
   }
@@ -46,18 +47,20 @@ class NearCafeViewController: BaseViewController {
   
   // MARK: - Configure
   func configure() {
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.prefetchDataSource = self
+  }
+  
+  func configureSearchController() {
     let searchController = UISearchController()
 
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
     searchController.delegate = self
     searchController.searchBar.delegate = self
-    
+    searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
     self.definesPresentationContext = true
     self.navigationItem.searchController = searchController
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.prefetchDataSource = self
   }
   
   func configureLocationManager() {
