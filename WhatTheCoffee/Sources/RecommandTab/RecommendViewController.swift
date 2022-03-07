@@ -35,6 +35,15 @@ class RecommendViewController: BaseViewController {
     Analytics.logEvent("TAB_recommend", parameters: nil)
     fetchData()
     checkIsEmpty()
+//    firebaseLogEvent()
+  }
+  
+  func firebaseLogEvent() {
+    Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+      AnalyticsParameterItemID: "id-\(title!)",
+      AnalyticsParameterItemName: title!,
+      AnalyticsParameterContentType: "cont",
+    ])
   }
   
   func checkIsEmpty() {
