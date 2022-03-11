@@ -16,6 +16,7 @@ protocol CafeRepositoryType {
   func update(item: Cafe, new: Cafe)
   func remove(item: Cafe)
   func fetch() -> [Cafe]
+  func search(query: String) -> Results<Cafe>
 }
 
 final class CafeRepository: CafeRepositoryType {
@@ -61,5 +62,11 @@ final class CafeRepository: CafeRepositoryType {
     return realm.objects(Cafe.self)
       .map { $0 }
       .sorted(by: {$0.visitDate > $1.visitDate})
+  }
+  
+  func search(query: String) -> Results<Cafe> {
+    let search = realm.objects(Cafe.self)
+      .filter("name CONTAINS[c] '\(query)' OR conment CONTAINS[c] '\(query)'")
+    return search.sorted(byKeyPath: "visitDate", ascending: false)
   }
 }
