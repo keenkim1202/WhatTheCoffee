@@ -66,7 +66,7 @@ final class CafeRepository: CafeRepositoryType {
   
   func search(query: String) -> Results<Cafe> {
     let search = realm.objects(Cafe.self)
-      .filter("name CONTAINS[c] '\(query)' OR conment CONTAINS[c] '\(query)'")
+      .filter("name CONTAINS[c] '\(query)' OR comment CONTAINS[c] '\(query)'")
     return search.sorted(byKeyPath: "visitDate", ascending: false)
   }
 }
