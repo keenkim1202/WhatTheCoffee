@@ -9,6 +9,7 @@ import Foundation
 import Realm
 import RealmSwift
 
+// TODO: 검색 제대로 되게 수정하기
 protocol CafeRepositoryType {
   var count: Int { get }
   
@@ -67,6 +68,6 @@ final class CafeRepository: CafeRepositoryType {
   func search(query: String) -> [Cafe] {
     let search = realm.objects(Cafe.self)
       .filter("name CONTAINS[c] '\(query)' OR comment CONTAINS[c] '\(query)'")
-    return Array(search.sorted(byKeyPath: "visitDate", ascending: false))
+    return search.sorted(byKeyPath: "visitDate", ascending: false).map{ $0 }
   }
 }
