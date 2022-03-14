@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */; };
 		1C06FE1927DF7AB000C28042 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C06FE1827DF7AB000C28042 /* GoogleService-Info.plist */; };
+		1C06FE1B27DF811600C28042 /* RecordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06FE1A27DF811600C28042 /* RecordSearchViewController.swift */; };
 		1C1839F9274CB06800AAD04B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839F8274CB06800AAD04B /* Storage.swift */; };
 		1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */; };
 		1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206372744B41A00FDBBEF /* AppDelegate.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		1C06FE1827DF7AB000C28042 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C06FE1A27DF811600C28042 /* RecordSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewController.swift; sourceTree = "<group>"; };
 		1C1839F8274CB06800AAD04B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert++Extension.swift"; sourceTree = "<group>"; };
 		1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +262,7 @@
 				1C37C3652744E72300EC3CA3 /* AddRecordViewController.swift */,
 				1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */,
 				1C555637274DC94C00B5A145 /* RecordCell.xib */,
+				1C06FE1A27DF811600C28042 /* RecordSearchViewController.swift */,
 			);
 			path = RecordsTab;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */,
+				1C06FE1B27DF811600C28042 /* RecordSearchViewController.swift in Sources */,
 				1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */,
 				1C37C3602744E6F600EC3CA3 /* DetailNearCafeViewController.swift in Sources */,
 				1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */,
