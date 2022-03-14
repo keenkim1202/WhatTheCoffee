@@ -233,7 +233,6 @@ extension RecordsViewController: UISearchBarDelegate {
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    fetchData()
     self.recordCollectionView.reloadData()
   }
 }

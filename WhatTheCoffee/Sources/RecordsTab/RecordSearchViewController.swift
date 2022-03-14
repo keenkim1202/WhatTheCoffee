@@ -20,15 +20,16 @@ class RecordSearchViewController: UIViewController {
   var environment: Environment? = nil
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
   
-  var queryText: String = "" {
-    didSet {
-      guard let env = environment else { return }
-      results = env.cafeRepository.search(query: queryText)
-    }
-  }
+  var queryText: String = "" { didSet {
+    searchData()
+    print(queryText)
+  } }
 
   var results: [Cafe] = [] {
-    didSet { seachCollectionView.reloadData() }
+    didSet {
+      print("결과갯수: ", results.count)
+      seachCollectionView.reloadData()
+    }
   }
   
   // MARK: - UI
@@ -38,9 +39,21 @@ class RecordSearchViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    configure()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    searchData()
+  }
+  
+  func configure() {
+    let layout = UICollectionViewFlowLayout()
+    seachCollectionView.collectionViewLayout = layout
     
     seachCollectionView.delegate = self
     seachCollectionView.dataSource = self
+    seachCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
   }
   
   func checkIsEmpty() {
@@ -50,15 +63,10 @@ class RecordSearchViewController: UIViewController {
       emptyView.isHidden = true
     }
   }
-  
-  func fetchData() {
-    guard let env = environment else { return }
-     results = env.cafeRepository.fetch()
-  }
-  
+
   func searchData() {
     guard let env = environment else { return }
-    results = Array(env.cafeRepository.search(query: queryText))
+    results = env.cafeRepository.search(query: queryText)
   }
   
 }
@@ -71,6 +79,8 @@ extension RecordSearchViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = seachCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
+    
+    checkIsEmpty()
     let item = results[indexPath.item]
     
     cell.backgroundImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg") ?? UIImage.defaultCafeImage
