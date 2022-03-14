@@ -158,6 +158,77 @@
             </objects>
             <point key="canvasLocation" x="1842.0289855072465" y="452.67857142857139"/>
         </scene>
+        <!--Record Search View Controller-->
+        <scene sceneID="zJ8-I9-3s2">
+            <objects>
+                <viewController storyboardIdentifier="searchVC" id="vD5-Jl-gMk" customClass="RecordSearchViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mi3-QI-eU5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-eN-Mft">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gp8-g7-LVo">
+                                    <size key="itemSize" width="148" height="149"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Y5-v3-lXw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1GO-kt-wiX">
+                                        <rect key="frame" x="10" y="382" width="394" height="54"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색어와 관련된 카페기록이 없어요🥲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGc-SY-MJS">
+                                                <rect key="frame" x="79" y="0.0" width="236.5" height="22"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                <color key="textColor" name="GreenSubColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="확인 후 다시 검색을 시도해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlh-eb-J2Z">
+                                                <rect key="frame" x="89.5" y="32" width="215" height="22"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                <color key="textColor" name="OrangeMainColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="GreenMainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1GO-kt-wiX" secondAttribute="trailing" constant="10" id="73h-IY-3Vw"/>
+                                    <constraint firstItem="1GO-kt-wiX" firstAttribute="leading" secondItem="8Y5-v3-lXw" secondAttribute="leading" constant="10" id="DtY-W1-6SL"/>
+                                    <constraint firstItem="1GO-kt-wiX" firstAttribute="centerX" secondItem="8Y5-v3-lXw" secondAttribute="centerX" id="IEG-z8-9GA"/>
+                                    <constraint firstItem="1GO-kt-wiX" firstAttribute="centerY" secondItem="8Y5-v3-lXw" secondAttribute="centerY" id="qIp-nM-u2b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="u2h-Er-c61"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u2h-Er-c61" firstAttribute="trailing" secondItem="IIO-eN-Mft" secondAttribute="trailing" id="07U-8h-8UV"/>
+                            <constraint firstItem="IIO-eN-Mft" firstAttribute="top" secondItem="u2h-Er-c61" secondAttribute="top" id="4Oh-5P-Pj9"/>
+                            <constraint firstItem="8Y5-v3-lXw" firstAttribute="top" secondItem="u2h-Er-c61" secondAttribute="top" id="9AG-9s-zQi"/>
+                            <constraint firstItem="IIO-eN-Mft" firstAttribute="leading" secondItem="u2h-Er-c61" secondAttribute="leading" id="KF8-pY-cad"/>
+                            <constraint firstAttribute="trailing" secondItem="8Y5-v3-lXw" secondAttribute="trailing" id="THV-Yj-6Gg"/>
+                            <constraint firstItem="u2h-Er-c61" firstAttribute="bottom" secondItem="IIO-eN-Mft" secondAttribute="bottom" id="dYG-pM-VR1"/>
+                            <constraint firstItem="u2h-Er-c61" firstAttribute="bottom" secondItem="8Y5-v3-lXw" secondAttribute="bottom" id="j21-cE-LlM"/>
+                            <constraint firstItem="8Y5-v3-lXw" firstAttribute="leading" secondItem="u2h-Er-c61" secondAttribute="leading" id="qFj-v9-PLo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emptyView" destination="8Y5-v3-lXw" id="hPV-9B-gya"/>
+                        <outlet property="seachCollectionView" destination="IIO-eN-Mft" id="4eC-Se-dIk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sHJ-Mc-1LT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2661" y="453"/>
+        </scene>
         <!--기록 추가-->
         <scene sceneID="fbz-TJ-1zn">
             <objects>
@@ -547,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfK-9B-c3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3573.913043478261" y="452.67857142857139"/>
+            <point key="canvasLocation" x="4412" y="453"/>
         </scene>
         <!--기록-->
         <scene sceneID="xNd-T4-LDN">
@@ -1453,7 +1524,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cw-An-1fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663.768115942029" y="452.67857142857139"/>
+            <point key="canvasLocation" x="3571" y="453"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TMI-8R-gCV">
@@ -1692,7 +1763,7 @@
             <color red="0.83099997043609619" green="0.38400000333786011" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="VersionBackgroundColor">
-            <color red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

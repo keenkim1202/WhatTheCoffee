@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 import FirebaseAnalytics
 
 // TODO: searchBar 글씨체 수정 가능한지 찾아보기
@@ -28,12 +27,12 @@ class RecordsViewController: BaseViewController {
   
   // MARK: - Properties
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
-  
+  var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
   var environment: Environment? = nil
+  
   var cafeList: [Cafe] = [] {
     didSet { recordCollectionView.reloadData() }
   }
-  var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
   
   var modeType: ModeType = .view {
     didSet {
@@ -106,16 +105,15 @@ class RecordsViewController: BaseViewController {
   }
   
   func configureSearchController() {
-    let searchController = UISearchController()
-
+    let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! RecordSearchViewController
+    let searchController = UISearchController(searchResultsController: searchVC)
+    
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
-    searchController.delegate = self
     searchController.searchBar.delegate = self
     searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
     
     self.definesPresentationContext = true
     self.navigationItem.searchController = searchController
-    
   }
   
   func changeDeleteButtonState() {
@@ -230,26 +228,22 @@ extension RecordsViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UISearchBarDelegate -
 extension RecordsViewController: UISearchBarDelegate {
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.endEditing(true)
-    // TODO: 검색 관련 코드 작성하기
-    guard let query = searchBar.text else { return }
-    guard let env = environment else { return }
-    
-    cafeList.removeAll()
-    cafeList = Array(env.cafeRepository.search(query: query))
-  }
-  
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
     self.becomeFirstResponder()
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    fetchData()
     self.recordCollectionView.reloadData()
   }
 }
 
-// MARK: - UISearchControllerDelegate -
-extension RecordsViewController: UISearchControllerDelegate {
-  
+// MARK: - UISearchResultsUpdating -
+extension RecordsViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchVC = searchController.searchResultsController as! RecordSearchViewController
+    guard let query = searchController.searchBar.text else { return }
+    
+    searchVC.queryText = query
+  }
 }
