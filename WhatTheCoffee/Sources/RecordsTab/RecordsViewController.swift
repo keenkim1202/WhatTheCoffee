@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 import FirebaseAnalytics
 
 // TODO: searchBar 글씨체 수정 가능한지 찾아보기
@@ -29,8 +30,11 @@ class RecordsViewController: BaseViewController {
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
   
   var environment: Environment? = nil
-  var cafeList: [Cafe] = [] { didSet { recordCollectionView.reloadData() } }
+  var cafeList: [Cafe] = [] {
+    didSet { recordCollectionView.reloadData() }
+  }
   var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
+  
   var modeType: ModeType = .view {
     didSet {
       switch modeType {
@@ -230,9 +234,10 @@ extension RecordsViewController: UISearchBarDelegate {
     searchBar.endEditing(true)
     // TODO: 검색 관련 코드 작성하기
     guard let query = searchBar.text else { return }
+    guard let env = environment else { return }
+    
     cafeList.removeAll()
-    // realm에서 query에 따라 filtering 하는 코드 작성하기
-    // - CafeRepository에 함수를 만들어야하나??
+    cafeList = Array(env.cafeRepository.search(query: query))
   }
   
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -240,7 +245,7 @@ extension RecordsViewController: UISearchBarDelegate {
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    // self.tableView.reloadData()
+    self.recordCollectionView.reloadData()
   }
 }
 
