@@ -39,8 +39,6 @@
 		1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38C2745489000EC3CA3 /* Cafe.swift */; };
 		1C37C38F274548E800EC3CA3 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38E274548E800EC3CA3 /* Rate.swift */; };
 		1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */; };
-		1C37C394274550B900EC3CA3 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C393274550B900EC3CA3 /* Realm */; };
-		1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C37C395274550B900EC3CA3 /* RealmSwift */; };
 		1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */; };
 		1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */; };
 		1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */; };
@@ -48,7 +46,6 @@
 		1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* ImageDataManager.swift */; };
 		1C55565C274FA79C00B5A145 /* CafeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C55565B274FA79C00B5A145 /* CafeRepository.swift */; };
 		1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */; };
-		1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */; };
 		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
 		1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B6278C021100424504 /* BaseViewController.swift */; };
@@ -58,7 +55,6 @@
 		1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BE278C23F400424504 /* CoffeeNameList.swift */; };
 		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
-		1CA82CDC278825D6004A830B /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 1CA82CDB278825D6004A830B /* TextFieldEffects */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
@@ -68,7 +64,6 @@
 		1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8E2755F50700B45F07 /* SettingViewController.swift */; };
 		1CCF0F912755F5E900B45F07 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */; };
 		1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */; };
-		1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1CD5EA66275DE3CD00308DB2 /* Alamofire */; };
 		1CD5EA6C275DE43600308DB2 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6B275DE43600308DB2 /* APIService.swift */; };
 		1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */; };
 /* End PBXBuildFile section */
@@ -153,12 +148,7 @@
 				1C2DA39E27882322005183B2 /* Metal.framework in Frameworks */,
 				1C2DA392278822E4005183B2 /* SystemConfiguration.framework in Frameworks */,
 				1C25DEBA2763B102005F812E /* libswift_Concurrency.tbd in Frameworks */,
-				1C37C396274550B900EC3CA3 /* RealmSwift in Frameworks */,
-				1C37C394274550B900EC3CA3 /* Realm in Frameworks */,
-				1CD5EA67275DE3CD00308DB2 /* Alamofire in Frameworks */,
-				1C605BDE274B69F5000E94D0 /* IQKeyboardManagerSwift in Frameworks */,
 				05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */,
-				1CA82CDC278825D6004A830B /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,11 +357,6 @@
 			);
 			name = WhatTheCoffee;
 			packageProductDependencies = (
-				1C37C393274550B900EC3CA3 /* Realm */,
-				1C37C395274550B900EC3CA3 /* RealmSwift */,
-				1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */,
-				1CD5EA66275DE3CD00308DB2 /* Alamofire */,
-				1CA82CDB278825D6004A830B /* TextFieldEffects */,
 			);
 			productName = WhatTheCoffee;
 			productReference = 1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */;
@@ -816,34 +801,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1C37C393274550B900EC3CA3 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = Realm;
-		};
-		1C37C395274550B900EC3CA3 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = RealmSwift;
-		};
-		1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
-		1CA82CDB278825D6004A830B /* TextFieldEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
-			productName = TextFieldEffects;
-		};
-		1CD5EA66275DE3CD00308DB2 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C22062C2744B41A00FDBBEF /* Project object */;
 }
