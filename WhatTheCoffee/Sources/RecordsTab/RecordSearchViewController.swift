@@ -19,11 +19,12 @@ class RecordSearchViewController: UIViewController {
   // MARK: - Properties
   var environment: Environment? = nil
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
-  
-  var queryText: String = "" { didSet {
-    searchData()
-    print(queryText)
-  } }
+  var queryText: String = "" {
+    didSet {
+      searchData()
+      print(queryText)
+      }
+  }
 
   var results: [Cafe] = [] {
     didSet {
@@ -65,8 +66,10 @@ class RecordSearchViewController: UIViewController {
   }
 
   func searchData() {
+    print("ENV:", environment)
     guard let env = environment else { return }
     results = env.cafeRepository.search(query: queryText)
+    print("RES:", results)
   }
   
 }

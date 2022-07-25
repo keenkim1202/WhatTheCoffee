@@ -106,6 +106,7 @@ class RecordsViewController: BaseViewController {
   
   func configureSearchController() {
     let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! RecordSearchViewController
+    searchVC.environment = environment
     let searchController = UISearchController(searchResultsController: searchVC)
     
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
