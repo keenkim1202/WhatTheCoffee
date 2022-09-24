@@ -184,9 +184,7 @@ extension RecordsViewController: UICollectionViewDelegate {
       vc.environment = env
       vc.cafe = cafe
       
-      let nav = UINavigationController(rootViewController: vc)
-      nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true, completion: nil)
+      self.present(vc, animated: true)
       
     case .edit:
       dictionarySelectedIndexPath[indexPath] = true
