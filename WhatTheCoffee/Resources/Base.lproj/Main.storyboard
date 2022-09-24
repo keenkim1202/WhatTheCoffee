@@ -237,6 +237,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEs-xP-8WK">
+                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                                <color key="barTintColor" name="AppearanceColor"/>
+                                <items>
+                                    <navigationItem title="기록추가" id="DXO-TS-h8b">
+                                        <barButtonItem key="leftBarButtonItem" title="닫기" id="DXK-Fg-Rw7">
+                                            <connections>
+                                                <action selector="onClose:" destination="sBU-it-W0Z" id="W9d-0M-lWD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="ZOl-Az-Ujs">
+                                            <connections>
+                                                <action selector="onDone:" destination="sBU-it-W0Z" id="rXz-98-ymt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Yjv-B7-2FO">
                                 <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <subviews>
@@ -586,22 +604,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="Yjv-B7-2FO" secondAttribute="trailing" id="CRK-iu-4VG"/>
+                            <constraint firstItem="BEs-xP-8WK" firstAttribute="top" secondItem="fGd-fl-U6v" secondAttribute="top" id="IPa-VR-IPO"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="bottom" secondItem="fGd-fl-U6v" secondAttribute="bottom" id="JIn-3j-jWe"/>
-                            <constraint firstItem="Yjv-B7-2FO" firstAttribute="top" secondItem="fGd-fl-U6v" secondAttribute="top" id="PYv-mQ-2MI"/>
+                            <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="BEs-xP-8WK" secondAttribute="trailing" id="Lqr-3H-Y9i"/>
+                            <constraint firstItem="Yjv-B7-2FO" firstAttribute="top" secondItem="BEs-xP-8WK" secondAttribute="bottom" id="ajW-51-oDW"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="hxo-GE-lP9"/>
+                            <constraint firstItem="BEs-xP-8WK" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="mR4-Ki-B31"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="기록 추가" id="aAb-x3-SJz">
-                        <barButtonItem key="leftBarButtonItem" title="닫기" id="A0i-5v-GxR">
-                            <connections>
-                                <action selector="onClose:" destination="sBU-it-W0Z" id="zie-sE-cEG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="완료" id="lav-fi-wad">
-                            <connections>
-                                <action selector="onDone:" destination="sBU-it-W0Z" id="fWK-h1-201"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="닫기" id="A0i-5v-GxR"/>
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="lav-fi-wad"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addImageButton" destination="LxD-ZJ-dUd" id="tPx-qv-uwf"/>
@@ -609,6 +622,7 @@
                         <outlet property="commentTextView" destination="f8n-s5-gDg" id="vYK-I3-7gP"/>
                         <outlet property="dateTextField" destination="WRe-dv-C59" id="57o-Fa-Rfx"/>
                         <outlet property="goodButton" destination="LRh-Qg-qxF" id="krh-2h-X39"/>
+                        <outlet property="navigationBar" destination="BEs-xP-8WK" id="3Wo-TW-u9v"/>
                         <outlet property="recordImageView" destination="FFm-Wx-1u5" id="LSK-5L-cYg"/>
                         <outlet property="sosoButton" destination="u2S-Oy-BS7" id="nDm-CE-DMQ"/>
                         <outlet property="titleTextField" destination="9oP-gY-PX3" id="HJ2-cI-5Ph"/>
@@ -1509,24 +1523,6 @@
             <point key="canvasLocation" x="2664" y="-327"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="KiN-MM-MhY">
-            <objects>
-                <navigationController storyboardIdentifier="addRecordNAV" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="waj-Ej-o0N" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qZj-bC-J95">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="sBU-it-W0Z" kind="relationship" relationship="rootViewController" id="m16-WD-BFA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1cw-An-1fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3571" y="453"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="TMI-8R-gCV">
             <objects>
                 <navigationController storyboardIdentifier="settingDetailNAV" automaticallyAdjustsScrollViewInsets="NO" id="22a-nA-AIA" sceneMemberID="viewController">
@@ -1627,7 +1623,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-0E-uOY">
-                                                            <rect key="frame" x="94" y="26" width="288" height="22"/>
+                                                            <rect key="frame" x="94" y="28.5" width="288" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
