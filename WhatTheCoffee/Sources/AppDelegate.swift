@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FirebaseApp.configure()
     
     // Override point for customization after application launch.
+    let customFont = UIFont(name: "GowunBatang-Bold", size: 16)!
+    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [.font: customFont]
     UINavigationBar.appearance().tintColor = .orangeMainColor
     UINavigationBar.appearance().backgroundColor = UIColor.appearanceColor
     UITabBar.appearance().tintColor = .orangeMainColor

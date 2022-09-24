@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KcE-Hp-jPq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KcE-Hp-jPq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -47,9 +47,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="obo-uh-ygD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Iy-N6-tQh">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Iy-N6-tQh">
                                     <size key="itemSize" width="148" height="149"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -58,10 +58,10 @@
                                 <cells/>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7d-vd-gbb">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WYy-QP-PYR">
-                                        <rect key="frame" x="10" y="335.5" width="394" height="54"/>
+                                        <rect key="frame" x="10" y="333.5" width="394" height="54"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="방문한 카페가 아직 없으신가요? 🥲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHY-cT-C2m">
                                                 <rect key="frame" x="84.5" y="0.0" width="225" height="22"/>
@@ -158,6 +158,77 @@
             </objects>
             <point key="canvasLocation" x="1842.0289855072465" y="452.67857142857139"/>
         </scene>
+        <!--Record Search View Controller-->
+        <scene sceneID="zJ8-I9-3s2">
+            <objects>
+                <viewController storyboardIdentifier="searchVC" id="vD5-Jl-gMk" customClass="RecordSearchViewController" customModule="WhatTheCoffee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mi3-QI-eU5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-eN-Mft">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gp8-g7-LVo">
+                                    <size key="itemSize" width="148" height="149"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Y5-v3-lXw">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1GO-kt-wiX">
+                                        <rect key="frame" x="10" y="380" width="394" height="54"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색어와 관련된 카페기록이 없어요🥲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGc-SY-MJS">
+                                                <rect key="frame" x="79" y="0.0" width="236.5" height="22"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                <color key="textColor" name="GreenSubColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="확인 후 다시 검색을 시도해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlh-eb-J2Z">
+                                                <rect key="frame" x="89.5" y="32" width="215" height="22"/>
+                                                <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
+                                                <color key="textColor" name="OrangeMainColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="GreenMainColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1GO-kt-wiX" secondAttribute="trailing" constant="10" id="73h-IY-3Vw"/>
+                                    <constraint firstItem="1GO-kt-wiX" firstAttribute="leading" secondItem="8Y5-v3-lXw" secondAttribute="leading" constant="10" id="DtY-W1-6SL"/>
+                                    <constraint firstItem="1GO-kt-wiX" firstAttribute="centerX" secondItem="8Y5-v3-lXw" secondAttribute="centerX" id="IEG-z8-9GA"/>
+                                    <constraint firstItem="1GO-kt-wiX" firstAttribute="centerY" secondItem="8Y5-v3-lXw" secondAttribute="centerY" id="qIp-nM-u2b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="u2h-Er-c61"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u2h-Er-c61" firstAttribute="trailing" secondItem="IIO-eN-Mft" secondAttribute="trailing" id="07U-8h-8UV"/>
+                            <constraint firstItem="IIO-eN-Mft" firstAttribute="top" secondItem="u2h-Er-c61" secondAttribute="top" id="4Oh-5P-Pj9"/>
+                            <constraint firstItem="8Y5-v3-lXw" firstAttribute="top" secondItem="u2h-Er-c61" secondAttribute="top" id="9AG-9s-zQi"/>
+                            <constraint firstItem="IIO-eN-Mft" firstAttribute="leading" secondItem="u2h-Er-c61" secondAttribute="leading" id="KF8-pY-cad"/>
+                            <constraint firstAttribute="trailing" secondItem="8Y5-v3-lXw" secondAttribute="trailing" id="THV-Yj-6Gg"/>
+                            <constraint firstItem="u2h-Er-c61" firstAttribute="bottom" secondItem="IIO-eN-Mft" secondAttribute="bottom" id="dYG-pM-VR1"/>
+                            <constraint firstItem="u2h-Er-c61" firstAttribute="bottom" secondItem="8Y5-v3-lXw" secondAttribute="bottom" id="j21-cE-LlM"/>
+                            <constraint firstItem="8Y5-v3-lXw" firstAttribute="leading" secondItem="u2h-Er-c61" secondAttribute="leading" id="qFj-v9-PLo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emptyView" destination="8Y5-v3-lXw" id="hPV-9B-gya"/>
+                        <outlet property="searchCollectionView" destination="IIO-eN-Mft" id="o9l-dc-m62"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sHJ-Mc-1LT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2661" y="453"/>
+        </scene>
         <!--기록 추가-->
         <scene sceneID="fbz-TJ-1zn">
             <objects>
@@ -166,8 +237,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEs-xP-8WK">
+                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                                <color key="barTintColor" name="AppearanceColor"/>
+                                <items>
+                                    <navigationItem title="기록추가" id="DXO-TS-h8b">
+                                        <barButtonItem key="leftBarButtonItem" title="닫기" id="DXK-Fg-Rw7">
+                                            <connections>
+                                                <action selector="onClose:" destination="sBU-it-W0Z" id="W9d-0M-lWD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="완료" id="ZOl-Az-Ujs">
+                                            <connections>
+                                                <action selector="onDone:" destination="sBU-it-W0Z" id="rXz-98-ymt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Yjv-B7-2FO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hG7-te-qHT">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1110"/>
@@ -515,22 +604,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="Yjv-B7-2FO" secondAttribute="trailing" id="CRK-iu-4VG"/>
+                            <constraint firstItem="BEs-xP-8WK" firstAttribute="top" secondItem="fGd-fl-U6v" secondAttribute="top" id="IPa-VR-IPO"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="bottom" secondItem="fGd-fl-U6v" secondAttribute="bottom" id="JIn-3j-jWe"/>
-                            <constraint firstItem="Yjv-B7-2FO" firstAttribute="top" secondItem="fGd-fl-U6v" secondAttribute="top" id="PYv-mQ-2MI"/>
+                            <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="BEs-xP-8WK" secondAttribute="trailing" id="Lqr-3H-Y9i"/>
+                            <constraint firstItem="Yjv-B7-2FO" firstAttribute="top" secondItem="BEs-xP-8WK" secondAttribute="bottom" id="ajW-51-oDW"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="hxo-GE-lP9"/>
+                            <constraint firstItem="BEs-xP-8WK" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="mR4-Ki-B31"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="기록 추가" id="aAb-x3-SJz">
-                        <barButtonItem key="leftBarButtonItem" title="닫기" id="A0i-5v-GxR">
-                            <connections>
-                                <action selector="onClose:" destination="sBU-it-W0Z" id="zie-sE-cEG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="완료" id="lav-fi-wad">
-                            <connections>
-                                <action selector="onDone:" destination="sBU-it-W0Z" id="fWK-h1-201"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="닫기" id="A0i-5v-GxR"/>
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="lav-fi-wad"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addImageButton" destination="LxD-ZJ-dUd" id="tPx-qv-uwf"/>
@@ -538,6 +622,7 @@
                         <outlet property="commentTextView" destination="f8n-s5-gDg" id="vYK-I3-7gP"/>
                         <outlet property="dateTextField" destination="WRe-dv-C59" id="57o-Fa-Rfx"/>
                         <outlet property="goodButton" destination="LRh-Qg-qxF" id="krh-2h-X39"/>
+                        <outlet property="navigationBar" destination="BEs-xP-8WK" id="3Wo-TW-u9v"/>
                         <outlet property="recordImageView" destination="FFm-Wx-1u5" id="LSK-5L-cYg"/>
                         <outlet property="sosoButton" destination="u2S-Oy-BS7" id="nDm-CE-DMQ"/>
                         <outlet property="titleTextField" destination="9oP-gY-PX3" id="HJ2-cI-5Ph"/>
@@ -547,7 +632,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfK-9B-c3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3573.913043478261" y="452.67857142857139"/>
+            <point key="canvasLocation" x="4412" y="453"/>
         </scene>
         <!--기록-->
         <scene sceneID="xNd-T4-LDN">
@@ -556,7 +641,7 @@
                     <tabBarItem key="tabBarItem" title="기록" image="heart.text.square" catalog="system" selectedImage="heart.text.square.fill" id="dvo-iz-ggQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="L7s-dy-0fH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -577,13 +662,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-Tb-gyo">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nearCafeCell" rowHeight="90" id="vkq-3r-4kj" customClass="NearCafeTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vkq-3r-4kj" id="ovO-1j-75y">
-                                            <rect key="frame" x="0.0" y="0.0" width="385.5" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383.5" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeDefault3" translatesAutoresizingMaskIntoConstraints="NO" id="zKp-Ug-XWe">
@@ -593,19 +678,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-G7-IOT">
-                                                    <rect key="frame" x="90" y="20" width="285.5" height="50"/>
+                                                    <rect key="frame" x="90" y="20" width="283.5" height="50"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OcI-qM-JkE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="285.5" height="25"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="283.5" height="25"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kg-Gn-fe7">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="249.5" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="247.5" height="25"/>
                                                                     <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="100m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imb-Tz-ltf">
-                                                                    <rect key="frame" x="249.5" y="0.0" width="36" height="25"/>
+                                                                    <rect key="frame" x="247.5" y="0.0" width="36" height="25"/>
                                                                     <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="14"/>
                                                                     <color key="textColor" name="OrangeMainColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -617,7 +702,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExI-VN-rKM">
-                                                            <rect key="frame" x="0.0" y="25" width="285.5" height="25"/>
+                                                            <rect key="frame" x="0.0" y="25" width="283.5" height="25"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Regular" family="Gowun Batang" pointSize="13"/>
                                                             <color key="textColor" systemColor="opaqueSeparatorColor"/>
                                                             <nil key="highlightedColor"/>
@@ -645,7 +730,7 @@
                                 </prototypes>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="근처 카페를 찾지 못하였어요 🥲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmZ-ln-30i">
-                                <rect key="frame" x="10" y="439.5" width="394" height="22"/>
+                                <rect key="frame" x="10" y="441.5" width="394" height="22"/>
                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                 <color key="textColor" name="OrangeMainColor"/>
                                 <nil key="highlightedColor"/>
@@ -693,19 +778,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가게 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW7-wZ-5yX">
-                                <rect key="frame" x="20" y="118" width="374" height="25"/>
+                                <rect key="frame" x="20" y="122" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0B-NA-miv">
-                                <rect key="frame" x="20" y="327.5" width="374" height="25"/>
+                                <rect key="frame" x="20" y="331.5" width="374" height="25"/>
                                 <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysR-LI-Phx">
-                                <rect key="frame" x="20" y="153" width="374" height="124.5"/>
+                                <rect key="frame" x="20" y="157" width="374" height="124.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="R9Q-Wr-ZCr">
                                         <rect key="frame" x="10" y="15" width="354" height="42.5"/>
@@ -749,7 +834,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoL-bq-6DS" customClass="NMFNaverMapView">
-                                <rect key="frame" x="20" y="362.5" width="374" height="288"/>
+                                <rect key="frame" x="20" y="366.5" width="374" height="288"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GoL-bq-6DS" secondAttribute="height" multiplier="1.3:1" id="gJh-8E-iMp"/>
@@ -800,7 +885,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MiE-5m-fc6">
-                                <rect key="frame" x="48" y="256.5" width="317" height="393"/>
+                                <rect key="frame" x="48" y="258.5" width="317" height="393"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAw-b2-c5I">
                                         <rect key="frame" x="250" y="15" width="52" height="34"/>
@@ -919,7 +1004,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-Dd-hNJ" customClass="NMFNaverMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -956,10 +1041,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="I5h-oq-FzC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="685"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="681"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingCell" rowHeight="70" id="5R3-gU-Kv2" customClass="SettingTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49.5" width="374" height="70"/>
+                                        <rect key="frame" x="20" y="55.5" width="374" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5R3-gU-Kv2" id="Q9K-R6-1pL">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -1051,7 +1136,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62P-xa-Dnq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -1092,7 +1177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-ec-ASy">
-                                <rect key="frame" x="30" y="250.5" width="354" height="400"/>
+                                <rect key="frame" x="30" y="252.5" width="354" height="400"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xts-aX-PfG">
                                         <rect key="frame" x="57" y="0.0" width="240" height="282"/>
@@ -1141,10 +1226,10 @@
                                 </constraints>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bvw-zE-Dzt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 목록이 비어있어요 😭 추가해주세요 :)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pz2-jI-XYU">
-                                        <rect key="frame" x="71" y="351.5" width="272" height="22"/>
+                                        <rect key="frame" x="71" y="349.5" width="272" height="22"/>
                                         <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                         <color key="textColor" name="GreenSubColor"/>
                                         <nil key="highlightedColor"/>
@@ -1201,11 +1286,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Hcr-ED-ebg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="coffeeCell" rowHeight="90" id="wuG-4O-G04" customClass="CoffeeListTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wuG-4O-G04" id="VTc-pJ-3vL">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -1303,7 +1388,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YUk-ox-hnc">
-                                <rect key="frame" x="50" y="74" width="314" height="305"/>
+                                <rect key="frame" x="50" y="78" width="314" height="305"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random_coffee" translatesAutoresizingMaskIntoConstraints="NO" id="UTu-am-Yy7">
                                         <rect key="frame" x="37" y="0.0" width="240" height="240"/>
@@ -1335,7 +1420,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-TA-pbX">
-                                <rect key="frame" x="20" y="429" width="374" height="92"/>
+                                <rect key="frame" x="20" y="433" width="374" height="92"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4J-VX-NYw">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="22"/>
@@ -1406,7 +1491,7 @@
                     <tabBarItem key="tabBarItem" title="추천" image="heart" catalog="system" selectedImage="heart.fill" id="oLG-d9-H0w"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zss-Uo-QRT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1425,7 +1510,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="fqc-rX-v2F"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RUD-rk-09u">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1438,30 +1523,12 @@
             <point key="canvasLocation" x="2664" y="-327"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="KiN-MM-MhY">
-            <objects>
-                <navigationController storyboardIdentifier="addRecordNAV" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="waj-Ej-o0N" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qZj-bC-J95">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="sBU-it-W0Z" kind="relationship" relationship="rootViewController" id="m16-WD-BFA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1cw-An-1fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2663.768115942029" y="452.67857142857139"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="TMI-8R-gCV">
             <objects>
                 <navigationController storyboardIdentifier="settingDetailNAV" automaticallyAdjustsScrollViewInsets="NO" id="22a-nA-AIA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xpJ-nE-e71">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1480,7 +1547,7 @@
                     <tabBarItem key="tabBarItem" title="근처 카페" image="mappin.circle" catalog="system" selectedImage="mappin.circle.fill" id="8Wy-zv-Ggc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zr2-xa-pm5">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1498,7 +1565,7 @@
                 <navigationController storyboardIdentifier="cafeLocationNAV" automaticallyAdjustsScrollViewInsets="NO" id="oYh-rz-JIl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GBH-0y-5Gv">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1516,7 +1583,7 @@
                 <navigationController storyboardIdentifier="cafeDetailNAV" automaticallyAdjustsScrollViewInsets="NO" id="GUU-SG-n1C" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MTG-Bo-yW4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1537,10 +1604,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tI9-qY-CCm">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DefaultImageCell" rowHeight="90" id="9b7-V6-kcM" customClass="AddDefaultImageTableViewCell" customModule="WhatTheCoffee" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9b7-V6-kcM" id="x2b-xw-dBt">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -1556,7 +1623,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-0E-uOY">
-                                                            <rect key="frame" x="94" y="26" width="288" height="22"/>
+                                                            <rect key="frame" x="94" y="28.5" width="288" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1609,7 +1676,7 @@
                 <navigationController storyboardIdentifier="settingNAV" automaticallyAdjustsScrollViewInsets="NO" id="AnG-oa-KFM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pLj-9Z-HiA">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1627,7 +1694,7 @@
                 <navigationController storyboardIdentifier="addDefaultImageNAV" automaticallyAdjustsScrollViewInsets="NO" id="Nnx-26-aUH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3fK-9t-QRr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1653,13 +1720,13 @@
     </designables>
     <resources>
         <image name="cafeDefault3" width="1280" height="1280"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
-        <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="mappin.circle" catalog="system" width="128" height="121"/>
-        <image name="mappin.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="mappin.circle" catalog="system" width="128" height="123"/>
+        <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
         <image name="random_coffee" width="772" height="758"/>
         <image name="star1" width="330" height="330"/>
         <image name="star1_deselected" width="331" height="330"/>
@@ -1671,7 +1738,7 @@
         <image name="star4_deselected" width="331" height="330"/>
         <image name="star5" width="330" height="330"/>
         <image name="star5_deselected" width="331" height="330"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <image name="아메리카노" width="441" height="588"/>
         <namedColor name="AppearanceColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1692,7 +1759,7 @@
             <color red="0.83099997043609619" green="0.38400000333786011" blue="0.25499999523162842" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="VersionBackgroundColor">
-            <color red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

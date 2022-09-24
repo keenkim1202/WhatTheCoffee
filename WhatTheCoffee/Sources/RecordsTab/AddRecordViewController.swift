@@ -28,6 +28,7 @@ class AddRecordViewController: BaseViewController {
   var rate: Int?
   
   // MARK: - UI
+  @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var recordImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
   
@@ -45,17 +46,24 @@ class AddRecordViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configureNAV()
     configureButton()
     configureTextView()
     configureTextField()
+
     configure()
   }
-  
+    
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    NotificationCenter.default.post(name: NSNotification.Name("DismissAddRecord"), object: nil, userInfo: nil)
+  }
+    
   // MARK: - Configure
   func configure() {
     if let cafe = cafe {
       viewType = .update
-      title = "기록 수정"
+      navigationBar.topItem?.title = "기록 수정"
       
       let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
       recordImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage.defaultCafeImage
@@ -72,7 +80,7 @@ class AddRecordViewController: BaseViewController {
         commentTextView.textColor = UIColor.placeholderText
       }
     } else {
-      title = "기록 추가"
+      navigationBar.topItem?.title = "기록 추가"
       recordImageView.layer.cornerRadius = CGFloat(5)
       recordImageView.image = UIImage.defaultCafeImage
       commentTextView.text = commentPlaceholder
@@ -100,6 +108,32 @@ class AddRecordViewController: BaseViewController {
     commentTextView.backgroundColor = .appearanceColor
     commentTextView.layer.cornerRadius = CGFloat(8)
     commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+  }
+    
+  func configureNAV() {
+    let barTitleTextAttributes: [NSAttributedString.Key: Any] = [
+      .font: UIFont(name: "GowunBatang-Bold", size: 17)!
+    ]
+    
+    let barButtonTextAttributes: [NSAttributedString.Key: Any] = [
+      .font: UIFont(name: "GowunBatang-Bold", size: 16)!
+    ]
+    
+    UINavigationBar.appearance().titleTextAttributes = barTitleTextAttributes
+    
+    if let leftBarButtons = self.navigationBar.topItem?.leftBarButtonItems {
+      for button in leftBarButtons {
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
+      }
+    }
+    
+    if let rightBarButtons = self.navigationBar.topItem?.rightBarButtonItems {
+      for button in rightBarButtons {
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
+      }
+    }
   }
   
   // MARK: - Photo Library & Camera Access

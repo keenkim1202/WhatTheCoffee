@@ -31,6 +31,7 @@ class NearCafeViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configureSearchController()
     configure()
     locationManger.requestWhenInUseAuthorization()
   }
@@ -46,18 +47,20 @@ class NearCafeViewController: BaseViewController {
   
   // MARK: - Configure
   func configure() {
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.prefetchDataSource = self
+  }
+  
+  func configureSearchController() {
     let searchController = UISearchController()
 
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
     searchController.delegate = self
     searchController.searchBar.delegate = self
-    
+    searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
     self.definesPresentationContext = true
     self.navigationItem.searchController = searchController
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.prefetchDataSource = self
   }
   
   func configureLocationManager() {
@@ -172,7 +175,7 @@ extension NearCafeViewController: UITableViewDelegate {
 extension NearCafeViewController: UITableViewDataSourcePrefetching {
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     for indexPath in indexPaths {
-        
+      
       if (nearCafeList.count - 1 == indexPath.row) {
         if pageableCount > perPage * page {
           page += 1
@@ -183,10 +186,10 @@ extension NearCafeViewController: UITableViewDataSourcePrefetching {
             self.fetchData(page: page)
           }
         } else {
-         // print("마지막 페이지: \(page)")
+          // print("마지막 페이지: \(page)")
         }
       }
-  }
+    }
   }
   
   func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {

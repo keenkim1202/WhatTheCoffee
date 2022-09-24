@@ -8,6 +8,9 @@
 import UIKit
 import FirebaseAnalytics
 
+// TODO: searchBar 글씨체 수정 가능한지 찾아보기
+// TODO: searchBar 화면 초기에는 안보이고, 아래로 스크롤 시에 나타나도록 하는 것 찾아보기
+
 class RecordsViewController: BaseViewController {
   
   // MARK: - ModeType
@@ -24,10 +27,13 @@ class RecordsViewController: BaseViewController {
   
   // MARK: - Properties
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
-  
-  var environment: Environment? = nil
-  var cafeList: [Cafe] = [] { didSet { recordCollectionView.reloadData() } }
   var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
+  var environment: Environment? = nil
+  
+  var cafeList: [Cafe] = [] {
+    didSet { recordCollectionView.reloadData() }
+  }
+  
   var modeType: ModeType = .view {
     didSet {
       switch modeType {
@@ -62,7 +68,7 @@ class RecordsViewController: BaseViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    configureSearchController()
     configure()
   }
   
@@ -96,6 +102,20 @@ class RecordsViewController: BaseViewController {
     recordCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
     
     deleteBarButtonItem.tintColor = .red
+  }
+  
+  func configureSearchController() {
+    let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! RecordSearchViewController
+    searchVC.environment = environment
+    let searchController = UISearchController(searchResultsController: searchVC)
+    
+    searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
+    searchController.searchBar.delegate = self
+    searchController.searchResultsUpdater = self
+    searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
+    
+    self.definesPresentationContext = true
+    self.navigationItem.searchController = searchController
   }
   
   func changeDeleteButtonState() {
@@ -139,9 +159,7 @@ class RecordsViewController: BaseViewController {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
     vc.environment = environment
     
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true)
+    self.present(vc, animated: true)
   }
 }
 
@@ -164,9 +182,7 @@ extension RecordsViewController: UICollectionViewDelegate {
       vc.environment = env
       vc.cafe = cafe
       
-      let nav = UINavigationController(rootViewController: vc)
-      nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true)
+      self.present(vc, animated: true)
       
     case .edit:
       dictionarySelectedIndexPath[indexPath] = true
@@ -205,5 +221,25 @@ extension RecordsViewController: UICollectionViewDelegateFlowLayout {
     let width = (screenSize.width - spacing) / Metric.cellForItemCount
     
     return CGSize(width: width, height: width)
+  }
+}
+
+// MARK: - UISearchBarDelegate -
+extension RecordsViewController: UISearchBarDelegate {
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    self.becomeFirstResponder()
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    self.recordCollectionView.reloadData()
+  }
+}
+
+// MARK: - UISearchResultsUpdating -
+extension RecordsViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchVC = searchController.searchResultsController as! RecordSearchViewController
+    guard let query = searchController.searchBar.text else { return }
+    searchVC.queryText = query
   }
 }
