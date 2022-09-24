@@ -66,7 +66,6 @@ class RecordSearchViewController: UIViewController {
   }
 
   func searchData() {
-    print("ENV:", environment)
     guard let env = environment else { return }
     results = env.cafeRepository.search(query: queryText)
     print("RES:", results)
