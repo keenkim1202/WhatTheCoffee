@@ -35,4 +35,8 @@ extension UIColor {
   public class var versionBackgroundColor: UIColor {
     return UIColor(named: "VersionBackgroundColor")!
   }
+    
+  public class var navibarBackgroundColor: UIColor {
+    return UIColor(named: "NaviColor")!
+  }
 }

@@ -237,6 +237,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRh-Em-td6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                <color key="backgroundColor" name="NaviColor"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEs-xP-8WK">
                                 <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                                 <color key="barTintColor" name="AppearanceColor"/>
@@ -603,13 +607,17 @@
                         <viewLayoutGuide key="safeArea" id="fGd-fl-U6v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="pRh-Em-td6" secondAttribute="trailing" id="3O5-sB-Oo1"/>
                             <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="Yjv-B7-2FO" secondAttribute="trailing" id="CRK-iu-4VG"/>
                             <constraint firstItem="BEs-xP-8WK" firstAttribute="top" secondItem="fGd-fl-U6v" secondAttribute="top" id="IPa-VR-IPO"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="bottom" secondItem="fGd-fl-U6v" secondAttribute="bottom" id="JIn-3j-jWe"/>
                             <constraint firstItem="fGd-fl-U6v" firstAttribute="trailing" secondItem="BEs-xP-8WK" secondAttribute="trailing" id="Lqr-3H-Y9i"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="top" secondItem="BEs-xP-8WK" secondAttribute="bottom" id="ajW-51-oDW"/>
+                            <constraint firstItem="pRh-Em-td6" firstAttribute="bottom" secondItem="BEs-xP-8WK" secondAttribute="bottom" id="ekw-De-b4u"/>
+                            <constraint firstItem="pRh-Em-td6" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="eqZ-fq-eAc"/>
                             <constraint firstItem="Yjv-B7-2FO" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="hxo-GE-lP9"/>
                             <constraint firstItem="BEs-xP-8WK" firstAttribute="leading" secondItem="fGd-fl-U6v" secondAttribute="leading" id="mR4-Ki-B31"/>
+                            <constraint firstAttribute="top" secondItem="pRh-Em-td6" secondAttribute="top" id="pfY-X0-5uz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="기록 추가" id="aAb-x3-SJz">
@@ -632,7 +640,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfK-9B-c3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4412" y="453"/>
+            <point key="canvasLocation" x="4411.594202898551" y="452.67857142857139"/>
         </scene>
         <!--기록-->
         <scene sceneID="xNd-T4-LDN">
@@ -1623,7 +1631,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커피 명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ2-0E-uOY">
-                                                            <rect key="frame" x="94" y="28.5" width="288" height="17.5"/>
+                                                            <rect key="frame" x="94" y="26" width="288" height="22"/>
                                                             <fontDescription key="fontDescription" name="GowunBatang-Bold" family="Gowun Batang" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1751,6 +1759,9 @@
         </namedColor>
         <namedColor name="GreenSubColor">
             <color red="0.30199998617172241" green="0.49000000953674316" blue="0.28999999165534973" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="NaviColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="OppositeColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

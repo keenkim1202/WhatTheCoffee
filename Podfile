@@ -19,7 +19,7 @@ target 'WhatTheCoffee' do
 	pod 'Alamofire'
 
 	# DB
-	pod 'RealmSwift', '~>10'
+	pod 'RealmSwift'
 
     # UI
     pod 'TextFieldEffects'

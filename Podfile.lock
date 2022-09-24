@@ -114,7 +114,7 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - IQKeyboardManagerSwift
   - NMapsMap
-  - RealmSwift (~> 10)
+  - RealmSwift
   - SwiftyJSON (= 5.0.0)
   - TextFieldEffects
 
@@ -159,6 +159,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 5fac6fc05e05ae4686babd5f74affacb2535bf69
+PODFILE CHECKSUM: 68e505400793fbad66cbd303db778efe7c4ddd44
 
 COCOAPODS: 1.11.3
