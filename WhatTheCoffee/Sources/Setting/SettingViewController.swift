@@ -46,7 +46,7 @@ class SettingViewController: BaseViewController {
   // MARK: - Action
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
 }
 
@@ -85,7 +85,7 @@ extension SettingViewController: UITableViewDelegate {
       
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true, completion: nil)
+      self.present(nav, animated: true)
     } else {
       let vc = storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as! SettingDetailViewController
       vc.title = settingList[indexPath.section]
@@ -93,7 +93,7 @@ extension SettingViewController: UITableViewDelegate {
       
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true, completion: nil)
+      self.present(nav, animated: true)
     }
   }
 }
