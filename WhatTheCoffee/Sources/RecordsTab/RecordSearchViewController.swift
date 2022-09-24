@@ -105,7 +105,7 @@ extension RecordSearchViewController: UICollectionViewDelegate {
     vc.cafe = cafe
     
     self.present(vc, animated: true)
-    }
+  }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
