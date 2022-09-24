@@ -102,7 +102,11 @@ class NearCafeViewController: BaseViewController {
             let placeName = $0.1["place_name"].stringValue
             let x = $0.1["x"].doubleValue
             let y = $0.1["y"].doubleValue
-            let distance = $0.1["distance"].stringValue
+            var distance = $0.1["distance"].stringValue
+            
+            if distance.isEmpty {
+              distance = " - "
+            }
             
             let cafe = NearCafe(name: placeName, address: addressName, latitude: y, longitude: x, placeUrl: placeUrl, distance: distance)
             self.nearCafeList.append(cafe)
