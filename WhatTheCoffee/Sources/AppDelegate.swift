@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 import IQKeyboardManagerSwift
 import NMapsMap
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
