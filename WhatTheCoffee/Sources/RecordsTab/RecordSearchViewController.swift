@@ -22,19 +22,17 @@ class RecordSearchViewController: UIViewController {
   var queryText: String = "" {
     didSet {
       searchData()
-      print(queryText)
       }
   }
 
   var results: [Cafe] = [] {
     didSet {
-      print("결과갯수: ", results.count)
-      seachCollectionView.reloadData()
+      searchCollectionView.reloadData()
     }
   }
   
   // MARK: - UI
-  @IBOutlet weak var seachCollectionView: UICollectionView!
+  @IBOutlet weak var searchCollectionView: UICollectionView!
   @IBOutlet weak var emptyView: UIView!
   
   // MARK: - View Life-Cycle
@@ -50,11 +48,11 @@ class RecordSearchViewController: UIViewController {
   
   func configure() {
     let layout = UICollectionViewFlowLayout()
-    seachCollectionView.collectionViewLayout = layout
+    searchCollectionView.collectionViewLayout = layout
     
-    seachCollectionView.delegate = self
-    seachCollectionView.dataSource = self
-    seachCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
+    searchCollectionView.delegate = self
+    searchCollectionView.dataSource = self
+    searchCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
   }
   
   func checkIsEmpty() {
@@ -68,9 +66,7 @@ class RecordSearchViewController: UIViewController {
   func searchData() {
     guard let env = environment else { return }
     results = env.cafeRepository.search(query: queryText)
-    print("RES:", results)
   }
-  
 }
 
 // MARK: - UICollectionViewDataSource
@@ -80,8 +76,7 @@ extension RecordSearchViewController: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = seachCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
-    
+    guard let cell = searchCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
     checkIsEmpty()
     let item = results[indexPath.item]
     
@@ -89,6 +84,13 @@ extension RecordSearchViewController: UICollectionViewDataSource {
     cell.cellConfigure(with: item)
     
     return cell
+  }
+}
+
+// MARK: - UICollectionViewDelegate
+extension RecordSearchViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return cellInsets
   }
 }
 
