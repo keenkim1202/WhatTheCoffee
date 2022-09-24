@@ -46,12 +46,14 @@ class AddRecordViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    configureNAV()
     configureButton()
     configureTextView()
     configureTextField()
+
     configure()
   }
-    
+  
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     
@@ -117,6 +119,32 @@ class AddRecordViewController: BaseViewController {
     commentTextView.layer.cornerRadius = CGFloat(8)
     commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
   }
+    
+    func configureNAV() {
+        let barTitleTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "GowunBatang-Bold", size: 17)!
+        ]
+        
+        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [
+          .font: UIFont(name: "GowunBatang-Bold", size: 16)!
+        ]
+
+        UINavigationBar.appearance().titleTextAttributes = barTitleTextAttributes
+        
+        if let leftBarButtons = self.navigationBar.topItem?.leftBarButtonItems {
+          for button in leftBarButtons {
+            button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+            button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
+          }
+        }
+        
+        if let rightBarButtons = self.navigationBar.topItem?.rightBarButtonItems {
+          for button in rightBarButtons {
+            button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+            button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
+          }
+        }
+    }
   
   // MARK: - Photo Library & Camera Access
   func openLibrary() {
