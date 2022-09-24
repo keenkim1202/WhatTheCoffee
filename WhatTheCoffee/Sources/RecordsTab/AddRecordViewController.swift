@@ -53,22 +53,12 @@ class AddRecordViewController: BaseViewController {
 
     configure()
   }
-  
+    
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    
-      // TODO: remove prints
-    print(type(of: self.presentingViewController))
-    if let presentingVC = self.presentingViewController as? RecordSearchViewController {
-      print("yes")
-        DispatchQueue.main.async {
-          presentingVC.searchData()
-        }
-    } else {
-        print("no")
-    }
+    NotificationCenter.default.post(name: NSNotification.Name("DismissAddRecord"), object: nil, userInfo: nil)
   }
-  
+    
   // MARK: - Configure
   func configure() {
     if let cafe = cafe {
@@ -120,31 +110,31 @@ class AddRecordViewController: BaseViewController {
     commentTextView.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
   }
     
-    func configureNAV() {
-        let barTitleTextAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "GowunBatang-Bold", size: 17)!
-        ]
-        
-        let barButtonTextAttributes: [NSAttributedString.Key: Any] = [
-          .font: UIFont(name: "GowunBatang-Bold", size: 16)!
-        ]
-
-        UINavigationBar.appearance().titleTextAttributes = barTitleTextAttributes
-        
-        if let leftBarButtons = self.navigationBar.topItem?.leftBarButtonItems {
-          for button in leftBarButtons {
-            button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
-            button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
-          }
-        }
-        
-        if let rightBarButtons = self.navigationBar.topItem?.rightBarButtonItems {
-          for button in rightBarButtons {
-            button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
-            button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
-          }
-        }
+  func configureNAV() {
+    let barTitleTextAttributes: [NSAttributedString.Key: Any] = [
+      .font: UIFont(name: "GowunBatang-Bold", size: 17)!
+    ]
+    
+    let barButtonTextAttributes: [NSAttributedString.Key: Any] = [
+      .font: UIFont(name: "GowunBatang-Bold", size: 16)!
+    ]
+    
+    UINavigationBar.appearance().titleTextAttributes = barTitleTextAttributes
+    
+    if let leftBarButtons = self.navigationBar.topItem?.leftBarButtonItems {
+      for button in leftBarButtons {
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
+      }
     }
+    
+    if let rightBarButtons = self.navigationBar.topItem?.rightBarButtonItems {
+      for button in rightBarButtons {
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .normal)
+        button.setTitleTextAttributes(barButtonTextAttributes, for: .highlighted)
+      }
+    }
+  }
   
   // MARK: - Photo Library & Camera Access
   func openLibrary() {
@@ -339,7 +329,8 @@ extension AddRecordViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == self.titleTextField {
       self.dateTextField.becomeFirstResponder()
-    } 
+    }
+    
     return true
   }
 }
