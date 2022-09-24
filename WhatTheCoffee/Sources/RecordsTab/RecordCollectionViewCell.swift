@@ -40,5 +40,4 @@ class RecordCollectionViewCell: UICollectionViewCell {
     rateImageView.image = UIImage(named: "star\(item.rate)")!
     dateLabel.text = DateFormatter.visitDateFormat.string(from: item.visitDate)
   }
-  
 }
