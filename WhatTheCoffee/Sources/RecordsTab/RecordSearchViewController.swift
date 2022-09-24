@@ -39,13 +39,43 @@ class RecordSearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
+      addNotiObserver()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     searchData()
   }
+    
+  deinit {
+    removeNotiObserver()
+  }
+    
+  func addNotiObserver() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(didDismissAddRercordNotification),
+      name: NSNotification.Name("DismissAddRecord"),
+      object: nil
+    )
+  }
+    
+  // MARK: - Notification Observsers
+  func removeNotiObserver() {
+    NotificationCenter.default.removeObserver(
+      self,
+      name: NSNotification.Name("DismissAddRecord"),
+      object: nil
+    )
+  }
+    
+  @objc func didDismissAddRercordNotification(_ notification: Notification) {
+    DispatchQueue.main.async {
+      self.searchData()
+    }
+  }
   
+  // MARK: - Configure
   func configure() {
     let layout = UICollectionViewFlowLayout()
     searchCollectionView.collectionViewLayout = layout
