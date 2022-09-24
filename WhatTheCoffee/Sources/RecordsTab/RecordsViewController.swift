@@ -111,6 +111,7 @@ class RecordsViewController: BaseViewController {
     
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
     searchController.searchBar.delegate = self
+    searchController.searchResultsUpdater = self
     searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
     
     self.definesPresentationContext = true
@@ -243,7 +244,6 @@ extension RecordsViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchVC = searchController.searchResultsController as! RecordSearchViewController
     guard let query = searchController.searchBar.text else { return }
-    
     searchVC.queryText = query
   }
 }
