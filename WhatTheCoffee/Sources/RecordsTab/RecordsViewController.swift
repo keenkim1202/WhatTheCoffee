@@ -159,9 +159,7 @@ class RecordsViewController: BaseViewController {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
     vc.environment = environment
     
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(vc, animated: true)
   }
 }
 
