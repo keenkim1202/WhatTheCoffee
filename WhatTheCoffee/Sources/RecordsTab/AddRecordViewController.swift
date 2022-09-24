@@ -55,6 +55,7 @@ class AddRecordViewController: BaseViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     
+      // TODO: remove prints
     print(type(of: self.presentingViewController))
     if let presentingVC = self.presentingViewController as? RecordSearchViewController {
       print("yes")

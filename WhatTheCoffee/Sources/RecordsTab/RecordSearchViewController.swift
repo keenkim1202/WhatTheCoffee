@@ -94,17 +94,17 @@ extension RecordSearchViewController: UICollectionViewDelegate {
     return cellInsets
   }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchCollectionView.deselectItem(at: indexPath, animated: true)
-        
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
-        guard let env = environment else { return }
-        
-        let cafe = results[indexPath.item]
-        vc.environment = env
-        vc.cafe = cafe
-        
-        self.present(vc, animated: true)
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    searchCollectionView.deselectItem(at: indexPath, animated: true)
+    
+    guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
+    guard let env = environment else { return }
+    
+    let cafe = results[indexPath.item]
+    vc.environment = env
+    vc.cafe = cafe
+    
+    self.present(vc, animated: true)
     }
 }
 
