@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		05A76713712F93193F235E41 /* Pods_WhatTheCoffee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA32D64E75A68A714474759C /* Pods_WhatTheCoffee.framework */; };
-		1C06FE1927DF7AB000C28042 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C06FE1827DF7AB000C28042 /* GoogleService-Info.plist */; };
 		1C06FE1B27DF811600C28042 /* RecordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06FE1A27DF811600C28042 /* RecordSearchViewController.swift */; };
 		1C1839F9274CB06800AAD04B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839F8274CB06800AAD04B /* Storage.swift */; };
 		1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */; };
@@ -40,6 +39,7 @@
 		1C37C38F274548E800EC3CA3 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38E274548E800EC3CA3 /* Rate.swift */; };
 		1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */; };
 		1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */; };
+		1C48CF9E28DF34D600F01A12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C48CF9D28DF34D600F01A12 /* GoogleService-Info.plist */; };
 		1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */; };
 		1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */; };
 		1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C555637274DC94C00B5A145 /* RecordCell.xib */; };
@@ -69,7 +69,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C06FE1827DF7AB000C28042 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C06FE1A27DF811600C28042 /* RecordSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewController.swift; sourceTree = "<group>"; };
 		1C1839F8274CB06800AAD04B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert++Extension.swift"; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		1C37C38E274548E800EC3CA3 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
 		1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C48CF9D28DF34D600F01A12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField++Extension.swift.swift"; sourceTree = "<group>"; };
 		1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++Extension.swift"; sourceTree = "<group>"; };
 		1C555637274DC94C00B5A145 /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		1C37C3672744E79800EC3CA3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1C06FE1827DF7AB000C28042 /* GoogleService-Info.plist */,
+				1C48CF9D28DF34D600F01A12 /* GoogleService-Info.plist */,
 				1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */,
 				1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */,
 				1C2206452744B41B00FDBBEF /* Info.plist */,
@@ -407,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
-				1C06FE1927DF7AB000C28042 /* GoogleService-Info.plist in Resources */,
+				1C48CF9E28DF34D600F01A12 /* GoogleService-Info.plist in Resources */,
 				1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */,
 				1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */,
 				1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */,
