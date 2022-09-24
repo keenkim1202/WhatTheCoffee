@@ -155,16 +155,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1329B6221F05E501DFF53365 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				56592ECB570C157238B25CAF /* Pods-WhatTheCoffee.debug.xcconfig */,
-				5B04F823AB43F8317A8EC26E /* Pods-WhatTheCoffee.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		1C22062B2744B41A00FDBBEF = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +414,6 @@
 				1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */,
 				1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */,
 				1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */,
-				1CD5EA64275DA44F00308DB2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +668,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -704,7 +693,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -721,7 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WhatTheCoffee/Supporting Files/Info.plist";
@@ -745,7 +734,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -779,7 +768,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */ = {
+		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
@@ -787,7 +776,7 @@
 				version = 10.19.0;
 			};
 		};
-		1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+		1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -812,33 +801,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-/* Begin XCSwiftPackageProductDependency section */
-		1C37C393274550B900EC3CA3 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
-			productName = Realm;
-		};
-		1C37C395274550B900EC3CA3 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa.git" */;
-			productName = RealmSwift;
-		};
-		1C605BDD274B69F5000E94D0 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
-			productName = IQKeyboardManagerSwift;
-		};
-		1CA82CDB278825D6004A830B /* TextFieldEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
-			productName = TextFieldEffects;
-		};
-		1CD5EA66275DE3CD00308DB2 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C22062C2744B41A00FDBBEF /* Project object */;
 }
