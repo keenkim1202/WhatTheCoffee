@@ -56,7 +56,7 @@ class DetailNearCafeViewController: BaseViewController {
     cameraUpdate.animation = .none
     cameraUpdate.animationDuration = 2
     
-    naverMapView.mapView.moveCamera(cameraUpdate, completion: { (isCancelled) in
+    naverMapView.mapView.moveCamera(cameraUpdate, completion: { isCancelled in
       if isCancelled {
         print("카메라 이동 취소")
       } else {
@@ -79,7 +79,7 @@ class DetailNearCafeViewController: BaseViewController {
   
   // MARK: - Action
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
   
   @IBAction func onDetailInfo(_ sender: UIButton) {
@@ -91,7 +91,7 @@ class DetailNearCafeViewController: BaseViewController {
     
     let nav = UINavigationController(rootViewController: detailSettingVC)
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: true)
   }
   
 }

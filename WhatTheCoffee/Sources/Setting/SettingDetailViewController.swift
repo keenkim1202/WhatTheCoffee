@@ -41,7 +41,7 @@ class SettingDetailViewController: BaseViewController {
   
   // MARK: - Action
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-      self.dismiss(animated: true, completion: nil)
+      self.dismiss(animated: true)
   }
   
 }

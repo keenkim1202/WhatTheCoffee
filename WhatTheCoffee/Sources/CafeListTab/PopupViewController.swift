@@ -35,7 +35,7 @@ class PopupViewController: BaseViewController {
     super.touchesBegan(touches, with: event)
     
     if let touch = touches.first , touch.view == self.view {
-      self.dismiss(animated: false, completion: nil)
+      self.dismiss(animated: false)
     }
   }
   
@@ -48,7 +48,7 @@ class PopupViewController: BaseViewController {
   
   // MARK: - Action
   @IBAction func onClose(_ sender: UIButton) {
-    self.dismiss(animated: false, completion: nil)
+    self.dismiss(animated: false)
   }
   
   @IBAction func onDetailInfo(_ sender: UIButton) {
@@ -60,7 +60,7 @@ class PopupViewController: BaseViewController {
     
     let nav = UINavigationController(rootViewController: detailSettingVC)
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: true)
   }
   
 }

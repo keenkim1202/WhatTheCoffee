@@ -141,7 +141,7 @@ class NearCafeViewController: BaseViewController {
   
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true, completion: nil)
+      self.present(nav, animated: true)
     } else {
       showErrorAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
     }
@@ -164,7 +164,7 @@ extension NearCafeViewController: UITableViewDelegate {
     let nav = UINavigationController(rootViewController: vc)
     nav.title = nearCafeList[indexPath.row].name
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: true)
   }
 }
 

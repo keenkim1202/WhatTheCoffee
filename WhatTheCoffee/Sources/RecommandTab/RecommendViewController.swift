@@ -118,7 +118,7 @@ class RecommendViewController: BaseViewController {
     
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: true)
   }
   
   @IBAction func onCoffeeList(_ sender: UIBarButtonItem) {
@@ -128,7 +128,7 @@ class RecommendViewController: BaseViewController {
     
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: true)
   }
   
   /// component

@@ -11,7 +11,7 @@ import Alamofire
 
 class APIService {
   static let shared = APIService()
-  typealias CompletionHandler = (Int, JSON) -> ()
+  typealias CompletionHandler = (Int, JSON) -> Void
 
   func fetchCafeInfo(pos: (x: Double, y: Double), query: String, page: Int, result: @escaping CompletionHandler) {
     let url = "https://dapi.kakao.com/v2/local/search/keyword.json"

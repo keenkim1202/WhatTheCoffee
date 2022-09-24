@@ -141,7 +141,7 @@ class RecordsViewController: BaseViewController {
     
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true, completion: nil)
+    self.present(nav, animated: true)
   }
 }
 
@@ -166,7 +166,7 @@ extension RecordsViewController: UICollectionViewDelegate {
       
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true, completion: nil)
+      self.present(nav, animated: true)
       
     case .edit:
       dictionarySelectedIndexPath[indexPath] = true

@@ -69,7 +69,7 @@ extension UIViewController {
   }
   
   func errorAlert(error: AppError) {
-    self.present(error.alert, animated: true, completion: nil)
+    self.present(error.alert, animated: true)
   }
 }
 
@@ -88,7 +88,7 @@ extension UIViewController {
     alert.addAction(no)
     alert.addAction(yes)
     
-    self.present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true)
   }
   
   func deleteAlert(_ message: String, completion: @escaping CompletionHandler) {
@@ -101,7 +101,7 @@ extension UIViewController {
     alert.addAction(no)
     alert.addAction(yes)
     
-    self.present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true)
   }
 }
 

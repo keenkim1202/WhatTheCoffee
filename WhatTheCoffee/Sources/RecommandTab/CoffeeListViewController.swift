@@ -80,7 +80,7 @@ class CoffeeListViewController: BaseViewController {
   // MARK: - Actions
   @IBAction func onClose(_ sender: UIBarButtonItem) {
     print(#function)
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
   
   @IBAction func onAdd(_ sender: UIBarButtonItem) {

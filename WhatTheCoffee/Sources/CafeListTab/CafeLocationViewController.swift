@@ -66,7 +66,7 @@ class CafeLocationViewController: BaseViewController {
     cameraUpdate.animation = .fly
     cameraUpdate.animationDuration = 2
     
-    naverMapView.mapView.moveCamera(cameraUpdate, completion: { (isCancelled) in
+    naverMapView.mapView.moveCamera(cameraUpdate, completion: { isCancelled in
       if isCancelled {
         print("카메라 이동 취소")
       } else {
@@ -78,7 +78,7 @@ class CafeLocationViewController: BaseViewController {
   // MARK: 지도에 pin 찍기
   func pinMaker(lat: Double, long: Double, caption: String) {
     let marker = NMFMarker(position: NMGLatLng(lat: lat, lng: long))
-    marker.touchHandler = { (overlay) in
+    marker.touchHandler = { overlay in
       print("마커 클릭됨")
       
       self.nearCafeLists.forEach { cafe in
@@ -86,7 +86,7 @@ class CafeLocationViewController: BaseViewController {
           guard let popupVC = self.storyboard?.instantiateViewController(withIdentifier: "popupVC") as? PopupViewController else { return }
           popupVC.cafe = cafe
           popupVC.modalPresentationStyle = .overFullScreen
-          self.present(popupVC, animated: false, completion: nil)
+          self.present(popupVC, animated: false)
         }
       }
       return true
@@ -102,7 +102,7 @@ class CafeLocationViewController: BaseViewController {
   
   // MARK: - Action
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
   
 }

@@ -105,13 +105,13 @@ class AddRecordViewController: BaseViewController {
   // MARK: - Photo Library & Camera Access
   func openLibrary() {
     imagePicker.sourceType = .photoLibrary
-    self.present(imagePicker, animated: false, completion: nil)
+    self.present(imagePicker, animated: false)
   }
   
   func openCamera() {
     if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
       imagePicker.sourceType = .camera
-      self.present(imagePicker, animated: false, completion: nil)
+      self.present(imagePicker, animated: false)
     } else {
       showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
@@ -221,13 +221,13 @@ class AddRecordViewController: BaseViewController {
     } else {
       saveData()
       Analytics.logEvent("ADD_newRecord", parameters: nil)
-      self.dismiss(animated: true, completion: nil)
+      self.dismiss(animated: true)
     }
   }
   
   @IBAction func onClose(_ sender: UIBarButtonItem) {
     Analytics.logEvent("CANCEL_newRecord", parameters: nil)
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
   
   /// components
@@ -251,7 +251,7 @@ class AddRecordViewController: BaseViewController {
     alert.addAction(camera)
     alert.addAction(defaultImage)
     alert.addAction(cancel)
-    self.present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true)
   }
   
   @IBAction func onRate(_ sender: UIButton) {
@@ -267,7 +267,7 @@ extension AddRecordViewController : UIImagePickerControllerDelegate, UINavigatio
       recordImageView.image = image
     }
     
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
 }
 
@@ -295,7 +295,8 @@ extension AddRecordViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if textField == self.titleTextField {
       self.dateTextField.becomeFirstResponder()
-    } 
+    }
+    
     return true
   }
 }
