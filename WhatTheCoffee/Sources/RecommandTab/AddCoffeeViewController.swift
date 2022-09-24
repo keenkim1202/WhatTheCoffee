@@ -107,13 +107,13 @@ class AddCoffeeViewController: BaseViewController {
   // MARK: - Photo Library & Camera Access
   func openLibrary() {
     imagePicker.sourceType = .photoLibrary
-    self.present(imagePicker, animated: false, completion: nil)
+    self.present(imagePicker, animated: false)
   }
   
   func openCamera() {
     if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
       imagePicker.sourceType = .camera
-      self.present(imagePicker, animated: false, completion: nil)
+      self.present(imagePicker, animated: false)
     } else {
       showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
@@ -160,7 +160,7 @@ class AddCoffeeViewController: BaseViewController {
     alert.addAction(camera)
     alert.addAction(defaultImage)
     alert.addAction(cancel)
-    self.present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true)
   }
 }
 
@@ -171,7 +171,7 @@ extension AddCoffeeViewController : UIImagePickerControllerDelegate, UINavigatio
       coffeeImageView.image = image
     }
     
-    self.dismiss(animated: true, completion: nil)
+    self.dismiss(animated: true)
   }
 }
 
