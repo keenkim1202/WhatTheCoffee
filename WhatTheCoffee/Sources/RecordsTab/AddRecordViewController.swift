@@ -28,6 +28,7 @@ class AddRecordViewController: BaseViewController {
   var rate: Int?
   
   // MARK: - UI
+  @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var recordImageView: UIImageView!
   @IBOutlet weak var addImageButton: UIButton!
   
@@ -50,12 +51,26 @@ class AddRecordViewController: BaseViewController {
     configureTextField()
     configure()
   }
+    
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    print(type(of: self.presentingViewController))
+    if let presentingVC = self.presentingViewController as? RecordSearchViewController {
+      print("yes")
+        DispatchQueue.main.async {
+          presentingVC.searchData()
+        }
+    } else {
+        print("no")
+    }
+  }
   
   // MARK: - Configure
   func configure() {
     if let cafe = cafe {
       viewType = .update
-      title = "기록 수정"
+      navigationBar.topItem?.title = "기록 수정"
       
       let date = DateFormatter.selectDateFormat.string(from: cafe.visitDate)
       recordImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg") ?? UIImage.defaultCafeImage
@@ -72,7 +87,7 @@ class AddRecordViewController: BaseViewController {
         commentTextView.textColor = UIColor.placeholderText
       }
     } else {
-      title = "기록 추가"
+      navigationBar.topItem?.title = "기록 추가"
       recordImageView.layer.cornerRadius = CGFloat(5)
       recordImageView.image = UIImage.defaultCafeImage
       commentTextView.text = commentPlaceholder
@@ -221,7 +236,7 @@ class AddRecordViewController: BaseViewController {
     } else {
       saveData()
       Analytics.logEvent("ADD_newRecord", parameters: nil)
-      self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
   }
   

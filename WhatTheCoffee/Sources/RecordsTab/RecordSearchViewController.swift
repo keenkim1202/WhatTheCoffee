@@ -64,6 +64,7 @@ class RecordSearchViewController: UIViewController {
   }
 
   func searchData() {
+      print(#function)
     guard let env = environment else { return }
     results = env.cafeRepository.search(query: queryText)
   }
@@ -92,6 +93,19 @@ extension RecordSearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return cellInsets
   }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchCollectionView.deselectItem(at: indexPath, animated: true)
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
+        guard let env = environment else { return }
+        
+        let cafe = results[indexPath.item]
+        vc.environment = env
+        vc.cafe = cafe
+        
+        self.present(vc, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
