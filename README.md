@@ -57,9 +57,10 @@
 # 📌 Tab 1 : RecommandCoffeeTab
 |화면번호|1-1|1-2|1-3|
 |:---:|:---:|:---:|:---:|
-|UI|<img width= "90%" src="https://user-images.githubusercontent.com/59866819/141937584-009fe5ad-dc6b-4b45-9fe2-70dd6ae2f848.jpg" />|<img width= "90%" src="https://user-images.githubusercontent.com/59866819/141937587-4516cd8e-1cf8-46a1-969a-044f734605b9.jpg" />|<img width= "90%" src="https://user-images.githubusercontent.com/59866819/141937588-59b8621f-374c-469b-9e54-bf539a501e63.jpg" />|
+|UI|<img width="250" src="https://github.com/user-attachments/assets/30edcafb-51bc-42c9-bfc7-c952a95bc1d1" />|<img width="250" src="https://github.com/user-attachments/assets/fd353dce-353b-4a83-ba47-9edc27cd5397" />|<img width="250" src="https://github.com/user-attachments/assets/659e3011-bba9-418d-ab2b-9317b0e347ee" />|
 |사용|Button|TableView|Button, TextField|
 * 공통 : TabBarController, NavigationController, BarButtonItem, ImageView, Label
+
 
 ## 📗 1-1 기능
 - 앱을 실행하면 가장 처음 보이는 화면으로, 오늘의 커피를 추천합니다.
@@ -75,7 +76,6 @@
 - 그랬더니 assets에 추가한 customColor를 코드로 적용하려고 하였을 때, 버튼을 한번 누르기 전까지는 버튼의 색상이 제대로 적용되지 않았다.
 - 그래서 해결방법을 찾다가 button style을 default로 바꾸고 assets에 추가한 customColor를 적용하였더니 잘 되었다. 
 - filled 스타일이 새로 나온 후 써본적이 없어서 이번에 편할 것 같아서 적용했다가 오히려 문제점이 발생하고 시간이 많이 소요되었다.
-
 
 
 ## 📗 1-2 기능
@@ -102,7 +102,6 @@
 - [ ] 최초 저장된 커피 목록의 일부 폰트가 깨진다. 같은 글자여도 수정하고 나면 폰트가 잘 적용이 된다. 이유를 모르겠다.
 
 
-
 ## 📗 1-3 기능
 - 커피 목록에 추가하고자 하는 커피 이미지와 이름을 입력하여 커스텀 커피를 추가할 수 있습니다.
 
@@ -124,13 +123,13 @@
 - [x] 아직 키보드 처리를 해주지 못 하였다. 처리 후 핸드폰에 설치해서 다양하게 체크해볼 것. (IQKeyboardManager 적용 완료)
 
 
-
 # 📌 Tab 2 : NearCoffeeTab
 |화면번호|2-1|2-2|2-3|
 |:---:|:---:|:---:|:---:|
-|UI|<img width= "70%" src="https://user-images.githubusercontent.com/59866819/141940234-e6050e5d-1767-48e7-a075-7b8d466f676e.jpg" />|<img width= "70%" src="https://user-images.githubusercontent.com/59866819/141940250-fea27dd1-7617-447c-ae0f-b4370e9d4166.jpg" />|<img width= "70%" src="https://user-images.githubusercontent.com/59866819/142134968-51203e73-c560-4c0b-bfce-f2cfe5d4dc80.jpg" />|
+|UI|<img width="250" src="https://github.com/user-attachments/assets/5c0ee093-753a-48bc-a532-89dc4ca1859a" />|<img width="250" src="https://github.com/user-attachments/assets/22bf660a-d8d9-4478-9b12-e389c27e4432" />|<img width="250" src="https://github.com/user-attachments/assets/cf58c5bf-41be-4cae-8daa-05451f2096b9" />|
 |사용|TableView|MapView|MapView|
 * 공통 : TapBarController, NavigationController, BarButtonItem, ImageView, Label
+
 
 ## 📘 2-1 기능
 - 사용자의 현재 위치를 기준으로 근처 커피점 리스트를 보여줍니다. (최대 10개)
@@ -175,9 +174,10 @@
 # 📌 Tab 3 : CoffeeStampTab
 |화면번호|3-1|3-2|
 |:---:|:---:|:---:|
-|UI|<img width= "70%" src="https://user-images.githubusercontent.com/59866819/141940826-21752fad-1abd-4c41-a665-ced443450cf0.jpg" />|<img width= "60%" src="https://user-images.githubusercontent.com/59866819/141944772-4ccf718b-1340-4a11-83be-d4f2d990d1bb.jpg" />|
+|UI|<img width="250" src="https://github.com/user-attachments/assets/267fe95e-4515-48b9-8485-943f6604c4ec" />|<img width="250" src="https://github.com/user-attachments/assets/742666de-1023-4d8d-94e5-ad45fc81a63b" />|
 |사용|CollectionView|ImagePicker, DatePicker|
 * 공통 : TapBarController, NavigationController, BarButtonItem, ImageView, Label
+
 
 ## 📙 3-1 기능
 - 자신이 방문한 카페들에 대한 커피 기록 목록을 볼 수 있습니다.
