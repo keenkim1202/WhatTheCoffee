@@ -4,7 +4,7 @@ final class RecordsViewModel {
 
   // MARK: - Properties
   private let useCase: ManageRecordsUseCase
-  private let imageManager = ImageManager.shared
+  private let imageUseCase: ManageImageUseCase
 
   var cafeList: [CafeEntity] = []
 
@@ -12,8 +12,9 @@ final class RecordsViewModel {
   var onCafeListUpdated: (() -> Void)?
 
   // MARK: - Init
-  init(useCase: ManageRecordsUseCase) {
+  init(useCase: ManageRecordsUseCase, imageUseCase: ManageImageUseCase) {
     self.useCase = useCase
+    self.imageUseCase = imageUseCase
   }
 
   // MARK: - Data
@@ -26,7 +27,7 @@ final class RecordsViewModel {
 
   func cafeImage(at index: Int) -> UIImage {
     let cafe = cafeList[index]
-    return imageManager.loadImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg") ?? UIImage.defaultCafeImage
+    return imageUseCase.loadCafeImage(id: cafe.id) ?? UIImage.defaultCafeImage
   }
 
   func fetchData() {
@@ -37,7 +38,7 @@ final class RecordsViewModel {
   func deleteRecords(at indexPaths: [IndexPath]) {
     for i in indexPaths.sorted(by: { $0.item > $1.item }) {
       let item = cafeList[i.item]
-      imageManager.deleteImage(type: .cafe, imageName: "cafe_\(item.id).jpg")
+      imageUseCase.deleteCafeImage(id: item.id)
       useCase.remove(id: item.id)
     }
     fetchData()

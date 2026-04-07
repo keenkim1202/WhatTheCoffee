@@ -4,7 +4,7 @@ final class RecommendViewModel {
 
   // MARK: - Properties
   private let useCase: RecommendCoffeeUseCase
-  private let imageManager = ImageManager.shared
+  private let imageUseCase: ManageImageUseCase
 
   var coffeeList: [CoffeeEntity] = []
   var todayCoffee: CoffeeEntity?
@@ -14,21 +14,20 @@ final class RecommendViewModel {
   var onTodayCoffeeChanged: ((String?, UIImage?) -> Void)?
 
   // MARK: - Init
-  init(useCase: RecommendCoffeeUseCase) {
+  init(useCase: RecommendCoffeeUseCase, imageUseCase: ManageImageUseCase) {
     self.useCase = useCase
+    self.imageUseCase = imageUseCase
   }
 
   // MARK: - Data
-  var isEmpty: Bool {
-    return coffeeList.isEmpty
-  }
+  var isEmpty: Bool { coffeeList.isEmpty }
 
   func fetchData() {
     coffeeList = useCase.fetchAll()
 
     if let coffee = todayCoffee {
       if coffeeList.contains(coffee) {
-        let image = imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
+        let image = imageUseCase.loadCoffeeImage(id: coffee.id)
         onTodayCoffeeChanged?(coffee.name, image)
       } else {
         todayCoffee = nil
@@ -44,8 +43,7 @@ final class RecommendViewModel {
   func recommend() -> (name: String, image: UIImage?)? {
     guard let randomCoffee = useCase.pickRandom(from: coffeeList, excluding: todayCoffee) else { return nil }
     todayCoffee = randomCoffee
-
-    let image = imageManager.loadImage(type: .coffee, imageName: "coffee_\(randomCoffee.id).jpg") ?? UIImage.randomCoffeeImage
+    let image = imageUseCase.loadCoffeeImage(id: randomCoffee.id) ?? UIImage.randomCoffeeImage
     return (randomCoffee.name, image)
   }
 }

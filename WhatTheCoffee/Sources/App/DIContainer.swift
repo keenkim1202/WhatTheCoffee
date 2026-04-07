@@ -30,17 +30,21 @@ final class DIContainer {
     ManageRecordsUseCase(repository: cafeRepository)
   }
 
+  func makeManageImageUseCase() -> ManageImageUseCase {
+    ManageImageUseCase()
+  }
+
   // MARK: - ViewModel
   func makeRecommendViewModel() -> RecommendViewModel {
-    RecommendViewModel(useCase: makeRecommendCoffeeUseCase())
+    RecommendViewModel(useCase: makeRecommendCoffeeUseCase(), imageUseCase: makeManageImageUseCase())
   }
 
   func makeCoffeeListViewModel() -> CoffeeListViewModel {
-    CoffeeListViewModel(useCase: makeManageCoffeeListUseCase())
+    CoffeeListViewModel(useCase: makeManageCoffeeListUseCase(), imageUseCase: makeManageImageUseCase())
   }
 
   func makeAddCoffeeViewModel(coffee: CoffeeEntity? = nil) -> AddCoffeeViewModel {
-    AddCoffeeViewModel(useCase: makeManageCoffeeListUseCase(), coffee: coffee)
+    AddCoffeeViewModel(useCase: makeManageCoffeeListUseCase(), imageUseCase: makeManageImageUseCase(), coffee: coffee)
   }
 
   func makeNearCafeViewModel() -> NearCafeViewModel {
@@ -48,14 +52,14 @@ final class DIContainer {
   }
 
   func makeRecordsViewModel() -> RecordsViewModel {
-    RecordsViewModel(useCase: makeManageRecordsUseCase())
+    RecordsViewModel(useCase: makeManageRecordsUseCase(), imageUseCase: makeManageImageUseCase())
   }
 
   func makeAddRecordViewModel(cafe: CafeEntity? = nil) -> AddRecordViewModel {
-    AddRecordViewModel(useCase: makeManageRecordsUseCase(), cafe: cafe)
+    AddRecordViewModel(useCase: makeManageRecordsUseCase(), imageUseCase: makeManageImageUseCase(), cafe: cafe)
   }
 
   func makeRecordSearchViewModel() -> RecordSearchViewModel {
-    RecordSearchViewModel(useCase: makeManageRecordsUseCase())
+    RecordSearchViewModel(useCase: makeManageRecordsUseCase(), imageUseCase: makeManageImageUseCase())
   }
 }

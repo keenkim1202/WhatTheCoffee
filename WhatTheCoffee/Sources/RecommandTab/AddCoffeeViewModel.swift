@@ -9,14 +9,15 @@ final class AddCoffeeViewModel {
 
   // MARK: - Properties
   private let useCase: ManageCoffeeListUseCase
-  private let imageManager = ImageManager.shared
+  private let imageUseCase: ManageImageUseCase
 
   let viewType: ViewType
   let coffee: CoffeeEntity?
 
   // MARK: - Init
-  init(useCase: ManageCoffeeListUseCase, coffee: CoffeeEntity? = nil) {
+  init(useCase: ManageCoffeeListUseCase, imageUseCase: ManageImageUseCase, coffee: CoffeeEntity? = nil) {
     self.useCase = useCase
+    self.imageUseCase = imageUseCase
     self.coffee = coffee
     self.viewType = coffee != nil ? .update : .add
   }
@@ -28,32 +29,29 @@ final class AddCoffeeViewModel {
 
   var currentImage: UIImage {
     if let coffee = coffee {
-      return imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg") ?? UIImage.randomCoffeeImage
+      return imageUseCase.loadCoffeeImage(id: coffee.id) ?? UIImage.randomCoffeeImage
     }
     return UIImage.randomCoffeeImage
   }
 
-  var currentName: String? {
-    return coffee?.name
-  }
+  var currentName: String? { coffee?.name }
 
   func save(name: String, image: UIImage?) {
     if viewType == .update, let coffee = coffee {
       useCase.update(id: coffee.id, name: name)
 
       if let image = image, image != UIImage.randomCoffeeImage {
-        imageManager.saveImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
+        imageUseCase.saveCoffeeImage(id: coffee.id, image: image)
       } else {
-        let previousImage = imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
-        if previousImage != nil {
-          imageManager.deleteImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
+        if imageUseCase.loadCoffeeImage(id: coffee.id) != nil {
+          imageUseCase.deleteCoffeeImage(id: coffee.id)
         }
       }
     } else {
       let newCoffee = useCase.add(name: name)
 
       if let image = image, image != UIImage.randomCoffeeImage {
-        imageManager.saveImage(type: .coffee, imageName: "coffee_\(newCoffee.id).jpg", image: image)
+        imageUseCase.saveCoffeeImage(id: newCoffee.id, image: image)
       }
     }
   }

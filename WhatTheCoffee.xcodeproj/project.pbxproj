@@ -85,6 +85,7 @@
 		89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */; };
 		9D4D740A71194B0E6AA02BDF /* ManageRecordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */; };
 		AA000001DICONTAINER00000001 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002DICONTAINER00000002 /* DIContainer.swift */; };
+		BB000001IMAGEUSECASE000001 /* ManageImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +170,7 @@
 		FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCoffeeListUseCase.swift; sourceTree = "<group>"; };
 		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
 		0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRecordsUseCase.swift; sourceTree = "<group>"; };
+		BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageImageUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +467,7 @@
 				FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */,
 				B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */,
 				0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */,
+				BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA000001DICONTAINER00000001 /* DIContainer.swift in Sources */,
+				BB000001IMAGEUSECASE000001 /* ManageImageUseCase.swift in Sources */,
 				DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */,
 				01522EC03C8454B3A254E6EA /* ManageCoffeeListUseCase.swift in Sources */,
 				89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */,

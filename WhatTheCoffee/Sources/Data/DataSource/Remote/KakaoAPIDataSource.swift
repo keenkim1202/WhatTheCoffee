@@ -32,9 +32,6 @@ final class KakaoAPIDataSource {
           result(code, data)
         case .failure(let error):
           print("ERROR: \(error)")
-          if let data = response.data, let raw = String(data: data, encoding: .utf8) {
-            print("RAW RESPONSE: \(raw)")
-          }
           result(code, nil)
         }
       }
