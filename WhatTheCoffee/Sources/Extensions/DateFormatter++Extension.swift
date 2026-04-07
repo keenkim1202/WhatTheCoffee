@@ -1,10 +1,3 @@
-//
-//  DateFormatter++Extension.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/26.
-//
-
 import Foundation
 
 extension DateFormatter {

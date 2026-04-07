@@ -1,10 +1,3 @@
-//
-//  DetailNearCafeViewController.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN
-//
-
 import UIKit
 import MapKit
 import WebKit

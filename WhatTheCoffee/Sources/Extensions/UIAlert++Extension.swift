@@ -1,10 +1,3 @@
-//
-//  UIAlert++Extension.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/23.
-//
-
 import UIKit
 
 // TODO: 상황에 따라 alert문 케이스 나누기

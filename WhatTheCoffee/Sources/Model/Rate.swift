@@ -1,10 +1,3 @@
-//
-//  Rate.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/17.
-//
-
 import Foundation
 
 // 커피 기록 추가 시 사용할 별점

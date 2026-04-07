@@ -1,10 +1,3 @@
-//
-//  Environment.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/22.
-//
-
 import Foundation
 
 protocol Environment {

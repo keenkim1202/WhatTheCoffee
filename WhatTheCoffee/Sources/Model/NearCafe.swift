@@ -1,10 +1,3 @@
-//
-//  NearCafe.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/12/02.
-//
-
 import Foundation
 
 struct NearCafe {

@@ -1,12 +1,4 @@
-//
-//  CafeRepository.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/25.
-//
-
 import Foundation
-import Realm
 import RealmSwift
 
 // TODO: 검색 제대로 되게 수정하기

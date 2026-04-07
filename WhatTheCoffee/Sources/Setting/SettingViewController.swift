@@ -1,10 +1,3 @@
-//
-//  SettingViewController.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/30.
-//
-
 import UIKit
 
 class SettingViewController: BaseViewController {

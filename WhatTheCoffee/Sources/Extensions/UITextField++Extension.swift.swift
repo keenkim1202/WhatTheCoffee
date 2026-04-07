@@ -1,10 +1,3 @@
-//
-//  UITextField++Extension.swift.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/28.
-//
-
 import UIKit
 
 extension UITextField {

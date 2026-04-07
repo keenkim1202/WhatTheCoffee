@@ -1,51 +1,42 @@
-//
-//  RecordSearchViewController.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2022/03/14.
-//
-
 import UIKit
-import RealmSwift
 
 class RecordSearchViewController: UIViewController {
-  
+
   // MARK: - Metric
   struct Metric {
     static var spacing: CGFloat = 10
     static var cellForItemCount: CGFloat = 2
   }
-  
+
   // MARK: - Properties
+  var viewModel: RecordSearchViewModel!
   var environment: Environment? = nil
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
-  var queryText: String = "" {
-    didSet {
-      searchData()
-      }
-  }
 
-  var results: [Cafe] = [] {
-    didSet {
-      searchCollectionView.reloadData()
-    }
-  }
-  
   // MARK: - UI
   @IBOutlet weak var searchCollectionView: UICollectionView!
   @IBOutlet weak var emptyView: UIView!
-  
+
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
-      addNotiObserver()
+    bindViewModel()
+    addNotiObserver()
   }
-    
+
   deinit {
     removeNotiObserver()
   }
-    
+
+  func bindViewModel() {
+    viewModel.onResultsUpdated = { [weak self] in
+      guard let self = self else { return }
+      self.searchCollectionView.reloadData()
+      self.emptyView.isHidden = !self.viewModel.isEmpty
+    }
+  }
+
   func addNotiObserver() {
     NotificationCenter.default.addObserver(
       self,
@@ -54,8 +45,8 @@ class RecordSearchViewController: UIViewController {
       object: nil
     )
   }
-    
-  // MARK: - Notification Observsers
+
+  // MARK: - Notification Observers
   func removeNotiObserver() {
     NotificationCenter.default.removeObserver(
       self,
@@ -63,51 +54,40 @@ class RecordSearchViewController: UIViewController {
       object: nil
     )
   }
-    
+
   @objc func didDismissAddRercordNotification(_ notification: Notification) {
     DispatchQueue.main.async {
-      self.searchData()
+      // Re-search with same query to refresh results after editing a record
+      if let query = self.navigationController?.navigationBar.topItem?.searchController?.searchBar.text {
+        self.viewModel.search(query: query)
+      }
     }
   }
-  
+
   // MARK: - Configure
   func configure() {
     let layout = UICollectionViewFlowLayout()
     searchCollectionView.collectionViewLayout = layout
-    
+
     searchCollectionView.delegate = self
     searchCollectionView.dataSource = self
     searchCollectionView.register(UINib(nibName: "RecordCell", bundle: nil), forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
-  }
-  
-  func checkIsEmpty() {
-    if results.isEmpty {
-      emptyView.isHidden = false
-    } else {
-      emptyView.isHidden = true
-    }
-  }
-
-  func searchData() {
-    guard let env = environment else { return }
-    results = env.cafeRepository.search(query: queryText)
   }
 }
 
 // MARK: - UICollectionViewDataSource
 extension RecordSearchViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return results.count
+    return viewModel.count
   }
-  
+
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = searchCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
-    checkIsEmpty()
-    let item = results[indexPath.item]
-    
-    cell.backgroundImageView.image = loadImageFromDocumentDirectory(type: .cafe, imageName: "cafe_\(item._id).jpg") ?? UIImage.defaultCafeImage
+    let item = viewModel.cafe(at: indexPath.item)
+
+    cell.backgroundImageView.image = viewModel.cafeImage(at: indexPath.item)
     cell.cellConfigure(with: item)
-    
+
     return cell
   }
 }
@@ -117,17 +97,16 @@ extension RecordSearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return cellInsets
   }
-    
+
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     searchCollectionView.deselectItem(at: indexPath, animated: true)
-    
+
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
     guard let env = environment else { return }
-    
-    let cafe = results[indexPath.item]
-    vc.environment = env
-    vc.cafe = cafe
-    
+
+    let cafe = viewModel.cafe(at: indexPath.item)
+    vc.viewModel = AddRecordViewModel(cafeRepository: env.cafeRepository, cafe: cafe)
+
     self.present(vc, animated: true)
   }
 }
@@ -138,7 +117,7 @@ extension RecordSearchViewController: UICollectionViewDelegateFlowLayout {
     let screenSize = UIScreen.main.bounds.size
     let spacing = Metric.spacing * (Metric.cellForItemCount - 1 + 2)
     let width = (screenSize.width - spacing) / Metric.cellForItemCount
-    
+
     return CGSize(width: width, height: width)
   }
 }

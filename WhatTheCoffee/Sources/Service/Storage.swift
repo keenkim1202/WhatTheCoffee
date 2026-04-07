@@ -1,10 +1,3 @@
-//
-//  Storage.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/23.
-//
-
 import Foundation
 
 public class Storage {

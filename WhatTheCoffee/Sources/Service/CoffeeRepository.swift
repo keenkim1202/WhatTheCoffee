@@ -1,12 +1,4 @@
-//
-//  RepositoryServiceType.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/17.
-//
-
 import Foundation
-import Realm
 import RealmSwift
 
 protocol CoffeeRepositoryType {

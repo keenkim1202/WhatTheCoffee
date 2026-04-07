@@ -1,10 +1,3 @@
-//
-//  SettingDetailViewController.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/30.
-//
-
 import UIKit
 import WebKit
 
