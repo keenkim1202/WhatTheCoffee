@@ -1,10 +1,3 @@
-//
-//  UIViewController++Extension.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/22.
-//
-
 import UIKit
 
 // MARK: - Check is First

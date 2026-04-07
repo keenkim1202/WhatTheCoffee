@@ -1,111 +1,84 @@
-//
-//  CoffeeListViewController.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN
-//
-
 import UIKit
-import Realm
-import RealmSwift
-
-// TODO: 커피 정렬하기 - 등록일 순 > 가나다 순
-// TODO: 커피 이미지랑 카페기록 이미지 각자 폴더 만들어서 저장하도록 하기
 
 class CoffeeListViewController: BaseViewController {
-  
+
   // MARK: - Properties
+  var viewModel: CoffeeListViewModel!
   var environment: Environment? = nil
-  var coffeeList: [Coffee] = [] { didSet { tableView.reloadData() } }
-  
+
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var emptyView: UIView!
-  
+
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     configure()
-    fetchData()
+    bindViewModel()
+    viewModel.fetchData()
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
-    fetchData()
-    checkIsEmpty()
+    viewModel.fetchData()
   }
-  
+
   // MARK: - Configure
   func configure() {
     tableView.delegate = self
     tableView.dataSource = self
   }
-  
-  func fetchData() {
-    guard let env = environment else { return }
-    coffeeList = env.coffeeRepository.fetch()
-  }
-  
-  func checkIsEmpty() {
-    if coffeeList.isEmpty {
-      emptyView.isHidden = false
-    } else {
-      emptyView.isHidden = true
+
+  func bindViewModel() {
+    viewModel.onCoffeeListUpdated = { [weak self] in
+      guard let self = self else { return }
+      self.tableView.reloadData()
+      self.emptyView.isHidden = !self.viewModel.isEmpty
     }
   }
-  
+
   // MARK: Swipe Actions
   func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
     let action = UIContextualAction(style: .destructive, title: "삭제") { action, view, success in
       self.deleteAlert("정말 삭제하시겠습니까?") {
-        guard let env = self.environment else { return }
-        let coffee = self.coffeeList[indexPath.row]
-        
-        self.deleteImageFromDucumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
-        env.coffeeRepository.remove(item: coffee)
-        
-        self.fetchData()
-        self.checkIsEmpty()
+        self.viewModel.deleteCoffee(at: indexPath.row)
       }
       success(true)
     }
     action.image = UIImage(systemName: "trash")
     action.backgroundColor = .systemRed
-    
+
     return action
   }
-  
+
   // MARK: - Actions
   @IBAction func onClose(_ sender: UIBarButtonItem) {
-    print(#function)
     self.dismiss(animated: true)
   }
-  
+
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as! AddCoffeeViewController
-    vc.environment = environment
-    
+    guard let env = environment else { return }
+    vc.viewModel = AddCoffeeViewModel(coffeeRepository: env.coffeeRepository)
+
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }
 
-// MARK: Extension
 // MARK: - UITableViewDelegate
 extension CoffeeListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
   }
-  
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as? AddCoffeeViewController else { return }
     guard let env = environment else { return }
-    
-    let coffee = coffeeList[indexPath.row]
-    vc.environment = env
-    vc.coffee = coffee
-    
+
+    let coffee = viewModel.coffee(at: indexPath.row)
+    vc.viewModel = AddCoffeeViewModel(coffeeRepository: env.coffeeRepository, coffee: coffee)
+
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }
@@ -113,20 +86,20 @@ extension CoffeeListViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension CoffeeListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return coffeeList.count
+    return viewModel.count
   }
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: CoffeeListTableViewCell.identifier) as? CoffeeListTableViewCell else { return UITableViewCell() }
-    let row = coffeeList[indexPath.row]
-    cell.nameLabel.text = row.name
-    cell.coffeeImageView.image = loadImageFromDocumentDirectory(type: .coffee, imageName: "coffee_\(row._id).jpg") ?? UIImage.randomCoffeeImage
+    let coffee = viewModel.coffee(at: indexPath.row)
+    cell.nameLabel.text = coffee.name
+    cell.coffeeImageView.image = viewModel.coffeeImage(at: indexPath.row)
     cell.coffeeImageView.layer.cornerRadius = CGFloat(8)
     cell.nameLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
-    
+
     return cell
   }
-  
+
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     let delete = deleteAction(at: indexPath)
     return UISwipeActionsConfiguration(actions:[delete])

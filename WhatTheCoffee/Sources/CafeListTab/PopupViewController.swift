@@ -1,10 +1,3 @@
-//
-//  PopupViewController.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/12/10.
-//
-
 import UIKit
 
 class PopupViewController: BaseViewController {

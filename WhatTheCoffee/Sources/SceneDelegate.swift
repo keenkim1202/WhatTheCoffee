@@ -1,59 +1,52 @@
-//
-//  SceneDelegate.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/17.
-//
-
 import UIKit
 import AppTrackingTransparency
 import FirebaseAnalytics
-import Realm
 import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-  
+
   var window: UIWindow?
   var environment: Environment? = nil
-  
+
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     guard let window = scene.windows.first else { return }
     guard let tabBar = window.rootViewController as? UITabBarController else { return }
     guard let viewControllers = tabBar.viewControllers else { return }
-    
+
     let realm = try! Realm()
     environment = AppEnvironment(coffeeRepository: CoffeeRepository(realm: realm), cafeRepsitory: CafeRepository(realm: realm))
-    
+
     for vc in viewControllers {
       switch vc.children.first {
       case let vc as RecommendViewController:
-        vc.environment = environment
-        
-        if let env = environment {
-          vc.checkIsFirst(env: env)
-        }
-        
+        guard let env = environment else { break }
+        vc.environment = env
+        vc.viewModel = RecommendViewModel(coffeeRepository: env.coffeeRepository)
+        vc.checkIsFirst(env: env)
+
       case let vc as NearCafeViewController:
         vc.environment = environment
-        
+
       case let vc as RecordsViewController:
-        vc.environment = environment
-        
+        guard let env = environment else { break }
+        vc.environment = env
+        vc.viewModel = RecordsViewModel(cafeRepository: env.cafeRepository)
+
       default:
         break
       }
     }
-    
+
     let settingVC = SettingViewController()
     settingVC.environment = environment
-    
+
     sleep(1)
   }
-  
+
   func sceneDidDisconnect(_ scene: UIScene) {
   }
-  
+
   func sceneDidBecomeActive(_ scene: UIScene) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       // ATT Framework
@@ -78,15 +71,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       }
     }
   }
-  
+
   func sceneWillResignActive(_ scene: UIScene) {
   }
-  
+
   func sceneWillEnterForeground(_ scene: UIScene) {
   }
-  
+
   func sceneDidEnterBackground(_ scene: UIScene) {
   }
-  
-}
 
+}

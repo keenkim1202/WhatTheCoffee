@@ -1,10 +1,3 @@
-//
-//  CoffeeNameList.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2022/01/10.
-//
-
 import Foundation
 
 struct CoffeeNameList {

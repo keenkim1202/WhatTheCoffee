@@ -1,10 +1,3 @@
-//
-//  UIImage++Extension.swift
-//  WhatTheCoffee
-//
-//  Created by KEEN on 2021/11/29.
-//
-
 import UIKit
 
 extension UIImage {
