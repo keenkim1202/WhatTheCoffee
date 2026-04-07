@@ -4,7 +4,7 @@ class CoffeeListViewController: BaseViewController {
 
   // MARK: - Properties
   var viewModel: CoffeeListViewModel!
-  var environment: Environment? = nil
+  var container: DIContainer!
 
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -13,7 +13,6 @@ class CoffeeListViewController: BaseViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
     configure()
     bindViewModel()
     viewModel.fetchData()
@@ -48,7 +47,6 @@ class CoffeeListViewController: BaseViewController {
     }
     action.image = UIImage(systemName: "trash")
     action.backgroundColor = .systemRed
-
     return action
   }
 
@@ -59,9 +57,7 @@ class CoffeeListViewController: BaseViewController {
 
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as! AddCoffeeViewController
-    guard let env = environment else { return }
-    vc.viewModel = AddCoffeeViewModel(useCase: ManageCoffeeListUseCase(repository: env.coffeeRepository))
-
+    vc.viewModel = container.makeAddCoffeeViewModel()
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }
@@ -74,11 +70,8 @@ extension CoffeeListViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as? AddCoffeeViewController else { return }
-    guard let env = environment else { return }
-
     let coffee = viewModel.coffee(at: indexPath.row)
-    vc.viewModel = AddCoffeeViewModel(useCase: ManageCoffeeListUseCase(repository: env.coffeeRepository), coffee: coffee)
-
+    vc.viewModel = container.makeAddCoffeeViewModel(coffee: coffee)
     self.navigationController?.pushViewController(vc, animated: true)
   }
 }
@@ -96,7 +89,6 @@ extension CoffeeListViewController: UITableViewDataSource {
     cell.coffeeImageView.image = viewModel.coffeeImage(at: indexPath.row)
     cell.coffeeImageView.layer.cornerRadius = CGFloat(8)
     cell.nameLabel.font = UIFont.GowunBatang(type: .regular, size: 15)
-
     return cell
   }
 

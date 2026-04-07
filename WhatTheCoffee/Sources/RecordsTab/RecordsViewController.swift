@@ -19,7 +19,7 @@ class RecordsViewController: BaseViewController {
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
   var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
   var viewModel: RecordsViewModel!
-  var environment: Environment? = nil
+  var container: DIContainer!
 
   var modeType: ModeType = .view {
     didSet {
@@ -87,10 +87,9 @@ class RecordsViewController: BaseViewController {
   }
 
   func configureSearchController() {
-    guard let env = environment else { return }
     let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! RecordSearchViewController
-    searchVC.viewModel = RecordSearchViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository))
-    searchVC.environment = environment
+    searchVC.viewModel = container.makeRecordSearchViewModel()
+    searchVC.container = container
     let searchController = UISearchController(searchResultsController: searchVC)
 
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
@@ -130,10 +129,8 @@ class RecordsViewController: BaseViewController {
   }
 
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
-    guard let env = environment else { return }
     let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-    vc.viewModel = AddRecordViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository))
-
+    vc.viewModel = container.makeAddRecordViewModel()
     self.present(vc, animated: true)
   }
 }
@@ -150,11 +147,8 @@ extension RecordsViewController: UICollectionViewDelegate {
       recordCollectionView.deselectItem(at: indexPath, animated: true)
 
       guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
-      guard let env = environment else { return }
-
       let cafe = viewModel.cafe(at: indexPath.item)
-      vc.viewModel = AddRecordViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository), cafe: cafe)
-
+      vc.viewModel = container.makeAddRecordViewModel(cafe: cafe)
       self.present(vc, animated: true)
 
     case .edit:
@@ -192,7 +186,6 @@ extension RecordsViewController: UICollectionViewDelegateFlowLayout {
     let screenSize = UIScreen.main.bounds.size
     let spacing = Metric.spacing * (Metric.cellForItemCount - 1 + 2)
     let width = (screenSize.width - spacing) / Metric.cellForItemCount
-
     return CGSize(width: width, height: width)
   }
 }

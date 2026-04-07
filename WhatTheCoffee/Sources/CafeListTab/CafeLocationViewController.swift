@@ -5,7 +5,6 @@ import NMapsMap
 class CafeLocationViewController: BaseViewController {
   
   // MARK: - Properties
-  var environment: Environment? = nil
   var nearCafeLists: [NearCafeEntity] = []
   var locationManger = CLLocationManager()
   var myLocation: CLLocationCoordinate2D?
