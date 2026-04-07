@@ -9,15 +9,16 @@ final class AddRecordViewModel {
 
   // MARK: - Properties
   private let useCase: ManageRecordsUseCase
-  private let imageManager = ImageManager.shared
+  private let imageUseCase: ManageImageUseCase
 
   let viewType: ViewType
   let cafe: CafeEntity?
   var rate: Int?
 
   // MARK: - Init
-  init(useCase: ManageRecordsUseCase, cafe: CafeEntity? = nil) {
+  init(useCase: ManageRecordsUseCase, imageUseCase: ManageImageUseCase, cafe: CafeEntity? = nil) {
     self.useCase = useCase
+    self.imageUseCase = imageUseCase
     self.cafe = cafe
     self.viewType = cafe != nil ? .update : .add
     self.rate = cafe?.rate
@@ -30,7 +31,7 @@ final class AddRecordViewModel {
 
   var currentImage: UIImage {
     if let cafe = cafe {
-      return imageManager.loadImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg") ?? UIImage.defaultCafeImage
+      return imageUseCase.loadCafeImage(id: cafe.id) ?? UIImage.defaultCafeImage
     }
     return UIImage.defaultCafeImage
   }
@@ -63,18 +64,17 @@ final class AddRecordViewModel {
       useCase.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate)
 
       if let image = image, image != UIImage.defaultCafeImage {
-        imageManager.saveImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg", image: image)
+        imageUseCase.saveCafeImage(id: cafe.id, image: image)
       } else {
-        let previousImage = imageManager.loadImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg")
-        if previousImage != nil {
-          imageManager.deleteImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg")
+        if imageUseCase.loadCafeImage(id: cafe.id) != nil {
+          imageUseCase.deleteCafeImage(id: cafe.id)
         }
       }
     } else {
       let newCafe = useCase.add(name: name, visitDate: visitDate, comment: comment, rate: rate)
 
       if let image = image, image != UIImage.defaultCafeImage {
-        imageManager.saveImage(type: .cafe, imageName: "cafe_\(newCafe.id).jpg", image: image)
+        imageUseCase.saveCafeImage(id: newCafe.id, image: image)
       }
     }
   }

@@ -4,7 +4,7 @@ final class RecordSearchViewModel {
 
   // MARK: - Properties
   private let useCase: ManageRecordsUseCase
-  private let imageManager = ImageManager.shared
+  private let imageUseCase: ManageImageUseCase
 
   var results: [CafeEntity] = []
 
@@ -12,8 +12,9 @@ final class RecordSearchViewModel {
   var onResultsUpdated: (() -> Void)?
 
   // MARK: - Init
-  init(useCase: ManageRecordsUseCase) {
+  init(useCase: ManageRecordsUseCase, imageUseCase: ManageImageUseCase) {
     self.useCase = useCase
+    self.imageUseCase = imageUseCase
   }
 
   // MARK: - Data
@@ -26,7 +27,7 @@ final class RecordSearchViewModel {
 
   func cafeImage(at index: Int) -> UIImage {
     let cafe = results[index]
-    return imageManager.loadImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg") ?? UIImage.defaultCafeImage
+    return imageUseCase.loadCafeImage(id: cafe.id) ?? UIImage.defaultCafeImage
   }
 
   func search(query: String) {

@@ -4,7 +4,7 @@ final class CoffeeListViewModel {
 
   // MARK: - Properties
   private let useCase: ManageCoffeeListUseCase
-  private let imageManager = ImageManager.shared
+  private let imageUseCase: ManageImageUseCase
 
   var coffeeList: [CoffeeEntity] = []
 
@@ -12,8 +12,9 @@ final class CoffeeListViewModel {
   var onCoffeeListUpdated: (() -> Void)?
 
   // MARK: - Init
-  init(useCase: ManageCoffeeListUseCase) {
+  init(useCase: ManageCoffeeListUseCase, imageUseCase: ManageImageUseCase) {
     self.useCase = useCase
+    self.imageUseCase = imageUseCase
   }
 
   // MARK: - Data
@@ -26,7 +27,7 @@ final class CoffeeListViewModel {
 
   func coffeeImage(at index: Int) -> UIImage {
     let coffee = coffeeList[index]
-    return imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg") ?? UIImage.randomCoffeeImage
+    return imageUseCase.loadCoffeeImage(id: coffee.id) ?? UIImage.randomCoffeeImage
   }
 
   func fetchData() {
@@ -36,7 +37,7 @@ final class CoffeeListViewModel {
 
   func deleteCoffee(at index: Int) {
     let coffee = coffeeList[index]
-    imageManager.deleteImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
+    imageUseCase.deleteCoffeeImage(id: coffee.id)
     useCase.remove(id: coffee.id)
     fetchData()
   }
