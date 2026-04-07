@@ -26,8 +26,6 @@
 		1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */; };
 		1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */; };
 		1C37C3822744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3812744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift */; };
-		1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38A2745483200EC3CA3 /* Coffee.swift */; };
-		1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38C2745489000EC3CA3 /* Cafe.swift */; };
 		1C37C38F274548E800EC3CA3 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C38E274548E800EC3CA3 /* Rate.swift */; };
 		1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */; };
 		1C3AC0702F84F2B500783B7B /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = 1C3AC06F2F84F2B500783B7B /* NMapsMap */; };
@@ -56,7 +54,6 @@
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
-		1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E62758B59E002BD76D /* NearCafe.swift */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
 		1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */; };
 		1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */; };
@@ -73,6 +70,15 @@
 		ADF1C56E71CD997C87B4C246 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */; };
 		CDBFE9B16059FFA15E548557 /* RecordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
+		519F6619144D556D1CD982EC /* CoffeeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */; };
+		1B4C0EB78C60A19F8B245C77 /* CafeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627021097B5EB81EC818A0C /* CafeEntity.swift */; };
+		80284E2478D04FEAD2E761B0 /* NearCafeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */; };
+		A1879CE2F00CD73847F49D50 /* CoffeeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD4CB85FF5A9AFAC923857 /* CoffeeRepositoryProtocol.swift */; };
+		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
+		20DC57ED8F10630D05069540 /* CoffeeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C36F3420FCCFE0A929FB23E /* CoffeeRealmObject.swift */; };
+		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
+		FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */; };
+		3A25DDA02E5AA6A38DA65512 /* CafeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C669A0C884DC4812959D9 /* CafeMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,8 +112,6 @@
 		1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor++Extension.swift"; sourceTree = "<group>"; };
 		1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C37C3812744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListTableViewCell.swift; sourceTree = "<group>"; };
-		1C37C38A2745483200EC3CA3 /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
-		1C37C38C2745489000EC3CA3 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		1C37C38E274548E800EC3CA3 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		1C37C3902745500300EC3CA3 /* CoffeeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepository.swift; sourceTree = "<group>"; };
 		1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -129,7 +133,6 @@
 		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
 		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
-		1CC914E62758B59E002BD76D /* NearCafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafe.swift; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
 		1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
 		1CCF0F8B2755E73100B45F07 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
@@ -145,6 +148,15 @@
 		A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewModel.swift; sourceTree = "<group>"; };
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
+		C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeEntity.swift; sourceTree = "<group>"; };
+		F627021097B5EB81EC818A0C /* CafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeEntity.swift; sourceTree = "<group>"; };
+		78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeEntity.swift; sourceTree = "<group>"; };
+		F3FD4CB85FF5A9AFAC923857 /* CoffeeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		0C36F3420FCCFE0A929FB23E /* CoffeeRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRealmObject.swift; sourceTree = "<group>"; };
+		15390F16D379C3F51485C26D /* CafeRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeRealmObject.swift; sourceTree = "<group>"; };
+		9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMapper.swift; sourceTree = "<group>"; };
+		137C669A0C884DC4812959D9 /* CafeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +225,8 @@
 				1CCF0F942756002800B45F07 /* Setting */,
 				1C37C3892745482400EC3CA3 /* Service */,
 				1C37C3882745481E00EC3CA3 /* Model */,
+				4FFA44F0ADFA31F2D6E2671E /* Domain */,
+				81BB4B123329BF2E7B499DE3 /* Data */,
 				1C37C37C2744F82900EC3CA3 /* Extensions */,
 				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
 				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
@@ -294,11 +308,8 @@
 		1C37C3882745481E00EC3CA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1C37C38A2745483200EC3CA3 /* Coffee.swift */,
-				1C37C38C2745489000EC3CA3 /* Cafe.swift */,
 				1C37C38E274548E800EC3CA3 /* Rate.swift */,
 				1CC914E2275888A2002BD76D /* AppError.swift.swift */,
-				1CC914E62758B59E002BD76D /* NearCafe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,6 +354,61 @@
 				1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D66608DE10CCC23B2C66F3ED /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C1FC0214DCDE6B133E9535A4 /* */,
+				F627021097B5EB81EC818A0C /* */,
+				78676FC9CC2CD25EE596A568 /* */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		179D9558903DF5DCEE812CF3 /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				F3FD4CB85FF5A9AFAC923857 /* */,
+				BD74BF6E1CF82868DB058994 /* */,
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		4FFA44F0ADFA31F2D6E2671E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D66608DE10CCC23B2C66F3ED /* Entity */,
+				179D9558903DF5DCEE812CF3 /* RepositoryProtocol */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		CBEF6C99766D924975585492 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				0C36F3420FCCFE0A929FB23E /* */,
+				15390F16D379C3F51485C26D /* */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		0C8A4744AC545A777CAF2267 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				9626009148B363FF1F60D6F9 /* */,
+				137C669A0C884DC4812959D9 /* */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		81BB4B123329BF2E7B499DE3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CBEF6C99766D924975585492 /* DTO */,
+				0C8A4744AC545A777CAF2267 /* Mapper */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +529,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519F6619144D556D1CD982EC /* CoffeeEntity.swift in Sources */,
+				1B4C0EB78C60A19F8B245C77 /* CafeEntity.swift in Sources */,
+				80284E2478D04FEAD2E761B0 /* NearCafeEntity.swift in Sources */,
+				A1879CE2F00CD73847F49D50 /* CoffeeRepositoryProtocol.swift in Sources */,
+				CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */,
+				20DC57ED8F10630D05069540 /* CoffeeRealmObject.swift in Sources */,
+				EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */,
+				FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */,
+				3A25DDA02E5AA6A38DA65512 /* CafeMapper.swift in Sources */,
 				D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */,
 				4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */,
 				80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */,
@@ -493,8 +568,6 @@
 				1C1839F9274CB06800AAD04B /* Storage.swift in Sources */,
 				1C37C3912745500300EC3CA3 /* CoffeeRepository.swift in Sources */,
 				1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */,
-				1C37C38D2745489000EC3CA3 /* Cafe.swift in Sources */,
-				1CC914E72758B59E002BD76D /* NearCafe.swift in Sources */,
 				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
 				1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */,
@@ -511,7 +584,6 @@
 				1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */,
 				1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
-				1C37C38B2745483200EC3CA3 /* Coffee.swift in Sources */,
 				1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

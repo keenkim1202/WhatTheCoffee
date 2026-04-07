@@ -9,7 +9,7 @@ class NearCafeTableViewCell: UITableViewCell {
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var distanceLabel: UILabel!
   
-  func cellConfigure(row: NearCafe) {
+  func cellConfigure(row: NearCafeEntity) {
     cafeImageView.layer.cornerRadius = CGFloat(8)
     cafeNameLabel.text = row.name
     addressLabel.text = row.address

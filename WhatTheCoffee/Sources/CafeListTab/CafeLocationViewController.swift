@@ -6,7 +6,7 @@ class CafeLocationViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
-  var nearCafeLists: [NearCafe] = []
+  var nearCafeLists: [NearCafeEntity] = []
   var locationManger = CLLocationManager()
   var myLocation: CLLocationCoordinate2D?
   

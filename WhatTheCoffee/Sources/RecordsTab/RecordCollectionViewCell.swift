@@ -25,7 +25,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
     }
   }
   
-  func cellConfigure(with item: Cafe) {
+  func cellConfigure(with item: CafeEntity) {
     self.layer.cornerRadius = CGFloat(8)
     self.clipsToBounds = true
     
