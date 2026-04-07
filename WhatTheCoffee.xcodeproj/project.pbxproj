@@ -253,18 +253,10 @@
 			isa = PBXGroup;
 			children = (
 				AA000003APPGROUP0000000003 /* App */,
-				1C2206372744B41A00FDBBEF /* AppDelegate.swift */,
-				1C2206392744B41A00FDBBEF /* SceneDelegate.swift */,
-				1CCF0F942756002800B45F07 /* Setting */,
-				1C37C3892745482400EC3CA3 /* Service */,
-				1C37C3882745481E00EC3CA3 /* Model */,
 				4FFA44F0ADFA31F2D6E2671E /* Domain */,
 				81BB4B123329BF2E7B499DE3 /* Data */,
-				1C37C37C2744F82900EC3CA3 /* Extensions */,
-				1C37C36A2744E7BE00EC3CA3 /* RecommandTab */,
-				1C37C36B2744E7CF00EC3CA3 /* CafeListTab */,
-				1C37C36C2744E7E300EC3CA3 /* RecordsTab */,
-				1C7BC3B6278C021100424504 /* BaseViewController.swift */,
+				CC000001PRESENTATION00001 /* Presentation */,
+				CC000002COMMON0000000002 /* Common */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -290,7 +282,7 @@
 				AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */,
 				662C814CFF93646E6A30F10E /* AddCoffeeViewModel.swift */,
 			);
-			path = RecommandTab;
+			path = Recommend;
 			sourceTree = "<group>";
 		};
 		1C37C36B2744E7CF00EC3CA3 /* CafeListTab */ = {
@@ -303,7 +295,7 @@
 				1C90BDFD27633DD5001618B9 /* PopupViewController.swift */,
 				1AB78A464338386209D183EB /* NearCafeViewModel.swift */,
 			);
-			path = CafeListTab;
+			path = NearCafe;
 			sourceTree = "<group>";
 		};
 		1C37C36C2744E7E300EC3CA3 /* RecordsTab */ = {
@@ -318,7 +310,7 @@
 				884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */,
 				A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */,
 			);
-			path = RecordsTab;
+			path = Records;
 			sourceTree = "<group>";
 		};
 		1C37C37C2744F82900EC3CA3 /* Extensions */ = {
@@ -336,24 +328,6 @@
 				1C7BC3B8278C152800424504 /* UITableView++Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		1C37C3882745481E00EC3CA3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1C37C38E274548E800EC3CA3 /* Rate.swift */,
-				1CC914E2275888A2002BD76D /* AppError.swift.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1C37C3892745482400EC3CA3 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				1C1839F8274CB06800AAD04B /* Storage.swift */,
-				A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		1CCF0F942756002800B45F07 /* Setting */ = {
@@ -456,6 +430,8 @@
 				C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */,
 				F627021097B5EB81EC818A0C /* CafeEntity.swift */,
 				78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */,
+				1C37C38E274548E800EC3CA3 /* Rate.swift */,
+				1CC914E2275888A2002BD76D /* AppError.swift.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -475,9 +451,33 @@
 		AA000003APPGROUP0000000003 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1C2206372744B41A00FDBBEF /* AppDelegate.swift */,
+				1C2206392744B41A00FDBBEF /* SceneDelegate.swift */,
+				1C7BC3B6278C021100424504 /* BaseViewController.swift */,
 				AA000002DICONTAINER00000002 /* DIContainer.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		CC000001PRESENTATION00001 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C36A2744E7BE00EC3CA3 /* Recommend */,
+				1C37C36B2744E7CF00EC3CA3 /* NearCafe */,
+				1C37C36C2744E7E300EC3CA3 /* Records */,
+				1CCF0F942756002800B45F07 /* Setting */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		CC000002COMMON0000000002 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1C37C37C2744F82900EC3CA3 /* Extensions */,
+				A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */,
+				1C1839F8274CB06800AAD04B /* Storage.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
