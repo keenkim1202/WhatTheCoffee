@@ -3,7 +3,7 @@ import UIKit
 final class RecordsViewModel {
 
   // MARK: - Properties
-  private let cafeRepository: CafeRepositoryProtocol
+  private let useCase: ManageRecordsUseCase
   private let imageManager = ImageManager.shared
 
   var cafeList: [CafeEntity] = []
@@ -12,18 +12,13 @@ final class RecordsViewModel {
   var onCafeListUpdated: (() -> Void)?
 
   // MARK: - Init
-  init(cafeRepository: CafeRepositoryProtocol) {
-    self.cafeRepository = cafeRepository
+  init(useCase: ManageRecordsUseCase) {
+    self.useCase = useCase
   }
 
   // MARK: - Data
-  var isEmpty: Bool {
-    return cafeList.isEmpty
-  }
-
-  var count: Int {
-    return cafeList.count
-  }
+  var isEmpty: Bool { cafeList.isEmpty }
+  var count: Int { cafeList.count }
 
   func cafe(at index: Int) -> CafeEntity {
     return cafeList[index]
@@ -35,7 +30,7 @@ final class RecordsViewModel {
   }
 
   func fetchData() {
-    cafeList = cafeRepository.fetch()
+    cafeList = useCase.fetchAll()
     onCafeListUpdated?()
   }
 
@@ -43,7 +38,7 @@ final class RecordsViewModel {
     for i in indexPaths.sorted(by: { $0.item > $1.item }) {
       let item = cafeList[i.item]
       imageManager.deleteImage(type: .cafe, imageName: "cafe_\(item.id).jpg")
-      cafeRepository.remove(id: item.id)
+      useCase.remove(id: item.id)
     }
     fetchData()
   }

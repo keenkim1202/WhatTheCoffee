@@ -8,15 +8,15 @@ final class AddCoffeeViewModel {
   }
 
   // MARK: - Properties
-  private let coffeeRepository: CoffeeRepositoryProtocol
+  private let useCase: ManageCoffeeListUseCase
   private let imageManager = ImageManager.shared
 
   let viewType: ViewType
   let coffee: CoffeeEntity?
 
   // MARK: - Init
-  init(coffeeRepository: CoffeeRepositoryProtocol, coffee: CoffeeEntity? = nil) {
-    self.coffeeRepository = coffeeRepository
+  init(useCase: ManageCoffeeListUseCase, coffee: CoffeeEntity? = nil) {
+    self.useCase = useCase
     self.coffee = coffee
     self.viewType = coffee != nil ? .update : .add
   }
@@ -39,7 +39,7 @@ final class AddCoffeeViewModel {
 
   func save(name: String, image: UIImage?) {
     if viewType == .update, let coffee = coffee {
-      coffeeRepository.update(id: coffee.id, name: name)
+      useCase.update(id: coffee.id, name: name)
 
       if let image = image, image != UIImage.randomCoffeeImage {
         imageManager.saveImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
@@ -50,7 +50,7 @@ final class AddCoffeeViewModel {
         }
       }
     } else {
-      let newCoffee = coffeeRepository.add(name: name)
+      let newCoffee = useCase.add(name: name)
 
       if let image = image, image != UIImage.randomCoffeeImage {
         imageManager.saveImage(type: .coffee, imageName: "coffee_\(newCoffee.id).jpg", image: image)

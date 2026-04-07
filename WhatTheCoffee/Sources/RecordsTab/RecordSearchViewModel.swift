@@ -3,7 +3,7 @@ import UIKit
 final class RecordSearchViewModel {
 
   // MARK: - Properties
-  private let cafeRepository: CafeRepositoryProtocol
+  private let useCase: ManageRecordsUseCase
   private let imageManager = ImageManager.shared
 
   var results: [CafeEntity] = []
@@ -12,18 +12,13 @@ final class RecordSearchViewModel {
   var onResultsUpdated: (() -> Void)?
 
   // MARK: - Init
-  init(cafeRepository: CafeRepositoryProtocol) {
-    self.cafeRepository = cafeRepository
+  init(useCase: ManageRecordsUseCase) {
+    self.useCase = useCase
   }
 
   // MARK: - Data
-  var isEmpty: Bool {
-    return results.isEmpty
-  }
-
-  var count: Int {
-    return results.count
-  }
+  var isEmpty: Bool { results.isEmpty }
+  var count: Int { results.count }
 
   func cafe(at index: Int) -> CafeEntity {
     return results[index]
@@ -35,7 +30,7 @@ final class RecordSearchViewModel {
   }
 
   func search(query: String) {
-    results = cafeRepository.search(query: query)
+    results = useCase.search(query: query)
     onResultsUpdated?()
   }
 }

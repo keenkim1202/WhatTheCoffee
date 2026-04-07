@@ -89,7 +89,7 @@ class RecordsViewController: BaseViewController {
   func configureSearchController() {
     guard let env = environment else { return }
     let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "searchVC") as! RecordSearchViewController
-    searchVC.viewModel = RecordSearchViewModel(cafeRepository: env.cafeRepository)
+    searchVC.viewModel = RecordSearchViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository))
     searchVC.environment = environment
     let searchController = UISearchController(searchResultsController: searchVC)
 
@@ -132,7 +132,7 @@ class RecordsViewController: BaseViewController {
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
     guard let env = environment else { return }
     let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as! AddRecordViewController
-    vc.viewModel = AddRecordViewModel(cafeRepository: env.cafeRepository)
+    vc.viewModel = AddRecordViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository))
 
     self.present(vc, animated: true)
   }
@@ -153,7 +153,7 @@ extension RecordsViewController: UICollectionViewDelegate {
       guard let env = environment else { return }
 
       let cafe = viewModel.cafe(at: indexPath.item)
-      vc.viewModel = AddRecordViewModel(cafeRepository: env.cafeRepository, cafe: cafe)
+      vc.viewModel = AddRecordViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository), cafe: cafe)
 
       self.present(vc, animated: true)
 

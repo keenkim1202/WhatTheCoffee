@@ -103,7 +103,7 @@ extension RecordSearchViewController: UICollectionViewDelegate {
     guard let env = environment else { return }
 
     let cafe = viewModel.cafe(at: indexPath.item)
-    vc.viewModel = AddRecordViewModel(cafeRepository: env.cafeRepository, cafe: cafe)
+    vc.viewModel = AddRecordViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository), cafe: cafe)
 
     self.present(vc, animated: true)
   }

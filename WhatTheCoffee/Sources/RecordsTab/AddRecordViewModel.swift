@@ -8,7 +8,7 @@ final class AddRecordViewModel {
   }
 
   // MARK: - Properties
-  private let cafeRepository: CafeRepositoryProtocol
+  private let useCase: ManageRecordsUseCase
   private let imageManager = ImageManager.shared
 
   let viewType: ViewType
@@ -16,8 +16,8 @@ final class AddRecordViewModel {
   var rate: Int?
 
   // MARK: - Init
-  init(cafeRepository: CafeRepositoryProtocol, cafe: CafeEntity? = nil) {
-    self.cafeRepository = cafeRepository
+  init(useCase: ManageRecordsUseCase, cafe: CafeEntity? = nil) {
+    self.useCase = useCase
     self.cafe = cafe
     self.viewType = cafe != nil ? .update : .add
     self.rate = cafe?.rate
@@ -35,18 +35,14 @@ final class AddRecordViewModel {
     return UIImage.defaultCafeImage
   }
 
-  var currentName: String? {
-    return cafe?.name
-  }
+  var currentName: String? { cafe?.name }
 
   var currentDate: String? {
     guard let cafe = cafe else { return nil }
     return DateFormatter.selectDateFormat.string(from: cafe.visitDate)
   }
 
-  var currentComment: String? {
-    return cafe?.comment
-  }
+  var currentComment: String? { cafe?.comment }
 
   var currentRate: Rate? {
     guard let cafe = cafe else { return nil }
@@ -64,7 +60,7 @@ final class AddRecordViewModel {
     }
 
     if viewType == .update, let cafe = cafe {
-      cafeRepository.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate)
+      useCase.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate)
 
       if let image = image, image != UIImage.defaultCafeImage {
         imageManager.saveImage(type: .cafe, imageName: "cafe_\(cafe.id).jpg", image: image)
@@ -75,7 +71,7 @@ final class AddRecordViewModel {
         }
       }
     } else {
-      let newCafe = cafeRepository.add(name: name, visitDate: visitDate, comment: comment, rate: rate)
+      let newCafe = useCase.add(name: name, visitDate: visitDate, comment: comment, rate: rate)
 
       if let image = image, image != UIImage.defaultCafeImage {
         imageManager.saveImage(type: .cafe, imageName: "cafe_\(newCafe.id).jpg", image: image)
