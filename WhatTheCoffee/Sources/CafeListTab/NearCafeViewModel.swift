@@ -32,7 +32,7 @@ final class NearCafeViewModel {
   }
 
   func fetchData(latitude: Double, longitude: Double, query: String = "카페", page: Int = 1) {
-    APIService.shared.fetchCafeInfo(pos: (latitude, longitude), query: query, page: page) { [weak self] code, response in
+    KakaoAPIDataSource.shared.fetchCafeInfo(pos: (latitude, longitude), query: query, page: page) { [weak self] code, response in
       guard let self = self, let response = response else { return }
 
       self.pageableCount = response.meta.pageableCount
