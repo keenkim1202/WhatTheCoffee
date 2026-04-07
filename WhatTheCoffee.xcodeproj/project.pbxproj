@@ -81,6 +81,10 @@
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */; };
+		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
+		01522EC03C8454B3A254E6EA /* ManageCoffeeListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */; };
+		89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */; };
+		9D4D740A71194B0E6AA02BDF /* ManageRecordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -161,6 +165,10 @@
 		C6BF14649F5814720E35F008 /* KakaoAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIDataSource.swift; sourceTree = "<group>"; };
 		F3FD4CB85FF5A9AFAC923857 /* CoffeeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F627021097B5EB81EC818A0C /* CafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeEntity.swift; sourceTree = "<group>"; };
+		5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCoffeeUseCase.swift; sourceTree = "<group>"; };
+		FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCoffeeListUseCase.swift; sourceTree = "<group>"; };
+		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
+		0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageRecordsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +372,7 @@
 			children = (
 				D66608DE10CCC23B2C66F3ED /* Entity */,
 				179D9558903DF5DCEE812CF3 /* RepositoryProtocol */,
+				5B882E90AFFE7C282D1FDAF6 /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -447,6 +456,17 @@
 				78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		5B882E90AFFE7C282D1FDAF6 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */,
+				FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */,
+				B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */,
+				0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,6 +587,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */,
+				01522EC03C8454B3A254E6EA /* ManageCoffeeListUseCase.swift in Sources */,
+				89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */,
+				9D4D740A71194B0E6AA02BDF /* ManageRecordsUseCase.swift in Sources */,
 				950494E52287A1144FA47FBA /* KakaoSearchResponseDTO.swift in Sources */,
 				2C1B1019EBFF8EA0ABB4BDD6 /* KakaoAPIDataSource.swift in Sources */,
 				8CEF796853D6636648632AC7 /* RealmDataSource.swift in Sources */,

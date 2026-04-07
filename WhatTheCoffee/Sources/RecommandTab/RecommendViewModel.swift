@@ -3,7 +3,7 @@ import UIKit
 final class RecommendViewModel {
 
   // MARK: - Properties
-  private let coffeeRepository: CoffeeRepositoryProtocol
+  private let useCase: RecommendCoffeeUseCase
   private let imageManager = ImageManager.shared
 
   var coffeeList: [CoffeeEntity] = []
@@ -14,8 +14,8 @@ final class RecommendViewModel {
   var onTodayCoffeeChanged: ((String?, UIImage?) -> Void)?
 
   // MARK: - Init
-  init(coffeeRepository: CoffeeRepositoryProtocol) {
-    self.coffeeRepository = coffeeRepository
+  init(useCase: RecommendCoffeeUseCase) {
+    self.useCase = useCase
   }
 
   // MARK: - Data
@@ -24,7 +24,7 @@ final class RecommendViewModel {
   }
 
   func fetchData() {
-    coffeeList = coffeeRepository.fetch()
+    coffeeList = useCase.fetchAll()
 
     if let coffee = todayCoffee {
       if coffeeList.contains(coffee) {
@@ -42,28 +42,10 @@ final class RecommendViewModel {
   }
 
   func recommend() -> (name: String, image: UIImage?)? {
-    guard !coffeeList.isEmpty else { return nil }
-
-    let randomCoffee = pickRandomCoffee()
+    guard let randomCoffee = useCase.pickRandom(from: coffeeList, excluding: todayCoffee) else { return nil }
     todayCoffee = randomCoffee
 
     let image = imageManager.loadImage(type: .coffee, imageName: "coffee_\(randomCoffee.id).jpg") ?? UIImage.randomCoffeeImage
     return (randomCoffee.name, image)
-  }
-
-  private func pickRandomCoffee() -> CoffeeEntity {
-    if coffeeList.count == 1 {
-      return coffeeList[0]
-    }
-
-    guard let current = todayCoffee else {
-      return coffeeList[Int.random(in: 0..<coffeeList.count)]
-    }
-
-    var index = Int.random(in: 0..<coffeeList.count)
-    while coffeeList[index].name == current.name {
-      index = Int.random(in: 0..<coffeeList.count)
-    }
-    return coffeeList[index]
   }
 }

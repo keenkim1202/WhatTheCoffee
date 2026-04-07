@@ -4,6 +4,7 @@ final class NearCafeViewModel {
 
   // MARK: - Properties
   private let perPage: Int = 15
+  private let useCase: FetchNearCafeUseCase
 
   var nearCafeList: [NearCafeEntity] = []
   var page: Int = 1
@@ -14,14 +15,14 @@ final class NearCafeViewModel {
   // MARK: - Binding
   var onNearCafeListUpdated: (() -> Void)?
 
-  // MARK: - Data
-  var isEmpty: Bool {
-    return nearCafeList.isEmpty
+  // MARK: - Init
+  init(useCase: FetchNearCafeUseCase = FetchNearCafeUseCase()) {
+    self.useCase = useCase
   }
 
-  var count: Int {
-    return nearCafeList.count
-  }
+  // MARK: - Data
+  var isEmpty: Bool { nearCafeList.isEmpty }
+  var count: Int { nearCafeList.count }
 
   func cafe(at index: Int) -> NearCafeEntity {
     return nearCafeList[index]
@@ -32,23 +33,11 @@ final class NearCafeViewModel {
   }
 
   func fetchData(latitude: Double, longitude: Double, query: String = "카페", page: Int = 1) {
-    KakaoAPIDataSource.shared.fetchCafeInfo(pos: (latitude, longitude), query: query, page: page) { [weak self] code, response in
-      guard let self = self, let response = response else { return }
-
-      self.pageableCount = response.meta.pageableCount
-      self.isEnd = response.meta.isEnd
-
-      for doc in response.documents {
-        let distance = doc.distance.isEmpty ? " - " : doc.distance
-        let cafe = NearCafeEntity(
-          name: doc.placeName,
-          address: doc.roadAddressName,
-          latitude: Double(doc.y) ?? 0,
-          longitude: Double(doc.x) ?? 0,
-          placeUrl: doc.placeUrl,
-          distance: distance)
-        self.nearCafeList.append(cafe)
-      }
+    useCase.execute(latitude: latitude, longitude: longitude, query: query, page: page) { [weak self] cafes, pageableCount, isEnd in
+      guard let self = self else { return }
+      self.pageableCount = pageableCount
+      self.isEnd = isEnd
+      self.nearCafeList.append(contentsOf: cafes)
 
       DispatchQueue.main.async {
         self.onNearCafeListUpdated?()

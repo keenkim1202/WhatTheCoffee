@@ -64,7 +64,7 @@ class RecommendViewController: BaseViewController {
   @IBAction func onCoffeeList(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
     guard let env = environment else { return }
-    vc.viewModel = CoffeeListViewModel(coffeeRepository: env.coffeeRepository)
+    vc.viewModel = CoffeeListViewModel(useCase: ManageCoffeeListUseCase(repository: env.coffeeRepository))
     vc.environment = env
 
     let nav = UINavigationController(rootViewController: vc)

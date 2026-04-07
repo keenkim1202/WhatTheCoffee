@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       case let vc as RecommendViewController:
         guard let env = environment else { break }
         vc.environment = env
-        vc.viewModel = RecommendViewModel(coffeeRepository: env.coffeeRepository)
+        vc.viewModel = RecommendViewModel(useCase: RecommendCoffeeUseCase(repository: env.coffeeRepository))
         vc.checkIsFirst(env: env)
 
       case let vc as NearCafeViewController:
@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       case let vc as RecordsViewController:
         guard let env = environment else { break }
         vc.environment = env
-        vc.viewModel = RecordsViewModel(cafeRepository: env.cafeRepository)
+        vc.viewModel = RecordsViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository))
 
       default:
         break

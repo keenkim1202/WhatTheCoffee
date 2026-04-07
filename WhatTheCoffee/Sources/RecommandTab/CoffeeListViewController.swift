@@ -60,7 +60,7 @@ class CoffeeListViewController: BaseViewController {
   @IBAction func onAdd(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "addCoffeeVC") as! AddCoffeeViewController
     guard let env = environment else { return }
-    vc.viewModel = AddCoffeeViewModel(coffeeRepository: env.coffeeRepository)
+    vc.viewModel = AddCoffeeViewModel(useCase: ManageCoffeeListUseCase(repository: env.coffeeRepository))
 
     self.navigationController?.pushViewController(vc, animated: true)
   }
@@ -77,7 +77,7 @@ extension CoffeeListViewController: UITableViewDelegate {
     guard let env = environment else { return }
 
     let coffee = viewModel.coffee(at: indexPath.row)
-    vc.viewModel = AddCoffeeViewModel(coffeeRepository: env.coffeeRepository, coffee: coffee)
+    vc.viewModel = AddCoffeeViewModel(useCase: ManageCoffeeListUseCase(repository: env.coffeeRepository), coffee: coffee)
 
     self.navigationController?.pushViewController(vc, animated: true)
   }
