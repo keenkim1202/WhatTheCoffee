@@ -5,8 +5,8 @@ import FirebaseAnalytics
 class NearCafeViewController: BaseViewController {
 
   // MARK: - Properties
-  var viewModel = NearCafeViewModel()
-  var environment: Environment? = nil
+  var viewModel: NearCafeViewModel!
+  var container: DIContainer!
   var locationManger = CLLocationManager()
   var userCoordinate: CLLocationCoordinate2D?
 
@@ -110,8 +110,6 @@ extension NearCafeViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "detailNearCafeVC") as? DetailNearCafeViewController else { return }
-    guard let environment = environment else { return }
-    vc.environment = environment
     vc.nearCafe = viewModel.cafe(at: indexPath.row)
 
     let nav = UINavigationController(rootViewController: vc)

@@ -3,7 +3,7 @@ import UIKit
 class AddDefaultImageViewController: BaseViewController {
   
   // MARK: - Property
-  var environment: Environment? = nil
+  var container: DIContainer!
   
   // MARK: - UI
   @IBOutlet weak var tableView: UITableView!
@@ -74,32 +74,28 @@ extension AddDefaultImageViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let env = environment {
-      if indexPath.section == 0 {
-        let iceCoffee = CoffeeNameList.defaultIceCoffeeList[indexPath.row]
-        let image = UIImage(named: iceCoffee) ?? UIImage.randomCoffeeImage
-        let name = iceCoffee.replacingOccurrences(of: "_", with: " ")
-        
-        self.addAlert("다음 커피를 추가하시겠습니까?", name) {
-          let coffee = env.coffeeRepository.add(name: name)
+    let repo = container.coffeeRepository
 
-          self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
-          self.showSuccessAlert("재추가에 성공하였습니다.")
-        }
-      } else {
-        let hotCoffee = CoffeeNameList.defaultHotCoffeeList[indexPath.row]
-        let image = UIImage(named: hotCoffee) ?? UIImage.randomCoffeeImage
-        let name = hotCoffee.replacingOccurrences(of: "_", with: " ")
+    if indexPath.section == 0 {
+      let iceCoffee = CoffeeNameList.defaultIceCoffeeList[indexPath.row]
+      let image = UIImage(named: iceCoffee) ?? UIImage.randomCoffeeImage
+      let name = iceCoffee.replacingOccurrences(of: "_", with: " ")
 
-        self.addAlert("다음 커피를 추가하시겠습니까?", name) {
-          let coffee = env.coffeeRepository.add(name: name)
-
-          self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
-          self.showSuccessAlert("재추가에 성공하였습니다.")
-        }
+      self.addAlert("다음 커피를 추가하시겠습니까?", name) {
+        let coffee = repo.add(name: name)
+        self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
+        self.showSuccessAlert("재추가에 성공하였습니다.")
       }
     } else {
-      self.showErrorAlert("재추가에 실패하였습니다.")
+      let hotCoffee = CoffeeNameList.defaultHotCoffeeList[indexPath.row]
+      let image = UIImage(named: hotCoffee) ?? UIImage.randomCoffeeImage
+      let name = hotCoffee.replacingOccurrences(of: "_", with: " ")
+
+      self.addAlert("다음 커피를 추가하시겠습니까?", name) {
+        let coffee = repo.add(name: name)
+        self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
+        self.showSuccessAlert("재추가에 성공하였습니다.")
+      }
     }
   }
 }

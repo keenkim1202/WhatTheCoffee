@@ -41,7 +41,6 @@
 		1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* ImageDataManager.swift */; };
 		1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */; };
 		1C5F65552F84F8D600DC5647 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; };
-		1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BDF274B76B0000E94D0 /* Environment.swift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
 		1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B6278C021100424504 /* BaseViewController.swift */; };
 		1C7BC3B9278C152800424504 /* UITableView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B8278C152800424504 /* UITableView++Extension.swift */; };
@@ -85,9 +84,11 @@
 		01522EC03C8454B3A254E6EA /* ManageCoffeeListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */; };
 		89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */; };
 		9D4D740A71194B0E6AA02BDF /* ManageRecordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */; };
+		AA000001DICONTAINER00000001 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002DICONTAINER00000002 /* DIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		0584C3D04FFE43AE9F7316B7 /* KakaoSearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSearchResponseDTO.swift; sourceTree = "<group>"; };
 		0C36F3420FCCFE0A929FB23E /* CoffeeRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRealmObject.swift; sourceTree = "<group>"; };
 		137C669A0C884DC4812959D9 /* CafeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeMapper.swift; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		1C555637274DC94C00B5A145 /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		1C555659274FA6E100B5A145 /* ImageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataManager.swift; sourceTree = "<group>"; };
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
-		1C605BDF274B76B0000E94D0 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
 		1C7BC3B6278C021100424504 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1C7BC3B8278C152800424504 /* UITableView++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView++Extension.swift"; sourceTree = "<group>"; };
@@ -250,6 +250,7 @@
 		1C37C3682744E7A100EC3CA3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AA000003APPGROUP0000000003 /* App */,
 				1C2206372744B41A00FDBBEF /* AppDelegate.swift */,
 				1C2206392744B41A00FDBBEF /* SceneDelegate.swift */,
 				1CCF0F942756002800B45F07 /* Setting */,
@@ -347,7 +348,6 @@
 		1C37C3892745482400EC3CA3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				1C605BDF274B76B0000E94D0 /* Environment.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
 				A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */,
 			);
@@ -469,6 +469,14 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		AA000003APPGROUP0000000003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA000002DICONTAINER00000002 /* DIContainer.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -587,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA000001DICONTAINER00000001 /* DIContainer.swift in Sources */,
 				DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */,
 				01522EC03C8454B3A254E6EA /* ManageCoffeeListUseCase.swift in Sources */,
 				89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */,
@@ -636,7 +645,6 @@
 				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
 				1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */,
-				1C605BE0274B76B0000E94D0 /* Environment.swift in Sources */,
 				1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */,
 				1C7BC3B9278C152800424504 /* UITableView++Extension.swift in Sources */,
 				1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */,

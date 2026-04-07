@@ -2,46 +2,46 @@ import UIKit
 
 // MARK: - Check is First
 extension UIViewController {
-  func checkIsFirst(env: Environment) {
+  func checkIsFirst(coffeeRepository: CoffeeRepositoryProtocol, cafeRepository: CafeRepositoryProtocol) {
     let isFirst = Storage.isFirstTime()
     print("isFirst = \(isFirst)")
     if isFirst == true {
-      saveDefaultIceCoffee(env: env)
-      saveDefaultHotCoffee(env: env)
-      saveDefaultCafe(env: env)
+      saveDefaultIceCoffee(coffeeRepository: coffeeRepository)
+      saveDefaultHotCoffee(coffeeRepository: coffeeRepository)
+      saveDefaultCafe(cafeRepository: cafeRepository)
     }
   }
-  
-  func saveDefaultIceCoffee(env: Environment) {
+
+  func saveDefaultIceCoffee(coffeeRepository: CoffeeRepositoryProtocol) {
     let iceCoffeeList = CoffeeNameList.defaultIceCoffeeList
 
     for i in 0..<iceCoffeeList.count {
       let name = iceCoffeeList[i].replacingOccurrences(of: "_", with: " ")
-      let coffee = env.coffeeRepository.add(name: name)
+      let coffee = coffeeRepository.add(name: name)
 
       let image = UIImage(named: iceCoffeeList[i]) ?? UIImage.randomCoffeeImage
       saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
     }
   }
 
-  func saveDefaultHotCoffee(env: Environment) {
+  func saveDefaultHotCoffee(coffeeRepository: CoffeeRepositoryProtocol) {
     let hotCoffeeList = CoffeeNameList.defaultHotCoffeeList
 
     for i in 0..<hotCoffeeList.count {
       let name = hotCoffeeList[i].replacingOccurrences(of: "_", with: " ")
-      let coffee = env.coffeeRepository.add(name: name)
+      let coffee = coffeeRepository.add(name: name)
 
       let image = UIImage(named: hotCoffeeList[i]) ?? UIImage.randomCoffeeImage
       saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
     }
   }
 
-  func saveDefaultCafe(env: Environment) {
+  func saveDefaultCafe(cafeRepository: CafeRepositoryProtocol) {
     let defaultCafeList: [String] = ["합정_오츠커피", "대부도_엔틸로프", "송도_컵피"]
     let commentList: [String] = ["아인슈페너 맛집", "라떼 맛집으로 소문남", "카페 분위기를 중요시하는 사람이라면 필수 방문"]
     for i in 0..<defaultCafeList.count {
       let name = defaultCafeList[i].replacingOccurrences(of: "_", with: " ")
-      let cafe = env.cafeRepository.add(name: name, visitDate: Date(), comment: commentList[i], rate: 5 - i)
+      let cafe = cafeRepository.add(name: name, visitDate: Date(), comment: commentList[i], rate: 5 - i)
 
       let image = UIImage(named: defaultCafeList[i]) ?? UIImage.defaultCafeImage
       saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe.id).jpg", image: image)

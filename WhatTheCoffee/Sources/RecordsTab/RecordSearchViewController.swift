@@ -10,7 +10,7 @@ class RecordSearchViewController: UIViewController {
 
   // MARK: - Properties
   var viewModel: RecordSearchViewModel!
-  var environment: Environment? = nil
+  var container: DIContainer!
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
 
   // MARK: - UI
@@ -100,10 +100,8 @@ extension RecordSearchViewController: UICollectionViewDelegate {
     searchCollectionView.deselectItem(at: indexPath, animated: true)
 
     guard let vc = storyboard?.instantiateViewController(withIdentifier: "addRecordVC") as? AddRecordViewController else { return }
-    guard let env = environment else { return }
-
     let cafe = viewModel.cafe(at: indexPath.item)
-    vc.viewModel = AddRecordViewModel(useCase: ManageRecordsUseCase(repository: env.cafeRepository), cafe: cafe)
+    vc.viewModel = container.makeAddRecordViewModel(cafe: cafe)
 
     self.present(vc, animated: true)
   }

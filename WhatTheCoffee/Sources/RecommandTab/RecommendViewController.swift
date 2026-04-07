@@ -5,7 +5,7 @@ class RecommendViewController: BaseViewController {
 
   // MARK: - Properties
   var viewModel: RecommendViewModel!
-  var environment: Environment? = nil
+  var container: DIContainer!
   let buttonCornerRadius: CGFloat = 20
 
   // MARK: - UI
@@ -53,8 +53,7 @@ class RecommendViewController: BaseViewController {
   // MARK: - Actions
   @IBAction func onInfo(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "settingVC") as! SettingViewController
-    guard let env = environment else { return }
-    vc.environment = env
+    vc.container = container
 
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen
@@ -63,9 +62,8 @@ class RecommendViewController: BaseViewController {
 
   @IBAction func onCoffeeList(_ sender: UIBarButtonItem) {
     let vc = storyboard?.instantiateViewController(withIdentifier: "coffeeListVC") as! CoffeeListViewController
-    guard let env = environment else { return }
-    vc.viewModel = CoffeeListViewModel(useCase: ManageCoffeeListUseCase(repository: env.coffeeRepository))
-    vc.environment = env
+    vc.viewModel = container.makeCoffeeListViewModel()
+    vc.container = container
 
     let nav = UINavigationController(rootViewController: vc)
     nav.modalPresentationStyle = .fullScreen

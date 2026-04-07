@@ -7,7 +7,6 @@ import CoreLocation
 class DetailNearCafeViewController: BaseViewController {
   
   // MARK: - Properties
-  var environment: Environment? = nil
   var nearCafe: NearCafeEntity?
   
   // MARK: - UI
