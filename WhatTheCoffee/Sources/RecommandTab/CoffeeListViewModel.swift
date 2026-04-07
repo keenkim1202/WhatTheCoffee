@@ -3,16 +3,16 @@ import UIKit
 final class CoffeeListViewModel {
 
   // MARK: - Properties
-  private let coffeeRepository: CoffeeRepositoryType
+  private let coffeeRepository: CoffeeRepositoryProtocol
   private let imageManager = ImageManager.shared
 
-  var coffeeList: [Coffee] = []
+  var coffeeList: [CoffeeEntity] = []
 
   // MARK: - Binding
   var onCoffeeListUpdated: (() -> Void)?
 
   // MARK: - Init
-  init(coffeeRepository: CoffeeRepositoryType) {
+  init(coffeeRepository: CoffeeRepositoryProtocol) {
     self.coffeeRepository = coffeeRepository
   }
 
@@ -25,13 +25,13 @@ final class CoffeeListViewModel {
     return coffeeList.count
   }
 
-  func coffee(at index: Int) -> Coffee {
+  func coffee(at index: Int) -> CoffeeEntity {
     return coffeeList[index]
   }
 
   func coffeeImage(at index: Int) -> UIImage {
     let coffee = coffeeList[index]
-    return imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage.randomCoffeeImage
+    return imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg") ?? UIImage.randomCoffeeImage
   }
 
   func fetchData() {
@@ -41,8 +41,8 @@ final class CoffeeListViewModel {
 
   func deleteCoffee(at index: Int) {
     let coffee = coffeeList[index]
-    imageManager.deleteImage(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
-    coffeeRepository.remove(item: coffee)
+    imageManager.deleteImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
+    coffeeRepository.remove(id: coffee.id)
     fetchData()
   }
 }

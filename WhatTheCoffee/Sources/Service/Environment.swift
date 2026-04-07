@@ -1,18 +1,18 @@
 import Foundation
 
 protocol Environment {
-  var coffeeRepository: CoffeeRepository { get }
-  var cafeRepository: CafeRepository { get }
+  var coffeeRepository: CoffeeRepositoryProtocol { get }
+  var cafeRepository: CafeRepositoryProtocol { get }
 }
 
 final class AppEnvironment: Environment {
-  var coffeeRepository: CoffeeRepository
-  var cafeRepository: CafeRepository
-  
+  var coffeeRepository: CoffeeRepositoryProtocol
+  var cafeRepository: CafeRepositoryProtocol
+
   init(
-    coffeeRepository: CoffeeRepository,
-    cafeRepsitory: CafeRepository) {
+    coffeeRepository: CoffeeRepositoryProtocol,
+    cafeRepository: CafeRepositoryProtocol) {
       self.coffeeRepository = coffeeRepository
-      self.cafeRepository = cafeRepsitory
+      self.cafeRepository = cafeRepository
     }
 }

@@ -14,37 +14,37 @@ extension UIViewController {
   
   func saveDefaultIceCoffee(env: Environment) {
     let iceCoffeeList = CoffeeNameList.defaultIceCoffeeList
-    
+
     for i in 0..<iceCoffeeList.count {
-      let coffee = Coffee(name: iceCoffeeList[i].replacingOccurrences(of: "_", with: " "))
-      env.coffeeRepository.add(item: coffee)
-      
+      let name = iceCoffeeList[i].replacingOccurrences(of: "_", with: " ")
+      let coffee = env.coffeeRepository.add(name: name)
+
       let image = UIImage(named: iceCoffeeList[i]) ?? UIImage.randomCoffeeImage
-      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
+      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
     }
   }
-  
+
   func saveDefaultHotCoffee(env: Environment) {
     let hotCoffeeList = CoffeeNameList.defaultHotCoffeeList
-    
+
     for i in 0..<hotCoffeeList.count {
-      let coffee = Coffee(name: hotCoffeeList[i].replacingOccurrences(of: "_", with: " "))
-      env.coffeeRepository.add(item: coffee)
-      
+      let name = hotCoffeeList[i].replacingOccurrences(of: "_", with: " ")
+      let coffee = env.coffeeRepository.add(name: name)
+
       let image = UIImage(named: hotCoffeeList[i]) ?? UIImage.randomCoffeeImage
-      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
+      saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
     }
   }
-  
+
   func saveDefaultCafe(env: Environment) {
     let defaultCafeList: [String] = ["합정_오츠커피", "대부도_엔틸로프", "송도_컵피"]
     let commentList: [String] = ["아인슈페너 맛집", "라떼 맛집으로 소문남", "카페 분위기를 중요시하는 사람이라면 필수 방문"]
     for i in 0..<defaultCafeList.count {
-      let cafe = Cafe(name: defaultCafeList[i].replacingOccurrences(of: "_", with: " "), comment: commentList[i], rate: 5 - i)
-      env.cafeRepository.add(item: cafe)
-      
+      let name = defaultCafeList[i].replacingOccurrences(of: "_", with: " ")
+      let cafe = env.cafeRepository.add(name: name, visitDate: Date(), comment: commentList[i], rate: 5 - i)
+
       let image = UIImage(named: defaultCafeList[i]) ?? UIImage.defaultCafeImage
-      saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe._id).jpg", image: image)
+      saveImageToDocumentDirectory(type: .cafe, imageName: "cafe_\(cafe.id).jpg", image: image)
     }
   }
 }

@@ -5,7 +5,7 @@ final class NearCafeViewModel {
   // MARK: - Properties
   private let perPage: Int = 15
 
-  var nearCafeList: [NearCafe] = []
+  var nearCafeList: [NearCafeEntity] = []
   var page: Int = 1
   var pageableCount: Int = 0
   var isEnd: Bool = false
@@ -23,7 +23,7 @@ final class NearCafeViewModel {
     return nearCafeList.count
   }
 
-  func cafe(at index: Int) -> NearCafe {
+  func cafe(at index: Int) -> NearCafeEntity {
     return nearCafeList[index]
   }
 
@@ -40,14 +40,13 @@ final class NearCafeViewModel {
 
       for doc in response.documents {
         let distance = doc.distance.isEmpty ? " - " : doc.distance
-        let cafe = NearCafe(
+        let cafe = NearCafeEntity(
           name: doc.placeName,
           address: doc.roadAddressName,
           latitude: Double(doc.y) ?? 0,
           longitude: Double(doc.x) ?? 0,
           placeUrl: doc.placeUrl,
-          distance: distance
-        )
+          distance: distance)
         self.nearCafeList.append(cafe)
       }
 

@@ -8,14 +8,14 @@ final class AddCoffeeViewModel {
   }
 
   // MARK: - Properties
-  private let coffeeRepository: CoffeeRepositoryType
+  private let coffeeRepository: CoffeeRepositoryProtocol
   private let imageManager = ImageManager.shared
 
   let viewType: ViewType
-  let coffee: Coffee?
+  let coffee: CoffeeEntity?
 
   // MARK: - Init
-  init(coffeeRepository: CoffeeRepositoryType, coffee: Coffee? = nil) {
+  init(coffeeRepository: CoffeeRepositoryProtocol, coffee: CoffeeEntity? = nil) {
     self.coffeeRepository = coffeeRepository
     self.coffee = coffee
     self.viewType = coffee != nil ? .update : .add
@@ -28,7 +28,7 @@ final class AddCoffeeViewModel {
 
   var currentImage: UIImage {
     if let coffee = coffee {
-      return imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee._id).jpg") ?? UIImage.randomCoffeeImage
+      return imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg") ?? UIImage.randomCoffeeImage
     }
     return UIImage.randomCoffeeImage
   }
@@ -38,24 +38,22 @@ final class AddCoffeeViewModel {
   }
 
   func save(name: String, image: UIImage?) {
-    let item = Coffee(name: name)
-
     if viewType == .update, let coffee = coffee {
-      coffeeRepository.update(item: coffee, new: item)
+      coffeeRepository.update(id: coffee.id, name: name)
 
       if let image = image, image != UIImage.randomCoffeeImage {
-        imageManager.saveImage(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
+        imageManager.saveImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
       } else {
-        let previousImage = imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
+        let previousImage = imageManager.loadImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
         if previousImage != nil {
-          imageManager.deleteImage(type: .coffee, imageName: "coffee_\(coffee._id).jpg")
+          imageManager.deleteImage(type: .coffee, imageName: "coffee_\(coffee.id).jpg")
         }
       }
     } else {
-      coffeeRepository.add(item: item)
+      let newCoffee = coffeeRepository.add(name: name)
 
       if let image = image, image != UIImage.randomCoffeeImage {
-        imageManager.saveImage(type: .coffee, imageName: "coffee_\(item._id).jpg", image: image)
+        imageManager.saveImage(type: .coffee, imageName: "coffee_\(newCoffee.id).jpg", image: image)
       }
     }
   }

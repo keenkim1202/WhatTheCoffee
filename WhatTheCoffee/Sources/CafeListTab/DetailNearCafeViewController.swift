@@ -8,7 +8,7 @@ class DetailNearCafeViewController: BaseViewController {
   
   // MARK: - Properties
   var environment: Environment? = nil
-  var nearCafe: NearCafe?
+  var nearCafe: NearCafeEntity?
   
   // MARK: - UI
   @IBOutlet weak var addressLabel: UILabel!

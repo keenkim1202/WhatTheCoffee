@@ -3,7 +3,7 @@ import UIKit
 class PopupViewController: BaseViewController {
   
   // MARK: - Properties
-  var cafe: NearCafe?
+  var cafe: NearCafeEntity?
   
   // MARK: - UI
   @IBOutlet weak var backgroundView: UIView!

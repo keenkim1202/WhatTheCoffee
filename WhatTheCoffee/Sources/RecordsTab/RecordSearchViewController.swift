@@ -42,8 +42,7 @@ class RecordSearchViewController: UIViewController {
       self,
       selector: #selector(didDismissAddRercordNotification),
       name: NSNotification.Name("DismissAddRecord"),
-      object: nil
-    )
+      object: nil)
   }
 
   // MARK: - Notification Observers
@@ -51,8 +50,7 @@ class RecordSearchViewController: UIViewController {
     NotificationCenter.default.removeObserver(
       self,
       name: NSNotification.Name("DismissAddRecord"),
-      object: nil
-    )
+      object: nil)
   }
 
   @objc func didDismissAddRercordNotification(_ notification: Notification) {

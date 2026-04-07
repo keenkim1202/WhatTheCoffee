@@ -81,22 +81,20 @@ extension AddDefaultImageViewController: UITableViewDelegate, UITableViewDataSou
         let name = iceCoffee.replacingOccurrences(of: "_", with: " ")
         
         self.addAlert("다음 커피를 추가하시겠습니까?", name) {
-          let coffee = Coffee(name: name)
-          env.coffeeRepository.add(item: coffee)
-          
-          self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
+          let coffee = env.coffeeRepository.add(name: name)
+
+          self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
           self.showSuccessAlert("재추가에 성공하였습니다.")
         }
       } else {
         let hotCoffee = CoffeeNameList.defaultHotCoffeeList[indexPath.row]
         let image = UIImage(named: hotCoffee) ?? UIImage.randomCoffeeImage
         let name = hotCoffee.replacingOccurrences(of: "_", with: " ")
-        
+
         self.addAlert("다음 커피를 추가하시겠습니까?", name) {
-          let coffee = Coffee(name: name)
-          env.coffeeRepository.add(item: coffee)
-          
-          self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee._id).jpg", image: image)
+          let coffee = env.coffeeRepository.add(name: name)
+
+          self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
           self.showSuccessAlert("재추가에 성공하였습니다.")
         }
       }
