@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let viewControllers = tabBar.viewControllers else { return }
 
     let realm = try! Realm()
-    environment = AppEnvironment(coffeeRepository: CoffeeRepository(realm: realm), cafeRepository: CafeRepository(realm: realm))
+    let dataSource = RealmDataSource(realm: realm)
+    environment = AppEnvironment(coffeeRepository: CoffeeRepositoryImpl(dataSource: dataSource), cafeRepository: CafeRepositoryImpl(dataSource: dataSource))
 
     for vc in viewControllers {
       switch vc.children.first {
