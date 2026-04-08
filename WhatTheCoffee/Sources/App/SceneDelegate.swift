@@ -19,10 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let recommendNav = UINavigationController(rootViewController: recommendVC)
     recommendNav.tabBarItem = UITabBarItem(title: "추천", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
 
-    // 근처 카페 탭 (Storyboard)
-    let nearCafeVC = storyboard.instantiateViewController(withIdentifier: "nearCafeVC") as! NearCafeViewController
-    nearCafeVC.container = container
-    nearCafeVC.viewModel = container.makeNearCafeViewModel()
+    // 근처 카페 탭 (코드 UI)
+    let nearCafeVC = NearCafeViewController(viewModel: container.makeNearCafeViewModel(), container: container)
     let nearCafeNav = UINavigationController(rootViewController: nearCafeVC)
     nearCafeNav.tabBarItem = UITabBarItem(title: "근처 카페", image: UIImage(systemName: "mappin.circle"), selectedImage: UIImage(systemName: "mappin.circle.fill"))
 

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-    NMFAuthManager.shared().ncpKeyId = "rkft96del5"
+    NMFAuthManager.shared().ncpKeyId = Bundle.main.naverMapClientId
 
     // Use Firebase library to configure APIs
     FirebaseApp.configure()
