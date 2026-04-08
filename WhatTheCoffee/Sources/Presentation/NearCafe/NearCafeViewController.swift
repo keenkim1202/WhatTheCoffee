@@ -5,20 +5,51 @@ import FirebaseAnalytics
 class NearCafeViewController: BaseViewController {
 
   // MARK: - Properties
-  var viewModel: NearCafeViewModel!
-  var container: DIContainer!
+  let viewModel: NearCafeViewModel
+  let container: DIContainer
   var locationManger = CLLocationManager()
   var userCoordinate: CLLocationCoordinate2D?
 
   // MARK: - UI
-  @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var emptyLabel: UILabel!
+  private let tableView: UITableView = {
+    let tv = UITableView()
+    tv.backgroundColor = .systemBackground
+    tv.keyboardDismissMode = .onDrag
+    tv.sectionHeaderHeight = 28
+    tv.sectionFooterHeight = 28
+    tv.register(NearCafeTableViewCell.self, forCellReuseIdentifier: NearCafeTableViewCell.identifier)
+    tv.translatesAutoresizingMaskIntoConstraints = false
+    return tv
+  }()
+
+  private let emptyLabel: UILabel = {
+    let label = UILabel()
+    label.text = "근처 카페를 찾지 못하였어요 🥲"
+    label.font = UIFont(name: "GowunBatang-Bold", size: 15)
+    label.textColor = UIColor(named: "OrangeMainColor")
+    label.textAlignment = .center
+    label.isHidden = true
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+
+  // MARK: - Init
+  init(viewModel: NearCafeViewModel, container: DIContainer) {
+    self.viewModel = viewModel
+    self.container = container
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    configureNav()
     configureSearchController()
+    configureLayout()
     configure()
     bindViewModel()
     locationManger.requestWhenInUseAuthorization()
@@ -27,35 +58,56 @@ class NearCafeViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     Analytics.logEvent("TAB_nearCafe", parameters: nil)
-
     configureLocationManager()
     fetchData()
   }
 
   // MARK: - Configure
-  func configure() {
+  private func configure() {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.prefetchDataSource = self
   }
 
-  func bindViewModel() {
+  private func configureNav() {
+    title = "근처 카페 찾기"
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "재탐색", style: .plain, target: self, action: #selector(onRedo))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "지도 보기", style: .plain, target: self, action: #selector(onCafeLocation))
+  }
+
+  private func configureLayout() {
+    view.backgroundColor = .systemBackground
+    view.addSubview(tableView)
+    view.addSubview(emptyLabel)
+
+    NSLayoutConstraint.activate([
+      tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+      emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+      emptyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+      emptyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+    ])
+  }
+
+  private func bindViewModel() {
     viewModel.onNearCafeListUpdated = { [weak self] in
-      guard let self = self else { return }
-      self.tableView.reloadData()
-      self.emptyLabel.isHidden = !self.viewModel.isEmpty
+      guard let self else { return }
+      tableView.reloadData()
+      emptyLabel.isHidden = !viewModel.isEmpty
     }
   }
 
-  func configureSearchController() {
+  private func configureSearchController() {
     let searchController = UISearchController()
-
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
     searchController.delegate = self
     searchController.searchBar.delegate = self
     searchController.searchBar.placeholder = "카페 이름으로 검색해보세요!"
-    self.definesPresentationContext = true
-    self.navigationItem.searchController = searchController
+    definesPresentationContext = true
+    navigationItem.searchController = searchController
   }
 
   func configureLocationManager() {
@@ -65,7 +117,6 @@ class NearCafeViewController: BaseViewController {
 
     if CLLocationManager.locationServicesEnabled() {
       locationManger.startUpdatingLocation()
-
       if let location = locationManger.location {
         userCoordinate = location.coordinate
       }
@@ -81,21 +132,18 @@ class NearCafeViewController: BaseViewController {
   }
 
   // MARK: - Action
-  @IBAction func onRedo(_ sender: UIBarButtonItem) {
+  @objc private func onRedo() {
     viewModel.reset()
-    self.tableView.scroll(to: .top, animated: true)
+    tableView.scroll(to: .top, animated: true)
     fetchData()
   }
 
-  @IBAction func onCafeLocation(_ sender: UIBarButtonItem) {
+  @objc private func onCafeLocation() {
     if !viewModel.isEmpty {
-      guard let vc = storyboard?.instantiateViewController(withIdentifier: "cafeLocationVC") as? CafeLocationViewController else { return }
-      vc.nearCafeLists = viewModel.nearCafeList
-      vc.myLocation = userCoordinate
-
+      let vc = CafeLocationViewController(nearCafeLists: viewModel.nearCafeList, myLocation: userCoordinate)
       let nav = UINavigationController(rootViewController: vc)
       nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true)
+      present(nav, animated: true)
     } else {
       showErrorAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
     }
@@ -109,13 +157,12 @@ extension NearCafeViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let vc = storyboard?.instantiateViewController(withIdentifier: "detailNearCafeVC") as? DetailNearCafeViewController else { return }
-    vc.nearCafe = viewModel.cafe(at: indexPath.row)
-
+    let cafe = viewModel.cafe(at: indexPath.row)
+    let vc = DetailNearCafeViewController(nearCafe: cafe)
     let nav = UINavigationController(rootViewController: vc)
-    nav.title = viewModel.cafe(at: indexPath.row).name
+    nav.title = cafe.name
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true)
+    present(nav, animated: true)
   }
 }
 
@@ -152,7 +199,7 @@ extension NearCafeViewController: UITableViewDataSource {
 // MARK: - CLLocationManagerDelegate
 extension NearCafeViewController: CLLocationManagerDelegate {
   func getLocationUsagePermission() {
-    self.locationManger.requestWhenInUseAuthorization()
+    locationManger.requestWhenInUseAuthorization()
   }
 
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -188,11 +235,11 @@ extension NearCafeViewController: UISearchBarDelegate {
   }
 
   func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-    self.becomeFirstResponder()
+    becomeFirstResponder()
   }
 
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    self.tableView.reloadData()
+    tableView.reloadData()
   }
 }
 
