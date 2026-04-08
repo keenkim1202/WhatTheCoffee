@@ -46,14 +46,12 @@ class PopupViewController: BaseViewController {
   
   @IBAction func onDetailInfo(_ sender: UIButton) {
     guard let nearCafe = cafe else { return }
-    guard let detailSettingVC = self.storyboard?.instantiateViewController(withIdentifier: "detailSettingVC") as? SettingDetailViewController else { return }
-    
-    detailSettingVC.url = nearCafe.placeUrl
+    let detailSettingVC = SettingDetailViewController(url: nearCafe.placeUrl)
     detailSettingVC.title = nearCafe.name
-    
+
     let nav = UINavigationController(rootViewController: detailSettingVC)
     nav.modalPresentationStyle = .fullScreen
-    self.present(nav, animated: true)
+    present(nav, animated: true)
   }
   
 }

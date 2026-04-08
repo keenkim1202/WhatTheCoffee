@@ -8,30 +8,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   private let container = DIContainer.shared
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    guard let scene = (scene as? UIWindowScene) else { return }
-    guard let window = scene.windows.first else { return }
-    guard let tabBar = window.rootViewController as? UITabBarController else { return }
-    guard let viewControllers = tabBar.viewControllers else { return }
+    guard let windowScene = (scene as? UIWindowScene) else { return }
 
-    for vc in viewControllers {
-      switch vc.children.first {
-      case let vc as RecommendViewController:
-        vc.container = container
-        vc.viewModel = container.makeRecommendViewModel()
-        vc.checkIsFirst(coffeeRepository: container.coffeeRepository, cafeRepository: container.cafeRepository)
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let tabBar = UITabBarController()
 
-      case let vc as NearCafeViewController:
-        vc.container = container
-        vc.viewModel = container.makeNearCafeViewModel()
+    // 추천 탭 (코드 UI)
+    let recommendVC = RecommendViewController(viewModel: container.makeRecommendViewModel(), container: container)
+    recommendVC.checkIsFirst(coffeeRepository: container.coffeeRepository, cafeRepository: container.cafeRepository)
+    let recommendNav = UINavigationController(rootViewController: recommendVC)
+    recommendNav.tabBarItem = UITabBarItem(title: "추천", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
 
-      case let vc as RecordsViewController:
-        vc.container = container
-        vc.viewModel = container.makeRecordsViewModel()
+    // 근처 카페 탭 (Storyboard)
+    let nearCafeVC = storyboard.instantiateViewController(withIdentifier: "nearCafeVC") as! NearCafeViewController
+    nearCafeVC.container = container
+    nearCafeVC.viewModel = container.makeNearCafeViewModel()
+    let nearCafeNav = UINavigationController(rootViewController: nearCafeVC)
+    nearCafeNav.tabBarItem = UITabBarItem(title: "근처 카페", image: UIImage(systemName: "mappin.circle"), selectedImage: UIImage(systemName: "mappin.circle.fill"))
 
-      default:
-        break
-      }
-    }
+    // 기록 탭 (Storyboard)
+    let recordsVC = storyboard.instantiateViewController(withIdentifier: "recordsVC") as! RecordsViewController
+    recordsVC.container = container
+    recordsVC.viewModel = container.makeRecordsViewModel()
+    let recordsNav = UINavigationController(rootViewController: recordsVC)
+    recordsNav.tabBarItem = UITabBarItem(title: "기록", image: UIImage(systemName: "heart.text.square"), selectedImage: UIImage(systemName: "heart.text.square.fill"))
+
+    tabBar.viewControllers = [recordsNav, recommendNav, nearCafeNav]
+    tabBar.selectedIndex = 1
+
+    let window = UIWindow(windowScene: windowScene)
+    window.rootViewController = tabBar
+    window.makeKeyAndVisible()
+    self.window = window
 
     sleep(1)
   }
