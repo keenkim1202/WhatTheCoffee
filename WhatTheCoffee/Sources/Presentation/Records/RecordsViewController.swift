@@ -92,6 +92,7 @@ class RecordsViewController: BaseViewController {
     return view
   }()
 
+  private lazy var mapBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "map"), style: .plain, target: self, action: #selector(onMap))
   private lazy var addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onAdd))
   private lazy var editBarButtonItem = UIBarButtonItem(title: "편집", style: .plain, target: self, action: #selector(onEdit))
   private lazy var deleteBarButtonItem: UIBarButtonItem = {
@@ -147,7 +148,7 @@ class RecordsViewController: BaseViewController {
     titleLabel.text = "커피 기록_"
     titleLabel.font = UIFont(name: "GowunBatang-Bold", size: 15)
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
-    navigationItem.rightBarButtonItems = [addBarButtonItem, editBarButtonItem, deleteBarButtonItem]
+    navigationItem.rightBarButtonItems = [addBarButtonItem, editBarButtonItem, deleteBarButtonItem, mapBarButtonItem]
   }
 
   private func configureLayout() {
@@ -206,6 +207,13 @@ class RecordsViewController: BaseViewController {
 
   @objc private func onEdit() {
     changeDeleteButtonState()
+  }
+
+  @objc private func onMap() {
+    let vc = RecordMapViewController(container: container)
+    let nav = UINavigationController(rootViewController: vc)
+    nav.modalPresentationStyle = .fullScreen
+    present(nav, animated: true)
   }
 
   @objc private func onAdd() {

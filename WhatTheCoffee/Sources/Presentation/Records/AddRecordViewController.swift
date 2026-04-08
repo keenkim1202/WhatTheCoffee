@@ -1,4 +1,5 @@
 import UIKit
+import CoreLocation
 import TextFieldEffects
 import FirebaseAnalytics
 
@@ -6,9 +7,12 @@ class AddRecordViewController: BaseViewController {
 
   // MARK: - Properties
   let viewModel: AddRecordViewModel
+  let container: DIContainer
   let buttonCornerRadius: CGFloat = 20
   let imagePicker = UIImagePickerController()
   let commentPlaceholder: String = "커피/디저트/분위기 등은 어땠나요?"
+  private let locationManager = CLLocationManager()
+  private var currentLocation: CLLocationCoordinate2D?
 
   // MARK: - UI
   private let navigationBar: UINavigationBar = {
@@ -100,6 +104,16 @@ class AddRecordViewController: BaseViewController {
     return tv
   }()
 
+  private let locationLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.GowunBatang(type: .regular, size: 13)
+    label.textColor = .orangeMainColor
+    label.text = "위치 정보 없음"
+    label.textAlignment = .natural
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+
   private var rateButtons: [UIButton] = []
 
   private let scrollView: UIScrollView = {
@@ -116,8 +130,9 @@ class AddRecordViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(viewModel: AddRecordViewModel) {
+  init(viewModel: AddRecordViewModel, container: DIContainer = .shared) {
     self.viewModel = viewModel
+    self.container = container
     super.init(nibName: nil, bundle: nil)
     modalPresentationStyle = .fullScreen
   }
@@ -132,6 +147,7 @@ class AddRecordViewController: BaseViewController {
     configureNav()
     configureLayout()
     configureFromViewModel()
+    configureLocation()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -155,6 +171,10 @@ class AddRecordViewController: BaseViewController {
     } else {
       commentTextView.text = commentPlaceholder
       commentTextView.textColor = UIColor.placeholderText
+    }
+
+    if let location = viewModel.selectedLocation {
+      updateLocationDisplay(location)
     }
   }
 
@@ -232,8 +252,38 @@ class AddRecordViewController: BaseViewController {
     commentStack.spacing = 15
     commentStack.translatesAutoresizingMaskIntoConstraints = false
 
+    // 위치 섹션
+    let locationSectionLabel = makeSectionLabel("위치 기록")
+
+    let searchLocationButton = UIButton(type: .system)
+    searchLocationButton.setTitle("  검색해서 위치 기록  ", for: .normal)
+    searchLocationButton.setTitleColor(UIColor(named: "GreenMainColor"), for: .normal)
+    searchLocationButton.titleLabel?.font = UIFont.GowunBatang(type: .regular, size: 13)
+    searchLocationButton.backgroundColor = UIColor(named: "GreenSubColor")
+    searchLocationButton.layer.cornerRadius = 15
+    searchLocationButton.addTarget(self, action: #selector(onSearchLocation), for: .touchUpInside)
+
+    let currentLocationButton = UIButton(type: .system)
+    currentLocationButton.setTitle("  현재 위치로 기록  ", for: .normal)
+    currentLocationButton.setTitleColor(UIColor(named: "GreenMainColor"), for: .normal)
+    currentLocationButton.titleLabel?.font = UIFont.GowunBatang(type: .regular, size: 13)
+    currentLocationButton.backgroundColor = UIColor(named: "GreenSubColor")
+    currentLocationButton.layer.cornerRadius = 15
+    currentLocationButton.addTarget(self, action: #selector(onCurrentLocation), for: .touchUpInside)
+
+    let locationButtonRow = UIStackView(arrangedSubviews: [searchLocationButton, currentLocationButton])
+    locationButtonRow.axis = .horizontal
+    locationButtonRow.spacing = 8
+    locationButtonRow.distribution = .fillEqually
+
+    let locationStack = UIStackView(arrangedSubviews: [locationSectionLabel, locationButtonRow, locationLabel])
+    locationStack.axis = .vertical
+    locationStack.alignment = .center
+    locationStack.spacing = 10
+    locationStack.translatesAutoresizingMaskIntoConstraints = false
+
     // 전체 스택
-    let mainStack = UIStackView(arrangedSubviews: [imageStack, titleStack, dateStack, rateStack, commentStack])
+    let mainStack = UIStackView(arrangedSubviews: [imageStack, titleStack, locationStack, dateStack, rateStack, commentStack])
     mainStack.axis = .vertical
     mainStack.alignment = .center
     mainStack.spacing = 40
@@ -295,6 +345,16 @@ class AddRecordViewController: BaseViewController {
       dateTextField.trailingAnchor.constraint(equalTo: dateStack.trailingAnchor),
       dateTextField.heightAnchor.constraint(equalToConstant: 50),
 
+      // 위치 섹션
+      locationStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor, constant: 10),
+      locationStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
+      locationSectionLabel.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
+      locationSectionLabel.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
+      locationButtonRow.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
+      locationButtonRow.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
+      locationLabel.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
+      locationLabel.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
+
       // 평점 섹션
       rateStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor),
       rateStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor),
@@ -318,7 +378,7 @@ class AddRecordViewController: BaseViewController {
     let label = UILabel()
     label.text = text
     label.font = UIFont(name: "GowunBatang-Bold", size: 15)
-    label.textAlignment = .center
+    label.textAlignment = .natural
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }
@@ -481,5 +541,70 @@ extension AddRecordViewController: UITextFieldDelegate {
       dateTextField.becomeFirstResponder()
     }
     return true
+  }
+}
+
+// MARK: - Location
+extension AddRecordViewController {
+  func updateLocationDisplay(_ location: SelectedLocation) {
+    let displayText = location.address.isEmpty ? location.name : "\(location.name) · \(location.address)"
+    locationLabel.text = displayText
+  }
+
+  @objc func onSearchLocation() {
+    let searchVC = CafeSearchBottomSheetViewController()
+    searchVC.delegate = self
+    searchVC.container = container
+    searchVC.initialQuery = titleTextField.text
+
+    if let sheet = searchVC.sheetPresentationController {
+      sheet.detents = [.medium(), .large()]
+      sheet.prefersGrabberVisible = true
+    }
+    present(searchVC, animated: true)
+  }
+
+  @objc func onCurrentLocation() {
+    guard let location = currentLocation else {
+      showErrorAlert("현재 위치를 가져올 수 없습니다.\n위치 권한을 확인해주세요.")
+      return
+    }
+
+    let geocoder = CLGeocoder()
+    let clLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+    geocoder.reverseGeocodeLocation(clLocation) { [weak self] placemarks, error in
+      guard let self else { return }
+      let address = placemarks?.first?.name ?? placemarks?.first?.thoroughfare ?? "주소를 찾을 수 없음"
+      let selected = SelectedLocation(name: address, address: address, latitude: location.latitude, longitude: location.longitude)
+      viewModel.selectedLocation = selected
+      updateLocationDisplay(selected)
+    }
+  }
+}
+
+// MARK: - CafeSearchBottomSheetDelegate
+extension AddRecordViewController: CafeSearchBottomSheetDelegate {
+  func didSelectCafe(_ location: SelectedLocation) {
+    viewModel.selectedLocation = location
+    updateLocationDisplay(location)
+  }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension AddRecordViewController: CLLocationManagerDelegate {
+  func configureLocation() {
+    locationManager.delegate = self
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.requestWhenInUseAuthorization()
+    if CLLocationManager.locationServicesEnabled() {
+      locationManager.startUpdatingLocation()
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let location = locations.first {
+      currentLocation = location.coordinate
+      locationManager.stopUpdatingLocation()
+    }
   }
 }
