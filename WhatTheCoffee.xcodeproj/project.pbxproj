@@ -14,7 +14,7 @@
 		1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */; };
 		1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206372744B41A00FDBBEF /* AppDelegate.swift */; };
 		1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206392744B41A00FDBBEF /* SceneDelegate.swift */; };
-		1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C22063D2744B41A00FDBBEF /* Main.storyboard */; };
+
 		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
 		1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA393278822EB005183B2 /* CoreLocation.framework */; };
 		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
@@ -38,7 +38,7 @@
 		1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */; };
 		1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */; };
 		1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */; };
-		1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C555637274DC94C00B5A145 /* RecordCell.xib */; };
+
 		1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* ImageDataManager.swift */; };
 		1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */; };
 		1C5F65552F84F8D600DC5647 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; };
@@ -101,7 +101,7 @@
 		1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2206372744B41A00FDBBEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C2206392744B41A00FDBBEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1C22063E2744B41A00FDBBEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+
 		1C2206402744B41B00FDBBEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2206452744B41B00FDBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
@@ -128,7 +128,7 @@
 		1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField++Extension.swift.swift"; sourceTree = "<group>"; };
 		1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++Extension.swift"; sourceTree = "<group>"; };
-		1C555637274DC94C00B5A145 /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
+
 		1C555659274FA6E100B5A145 /* ImageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataManager.swift; sourceTree = "<group>"; };
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
@@ -264,7 +264,6 @@
 		1C37C3692744E7A800EC3CA3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1C22063D2744B41A00FDBBEF /* Main.storyboard */,
 				1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */,
 				1C2206402744B41B00FDBBEF /* Assets.xcassets */,
 			);
@@ -304,7 +303,6 @@
 				1C37C3632744E71B00EC3CA3 /* RecordsViewController.swift */,
 				1C37C3652744E72300EC3CA3 /* AddRecordViewController.swift */,
 				1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */,
-				1C555637274DC94C00B5A145 /* RecordCell.xib */,
 				1C06FE1A27DF811600C28042 /* RecordSearchViewController.swift */,
 				6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */,
 				884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */,
@@ -559,11 +557,9 @@
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
 				1C83178E2F8553FB00C9DE50 /* GoogleService-Info.plist in Resources */,
 				1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */,
-				1C555638274DC94C00B5A145 /* RecordCell.xib in Resources */,
 				1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */,
 				1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */,
 				1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */,
-				1C22063F2744B41A00FDBBEF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,14 +663,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1C22063D2744B41A00FDBBEF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1C22063E2744B41A00FDBBEF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -820,7 +808,7 @@
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -861,7 +849,7 @@
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
