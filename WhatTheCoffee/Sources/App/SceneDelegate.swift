@@ -28,7 +28,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let recordsNav = UINavigationController(rootViewController: recordsVC)
     recordsNav.tabBarItem = UITabBarItem(title: "기록", image: UIImage(systemName: "heart.text.square"), selectedImage: UIImage(systemName: "heart.text.square.fill"))
 
-    tabBar.viewControllers = [recordsNav, recommendNav, nearCafeNav]
+    // 통계 탭
+    let statisticsVC = StatisticsViewController(viewModel: container.makeStatisticsViewModel())
+    let statisticsNav = UINavigationController(rootViewController: statisticsVC)
+    statisticsNav.tabBarItem = UITabBarItem(title: "통계", image: UIImage(systemName: "chart.bar"), selectedImage: UIImage(systemName: "chart.bar.fill"))
+
+    tabBar.viewControllers = [recordsNav, recommendNav, nearCafeNav, statisticsNav]
     tabBar.selectedIndex = 1
 
     let window = UIWindow(windowScene: windowScene)

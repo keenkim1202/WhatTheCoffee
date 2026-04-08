@@ -56,7 +56,7 @@ class CafeSearchBottomSheetViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard let container else { return }
+    guard container != nil else { return }
     view.backgroundColor = .appearanceColor
     configureUI()
     configureLocation()

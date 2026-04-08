@@ -6,10 +6,8 @@ final class DIContainer {
   // MARK: - DataSource
   private lazy var realmDataSource: RealmDataSource = {
     let config = Realm.Configuration(
-      schemaVersion: 1,
-      migrationBlock: { _, oldSchemaVersion in
-        // latitude, longitude, isClosed 필드 추가 — 기본값이 있어서 별도 처리 불필요
-      })
+      schemaVersion: 2,
+      migrationBlock: { _, _ in })
     let realm = try! Realm(configuration: config)
     return RealmDataSource(realm: realm)
   }()
@@ -39,6 +37,10 @@ final class DIContainer {
     ManageRecordsUseCase(repository: cafeRepository)
   }
 
+  func makeFetchStatisticsUseCase() -> FetchStatisticsUseCase {
+    FetchStatisticsUseCase(repository: cafeRepository)
+  }
+
   func makeManageImageUseCase() -> ManageImageUseCase {
     ManageImageUseCase()
   }
@@ -66,6 +68,10 @@ final class DIContainer {
 
   func makeAddRecordViewModel(cafe: CafeEntity? = nil) -> AddRecordViewModel {
     AddRecordViewModel(useCase: makeManageRecordsUseCase(), imageUseCase: makeManageImageUseCase(), cafe: cafe)
+  }
+
+  func makeStatisticsViewModel() -> StatisticsViewModel {
+    StatisticsViewModel(useCase: makeFetchStatisticsUseCase())
   }
 
   func makeRecordSearchViewModel() -> RecordSearchViewModel {
