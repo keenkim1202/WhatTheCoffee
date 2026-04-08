@@ -52,6 +52,14 @@
 		1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83188B2F869D3D00C9DE50 /* RecordMapViewController.swift */; };
 		1C83188D2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83188A2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift */; };
 		1C83188E2F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318892F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift */; };
+		1C8318902F86B43800C9DE50 /* CafeStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83188F2F86B43800C9DE50 /* CafeStatistics.swift */; };
+		1C8318922F86B44300C9DE50 /* FetchStatisticsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318912F86B44300C9DE50 /* FetchStatisticsUseCase.swift */; };
+		1C83189C2F86B53C00C9DE50 /* RatingDistributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318952F86B53C00C9DE50 /* RatingDistributionView.swift */; };
+		1C83189D2F86B53C00C9DE50 /* TopCafesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318972F86B53C00C9DE50 /* TopCafesView.swift */; };
+		1C83189E2F86B53C00C9DE50 /* MonthlyVisitChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318942F86B53C00C9DE50 /* MonthlyVisitChartView.swift */; };
+		1C83189F2F86B53C00C9DE50 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83189A2F86B53C00C9DE50 /* StatisticsViewModel.swift */; };
+		1C8318A02F86B53C00C9DE50 /* SummaryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318962F86B53C00C9DE50 /* SummaryCardView.swift */; };
+		1C8318A12F86B53C00C9DE50 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318992F86B53C00C9DE50 /* StatisticsViewController.swift */; };
 		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
@@ -144,6 +152,14 @@
 		1C8318892F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeSearchBottomSheetViewController.swift; sourceTree = "<group>"; };
 		1C83188A2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeSearchDetailViewController.swift; sourceTree = "<group>"; };
 		1C83188B2F869D3D00C9DE50 /* RecordMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMapViewController.swift; sourceTree = "<group>"; };
+		1C83188F2F86B43800C9DE50 /* CafeStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeStatistics.swift; sourceTree = "<group>"; };
+		1C8318912F86B44300C9DE50 /* FetchStatisticsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStatisticsUseCase.swift; sourceTree = "<group>"; };
+		1C8318942F86B53C00C9DE50 /* MonthlyVisitChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyVisitChartView.swift; sourceTree = "<group>"; };
+		1C8318952F86B53C00C9DE50 /* RatingDistributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingDistributionView.swift; sourceTree = "<group>"; };
+		1C8318962F86B53C00C9DE50 /* SummaryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCardView.swift; sourceTree = "<group>"; };
+		1C8318972F86B53C00C9DE50 /* TopCafesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCafesView.swift; sourceTree = "<group>"; };
+		1C8318992F86B53C00C9DE50 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		1C83189A2F86B53C00C9DE50 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
@@ -337,6 +353,27 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1C8318982F86B53C00C9DE50 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1C8318942F86B53C00C9DE50 /* MonthlyVisitChartView.swift */,
+				1C8318952F86B53C00C9DE50 /* RatingDistributionView.swift */,
+				1C8318962F86B53C00C9DE50 /* SummaryCardView.swift */,
+				1C8318972F86B53C00C9DE50 /* TopCafesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1C83189B2F86B53C00C9DE50 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				1C8318982F86B53C00C9DE50 /* Views */,
+				1C8318992F86B53C00C9DE50 /* StatisticsViewController.swift */,
+				1C83189A2F86B53C00C9DE50 /* StatisticsViewModel.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 		1CCF0F942756002800B45F07 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +400,7 @@
 		5B882E90AFFE7C282D1FDAF6 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				1C8318912F86B44300C9DE50 /* FetchStatisticsUseCase.swift */,
 				5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */,
 				FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */,
 				B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */,
@@ -449,6 +487,7 @@
 		CC000001PRESENTATION00001 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1C83189B2F86B53C00C9DE50 /* Statistics */,
 				1C37C36A2744E7BE00EC3CA3 /* Recommend */,
 				1C37C36B2744E7CF00EC3CA3 /* NearCafe */,
 				1C37C36C2744E7E300EC3CA3 /* Records */,
@@ -479,6 +518,7 @@
 		D66608DE10CCC23B2C66F3ED /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1C83188F2F86B43800C9DE50 /* CafeStatistics.swift */,
 				C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */,
 				F627021097B5EB81EC818A0C /* CafeEntity.swift */,
 				1C8318812F867CCB00C9DE50 /* SelectedLocation.swift */,
@@ -613,6 +653,7 @@
 				89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */,
 				9D4D740A71194B0E6AA02BDF /* ManageRecordsUseCase.swift in Sources */,
 				950494E52287A1144FA47FBA /* KakaoSearchResponseDTO.swift in Sources */,
+				1C8318902F86B43800C9DE50 /* CafeStatistics.swift in Sources */,
 				2C1B1019EBFF8EA0ABB4BDD6 /* KakaoAPIDataSource.swift in Sources */,
 				8CEF796853D6636648632AC7 /* RealmDataSource.swift in Sources */,
 				35FCFE435EDA3AE9AA234FD9 /* CoffeeRepositoryImpl.swift in Sources */,
@@ -645,6 +686,12 @@
 				1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */,
 				1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */,
 				1C37C3662744E72300EC3CA3 /* AddRecordViewController.swift in Sources */,
+				1C83189C2F86B53C00C9DE50 /* RatingDistributionView.swift in Sources */,
+				1C83189D2F86B53C00C9DE50 /* TopCafesView.swift in Sources */,
+				1C83189E2F86B53C00C9DE50 /* MonthlyVisitChartView.swift in Sources */,
+				1C83189F2F86B53C00C9DE50 /* StatisticsViewModel.swift in Sources */,
+				1C8318A02F86B53C00C9DE50 /* SummaryCardView.swift in Sources */,
+				1C8318A12F86B53C00C9DE50 /* StatisticsViewController.swift in Sources */,
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
 				1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */,
@@ -659,6 +706,7 @@
 				1C1839F9274CB06800AAD04B /* Storage.swift in Sources */,
 				1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */,
 				1C37C3642744E71B00EC3CA3 /* RecordsViewController.swift in Sources */,
+				1C8318922F86B44300C9DE50 /* FetchStatisticsUseCase.swift in Sources */,
 				1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */,
 				1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */,
 				1CCF0F8F2755F50700B45F07 /* SettingViewController.swift in Sources */,
