@@ -14,7 +14,6 @@
 		1C1839FB274CC2A600AAD04B /* UIAlert++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */; };
 		1C2206382744B41A00FDBBEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206372744B41A00FDBBEF /* AppDelegate.swift */; };
 		1C22063A2744B41A00FDBBEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2206392744B41A00FDBBEF /* SceneDelegate.swift */; };
-
 		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
 		1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA393278822EB005183B2 /* CoreLocation.framework */; };
 		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
@@ -38,7 +37,6 @@
 		1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */; };
 		1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */; };
 		1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */; };
-
 		1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* ImageDataManager.swift */; };
 		1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */; };
 		1C5F65552F84F8D600DC5647 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; };
@@ -49,6 +47,11 @@
 		1C7BC3BD278C225500424504 /* AddDefaultImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BC278C225500424504 /* AddDefaultImageTableViewCell.swift */; };
 		1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BE278C23F400424504 /* CoffeeNameList.swift */; };
 		1C83178E2F8553FB00C9DE50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C83178D2F8553FB00C9DE50 /* GoogleService-Info.plist */; };
+		1C83187E2F867CAD00C9DE50 /* CheckClosedCafeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83187D2F867CAD00C9DE50 /* CheckClosedCafeUseCase.swift */; };
+		1C8318822F867CCB00C9DE50 /* SelectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318812F867CCB00C9DE50 /* SelectedLocation.swift */; };
+		1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83188B2F869D3D00C9DE50 /* RecordMapViewController.swift */; };
+		1C83188D2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83188A2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift */; };
+		1C83188E2F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318892F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift */; };
 		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
@@ -101,7 +104,6 @@
 		1C2206342744B41A00FDBBEF /* WhatTheCoffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatTheCoffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2206372744B41A00FDBBEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C2206392744B41A00FDBBEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-
 		1C2206402744B41B00FDBBEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2206452744B41B00FDBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C25DEB92763B102005F812E /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
@@ -128,7 +130,6 @@
 		1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField++Extension.swift.swift"; sourceTree = "<group>"; };
 		1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++Extension.swift"; sourceTree = "<group>"; };
-
 		1C555659274FA6E100B5A145 /* ImageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataManager.swift; sourceTree = "<group>"; };
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
@@ -138,6 +139,11 @@
 		1C7BC3BC278C225500424504 /* AddDefaultImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDefaultImageTableViewCell.swift; sourceTree = "<group>"; };
 		1C7BC3BE278C23F400424504 /* CoffeeNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeNameList.swift; sourceTree = "<group>"; };
 		1C83178D2F8553FB00C9DE50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C83187D2F867CAD00C9DE50 /* CheckClosedCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckClosedCafeUseCase.swift; sourceTree = "<group>"; };
+		1C8318812F867CCB00C9DE50 /* SelectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedLocation.swift; sourceTree = "<group>"; };
+		1C8318892F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeSearchBottomSheetViewController.swift; sourceTree = "<group>"; };
+		1C83188A2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeSearchDetailViewController.swift; sourceTree = "<group>"; };
+		1C83188B2F869D3D00C9DE50 /* RecordMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMapViewController.swift; sourceTree = "<group>"; };
 		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
 		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
@@ -300,6 +306,9 @@
 		1C37C36C2744E7E300EC3CA3 /* Records */ = {
 			isa = PBXGroup;
 			children = (
+				1C8318892F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift */,
+				1C83188A2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift */,
+				1C83188B2F869D3D00C9DE50 /* RecordMapViewController.swift */,
 				1C37C3632744E71B00EC3CA3 /* RecordsViewController.swift */,
 				1C37C3652744E72300EC3CA3 /* AddRecordViewController.swift */,
 				1C37C37F2744FB4A00EC3CA3 /* RecordCollectionViewCell.swift */,
@@ -359,6 +368,7 @@
 				B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */,
 				0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */,
 				BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */,
+				1C83187D2F867CAD00C9DE50 /* CheckClosedCafeUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -471,6 +481,7 @@
 			children = (
 				C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */,
 				F627021097B5EB81EC818A0C /* CafeEntity.swift */,
+				1C8318812F867CCB00C9DE50 /* SelectedLocation.swift */,
 				78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */,
 				1C37C38E274548E800EC3CA3 /* Rate.swift */,
 				1CC914E2275888A2002BD76D /* AppError.swift.swift */,
@@ -596,6 +607,7 @@
 			files = (
 				AA000001DICONTAINER00000001 /* DIContainer.swift in Sources */,
 				BB000001IMAGEUSECASE000001 /* ManageImageUseCase.swift in Sources */,
+				1C83187E2F867CAD00C9DE50 /* CheckClosedCafeUseCase.swift in Sources */,
 				DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */,
 				01522EC03C8454B3A254E6EA /* ManageCoffeeListUseCase.swift in Sources */,
 				89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */,
@@ -617,6 +629,9 @@
 				D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */,
 				4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */,
 				80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */,
+				1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */,
+				1C83188D2F869D3D00C9DE50 /* CafeSearchDetailViewController.swift in Sources */,
+				1C83188E2F869D3D00C9DE50 /* CafeSearchBottomSheetViewController.swift in Sources */,
 				8EBDD075EF42AE32B8C199A8 /* AddCoffeeViewModel.swift in Sources */,
 				8E87E5E971E999584E4BBE22 /* NearCafeViewModel.swift in Sources */,
 				ADF1C56E71CD997C87B4C246 /* RecordsViewModel.swift in Sources */,
@@ -633,6 +648,7 @@
 				1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */,
 				1CCF0F932755FA7700B45F07 /* SettingDetailViewController.swift in Sources */,
 				1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */,
+				1C8318822F867CCB00C9DE50 /* SelectedLocation.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
 				1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */,
 				1C06FE1B27DF811600C28042 /* RecordSearchViewController.swift in Sources */,
@@ -661,9 +677,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1C2206462744B41B00FDBBEF /* Debug */ = {
@@ -808,7 +821,6 @@
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -849,7 +861,6 @@
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자의 앱 사용성을 증가시키기 위해 추적하고자 합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

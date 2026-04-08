@@ -7,6 +7,9 @@ enum CafeMapper {
       name: object.name,
       visitDate: object.visitDate,
       comment: object.comment,
-      rate: object.rate)
+      rate: object.rate,
+      latitude: object.latitude,
+      longitude: object.longitude,
+      isClosed: object.isClosed)
   }
 }

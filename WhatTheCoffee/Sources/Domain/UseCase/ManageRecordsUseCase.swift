@@ -12,12 +12,16 @@ final class ManageRecordsUseCase {
   }
 
   @discardableResult
-  func add(name: String, visitDate: Date, comment: String?, rate: Int) -> CafeEntity {
-    return repository.add(name: name, visitDate: visitDate, comment: comment, rate: rate)
+  func add(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?) -> CafeEntity {
+    return repository.add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude)
   }
 
-  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int) {
-    repository.update(id: id, name: name, visitDate: visitDate, comment: comment, rate: rate)
+  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?) {
+    repository.update(id: id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude)
+  }
+
+  func updateClosedStatus(id: String, isClosed: Bool) {
+    repository.updateClosedStatus(id: id, isClosed: isClosed)
   }
 
   func remove(id: String) {

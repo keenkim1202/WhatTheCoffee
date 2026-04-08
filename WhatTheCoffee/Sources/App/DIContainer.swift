@@ -5,7 +5,12 @@ final class DIContainer {
 
   // MARK: - DataSource
   private lazy var realmDataSource: RealmDataSource = {
-    let realm = try! Realm()
+    let config = Realm.Configuration(
+      schemaVersion: 1,
+      migrationBlock: { _, oldSchemaVersion in
+        // latitude, longitude, isClosed 필드 추가 — 기본값이 있어서 별도 처리 불필요
+      })
+    let realm = try! Realm(configuration: config)
     return RealmDataSource(realm: realm)
   }()
 
@@ -24,6 +29,10 @@ final class DIContainer {
 
   func makeFetchNearCafeUseCase() -> FetchNearCafeUseCase {
     FetchNearCafeUseCase()
+  }
+
+  func makeCheckClosedCafeUseCase() -> CheckClosedCafeUseCase {
+    CheckClosedCafeUseCase(repository: cafeRepository)
   }
 
   func makeManageRecordsUseCase() -> ManageRecordsUseCase {
