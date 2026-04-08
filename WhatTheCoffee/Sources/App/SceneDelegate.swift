@@ -10,24 +10,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
 
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let tabBar = UITabBarController()
 
-    // 추천 탭 (코드 UI)
+    // 추천 탭
     let recommendVC = RecommendViewController(viewModel: container.makeRecommendViewModel(), container: container)
     recommendVC.checkIsFirst(coffeeRepository: container.coffeeRepository, cafeRepository: container.cafeRepository)
     let recommendNav = UINavigationController(rootViewController: recommendVC)
     recommendNav.tabBarItem = UITabBarItem(title: "추천", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
 
-    // 근처 카페 탭 (코드 UI)
+    // 근처 카페 탭
     let nearCafeVC = NearCafeViewController(viewModel: container.makeNearCafeViewModel(), container: container)
     let nearCafeNav = UINavigationController(rootViewController: nearCafeVC)
     nearCafeNav.tabBarItem = UITabBarItem(title: "근처 카페", image: UIImage(systemName: "mappin.circle"), selectedImage: UIImage(systemName: "mappin.circle.fill"))
 
-    // 기록 탭 (Storyboard)
-    let recordsVC = storyboard.instantiateViewController(withIdentifier: "recordsVC") as! RecordsViewController
-    recordsVC.container = container
-    recordsVC.viewModel = container.makeRecordsViewModel()
+    // 기록 탭
+    let recordsVC = RecordsViewController(viewModel: container.makeRecordsViewModel(), container: container)
     let recordsNav = UINavigationController(rootViewController: recordsVC)
     recordsNav.tabBarItem = UITabBarItem(title: "기록", image: UIImage(systemName: "heart.text.square"), selectedImage: UIImage(systemName: "heart.text.square.fill"))
 
