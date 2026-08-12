@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import WidgetKit
 
 final class CafeRepositoryImpl: CafeRepositoryProtocol {
 
@@ -17,6 +18,7 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
   func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?) -> CafeEntity {
     let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude)
     dataSource.add(object)
+    reloadWidget()
     return CafeMapper.toEntity(object)
   }
 
@@ -26,6 +28,7 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
     if let latitude { value["latitude"] = latitude }
     if let longitude { value["longitude"] = longitude }
     dataSource.create(Cafe.self, value: value, update: .modified)
+    reloadWidget()
   }
 
   func updateClosedStatus(id: String, isClosed: Bool) {
@@ -40,6 +43,13 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
     guard let objectId = try? ObjectId(string: id) else { return }
     guard let object = dataSource.object(ofType: Cafe.self, forPrimaryKey: objectId) else { return }
     dataSource.delete(object)
+    reloadWidget()
+  }
+
+  /// 위젯은 방문 수와 최근 방문 카페를 보여주므로, 그 둘을 바꾸는 쓰기 뒤에만 갱신한다.
+  /// 폐점 여부는 위젯에 나오지 않아 updateClosedStatus에서는 부르지 않는다.
+  private func reloadWidget() {
+    WidgetCenter.shared.reloadAllTimelines()
   }
 
   func fetch() -> [CafeEntity] {
