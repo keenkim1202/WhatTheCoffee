@@ -225,7 +225,7 @@ extension AddCoffeeViewController: UIImagePickerControllerDelegate, UINavigation
       switch result {
       case .success(let subjects):
         // 잘라낸 것 말고 원본을 쓰고 싶을 수 있으니 마지막 선택지로 함께 보여준다.
-        presentSubjectPicker(subjects + [SubjectCutout.Subject(title: "원본", image: image)])
+        presentSubjectPicker(subjects + [SubjectCutout.Subject(title: "원본", image: image, isCutout: false)])
       case .failure(let error):
         // 떼어낼 피사체가 없으면 원본을 그대로 쓴다.
         // 배경이 남는 이유를 모르면 기능이 고장난 것처럼 보이므로 짧게 알린다.

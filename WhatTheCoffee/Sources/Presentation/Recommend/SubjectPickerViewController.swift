@@ -1,4 +1,6 @@
 import UIKit
+import CoreImage
+import CoreImage.CIFilterBuiltins
 
 /// 사진에서 여러 피사체를 찾았을 때 어느 것을 쓸지 고르게 한다.
 /// 스티커 시트처럼 잘라낸 결과를 늘어놓고, 고른 것에 테두리를 준 뒤 적용 버튼으로 확정한다.
@@ -10,6 +12,9 @@ final class SubjectPickerViewController: BaseViewController {
 
   /// 목록이 뜨는 경우는 선택지가 둘 이상일 때뿐이라, 첫 번째를 미리 골라둔다.
   private var selectedIndex = 0
+
+  /// 윤곽선 렌더링은 무거워서 메인 스레드에서 하면 시트가 끊긴다. 미리 만들어 두고 도착하면 갈아 끼운다.
+  private var outlines: [Int: UIImage] = [:]
 
   // MARK: - UI
   private let titleLabel: UILabel = {
@@ -64,8 +69,32 @@ final class SubjectPickerViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureLayout()
+    selectCurrentItem()
+    prepareOutlines()
+  }
+
+  private func selectCurrentItem() {
     collectionView.selectItem(
       at: IndexPath(item: selectedIndex, section: 0), animated: false, scrollPosition: [])
+  }
+
+  private func prepareOutlines() {
+    let subjects = self.subjects
+    let color = UIColor(named: "GreenMainColor") ?? .systemGreen
+
+    DispatchQueue.global(qos: .userInitiated).async {
+      var rendered: [Int: UIImage] = [:]
+      for (index, subject) in subjects.enumerated() where subject.isCutout {
+        rendered[index] = SubjectOutline.outlined(subject.image, color: color)
+      }
+
+      DispatchQueue.main.async { [weak self] in
+        guard let self else { return }
+        outlines = rendered
+        collectionView.reloadData()
+        selectCurrentItem()
+      }
+    }
   }
 
   // MARK: - Configure
@@ -113,7 +142,7 @@ extension SubjectPickerViewController: UICollectionViewDataSource {
       withReuseIdentifier: SubjectCell.identifier, for: indexPath) as? SubjectCell else {
       return UICollectionViewCell()
     }
-    cell.configure(with: subjects[indexPath.item])
+    cell.configure(with: subjects[indexPath.item], outline: outlines[indexPath.item])
     return cell
   }
 }
@@ -132,6 +161,10 @@ private final class SubjectCell: UICollectionViewCell {
   override var isSelected: Bool {
     didSet { updateSelectionStyle() }
   }
+
+  /// 선택 표시는 피사체 모양을 따라 그린 윤곽선으로 한다. 사각 테두리보다 스티커에 가깝다.
+  private var plainImage: UIImage?
+  private var outlinedImage: UIImage?
 
   private let imageView: UIImageView = {
     let iv = UIImageView()
@@ -174,16 +207,68 @@ private final class SubjectCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(with subject: SubjectCutout.Subject) {
-    imageView.image = subject.image
+  func configure(with subject: SubjectCutout.Subject, outline: UIImage?) {
+    plainImage = subject.image
+    outlinedImage = outline
     titleLabel.text = subject.title
+    updateSelectionStyle()
   }
 
   private func updateSelectionStyle() {
-    imageView.layer.borderWidth = isSelected ? 3 : 1
-    imageView.layer.borderColor = isSelected
-      ? UIColor(named: "GreenMainColor")?.cgColor
-      : UIColor.separator.cgColor
+    // 원본처럼 배경이 꽉 찬 이미지는 윤곽선이 보이지 않으므로 테두리로 대신 표시한다.
+    if isSelected, let outlinedImage {
+      imageView.image = outlinedImage
+      imageView.layer.borderWidth = 0
+    } else {
+      imageView.image = plainImage
+      imageView.layer.borderWidth = isSelected ? 3 : 0
+      imageView.layer.borderColor = UIColor(named: "GreenMainColor")?.cgColor
+    }
     titleLabel.textColor = isSelected ? UIColor(named: "GreenMainColor") : .secondaryLabel
+  }
+}
+
+// MARK: - Outline
+/// 알파 채널을 부풀려 실루엣을 만들고 색을 채운 뒤 원본을 그 위에 얹는다.
+/// iOS 스티커의 흰 테두리와 같은 방식이다.
+private enum SubjectOutline {
+  private static let context = CIContext()
+
+  /// 셀에 보이는 크기. 원본 해상도 그대로 처리하면 느린 데다,
+  /// 고정 반경으로 부풀려봐야 4000픽셀짜리에서는 1포인트도 안 되어 선이 보이지 않는다.
+  private static let renderSize: CGFloat = 240
+  private static let outlineRadius: CGFloat = 6
+
+  static func outlined(_ image: UIImage, color: UIColor) -> UIImage? {
+    // 다시 그리는 과정에서 UIImage가 들고 있던 회전도 함께 반영된다.
+    guard let scaled = downscaled(image), let cgImage = scaled.cgImage else { return nil }
+
+    let source = CIImage(cgImage: cgImage)
+    let dilated = source.applyingFilter(
+      "CIMorphologyMaximum", parameters: [kCIInputRadiusKey: outlineRadius])
+
+    let silhouette = CIImage(color: CIColor(color: color))
+      .cropped(to: dilated.extent)
+      .applyingFilter("CIBlendWithAlphaMask", parameters: [kCIInputMaskImageKey: dilated])
+
+    let composited = source.composited(over: silhouette)
+    guard let output = context.createCGImage(composited, from: composited.extent) else { return nil }
+    return UIImage(cgImage: output)
+  }
+
+  private static func downscaled(_ image: UIImage) -> UIImage? {
+    guard let cgImage = image.cgImage else { return nil }
+
+    let longestSide = max(CGFloat(cgImage.width), CGFloat(cgImage.height))
+    let ratio = min(1, renderSize / longestSide)
+    let size = CGSize(width: CGFloat(cgImage.width) * ratio, height: CGFloat(cgImage.height) * ratio)
+
+    let format = UIGraphicsImageRendererFormat.default()
+    format.scale = 1
+    format.opaque = false
+
+    return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+      image.draw(in: CGRect(origin: .zero, size: size))
+    }
   }
 }
