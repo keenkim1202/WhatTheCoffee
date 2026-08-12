@@ -25,7 +25,7 @@ platform :ios do
     app_store_connect_api_key(
       key_id: ENV.fetch("ASC_KEY_ID"),
       issuer_id: ENV.fetch("ASC_ISSUER_ID"),
-      key_filepath: key_path)
+      key_filepath: File.expand_path(key_path))
   end
 
   desc "TestFlight에 새 빌드 올리기"
