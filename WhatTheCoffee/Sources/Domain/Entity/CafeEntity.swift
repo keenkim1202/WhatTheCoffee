@@ -9,6 +9,7 @@ struct CafeEntity: Equatable {
   let latitude: Double?
   let longitude: Double?
   let isClosed: Bool
+  let address: String?
 
   var hasLocation: Bool {
     return latitude != nil && longitude != nil

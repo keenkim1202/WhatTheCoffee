@@ -99,6 +99,7 @@
 		CDBFE9B16059FFA15E548557 /* RecordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */; };
 		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
+		1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
@@ -219,6 +220,7 @@
 		9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMapper.swift; sourceTree = "<group>"; };
 		A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewModel.swift; sourceTree = "<group>"; };
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppLauncher.swift; sourceTree = "<group>"; };
 		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
 		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 			children = (
 				1C37C37C2744F82900EC3CA3 /* Extensions */,
 				A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */,
+				1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
 			);
 			path = Common;
@@ -772,6 +775,7 @@
 				FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */,
 				3A25DDA02E5AA6A38DA65512 /* CafeMapper.swift in Sources */,
 				D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */,
+				1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */,
 				4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */,
 				80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */,
 				1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */,
@@ -977,7 +981,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = WhatTheCoffee/WhatTheCoffee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				VERSIONING_SYSTEM = "apple-generic";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
@@ -1020,7 +1024,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = WhatTheCoffee/WhatTheCoffee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				VERSIONING_SYSTEM = "apple-generic";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1064,7 +1068,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WhatTheCoffeeWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1101,7 +1105,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = WhatTheCoffeeWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;

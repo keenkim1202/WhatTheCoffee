@@ -6,6 +6,12 @@
 	<false/>
 	<key>KAKAO_APP_KEY</key>
 	<string>INSERT_API_KEY</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaomap</string>
+		<string>nmap</string>
+		<string>tmap</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>GowunBatang-Bold.ttf</string>
