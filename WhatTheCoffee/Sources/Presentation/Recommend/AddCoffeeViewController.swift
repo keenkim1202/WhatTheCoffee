@@ -14,6 +14,13 @@ class AddCoffeeViewController: BaseViewController {
   let buttonCornerRadius: CGFloat = 20
 
   // MARK: - UI
+  private let cutoutIndicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.hidesWhenStopped = true
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    return indicator
+  }()
+
   private let coffeeImageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFit
@@ -97,6 +104,8 @@ class AddCoffeeViewController: BaseViewController {
   private func configureLayout() {
     view.backgroundColor = .systemBackground
 
+    view.addSubview(cutoutIndicator)
+
     let imageStack = UIStackView(arrangedSubviews: [coffeeImageView, addImageButton])
     imageStack.axis = .vertical
     imageStack.alignment = .center
@@ -116,6 +125,9 @@ class AddCoffeeViewController: BaseViewController {
       imageStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
       imageStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
       imageStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+
+      cutoutIndicator.centerXAnchor.constraint(equalTo: coffeeImageView.centerXAnchor),
+      cutoutIndicator.centerYAnchor.constraint(equalTo: coffeeImageView.centerYAnchor),
 
       coffeeImageView.widthAnchor.constraint(equalTo: coffeeImageView.heightAnchor),
       coffeeImageView.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor, constant: 37),
@@ -191,10 +203,63 @@ class AddCoffeeViewController: BaseViewController {
 // MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
 extension AddCoffeeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-      coffeeImageView.image = image
+    guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+      dismiss(animated: true)
+      return
     }
-    dismiss(animated: true)
+
+    dismiss(animated: true) { [weak self] in
+      self?.applyCutout(to: image)
+    }
+  }
+
+  /// 배경을 지우고 피사체만 남긴다. 피사체를 못 찾은 사진은 쓰지 않는다.
+  private func applyCutout(to image: UIImage) {
+    // 분석이 끝나기 전에 저장하면 이전 이미지가 저장되고 결과는 버려진다.
+    setAnalyzing(true)
+
+    SubjectCutout.extractSubjects(from: image) { [weak self] result in
+      guard let self else { return }
+      setAnalyzing(false)
+
+      switch result {
+      case .success(let subjects):
+        // 잘라낸 것 말고 원본을 쓰고 싶을 수 있으니 마지막 선택지로 함께 보여준다.
+        presentSubjectPicker(subjects + [SubjectCutout.Subject(title: "원본", image: image)])
+      case .failure(let error):
+        // 떼어낼 피사체가 없으면 원본을 그대로 쓴다.
+        // 배경이 남는 이유를 모르면 기능이 고장난 것처럼 보이므로 짧게 알린다.
+        coffeeImageView.image = image
+
+        if case SubjectCutout.Failure.subjectNotFound = error {
+          showErrorAlert("사진에서 피사체를 찾지 못해\n원본을 그대로 사용합니다.")
+        } else {
+          showErrorAlert("이 기기에서는 사진 분석을 사용할 수 없어\n원본을 그대로 사용합니다.")
+        }
+      }
+    }
+  }
+
+  private func setAnalyzing(_ isAnalyzing: Bool) {
+    if isAnalyzing {
+      cutoutIndicator.startAnimating()
+    } else {
+      cutoutIndicator.stopAnimating()
+    }
+    navigationItem.rightBarButtonItem?.isEnabled = !isAnalyzing
+    addImageButton.isEnabled = !isAnalyzing
+  }
+
+  private func presentSubjectPicker(_ subjects: [SubjectCutout.Subject]) {
+    let picker = SubjectPickerViewController(subjects: subjects) { [weak self] image in
+      self?.coffeeImageView.image = image
+    }
+
+    if let sheet = picker.sheetPresentationController {
+      sheet.detents = [.medium(), .large()]
+      sheet.prefersGrabberVisible = true
+    }
+    present(picker, animated: true)
   }
 }
 

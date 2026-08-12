@@ -17,6 +17,7 @@
 		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
 		1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA393278822EB005183B2 /* CoreLocation.framework */; };
 		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
+		1CA1CE092F90000A00C9DE50 /* SubjectPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */; };
 		1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */; };
 		1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */; };
 		1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */; };
@@ -101,6 +102,7 @@
 		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
 		1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */; };
+		1CA1CE072F90000800C9DE50 /* SubjectCutout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
@@ -167,6 +169,7 @@
 		1C2DA39B27882307005183B2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		1C2DA39D27882322005183B2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectPickerViewController.swift; sourceTree = "<group>"; };
 		1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewController.swift; sourceTree = "<group>"; };
 		1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewController.swift; sourceTree = "<group>"; };
 		1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +236,7 @@
 		A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewModel.swift; sourceTree = "<group>"; };
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppLauncher.swift; sourceTree = "<group>"; };
+		1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCutout.swift; sourceTree = "<group>"; };
 		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
 		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
@@ -375,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */,
+				1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */,
 				1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */,
 				1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */,
 				1C37C3812744FC2C00EC3CA3 /* CoffeeListTableViewCell.swift */,
@@ -583,6 +588,7 @@
 				1C37C37C2744F82900EC3CA3 /* Extensions */,
 				A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */,
 				1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */,
+				1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
 			);
 			path = Common;
@@ -789,6 +795,7 @@
 				3A25DDA02E5AA6A38DA65512 /* CafeMapper.swift in Sources */,
 				D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */,
 				1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */,
+				1CA1CE072F90000800C9DE50 /* SubjectCutout.swift in Sources */,
 				4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */,
 				80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */,
 				1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */,
@@ -818,6 +825,7 @@
 				1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */,
 				1C8318822F867CCB00C9DE50 /* SelectedLocation.swift in Sources */,
 				1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */,
+				1CA1CE092F90000A00C9DE50 /* SubjectPickerViewController.swift in Sources */,
 				1C7BC3BF278C23F400424504 /* CoffeeNameList.swift in Sources */,
 				1C06FE1B27DF811600C28042 /* RecordSearchViewController.swift in Sources */,
 				1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */,
@@ -917,7 +925,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -975,7 +983,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1011,7 +1019,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1053,7 +1061,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
