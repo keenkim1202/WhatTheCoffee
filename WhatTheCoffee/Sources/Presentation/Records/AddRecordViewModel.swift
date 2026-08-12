@@ -26,7 +26,7 @@ final class AddRecordViewModel {
 
     if let cafe, let lat = cafe.latitude, let lng = cafe.longitude {
       self.selectedLocation = SelectedLocation(
-        name: cafe.name, address: "", latitude: lat, longitude: lng)
+        name: cafe.name, address: cafe.address ?? "", latitude: lat, longitude: lng)
     }
   }
 
@@ -68,9 +68,10 @@ final class AddRecordViewModel {
 
     let lat = selectedLocation?.latitude
     let lng = selectedLocation?.longitude
+    let address = selectedLocation?.address
 
     if viewType == .update, let cafe {
-      useCase.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng)
+      useCase.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng, address: address)
 
       if let image, image != UIImage.defaultCafeImage {
         imageUseCase.saveCafeImage(id: cafe.id, image: image)
@@ -80,7 +81,7 @@ final class AddRecordViewModel {
         }
       }
     } else {
-      let newCafe = useCase.add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng)
+      let newCafe = useCase.add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng, address: address)
 
       if let image, image != UIImage.defaultCafeImage {
         imageUseCase.saveCafeImage(id: newCafe.id, image: image)

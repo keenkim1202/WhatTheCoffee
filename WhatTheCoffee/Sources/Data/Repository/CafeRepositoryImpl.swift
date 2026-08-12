@@ -15,18 +15,19 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
   }
 
   @discardableResult
-  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?) -> CafeEntity {
-    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude)
+  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?) -> CafeEntity {
+    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address)
     dataSource.add(object)
     reloadWidget()
     return CafeMapper.toEntity(object)
   }
 
-  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?) {
+  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?) {
     guard let objectId = try? ObjectId(string: id) else { return }
     var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": visitDate, "comment": comment ?? "", "rate": rate]
     if let latitude { value["latitude"] = latitude }
     if let longitude { value["longitude"] = longitude }
+    if let address { value["address"] = address }
     dataSource.create(Cafe.self, value: value, update: .modified)
     reloadWidget()
   }

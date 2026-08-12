@@ -104,14 +104,48 @@ class AddRecordViewController: BaseViewController {
     return tv
   }()
 
-  private let locationLabel: UILabel = {
-    let label = UILabel()
-    label.font = UIFont.GowunBatang(type: .regular, size: 13)
-    label.textColor = .orangeMainColor
-    label.text = "위치 정보 없음"
-    label.textAlignment = .natural
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
+  /// 주소가 길면 두 줄만 보여주고 나머지는 스크롤로 읽는다.
+  private let locationTextView: UITextView = {
+    let tv = UITextView()
+    tv.font = UIFont.GowunBatang(type: .regular, size: 13)
+    tv.textColor = .orangeMainColor
+    tv.text = "위치 정보 없음"
+    tv.isEditable = false
+    tv.isScrollEnabled = true
+    tv.backgroundColor = .clear
+    tv.textContainerInset = .zero
+    tv.textContainer.lineFragmentPadding = 0
+    tv.translatesAutoresizingMaskIntoConstraints = false
+    return tv
+  }()
+
+  private let copyAddressButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("  주소 복사  ", for: .normal)
+    button.setTitleColor(UIColor(named: "GreenMainColor"), for: .normal)
+    button.titleLabel?.font = UIFont.GowunBatang(type: .regular, size: 13)
+    button.backgroundColor = UIColor(named: "GreenSubColor")
+    button.layer.cornerRadius = 15
+    return button
+  }()
+
+  private let openMapButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("  지도앱 열기  ", for: .normal)
+    button.setTitleColor(UIColor(named: "GreenMainColor"), for: .normal)
+    button.titleLabel?.font = UIFont.GowunBatang(type: .regular, size: 13)
+    button.backgroundColor = UIColor(named: "GreenSubColor")
+    button.layer.cornerRadius = 15
+    return button
+  }()
+
+  private lazy var locationActionRow: UIStackView = {
+    let stack = UIStackView(arrangedSubviews: [copyAddressButton, openMapButton])
+    stack.axis = .horizontal
+    stack.spacing = 8
+    stack.distribution = .fillEqually
+    stack.isHidden = true
+    return stack
   }()
 
   private var rateButtons: [UIButton] = []
@@ -276,7 +310,10 @@ class AddRecordViewController: BaseViewController {
     locationButtonRow.spacing = 8
     locationButtonRow.distribution = .fillEqually
 
-    let locationStack = UIStackView(arrangedSubviews: [locationSectionLabel, locationButtonRow, locationLabel])
+    copyAddressButton.addTarget(self, action: #selector(onCopyAddress), for: .touchUpInside)
+    openMapButton.addTarget(self, action: #selector(onOpenMapApp), for: .touchUpInside)
+
+    let locationStack = UIStackView(arrangedSubviews: [locationSectionLabel, locationButtonRow, locationTextView, locationActionRow])
     locationStack.axis = .vertical
     locationStack.alignment = .center
     locationStack.spacing = 10
@@ -352,8 +389,11 @@ class AddRecordViewController: BaseViewController {
       locationSectionLabel.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
       locationButtonRow.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
       locationButtonRow.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
-      locationLabel.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
-      locationLabel.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
+      locationTextView.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
+      locationTextView.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
+      locationTextView.heightAnchor.constraint(equalToConstant: ceil(UIFont.GowunBatang(type: .regular, size: 13).lineHeight * 2)),
+      locationActionRow.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
+      locationActionRow.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
 
       // 평점 섹션
       rateStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor),
@@ -547,8 +587,82 @@ extension AddRecordViewController: UITextFieldDelegate {
 // MARK: - Location
 extension AddRecordViewController {
   func updateLocationDisplay(_ location: SelectedLocation) {
-    let displayText = location.address.isEmpty ? location.name : "\(location.name) · \(location.address)"
-    locationLabel.text = displayText
+    renderLocation(location)
+
+    // 주소를 저장하기 전에 만든 기록에는 좌표만 있다. 좌표로 주소를 되찾아
+    // 화면과 뷰모델에 채워두면 복사도 되고 저장할 때 함께 기록된다.
+    if location.address.isEmpty {
+      fillMissingAddress(of: location)
+    }
+  }
+
+  private func renderLocation(_ location: SelectedLocation) {
+    locationTextView.text = location.address.isEmpty ? location.name : "\(location.name) · \(location.address)"
+    locationTextView.setContentOffset(.zero, animated: false)
+    locationActionRow.isHidden = false
+  }
+
+  private func fillMissingAddress(of location: SelectedLocation) {
+    let clLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+    CLGeocoder().reverseGeocodeLocation(clLocation) { [weak self] placemarks, _ in
+      guard let self, let placemark = placemarks?.first else { return }
+
+      // 응답을 기다리는 사이 사용자가 다른 위치를 고를 수 있다.
+      // 그때는 늦게 도착한 결과가 새 선택을 덮어쓰지 않도록 버린다.
+      guard let current = viewModel.selectedLocation,
+            current.latitude == location.latitude,
+            current.longitude == location.longitude else { return }
+
+      let address = [placemark.administrativeArea, placemark.locality, placemark.thoroughfare, placemark.subThoroughfare]
+        .compactMap { $0 }
+        .joined(separator: " ")
+      guard !address.isEmpty else { return }
+
+      let filled = SelectedLocation(
+        name: location.name,
+        address: address,
+        latitude: location.latitude,
+        longitude: location.longitude)
+      viewModel.selectedLocation = filled
+      renderLocation(filled)
+    }
+  }
+
+  /// 주소가 없으면 이름이라도 복사한다. 옛 기록에는 주소가 저장돼 있지 않다.
+  @objc func onCopyAddress() {
+    guard let location = viewModel.selectedLocation else { return }
+
+    let text = location.address.isEmpty ? location.name : location.address
+    UIPasteboard.general.string = text
+
+    let alert = UIAlertController(title: nil, message: "주소를 복사했습니다.", preferredStyle: .alert)
+    present(alert, animated: true)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      alert.dismiss(animated: true)
+    }
+  }
+
+  @objc func onOpenMapApp() {
+    guard let location = viewModel.selectedLocation else { return }
+
+    let destination = MapAppLauncher.Destination(
+      name: location.name,
+      latitude: location.latitude,
+      longitude: location.longitude)
+
+    let sheet = UIAlertController(title: "지도앱으로 열기", message: location.name, preferredStyle: .actionSheet)
+    for app in MapAppLauncher.available {
+      sheet.addAction(UIAlertAction(title: app.title, style: .default) { _ in
+        MapAppLauncher.open(app, to: destination)
+      })
+    }
+    sheet.addAction(UIAlertAction(title: "취소", style: .cancel))
+
+    if let popover = sheet.popoverPresentationController {
+      popover.sourceView = openMapButton
+      popover.sourceRect = openMapButton.bounds
+    }
+    present(sheet, animated: true)
   }
 
   @objc func onSearchLocation() {

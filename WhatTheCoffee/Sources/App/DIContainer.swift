@@ -7,7 +7,7 @@ final class DIContainer {
   static let appGroupID = "group.keen.WhatTheCoffee"
 
   /// 위젯의 RealmProvider와 같은 값을 써야 한다.
-  private static let realmSchemaVersion: UInt64 = 2
+  private static let realmSchemaVersion: UInt64 = 3
 
   // MARK: - DataSource
   private lazy var realmDataSource: RealmDataSource = {

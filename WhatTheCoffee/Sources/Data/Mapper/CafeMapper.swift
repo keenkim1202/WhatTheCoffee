@@ -10,6 +10,7 @@ enum CafeMapper {
       rate: object.rate,
       latitude: object.latitude,
       longitude: object.longitude,
-      isClosed: object.isClosed)
+      isClosed: object.isClosed,
+      address: object.address)
   }
 }

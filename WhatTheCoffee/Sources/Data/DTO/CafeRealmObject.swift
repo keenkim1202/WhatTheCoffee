@@ -9,6 +9,7 @@ class Cafe: Object {
   @Persisted var latitude: Double?
   @Persisted var longitude: Double?
   @Persisted var isClosed: Bool
+  @Persisted var address: String?
 
   @Persisted(primaryKey: true) var _id: ObjectId
 
@@ -20,7 +21,7 @@ class Cafe: Object {
     self.rate = rate
   }
 
-  convenience init(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?) {
+  convenience init(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?) {
     self.init()
     self.name = name
     self.visitDate = visitDate
@@ -28,6 +29,7 @@ class Cafe: Object {
     self.rate = rate
     self.latitude = latitude
     self.longitude = longitude
+    self.address = address
     self.isClosed = false
   }
 }

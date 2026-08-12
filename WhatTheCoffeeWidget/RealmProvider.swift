@@ -38,7 +38,7 @@ enum RealmProvider {
 
     let config = Realm.Configuration(
       fileURL: realmURL,
-      schemaVersion: 2,
+      schemaVersion: 3,
       migrationBlock: { _, _ in },
       objectTypes: [Cafe.self])
 
