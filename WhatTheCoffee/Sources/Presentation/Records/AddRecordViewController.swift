@@ -1,4 +1,5 @@
 import UIKit
+import PhotosUI
 import CoreLocation
 import TextFieldEffects
 import FirebaseAnalytics
@@ -488,15 +489,22 @@ class AddRecordViewController: BaseViewController {
   }
 
   // MARK: - Photo Library & Camera Access
+  /// 사진 라이브러리는 PHPicker를 쓴다. 앱 밖에서 뜨기 때문에 UIImagePickerController보다 빠르고
+  /// 사진 접근 권한도 필요 없다. 카메라는 PHPicker가 다루지 못해 기존 방식을 유지한다.
   private func openLibrary() {
-    imagePicker.sourceType = .photoLibrary
-    present(imagePicker, animated: false)
+    var configuration = PHPickerConfiguration()
+    configuration.filter = .images
+    configuration.selectionLimit = 1
+
+    let picker = PHPickerViewController(configuration: configuration)
+    picker.delegate = self
+    present(picker, animated: true)
   }
 
   private func openCamera() {
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       imagePicker.sourceType = .camera
-      present(imagePicker, animated: false)
+      present(imagePicker, animated: true)
     } else {
       showErrorAlert("카메라 사용이 불가합니다.\n권한을 확인해주세요.")
     }
@@ -749,5 +757,35 @@ extension AddRecordViewController: CLLocationManagerDelegate {
       currentLocation = location.coordinate
       locationManager.stopUpdatingLocation()
     }
+  }
+}
+
+// MARK: - PHPickerViewControllerDelegate
+extension AddRecordViewController: PHPickerViewControllerDelegate {
+  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    picker.dismiss(animated: true)
+
+    let provider = results.first?.itemProvider
+    guard let provider, provider.canLoadObject(ofClass: UIImage.self) else { return }
+
+    // iCloud에 있는 사진은 내려받느라 시간이 걸린다. 그 사이 완료하면 이전 이미지가 저장된다.
+    setLoadingPhoto(true)
+
+    provider.loadObject(ofClass: UIImage.self) { object, _ in
+      DispatchQueue.main.async { [weak self] in
+        guard let self else { return }
+        setLoadingPhoto(false)
+
+        guard let image = object as? UIImage else {
+          showErrorAlert("사진을 불러오지 못했습니다.")
+          return
+        }
+        recordImageView.image = image
+      }
+    }
+  }
+
+  private func setLoadingPhoto(_ isLoading: Bool) {
+    navigationBar.items?.first?.rightBarButtonItem?.isEnabled = !isLoading
   }
 }
