@@ -9,6 +9,9 @@ class SettingDetailViewController: BaseViewController {
   /// 뒤로/앞으로 버튼의 활성 상태를 웹뷰 이동에 맞춰 갱신한다.
   private var observations: [NSKeyValueObservation] = []
 
+  /// 지금 화면에 표시 중인 내용이 있는지. 실패 안내를 띄울지 판단하는 데 쓴다.
+  private var hasVisibleContent = false
+
   // MARK: - UI
   private let webView: WKWebView = {
     let wv = WKWebView()
@@ -88,6 +91,8 @@ class SettingDetailViewController: BaseViewController {
     view.addSubview(failureLabel)
     view.addSubview(toolbar)
     webView.navigationDelegate = self
+    webView.uiDelegate = self
+    webView.allowsBackForwardNavigationGestures = true
     configureToolbarState()
 
     NSLayoutConstraint.activate([
@@ -178,15 +183,77 @@ class SettingDetailViewController: BaseViewController {
 
 // MARK: - WKNavigationDelegate
 extension SettingDetailViewController: WKNavigationDelegate {
+  func webView(_ webView: WKWebView,
+               decidePolicyFor navigationAction: WKNavigationAction,
+               decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    guard let url = navigationAction.request.url, let scheme = url.scheme else {
+      decisionHandler(.allow)
+      return
+    }
+
+    // 웹뷰가 다룰 수 없는 스킴(지도앱, 앱 링크 등)은 외부 앱으로 넘긴다.
+    // 그냥 두면 탭해도 아무 일도 일어나지 않는다.
+    guard ["http", "https", "about"].contains(scheme) else {
+      // canOpenURL은 LSApplicationQueriesSchemes에 없는 스킴이면 앱이 깔려 있어도 false다.
+      // 미리 묻지 말고 열어본 뒤, 정말 열 곳이 없을 때만 알린다.
+      UIApplication.shared.open(url, options: [:]) { [weak self] opened in
+        guard !opened else { return }
+        self?.showCannotOpenAlert()
+      }
+      decisionHandler(.cancel)
+      return
+    }
+
+    decisionHandler(.allow)
+  }
+
+  func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+    // 새 내용을 그리기 시작했다. 이전 페이지는 더 이상 화면에 없다.
+    hasVisibleContent = true
+    failureLabel.isHidden = true
+  }
+
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-    failureLabel.isHidden = false
+    // 이 단계의 실패는 아직 화면을 갈아엎기 전이라 이전 페이지가 그대로 남는다.
+    // 볼 것이 남아 있으면 안내하지 않는다. 광고·추적 요청 실패가 대부분 여기로 온다.
+    guard !hasVisibleContent else { return }
+    showFailure(error)
   }
 
   func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-    failureLabel.isHidden = false
+    // 커밋 후 실패라 지금 화면은 비었거나 깨진 상태다. 이전에 성공한 적이 있어도 알려야 한다.
+    hasVisibleContent = false
+    showFailure(error)
   }
 
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    hasVisibleContent = true
     failureLabel.isHidden = true
+  }
+
+  /// 이동 중 취소(-999)는 새 요청이 이전 요청을 대체할 때 생기는 정상 흐름이라 제외한다.
+  private func showFailure(_ error: Error) {
+    guard (error as NSError).code != NSURLErrorCancelled else { return }
+    failureLabel.isHidden = false
+  }
+
+  private func showCannotOpenAlert() {
+    let alert = UIAlertController(title: nil, message: "이 링크를 열 수 있는 앱이 없습니다.", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "확인", style: .default))
+    present(alert, animated: true)
+  }
+}
+
+// MARK: - WKUIDelegate
+extension SettingDetailViewController: WKUIDelegate {
+  func webView(_ webView: WKWebView,
+               createWebViewWith configuration: WKWebViewConfiguration,
+               for navigationAction: WKNavigationAction,
+               windowFeatures: WKWindowFeatures) -> WKWebView? {
+    // target="_blank" 링크는 새 창을 만들어주지 않으면 탭해도 반응이 없다. 이 웹뷰에서 연다.
+    if navigationAction.targetFrame == nil, let url = navigationAction.request.url {
+      webView.load(URLRequest(url: url))
+    }
+    return nil
   }
 }
