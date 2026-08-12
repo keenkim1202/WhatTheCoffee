@@ -61,6 +61,7 @@
 		1C8318A02F86B53C00C9DE50 /* SummaryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318962F86B53C00C9DE50 /* SummaryCardView.swift */; };
 		1C8318A12F86B53C00C9DE50 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8318992F86B53C00C9DE50 /* StatisticsViewController.swift */; };
 		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
+		1CA1CE012F90000200C9DE50 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */; };
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
@@ -161,6 +162,7 @@
 		1C8318992F86B53C00C9DE50 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		1C83189A2F86B53C00C9DE50 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
+		1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
 		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				1CCF0F8A2755E73100B45F07 /* GowunBatang-Regular.ttf */,
 				1C2206452744B41B00FDBBEF /* Info.plist */,
 				1C8D476F275DFD2400A4F486 /* APIKEY.plist */,
+				1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -584,7 +587,7 @@
 			);
 			mainGroup = 1C22062B2744B41A00FDBBEF;
 			packageReferences = (
-				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				1C605BDC274B69F5000E94D0 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				1CD5EA65275DE3CD00308DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
@@ -608,6 +611,7 @@
 				1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */,
 				1C83178E2F8553FB00C9DE50 /* GoogleService-Info.plist in Resources */,
 				1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */,
+				1CA1CE012F90000200C9DE50 /* PrivacyInfo.xcprivacy in Resources */,
 				1CCF0F8C2755E73100B45F07 /* GowunBatang-Regular.ttf in Resources */,
 				1CCF0F8D2755E73100B45F07 /* GowunBatang-Bold.ttf in Resources */,
 				1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */,
@@ -856,7 +860,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
+				VERSIONING_SYSTEM = "apple-generic";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -881,8 +886,8 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.4;
-				PRODUCT_BUNDLE_IDENTIFIER = keen.WhatTheCoffee;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -897,7 +902,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
+				VERSIONING_SYSTEM = "apple-generic";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -921,9 +927,9 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 2.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = keen.WhatTheCoffee;
+				PRODUCT_BUNDLE_IDENTIFIER = heyziin.WhatTheCoffee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -955,12 +961,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				kind = exactVersion;
-				version = 10.28.2;
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
 			};
 		};
 		1C3AC06E2F84F2B500783B7B /* XCRemoteSwiftPackageReference "SPM-NMapsMap" */ = {
@@ -984,7 +990,7 @@
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				minimumVersion = 8.0.0;
 			};
 		};
 		1CA82CDA278825D6004A830B /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
@@ -1000,7 +1006,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1036,7 +1042,7 @@
 		};
 		1C5F65542F84F8D600DC5647 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

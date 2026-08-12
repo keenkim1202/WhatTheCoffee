@@ -99,3 +99,7 @@ fastlane/test_output
 
 iOSInjectionProject/
 GoogleService-Info.plist
+
+# Bundler
+.bundle/
+vendor/bundle/
