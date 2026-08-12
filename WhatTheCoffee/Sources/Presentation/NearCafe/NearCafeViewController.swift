@@ -158,7 +158,7 @@ extension NearCafeViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let cafe = viewModel.cafe(at: indexPath.row)
-    let vc = DetailNearCafeViewController(nearCafe: cafe)
+    let vc = DetailNearCafeViewController(nearCafe: cafe, container: container)
     let nav = UINavigationController(rootViewController: vc)
     nav.title = cafe.name
     nav.modalPresentationStyle = .fullScreen

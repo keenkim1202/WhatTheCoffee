@@ -94,8 +94,12 @@ final class DIContainer {
     RecordsViewModel(useCase: makeManageRecordsUseCase(), imageUseCase: makeManageImageUseCase())
   }
 
-  func makeAddRecordViewModel(cafe: CafeEntity? = nil) -> AddRecordViewModel {
-    AddRecordViewModel(useCase: makeManageRecordsUseCase(), imageUseCase: makeManageImageUseCase(), cafe: cafe)
+  func makeAddRecordViewModel(cafe: CafeEntity? = nil, prefilledLocation: SelectedLocation? = nil) -> AddRecordViewModel {
+    AddRecordViewModel(
+      useCase: makeManageRecordsUseCase(),
+      imageUseCase: makeManageImageUseCase(),
+      cafe: cafe,
+      prefilledLocation: prefilledLocation)
   }
 
   func makeStatisticsViewModel() -> StatisticsViewModel {

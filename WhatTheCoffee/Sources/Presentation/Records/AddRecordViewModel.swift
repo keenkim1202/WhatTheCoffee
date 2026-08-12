@@ -17,7 +17,10 @@ final class AddRecordViewModel {
   var selectedLocation: SelectedLocation?
 
   // MARK: - Init
-  init(useCase: ManageRecordsUseCase, imageUseCase: ManageImageUseCase, cafe: CafeEntity? = nil) {
+  init(useCase: ManageRecordsUseCase,
+       imageUseCase: ManageImageUseCase,
+       cafe: CafeEntity? = nil,
+       prefilledLocation: SelectedLocation? = nil) {
     self.useCase = useCase
     self.imageUseCase = imageUseCase
     self.cafe = cafe
@@ -27,6 +30,9 @@ final class AddRecordViewModel {
     if let cafe, let lat = cafe.latitude, let lng = cafe.longitude {
       self.selectedLocation = SelectedLocation(
         name: cafe.name, address: cafe.address ?? "", latitude: lat, longitude: lng)
+    } else {
+      // 근처 카페에서 넘어온 경우. 기존 기록이 아니라 새 기록이므로 viewType은 .add 그대로다.
+      self.selectedLocation = prefilledLocation
     }
   }
 
@@ -42,7 +48,7 @@ final class AddRecordViewModel {
     return UIImage.defaultCafeImage
   }
 
-  var currentName: String? { cafe?.name }
+  var currentName: String? { cafe?.name ?? selectedLocation?.name }
 
   var currentDate: String? {
     guard let cafe = cafe else { return nil }
