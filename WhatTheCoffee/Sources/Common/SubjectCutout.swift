@@ -8,6 +8,14 @@ enum SubjectCutout {
   struct Subject {
     let title: String
     let image: UIImage
+    /// 배경을 지운 결과인지. 원본은 배경이 꽉 차 있어 윤곽선을 그려도 보이지 않는다.
+    let isCutout: Bool
+
+    init(title: String, image: UIImage, isCutout: Bool = true) {
+      self.title = title
+      self.image = image
+      self.isCutout = isCutout
+    }
   }
 
   enum Failure: Error {
