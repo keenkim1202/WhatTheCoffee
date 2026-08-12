@@ -10,16 +10,45 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:ios)
 
+XCODEPROJ = "WhatTheCoffee.xcodeproj"
+SCHEME = "WhatTheCoffee"
+
 platform :ios do
-  desc "Push a new beta build to TestFlight"
+  before_all do
+    # App Store Connect API 키가 있으면 2FA 없이 인증한다.
+    # 없으면 Apple ID 대화형 로그인이 걸려 사람이 직접 실행해야 한다.
+    key_path = ENV["ASC_KEY_PATH"]
+    next if key_path.nil?
+
+    app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_filepath: key_path)
+  end
+
+  desc "TestFlight에 새 빌드 올리기"
   lane :beta do
-    increment_build_number(xcodeproj: "WhatTheCoffee.xcodeproj")
-    build_app(workspace: "WhatTheCoffee.xcworkspace", scheme: "WhatTheCoffee")
-    upload_to_testflight
+    build_release
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  desc "앱스토어에 새 빌드 올리기 (심사 제출은 App Store Connect에서)"
+  lane :release do
+    build_release
+    upload_to_app_store(
+      skip_metadata: true,
+      skip_screenshots: true,
+      submit_for_review: false,
+      precheck_include_in_app_purchases: false)
+  end
+
+  private_lane :build_release do
+    increment_build_number(xcodeproj: XCODEPROJ)
+    build_app(
+      project: XCODEPROJ,
+      scheme: SCHEME,
+      export_method: "app-store")
   end
 end

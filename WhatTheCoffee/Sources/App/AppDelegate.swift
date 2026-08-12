@@ -25,9 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().backgroundColor = UIColor.appearanceColor
     UITabBar.appearance().tintColor = .orangeMainColor
     
-    IQKeyboardManager.shared.enable = true
-    IQKeyboardManager.shared.enableAutoToolbar = false
-    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+    IQKeyboardManager.shared.isEnabled = true
+    IQKeyboardManager.shared.resignOnTouchOutside = true
     return true
   }
   
