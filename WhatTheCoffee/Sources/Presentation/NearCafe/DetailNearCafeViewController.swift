@@ -6,6 +6,7 @@ class DetailNearCafeViewController: BaseViewController {
 
   // MARK: - Properties
   let nearCafe: NearCafeEntity
+  private let container: DIContainer
 
   // MARK: - UI
   private let infoTitleLabel: UILabel = {
@@ -66,8 +67,9 @@ class DetailNearCafeViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(nearCafe: NearCafeEntity) {
+  init(nearCafe: NearCafeEntity, container: DIContainer) {
     self.nearCafe = nearCafe
+    self.container = container
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -87,6 +89,7 @@ class DetailNearCafeViewController: BaseViewController {
   private func configureNav() {
     title = nearCafe.name
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(onClose))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "기록하기", style: .done, target: self, action: #selector(onAddRecord))
   }
 
   private func configure() {
@@ -165,6 +168,19 @@ class DetailNearCafeViewController: BaseViewController {
   // MARK: - Action
   @objc private func onClose() {
     dismiss(animated: true)
+  }
+
+  /// 보고 있는 카페로 새 방문 기록을 시작한다. 이름·주소·좌표는 이미 아는 값이라 채워서 넘긴다.
+  @objc private func onAddRecord() {
+    let location = SelectedLocation(
+      name: nearCafe.name,
+      address: nearCafe.address,
+      latitude: nearCafe.latitude,
+      longitude: nearCafe.longitude)
+
+    let viewModel = container.makeAddRecordViewModel(prefilledLocation: location)
+    let vc = AddRecordViewController(viewModel: viewModel)
+    present(vc, animated: true)
   }
 
   @objc private func onDetailInfo() {
