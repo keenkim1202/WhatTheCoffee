@@ -21,7 +21,15 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 [bundle exec] fastlane ios beta
 ```
 
-Push a new beta build to TestFlight
+TestFlight에 새 빌드 올리기
+
+### ios release
+
+```sh
+[bundle exec] fastlane ios release
+```
+
+앱스토어에 새 빌드 올리기 (심사 제출은 App Store Connect에서)
 
 ----
 
