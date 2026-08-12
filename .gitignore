@@ -103,3 +103,4 @@ GoogleService-Info.plist
 # Bundler
 .bundle/
 vendor/bundle/
+fastlane/.env
