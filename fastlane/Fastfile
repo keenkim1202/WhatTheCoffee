@@ -49,6 +49,9 @@ platform :ios do
     build_app(
       project: XCODEPROJ,
       scheme: SCHEME,
-      export_method: "app-store")
+      export_method: "app-store",
+      # 끄지 않으면 Xcode가 App Store Connect를 조회해 빌드 번호를 임의로 올린다.
+      # 저장소 값과 실제 업로드 번호가 어긋나므로 여기서 막는다.
+      export_options: { manageAppVersionAndBuildNumber: false })
   end
 end
