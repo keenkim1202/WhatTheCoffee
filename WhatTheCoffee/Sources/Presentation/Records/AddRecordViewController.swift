@@ -597,7 +597,12 @@ extension AddRecordViewController {
   }
 
   private func renderLocation(_ location: SelectedLocation) {
-    locationTextView.text = location.address.isEmpty ? location.name : "\(location.name) · \(location.address)"
+    // 현재 위치로 기록하면 이름 자리에도 주소가 들어올 수 있다. 같은 값을 두 번 보여주지 않는다.
+    if location.address.isEmpty || location.address == location.name {
+      locationTextView.text = location.name
+    } else {
+      locationTextView.text = "\(location.name) · \(location.address)"
+    }
     locationTextView.setContentOffset(.zero, animated: false)
     locationActionRow.isHidden = false
   }
@@ -613,9 +618,7 @@ extension AddRecordViewController {
             current.latitude == location.latitude,
             current.longitude == location.longitude else { return }
 
-      let address = [placemark.administrativeArea, placemark.locality, placemark.thoroughfare, placemark.subThoroughfare]
-        .compactMap { $0 }
-        .joined(separator: " ")
+      let address = Self.formattedAddress(from: placemark)
       guard !address.isEmpty else { return }
 
       let filled = SelectedLocation(
@@ -678,6 +681,23 @@ extension AddRecordViewController {
     present(searchVC, animated: true)
   }
 
+  /// 한국 주소는 구·동이 subLocality로 내려오므로 빠뜨리면 안 된다.
+  /// 특별시·광역시는 administrativeArea와 locality가 같은 값으로 오기도 해서 중복은 걸러낸다.
+  private static func formattedAddress(from placemark: CLPlacemark) -> String {
+    let components = [
+      placemark.administrativeArea,
+      placemark.locality,
+      placemark.subLocality,
+      placemark.thoroughfare,
+      placemark.subThoroughfare
+    ].compactMap { $0 }
+
+    var seen: Set<String> = []
+    return components
+      .filter { seen.insert($0).inserted }
+      .joined(separator: " ")
+  }
+
   @objc func onCurrentLocation() {
     guard let location = currentLocation else {
       showErrorAlert("현재 위치를 가져올 수 없습니다.\n위치 권한을 확인해주세요.")
@@ -686,10 +706,19 @@ extension AddRecordViewController {
 
     let geocoder = CLGeocoder()
     let clLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-    geocoder.reverseGeocodeLocation(clLocation) { [weak self] placemarks, error in
+    geocoder.reverseGeocodeLocation(clLocation) { [weak self] placemarks, _ in
       guard let self else { return }
-      let address = placemarks?.first?.name ?? placemarks?.first?.thoroughfare ?? "주소를 찾을 수 없음"
-      let selected = SelectedLocation(name: address, address: address, latitude: location.latitude, longitude: location.longitude)
+
+      let placemark = placemarks?.first
+      let address = placemark.map { Self.formattedAddress(from: $0) } ?? ""
+      // 장소명이 있으면 그것을, 없으면 주소를 이름 자리에 쓴다.
+      let name = placemark?.name ?? (address.isEmpty ? "주소를 찾을 수 없음" : address)
+
+      let selected = SelectedLocation(
+        name: name,
+        address: address,
+        latitude: location.latitude,
+        longitude: location.longitude)
       viewModel.selectedLocation = selected
       updateLocationDisplay(selected)
     }
