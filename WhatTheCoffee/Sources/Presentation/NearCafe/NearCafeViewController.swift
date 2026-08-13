@@ -97,7 +97,10 @@ class NearCafeViewController: BaseViewController {
     }
 
     viewModel.onStatusChanged = { [weak self] state in
-      self?.statusView.apply(state)
+      guard let self else { return }
+      statusView.apply(state)
+      // 로딩·안내 화면과 목록이 겹쳐 보이지 않도록 한쪽만 남긴다.
+      tableView.isHidden = !statusView.isHidden
     }
 
     // 이미 목록이 있는데 추가 요청이 실패하면 화면을 비우지 않고 알림만 띄운다.
