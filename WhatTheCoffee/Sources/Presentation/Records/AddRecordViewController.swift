@@ -763,24 +763,26 @@ extension AddRecordViewController: CLLocationManagerDelegate {
 // MARK: - PHPickerViewControllerDelegate
 extension AddRecordViewController: PHPickerViewControllerDelegate {
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    picker.dismiss(animated: true)
-
     let provider = results.first?.itemProvider
-    guard let provider, provider.canLoadObject(ofClass: UIImage.self) else { return }
 
-    // iCloud에 있는 사진은 내려받느라 시간이 걸린다. 그 사이 완료하면 이전 이미지가 저장된다.
-    setLoadingPhoto(true)
+    // 피커가 사라지는 중에 안내를 띄우면 조용히 무시된다. 사라진 뒤에 시작한다.
+    picker.dismiss(animated: true) { [weak self] in
+      guard let self, let provider, provider.canLoadObject(ofClass: UIImage.self) else { return }
 
-    provider.loadObject(ofClass: UIImage.self) { object, _ in
-      DispatchQueue.main.async { [weak self] in
-        guard let self else { return }
-        setLoadingPhoto(false)
+      // iCloud에 있는 사진은 내려받느라 시간이 걸린다. 그 사이 완료하면 이전 이미지가 저장된다.
+      setLoadingPhoto(true)
 
-        guard let image = object as? UIImage else {
-          showErrorAlert("사진을 불러오지 못했습니다.")
-          return
+      provider.loadObject(ofClass: UIImage.self) { object, _ in
+        DispatchQueue.main.async { [weak self] in
+          guard let self else { return }
+          setLoadingPhoto(false)
+
+          guard let image = object as? UIImage else {
+            showErrorAlert("사진을 불러오지 못했습니다.")
+            return
+          }
+          recordImageView.image = image
         }
-        recordImageView.image = image
       }
     }
   }

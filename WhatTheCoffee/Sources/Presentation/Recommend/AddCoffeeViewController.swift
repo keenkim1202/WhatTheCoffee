@@ -22,6 +22,36 @@ class AddCoffeeViewController: BaseViewController {
     return indicator
   }()
 
+  /// 마지막 분석 결과. 사진을 다시 고르지 않고도 다른 피사체로 바꿀 수 있게 들고 있는다.
+  private var analyzedSubjects: [SubjectCutout.Subject] = []
+
+  private let photoStatusLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.GowunBatang(type: .regular, size: 12)
+    label.textColor = .secondaryLabel
+    label.numberOfLines = 2
+    return label
+  }()
+
+  private let changeSubjectButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("변경", for: .normal)
+    button.setTitleColor(UIColor(named: "GreenMainColor"), for: .normal)
+    button.titleLabel?.font = UIFont(name: "GowunBatang-Bold", size: 12)
+    button.isHidden = true
+    button.setContentHuggingPriority(.required, for: .horizontal)
+    return button
+  }()
+
+  private lazy var photoStatusRow: UIStackView = {
+    let stack = UIStackView(arrangedSubviews: [photoStatusLabel, changeSubjectButton])
+    stack.axis = .horizontal
+    stack.spacing = 8
+    stack.alignment = .center
+    stack.isHidden = true
+    return stack
+  }()
+
   private let coffeeImageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFit
@@ -107,7 +137,9 @@ class AddCoffeeViewController: BaseViewController {
 
     view.addSubview(cutoutIndicator)
 
-    let imageStack = UIStackView(arrangedSubviews: [coffeeImageView, addImageButton])
+    changeSubjectButton.addTarget(self, action: #selector(onChangeSubject), for: .touchUpInside)
+
+    let imageStack = UIStackView(arrangedSubviews: [coffeeImageView, photoStatusRow, addImageButton])
     imageStack.axis = .vertical
     imageStack.alignment = .center
     imageStack.spacing = 20
@@ -133,6 +165,8 @@ class AddCoffeeViewController: BaseViewController {
       coffeeImageView.widthAnchor.constraint(equalTo: coffeeImageView.heightAnchor),
       coffeeImageView.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor, constant: 37),
       coffeeImageView.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor, constant: -37),
+      photoStatusRow.leadingAnchor.constraint(equalTo: coffeeImageView.leadingAnchor),
+      photoStatusRow.trailingAnchor.constraint(equalTo: coffeeImageView.trailingAnchor),
 
       addImageButton.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor),
       addImageButton.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor),
@@ -195,8 +229,11 @@ class AddCoffeeViewController: BaseViewController {
     let alert = UIAlertController(title: "카페 사진 추가", message: "어디에서 이미지를 불러오시겠습니까?", preferredStyle: .actionSheet)
     let library = UIAlertAction(title: "사진앨범", style: .default) { _ in self.openLibrary() }
     let camera = UIAlertAction(title: "카메라", style: .default) { _ in self.openCamera() }
-    let defaultImage = UIAlertAction(title: "기본 이미지로 변경", style: .default) { _ in
-      self.coffeeImageView.image = UIImage.randomCoffeeImage
+    let defaultImage = UIAlertAction(title: "기본 이미지로 변경", style: .default) { [weak self] _ in
+      guard let self else { return }
+      coffeeImageView.image = UIImage.randomCoffeeImage
+      analyzedSubjects = []
+      photoStatusRow.isHidden = true
     }
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
 
@@ -230,20 +267,18 @@ extension AddCoffeeViewController: UIImagePickerControllerDelegate, UINavigation
       guard let self else { return }
       setAnalyzing(false)
 
+      let original = SubjectCutout.Subject(title: "원본", image: image, isCutout: false)
+
       switch result {
       case .success(let subjects):
         // 잘라낸 것 말고 원본을 쓰고 싶을 수 있으니 마지막 선택지로 함께 보여준다.
-        presentSubjectPicker(subjects + [SubjectCutout.Subject(title: "원본", image: image, isCutout: false)])
+        analyzedSubjects = subjects + [original]
+        presentSubjectPicker(analyzedSubjects)
       case .failure(let error):
         // 떼어낼 피사체가 없으면 원본을 그대로 쓴다.
-        // 배경이 남는 이유를 모르면 기능이 고장난 것처럼 보이므로 짧게 알린다.
-        coffeeImageView.image = image
-
-        if case SubjectCutout.Failure.subjectNotFound = error {
-          showErrorAlert("사진에서 피사체를 찾지 못해\n원본을 그대로 사용합니다.")
-        } else {
-          showErrorAlert("이 기기에서는 사진 분석을 사용할 수 없어\n원본을 그대로 사용합니다.")
-        }
+        analyzedSubjects = []
+        apply(original)
+        photoStatusLabel.text = Self.failureReason(for: error)
       }
     }
   }
@@ -258,9 +293,34 @@ extension AddCoffeeViewController: UIImagePickerControllerDelegate, UINavigation
     addImageButton.isEnabled = !isAnalyzing
   }
 
+  private static func failureReason(for error: Error) -> String {
+    switch error {
+    case SubjectCutout.Failure.subjectNotFound:
+      return "원본 이미지 · 사진에서 피사체를 찾지 못했어요"
+    case SubjectCutout.Failure.unreadableImage:
+      return "원본 이미지 · 사진을 분석할 수 없어요"
+    default:
+      return "원본 이미지 · 이 기기에서는 배경을 지울 수 없어요"
+    }
+  }
+
+  /// 지금 어떤 이미지가 들어가 있는지 화면에 남겨둔다.
+  /// 알림은 사라지고 나면 누끼인지 원본인지 알 방법이 없다.
+  private func apply(_ subject: SubjectCutout.Subject) {
+    coffeeImageView.image = subject.image
+    photoStatusLabel.text = subject.isCutout ? "배경을 지운 이미지 · \(subject.title)" : "원본 이미지"
+    changeSubjectButton.isHidden = analyzedSubjects.count < 2
+    photoStatusRow.isHidden = false
+  }
+
+  @objc private func onChangeSubject() {
+    guard analyzedSubjects.count > 1 else { return }
+    presentSubjectPicker(analyzedSubjects)
+  }
+
   private func presentSubjectPicker(_ subjects: [SubjectCutout.Subject]) {
-    let picker = SubjectPickerViewController(subjects: subjects) { [weak self] image in
-      self?.coffeeImageView.image = image
+    let picker = SubjectPickerViewController(subjects: subjects) { [weak self] subject in
+      self?.apply(subject)
     }
 
     if let sheet = picker.sheetPresentationController {
@@ -282,23 +342,26 @@ extension AddCoffeeViewController: UITextFieldDelegate {
 // MARK: - PHPickerViewControllerDelegate
 extension AddCoffeeViewController: PHPickerViewControllerDelegate {
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-    picker.dismiss(animated: true)
-
     let provider = results.first?.itemProvider
-    guard let provider, provider.canLoadObject(ofClass: UIImage.self) else { return }
 
-    // iCloud에 있는 사진은 내려받느라 시간이 걸린다. 그 사이 저장하면 이전 이미지가 저장된다.
-    setAnalyzing(true)
+    // 피커가 사라지는 중에 무언가를 띄우면 그 present는 조용히 무시된다.
+    // 선택 화면도 안내도 뜨지 않으므로 사라진 뒤에 시작한다.
+    picker.dismiss(animated: true) { [weak self] in
+      guard let self, let provider, provider.canLoadObject(ofClass: UIImage.self) else { return }
 
-    provider.loadObject(ofClass: UIImage.self) { object, _ in
-      DispatchQueue.main.async { [weak self] in
-        guard let self else { return }
-        guard let image = object as? UIImage else {
-          setAnalyzing(false)
-          showErrorAlert("사진을 불러오지 못했습니다.")
-          return
+      // iCloud에 있는 사진은 내려받느라 시간이 걸린다. 그 사이 저장하면 이전 이미지가 저장된다.
+      setAnalyzing(true)
+
+      provider.loadObject(ofClass: UIImage.self) { object, _ in
+        DispatchQueue.main.async { [weak self] in
+          guard let self else { return }
+          guard let image = object as? UIImage else {
+            setAnalyzing(false)
+            showErrorAlert("사진을 불러오지 못했습니다.")
+            return
+          }
+          applyCutout(to: image)
         }
-        applyCutout(to: image)
       }
     }
   }
