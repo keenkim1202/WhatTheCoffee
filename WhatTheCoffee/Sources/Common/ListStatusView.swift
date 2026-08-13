@@ -56,6 +56,8 @@ final class ListStatusView: UIView {
 
     addSubview(stack)
     retryButton.addTarget(self, action: #selector(onRetryTapped), for: .touchUpInside)
+    // 상태가 정해지기 전에는 아무것도 가리지 않는다.
+    isHidden = true
 
     NSLayoutConstraint.activate([
       stack.centerXAnchor.constraint(equalTo: centerXAnchor),

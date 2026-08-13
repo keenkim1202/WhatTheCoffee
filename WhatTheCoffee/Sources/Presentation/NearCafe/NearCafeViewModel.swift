@@ -134,6 +134,8 @@ final class NearCafeViewModel {
     nearCafeList.removeAll()
     pageableCount = 0
     page = 1
+    // 비운 것을 알리지 않으면 화면에는 옛 목록이 그대로 남는다.
+    onNearCafeListUpdated?()
   }
 
   func loadNextPage(latitude: Double, longitude: Double) {
