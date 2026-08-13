@@ -116,14 +116,24 @@ class CafeSearchBottomSheetViewController: UIViewController {
   private func search(query: String) {
     guard let location = currentLocation else { return }
     cafeList.removeAll()
-    fetchUseCase.execute(latitude: location.latitude, longitude: location.longitude, query: query, page: 1) { [weak self] cafes, _, _ in
+    fetchUseCase.execute(latitude: location.latitude, longitude: location.longitude, query: query, page: 1) { [weak self] result in
       guard let self else { return }
-      self.cafeList = cafes
+
       DispatchQueue.main.async {
+        switch result {
+        case .success(let page):
+          self.cafeList = page.cafes
+          self.emptyLabel.text = "검색 결과가 없어요"
+          self.resultCountLabel.text = "검색 결과: \(page.cafes.count)개"
+        case .failure(let error):
+          self.cafeList = []
+          self.emptyLabel.text = error.localizedDescription
+          self.resultCountLabel.text = nil
+        }
+
         self.tableView.reloadData()
-        self.emptyLabel.isHidden = !cafes.isEmpty
-        self.resultCountLabel.text = "검색 결과: \(cafes.count)개"
-        self.resultCountLabel.isHidden = false
+        self.emptyLabel.isHidden = !self.cafeList.isEmpty
+        self.resultCountLabel.isHidden = self.resultCountLabel.text == nil
       }
     }
   }
