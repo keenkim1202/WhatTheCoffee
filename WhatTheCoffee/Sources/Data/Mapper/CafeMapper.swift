@@ -11,6 +11,7 @@ enum CafeMapper {
       latitude: object.latitude,
       longitude: object.longitude,
       isClosed: object.isClosed,
-      address: object.address)
+      address: object.address,
+      visitCount: max(1, object.visitCount))
   }
 }

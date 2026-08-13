@@ -54,12 +54,24 @@ class StatisticsViewController: BaseViewController {
     configureNav()
     configureLayout()
     bindViewModel()
+    observeForeground()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     Analytics.logEvent("TAB_statistics", parameters: nil)
     viewModel.fetchData()
+  }
+
+  /// 위젯에서 방문을 기록하고 돌아왔을 때 이 탭이 이미 떠 있으면 viewWillAppear가 불리지 않는다.
+  private func observeForeground() {
+    NotificationCenter.default.addObserver(
+      forName: UIApplication.didBecomeActiveNotification,
+      object: nil,
+      queue: .main) { [weak self] _ in
+        guard let self, viewIfLoaded?.window != nil else { return }
+        viewModel.fetchData()
+      }
   }
 
   // MARK: - Configure

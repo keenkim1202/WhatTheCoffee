@@ -140,7 +140,8 @@ class RecordCollectionViewCell: UICollectionViewCell {
   }
 
   func cellConfigure(with item: CafeEntity) {
-    nameLabel.text = item.name
+    // 여러 번 간 곳은 횟수를 이름 옆에 붙여준다. 한 번이면 굳이 보여주지 않는다.
+    nameLabel.text = item.visitCount > 1 ? "\(item.name) · \(item.visitCount)회" : item.name
     rateImageView.image = UIImage(named: "star\(item.rate)")!
     dateLabel.text = DateFormatter.visitDateFormat.string(from: item.visitDate)
   }

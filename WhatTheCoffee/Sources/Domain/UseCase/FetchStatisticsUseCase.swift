@@ -10,10 +10,11 @@ final class FetchStatisticsUseCase {
   func fetch() -> CafeStatistics {
     let cafes = repository.fetch()
 
-    let totalCount = cafes.count
-    let averageRating = totalCount > 0
-      ? Double(cafes.reduce(0) { $0 + $1.rate }) / Double(totalCount)
-      : 0
+    // 기록 한 건이 여러 번의 방문을 담을 수 있어 횟수를 더한다.
+    let totalCount = cafes.reduce(0) { $0 + $1.visitCount }
+    let averageRating = cafes.isEmpty
+      ? 0
+      : Double(cafes.reduce(0) { $0 + $1.rate * $1.visitCount }) / Double(totalCount)
 
     let monthlyVisitCounts = calculateMonthlyVisits(cafes)
     let ratingDistribution = calculateRatingDistribution(cafes)
@@ -44,7 +45,7 @@ final class FetchStatisticsUseCase {
 
     return last6Months.map { (year, month) in
       let key = "\(year)-\(month)"
-      let count = grouped[key]?.count ?? 0
+      let count = grouped[key]?.reduce(0) { $0 + $1.visitCount } ?? 0
       return (year: year, month: month, count: count)
     }
   }
@@ -52,7 +53,7 @@ final class FetchStatisticsUseCase {
   private func calculateRatingDistribution(_ cafes: [CafeEntity]) -> [Int: Int] {
     var distribution: [Int: Int] = [1: 0, 2: 0, 3: 0, 4: 0, 5: 0]
     for cafe in cafes {
-      distribution[cafe.rate, default: 0] += 1
+      distribution[cafe.rate, default: 0] += cafe.visitCount
     }
     return distribution
   }
@@ -60,7 +61,7 @@ final class FetchStatisticsUseCase {
   private func calculateTopCafes(_ cafes: [CafeEntity]) -> [(name: String, count: Int)] {
     let grouped = Dictionary(grouping: cafes) { $0.name }
     return grouped
-      .map { (name: $0.key, count: $0.value.count) }
+      .map { (name: $0.key, count: $0.value.reduce(0) { $0 + $1.visitCount }) }
       .sorted { $0.count > $1.count }
       .prefix(5)
       .map { $0 }
