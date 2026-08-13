@@ -1,5 +1,6 @@
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 struct CafeVisitEntry: TimelineEntry {
   let date: Date
@@ -36,14 +37,27 @@ struct Provider: TimelineProvider {
 private struct MonthlyCountView: View {
   let count: Int
 
+  /// 숫자만 있으면 위젯이 계기판처럼 보인다. 상황에 맞는 한마디를 붙인다.
+  private var message: String {
+    switch count {
+    case 0: return "이번 달 첫 잔은 언제?"
+    case 1: return "이번 달 첫 잔"
+    case 2...4: return "이번 달 방문"
+    case 5...9: return "꾸준히 가는 중"
+    case 10...19: return "벌써 열 잔 넘게"
+    default: return "이 달의 단골"
+    }
+  }
+
   var body: some View {
     VStack(spacing: 2) {
       Image(systemName: "cup.and.saucer.fill")
         .font(.title3)
         .foregroundStyle(Color("OrangeMainColor"))
-      Text("이번 달 방문")
+      Text(message)
         .font(.system(size: 12, weight: .bold))
         .foregroundStyle(.secondary)
+        .multilineTextAlignment(.center)
       HStack(alignment: .firstTextBaseline, spacing: 2) {
         Text("\(count)")
           .font(.system(size: 32, weight: .bold))
@@ -61,6 +75,13 @@ private struct RecentVisitView: View {
   let visit: CafeVisitSnapshot.Visit?
   let totalCount: Int
 
+  private static func dateText(for date: Date) -> String {
+    let calendar = Calendar.current
+    if calendar.isDateInToday(date) { return "오늘" }
+    if calendar.isDateInYesterday(date) { return "어제" }
+    return date.formatted(.dateTime.month().day())
+  }
+
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
       Text("최근 방문")
@@ -68,30 +89,57 @@ private struct RecentVisitView: View {
         .foregroundStyle(.secondary)
 
       if let visit {
-        Text(visit.name)
-          .font(.system(size: 16, weight: .bold))
-          .lineLimit(1)
-        Text(visit.visitDate, format: .dateTime.month().day())
-          .font(.system(size: 12))
-          .foregroundStyle(.secondary)
-        HStack(spacing: 1) {
-          ForEach(1...5, id: \.self) { star in
-            Image(systemName: star <= visit.rate ? "star.fill" : "star")
-              .font(.system(size: 9))
-              .foregroundStyle(Color("OrangeMainColor"))
+        // 카페 이름과 방문 정보를 누르면 기록 탭으로 간다.
+        // 버튼만 누를 수 있으면 나머지 영역은 눌러도 아무 데도 가지 않는 죽은 자리가 된다.
+        Link(destination: WidgetRoute.records.url ?? Self.recordsFallbackURL) {
+          VStack(alignment: .leading, spacing: 4) {
+            Text(visit.name)
+              .font(.system(size: 16, weight: .bold))
+              .foregroundStyle(.primary)
+              .lineLimit(1)
+            HStack(spacing: 6) {
+              // 눌러서 기록하면 이 날짜가 '오늘'로 바뀐다. 그게 눈에 보이는 결과가 된다.
+              Text(Self.dateText(for: visit.visitDate))
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+              HStack(spacing: 1) {
+                ForEach(1...5, id: \.self) { star in
+                  Image(systemName: star <= visit.rate ? "star.fill" : "star")
+                    .font(.system(size: 9))
+                    .foregroundStyle(Color("OrangeMainColor"))
+                }
+              }
+            }
           }
         }
+
+        // 무엇이 일어나는지 버튼이 직접 말하도록 한다.
+        // 카페 이름 바로 아래에 두어 어느 곳을 기록하는지도 드러낸다.
+        Button(intent: AddVisitIntent(name: visit.name)) {
+          Label("오늘 방문 기록", systemImage: "plus")
+            .font(.system(size: 12, weight: .bold))
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(Color("GreenMainColor"))
+
         Text("전체 \(totalCount)회")
           .font(.system(size: 11))
           .foregroundStyle(.tertiary)
       } else {
-        Text("아직 기록이 없어요")
-          .font(.system(size: 14, weight: .medium))
-          .foregroundStyle(.secondary)
+        // 기록이 없을 때 눌러서 갈 곳은 목록이 아니라 기록 추가 화면이다.
+        Link(destination: WidgetRoute.addRecord.url ?? Self.addRecordFallbackURL) {
+          Text("아직 기록이 없어요")
+            .font(.system(size: 14, weight: .medium))
+            .foregroundStyle(.secondary)
+        }
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
   }
+
+  /// Link는 옵셔널을 받지 않아 만들어두는 대비책. 실제로 쓰일 일은 없다.
+  private static let recordsFallbackURL = URL(string: "whatthecoffee://records")!
+  private static let addRecordFallbackURL = URL(string: "whatthecoffee://addRecord")!
 }
 
 struct WhatTheCoffeeWidgetEntryView: View {
@@ -102,7 +150,10 @@ struct WhatTheCoffeeWidgetEntryView: View {
     switch family {
     case .systemMedium:
       HStack(spacing: 16) {
-        MonthlyCountView(count: entry.snapshot.monthlyCount)
+        // 왼쪽은 통계, 오른쪽은 기록으로 보낸다. 누른 자리와 열리는 화면을 맞춘다.
+        Link(destination: WidgetRoute.statistics.url ?? fallbackURL) {
+          MonthlyCountView(count: entry.snapshot.monthlyCount)
+        }
         Divider()
         RecentVisitView(visit: entry.snapshot.recent, totalCount: entry.snapshot.totalCount)
       }
@@ -116,6 +167,8 @@ struct WhatTheCoffeeWidgetEntryView: View {
           .font(.system(size: 18, weight: .bold))
       }
       .containerBackground(.fill.tertiary, for: .widget)
+      // 잠금화면 위젯도 이번 달 숫자를 보여주므로 누르면 통계로 간다.
+      .widgetURL(WidgetRoute.statistics.url)
 
     case .accessoryRectangular:
       VStack(alignment: .leading, spacing: 2) {
@@ -129,11 +182,18 @@ struct WhatTheCoffeeWidgetEntryView: View {
       }
       .frame(maxWidth: .infinity, alignment: .leading)
       .containerBackground(.fill.tertiary, for: .widget)
+      .widgetURL(WidgetRoute.statistics.url)
 
     default:
       MonthlyCountView(count: entry.snapshot.monthlyCount)
         .containerBackground(.fill.tertiary, for: .widget)
+        .widgetURL(WidgetRoute.statistics.url)
     }
+  }
+
+  /// Link는 옵셔널을 받지 않아 만들어두는 대비책. 실제로 쓰일 일은 없다.
+  private var fallbackURL: URL {
+    return URL(string: "whatthecoffee://statistics")!
   }
 }
 
@@ -145,7 +205,7 @@ struct WhatTheCoffeeWidget: Widget {
       WhatTheCoffeeWidgetEntryView(entry: entry)
     }
     .configurationDisplayName("커피 방문 기록")
-    .description("이번 달 카페 방문 횟수와 최근 방문한 카페를 확인하세요.")
+    .description("이번 달 방문 횟수와 최근 간 카페를 보고, 같은 곳을 한 번에 기록할 수 있어요.")
     .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular])
   }
 }
