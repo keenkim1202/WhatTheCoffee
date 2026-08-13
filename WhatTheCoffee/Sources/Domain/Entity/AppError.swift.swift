@@ -4,6 +4,10 @@ enum AppError: Error {
   case anything
   case loadInitData
   case network
+  case timeout
+  case serverError
+  case requestFailed
+  case locationUnavailable
   case failToSaveImage
   case failToLoadImage
   case failToDeleteImage
@@ -16,6 +20,10 @@ extension AppError {
     case .anything: return "😱오류가 발생했습니다. 앱을 다시 실행해주세요."
     case .loadInitData: return "초기 데이터를 불러오는데 실패하였습니다."
     case .network: return "😞네트워크 연결을 할 수 없습니다. 네트워크 연결을 확인해주세요."
+    case .timeout: return "응답이 늦어지고 있어요.\n잠시 후 다시 시도해주세요."
+    case .serverError: return "서비스에 일시적인 문제가 있어요.\n잠시 후 다시 시도해주세요."
+    case .requestFailed: return "요청을 처리하지 못했어요.\n잠시 후 다시 시도해주세요."
+    case .locationUnavailable: return "현재 위치를 확인할 수 없어요.\n위치 권한과 연결 상태를 확인해주세요."
     case .failToSaveImage: return "😞 이미지 저장에 실패하였습니다.\n다시 시도해주세요."
     case .failToLoadImage: return "😞 이미지 불러오기에 실패하였습니다.\n다시 시도해주세요."
     case .failToDeleteImage: return "😞 이미지 삭제에 실패하였습니다.\n다시 시도해주세요."

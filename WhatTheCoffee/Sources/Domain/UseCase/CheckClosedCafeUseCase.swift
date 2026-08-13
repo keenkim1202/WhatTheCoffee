@@ -17,18 +17,23 @@ final class CheckClosedCafeUseCase {
     for cafe in cafes {
       guard let cafeLat = cafe.latitude, let cafeLng = cafe.longitude else { continue }
       group.enter()
-      apiDataSource.fetchCafeInfo(pos: (cafeLat, cafeLng), query: cafe.name, page: 1) { [weak self] _, response in
-        let isFound = response?.documents.contains { doc in
+      apiDataSource.fetchCafeInfo(pos: (cafeLat, cafeLng), query: cafe.name, page: 1) { [weak self] result in
+        defer { group.leave() }
+
+        // 통신이 실패한 것과 검색 결과가 없는 것은 다르다.
+        // 실패를 폐점으로 단정하면 멀쩡한 카페가 문 닫은 것으로 표시된다.
+        guard case .success(let response) = result else { return }
+
+        let isFound = response.documents.contains { doc in
           let lat = Double(doc.y) ?? 0
           let lng = Double(doc.x) ?? 0
           let distance = Self.calculateDistance(lat1: cafeLat, lng1: cafeLng, lat2: lat, lng2: lng)
           return distance < 200
-        } ?? false
+        }
 
         let isClosed = !isFound
         if isClosed { closedCount += 1 }
         self?.repository.updateClosedStatus(id: cafe.id, isClosed: isClosed)
-        group.leave()
       }
     }
 

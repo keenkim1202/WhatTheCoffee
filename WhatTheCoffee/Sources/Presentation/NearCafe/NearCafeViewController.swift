@@ -22,16 +22,10 @@ class NearCafeViewController: BaseViewController {
     return tv
   }()
 
-  private let emptyLabel: UILabel = {
-    let label = UILabel()
-    label.text = "근처 카페를 찾지 못하였어요 🥲"
-    label.font = UIFont(name: "GowunBatang-Bold", size: 15)
-    label.textColor = UIColor(named: "OrangeMainColor")
-    label.textAlignment = .center
-    label.isHidden = true
-    label.translatesAutoresizingMaskIntoConstraints = false
-    return label
-  }()
+  private let statusView = ListStatusView()
+
+  /// 위치를 아직 못 얻어 미뤄둔 검색. 첫 좌표가 도착하면 실행한다.
+  private var pendingQuery: String?
 
   // MARK: - Init
   init(viewModel: NearCafeViewModel, container: DIContainer) {
@@ -80,7 +74,9 @@ class NearCafeViewController: BaseViewController {
   private func configureLayout() {
     view.backgroundColor = .systemBackground
     view.addSubview(tableView)
-    view.addSubview(emptyLabel)
+    view.addSubview(statusView)
+    statusView.translatesAutoresizingMaskIntoConstraints = false
+    statusView.onRetry = { [weak self] in self?.onRedo() }
 
     NSLayoutConstraint.activate([
       tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -88,17 +84,26 @@ class NearCafeViewController: BaseViewController {
       tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
       tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
-      emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-      emptyLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-      emptyLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+      statusView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      statusView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      statusView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      statusView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
     ])
   }
 
   private func bindViewModel() {
     viewModel.onNearCafeListUpdated = { [weak self] in
-      guard let self else { return }
-      tableView.reloadData()
-      emptyLabel.isHidden = !viewModel.isEmpty
+      self?.tableView.reloadData()
+    }
+
+    viewModel.onStatusChanged = { [weak self] state in
+      self?.statusView.apply(state)
+    }
+
+    // 이미 목록이 있는데 추가 요청이 실패하면 화면을 비우지 않고 알림만 띄운다.
+    viewModel.onLoadFailed = { [weak self] error in
+      guard let self, !viewModel.isEmpty else { return }
+      errorAlert(error: error)
     }
   }
 
@@ -126,11 +131,15 @@ class NearCafeViewController: BaseViewController {
   }
 
   func fetchData(query: String = "카페", page: Int = 1) {
-    if let coor = userCoordinate {
-      DispatchQueue.global().async {
-        self.viewModel.fetchData(latitude: coor.latitude, longitude: coor.longitude, query: query, page: page)
-      }
+    guard let coordinate = userCoordinate else {
+      // 좌표가 아직 없다. 조용히 끝내면 재탐색을 눌러도 아무 일이 없다.
+      // 도착하면 실행하도록 남겨두고, 기다리는 중임을 알린다.
+      pendingQuery = query
+      viewModel.showLocationStatus(.loading("현재 위치를 확인하는 중이에요"))
+      return
     }
+
+    viewModel.fetchData(latitude: coordinate.latitude, longitude: coordinate.longitude, query: query, page: page)
   }
 
   // MARK: - Action
@@ -206,10 +215,22 @@ extension NearCafeViewController: CLLocationManagerDelegate {
   }
 
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let location = locations.last else { return }
+
+    userCoordinate = location.coordinate
+    // 좌표를 얻었으면 계속 갱신할 이유가 없다.
+    manager.stopUpdatingLocation()
+
+    // 좌표가 없어 미뤄둔 검색이 있으면 이제 실행한다.
+    guard let query = pendingQuery else { return }
+    pendingQuery = nil
+    fetchData(query: query)
   }
 
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    print(error)
+    guard viewModel.isEmpty else { return }
+    pendingQuery = nil
+    statusView.apply(.failed(.locationUnavailable))
   }
 
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

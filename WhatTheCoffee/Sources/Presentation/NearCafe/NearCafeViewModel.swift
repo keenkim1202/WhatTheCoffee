@@ -23,6 +23,12 @@ final class NearCafeViewModel {
 
   // MARK: - Binding
   var onNearCafeListUpdated: (() -> Void)?
+  var onStatusChanged: ((ListStatusView.State) -> Void)?
+
+  private(set) var isLoading = false
+
+  /// 요청 세대. 새 검색이 시작되면 올려서 앞선 요청의 응답을 버린다.
+  private var requestToken = 0
 
   // MARK: - Init
   init(useCase: FetchNearCafeUseCase = FetchNearCafeUseCase(),
@@ -79,25 +85,61 @@ final class NearCafeViewModel {
   }
 
   func fetchData(latitude: Double, longitude: Double, query: String = "카페", page: Int = 1) {
-    useCase.execute(latitude: latitude, longitude: longitude, query: query, page: page) { [weak self] cafes, pageableCount, isEnd in
-      guard let self = self else { return }
-      self.pageableCount = pageableCount
-      self.isEnd = isEnd
-      self.nearCafeList.append(contentsOf: cafes)
+    // 새 검색을 막으면 앞선 요청의 결과가 비워둔 목록에 채워져 엉뚱한 화면이 된다.
+    // 막는 대신 세대를 기억해두고, 늦게 온 응답을 버린다.
+    isLoading = true
+    let token = requestToken
+
+    if nearCafeList.isEmpty {
+      onStatusChanged?(.loading("근처 카페를 찾는 중이에요"))
+    }
+
+    useCase.execute(latitude: latitude, longitude: longitude, query: query, page: page) { [weak self] result in
+      guard let self else { return }
 
       DispatchQueue.main.async {
+        // 그 사이 새 검색이 시작됐으면 이 응답은 버린다.
+        guard token == self.requestToken else { return }
+        self.isLoading = false
+
+        switch result {
+        case .success(let page):
+          self.pageableCount = page.pageableCount
+          self.isEnd = page.isEnd
+          self.nearCafeList.append(contentsOf: page.cafes)
+          self.onStatusChanged?(self.nearCafeList.isEmpty ? .empty("근처에 카페가 없어요 🥲") : .hidden)
+
+        case .failure(let error):
+          // 이미 받아둔 목록이 있으면 그건 남겨두고 알리기만 한다.
+          self.onStatusChanged?(self.nearCafeList.isEmpty ? .failed(error) : .hidden)
+          self.onLoadFailed?(error)
+        }
+
         self.onNearCafeListUpdated?()
       }
     }
   }
 
+  /// 목록이 이미 있는 상태에서 실패했을 때 화면이 알아서 처리하도록 알린다.
+  var onLoadFailed: ((AppError) -> Void)?
+
+  func showLocationStatus(_ state: ListStatusView.State) {
+    onStatusChanged?(state)
+  }
+
   func reset() {
+    // 진행 중인 응답이 새 목록에 섞이지 않도록 세대를 올린다.
+    requestToken += 1
+    isLoading = false
     nearCafeList.removeAll()
     pageableCount = 0
     page = 1
   }
 
   func loadNextPage(latitude: Double, longitude: Double) {
+    // 요청이 받아들여질 때만 페이지를 넘긴다.
+    // 먼저 올려두면 거절된 요청의 페이지가 통째로 빠진다.
+    guard !isLoading else { return }
     page += 1
     if let text = queryText {
       fetchData(latitude: latitude, longitude: longitude, query: text, page: page)
