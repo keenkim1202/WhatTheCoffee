@@ -1,34 +1,49 @@
 import WidgetKit
 import SwiftUI
 import AppIntents
+import CoreLocation
 
 struct CafeVisitEntry: TimelineEntry {
   let date: Date
   let snapshot: CafeVisitSnapshot
+  let mode: WidgetDisplayMode
 }
 
-struct Provider: TimelineProvider {
+struct Provider: AppIntentTimelineProvider {
   func placeholder(in context: Context) -> CafeVisitEntry {
-    CafeVisitEntry(date: Date(), snapshot: .sample)
+    return CafeVisitEntry(date: Date(), snapshot: .sample, mode: .recent)
   }
 
-  func getSnapshot(in context: Context, completion: @escaping (CafeVisitEntry) -> Void) {
+  func snapshot(for configuration: SelectDisplayModeIntent, in context: Context) async -> CafeVisitEntry {
     // 위젯 갤러리에서는 빈 화면 대신 예시 값을 보여준다.
-    let snapshot: CafeVisitSnapshot = context.isPreview ? .sample : (RealmProvider.snapshot() ?? .empty)
-    completion(CafeVisitEntry(date: Date(), snapshot: snapshot))
+    guard !context.isPreview else {
+      let sample: CafeVisitSnapshot = configuration.mode == .nearest ? .nearbySample : .sample
+      return CafeVisitEntry(date: Date(), snapshot: sample, mode: configuration.mode)
+    }
+    return await entry(for: configuration.mode)
   }
 
-  func getTimeline(in context: Context, completion: @escaping (Timeline<CafeVisitEntry>) -> Void) {
-    let now = Date()
-    let entry = CafeVisitEntry(date: now, snapshot: RealmProvider.snapshot() ?? .empty)
-    completion(Timeline(entries: [entry], policy: .after(Self.nextMidnight(after: now))))
+  func timeline(for configuration: SelectDisplayModeIntent, in context: Context) async -> Timeline<CafeVisitEntry> {
+    let entry = await entry(for: configuration.mode)
+    return Timeline(entries: [entry], policy: .after(Self.nextRefresh(for: configuration.mode, after: entry.date)))
+  }
+
+  private func entry(for mode: WidgetDisplayMode) async -> CafeVisitEntry {
+    // 위치는 가까운 곳을 고를 때만 필요하다. 최근 방문에는 묻지 않는다.
+    let location = mode == .nearest ? await WidgetLocation.current() : nil
+    let snapshot = RealmProvider.snapshot(mode: mode, location: location) ?? .empty
+    return CafeVisitEntry(date: Date(), snapshot: snapshot, mode: mode)
   }
 
   /// 달이 바뀌면 이번 달 방문 수가 0으로 돌아가야 하므로 자정에 다시 그린다.
-  /// 서머타임처럼 하루가 24시간이 아닌 날에도 어긋나지 않도록 캘린더로 계산한다.
-  private static func nextMidnight(after date: Date, calendar: Calendar = .current) -> Date {
+  /// 가까운 곳은 움직이면 답이 바뀌므로 자정까지 기다리지 않고 더 자주 다시 잰다.
+  private static func nextRefresh(for mode: WidgetDisplayMode,
+                                  after date: Date,
+                                  calendar: Calendar = .current) -> Date {
     let startOfToday = calendar.startOfDay(for: date)
-    return calendar.date(byAdding: .day, value: 1, to: startOfToday) ?? date.addingTimeInterval(3600)
+    let midnight = calendar.date(byAdding: .day, value: 1, to: startOfToday) ?? date.addingTimeInterval(3600)
+    guard mode == .nearest else { return midnight }
+    return min(midnight, date.addingTimeInterval(30 * 60))
   }
 }
 
@@ -71,9 +86,17 @@ private struct MonthlyCountView: View {
   }
 }
 
-private struct RecentVisitView: View {
-  let visit: CafeVisitSnapshot.Visit?
+private struct FeaturedCafeView: View {
+  let featured: CafeVisitSnapshot.Featured?
+  let fallback: CafeVisitSnapshot.Fallback?
   let totalCount: Int
+  let mode: WidgetDisplayMode
+
+  /// 거리를 보여주고 있을 때만 가까운 곳을 고른 것이다.
+  /// 위치를 못 얻어 최근 방문으로 물러난 경우에는 제목도 그에 맞춰야 한다.
+  private var title: String {
+    return featured?.distance == nil ? "최근 방문" : "근처에 갔던 곳"
+  }
 
   private static func dateText(for date: Date) -> String {
     let calendar = Calendar.current
@@ -82,29 +105,48 @@ private struct RecentVisitView: View {
     return date.formatted(.dateTime.month().day())
   }
 
+  private static func distanceText(_ meters: CLLocationDistance) -> String {
+    guard meters >= 1000 else { return "\(Int(meters.rounded()))m" }
+    return String(format: "%.1fkm", meters / 1000)
+  }
+
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
-      Text("최근 방문")
+      Text(title)
         .font(.system(size: 12, weight: .bold))
         .foregroundStyle(.secondary)
 
-      if let visit {
+      if let featured {
         // 카페 이름과 방문 정보를 누르면 기록 탭으로 간다.
         // 버튼만 누를 수 있으면 나머지 영역은 눌러도 아무 데도 가지 않는 죽은 자리가 된다.
         Link(destination: WidgetRoute.records.url ?? Self.recordsFallbackURL) {
           VStack(alignment: .leading, spacing: 4) {
-            Text(visit.name)
+            Text(featured.name)
               .font(.system(size: 16, weight: .bold))
               .foregroundStyle(.primary)
               .lineLimit(1)
+
             HStack(spacing: 6) {
-              // 눌러서 기록하면 이 날짜가 '오늘'로 바뀐다. 그게 눈에 보이는 결과가 된다.
-              Text(Self.dateText(for: visit.visitDate))
-                .font(.system(size: 12))
-                .foregroundStyle(.secondary)
+              // 가까운 곳을 골랐다면 거리가 곧 이유다. 그게 아니면 언제 갔는지를 보여준다.
+              if let distance = featured.distance {
+                Text(Self.distanceText(distance))
+                  .font(.system(size: 12, weight: .bold))
+                  .foregroundStyle(Color("GreenMainColor"))
+              } else {
+                Text(Self.dateText(for: featured.visitDate))
+                  .font(.system(size: 12))
+                  .foregroundStyle(.secondary)
+              }
+
+              if featured.visitCount > 1 {
+                Text("\(featured.visitCount)번 방문")
+                  .font(.system(size: 12))
+                  .foregroundStyle(.secondary)
+              }
+
               HStack(spacing: 1) {
                 ForEach(1...5, id: \.self) { star in
-                  Image(systemName: star <= visit.rate ? "star.fill" : "star")
+                  Image(systemName: star <= featured.rate ? "star.fill" : "star")
                     .font(.system(size: 9))
                     .foregroundStyle(Color("OrangeMainColor"))
                 }
@@ -115,16 +157,24 @@ private struct RecentVisitView: View {
 
         // 무엇이 일어나는지 버튼이 직접 말하도록 한다.
         // 카페 이름 바로 아래에 두어 어느 곳을 기록하는지도 드러낸다.
-        Button(intent: AddVisitIntent(name: visit.name)) {
+        Button(intent: AddVisitIntent(id: featured.id, name: featured.name)) {
           Label("오늘 방문 기록", systemImage: "plus")
             .font(.system(size: 12, weight: .bold))
         }
         .buttonStyle(.borderedProminent)
         .tint(Color("GreenMainColor"))
 
-        Text("전체 \(totalCount)회")
-          .font(.system(size: 11))
-          .foregroundStyle(.tertiary)
+        // 가까운 곳을 보여주기로 해놓고 다른 걸 보여주면 고장으로 읽힌다. 이유를 밝힌다.
+        if let fallback, mode == .nearest {
+          Text(fallback.message)
+            .font(.system(size: 11))
+            .foregroundStyle(.tertiary)
+            .lineLimit(1)
+        } else {
+          Text("전체 \(totalCount)회")
+            .font(.system(size: 11))
+            .foregroundStyle(.tertiary)
+        }
       } else {
         // 기록이 없을 때 눌러서 갈 곳은 목록이 아니라 기록 추가 화면이다.
         Link(destination: WidgetRoute.addRecord.url ?? Self.addRecordFallbackURL) {
@@ -146,6 +196,14 @@ struct WhatTheCoffeeWidgetEntryView: View {
   @Environment(\.widgetFamily) private var family
   var entry: CafeVisitEntry
 
+  private var featuredView: FeaturedCafeView {
+    return FeaturedCafeView(
+      featured: entry.snapshot.featured,
+      fallback: entry.snapshot.fallback,
+      totalCount: entry.snapshot.totalCount,
+      mode: entry.mode)
+  }
+
   var body: some View {
     switch family {
     case .systemMedium:
@@ -155,9 +213,20 @@ struct WhatTheCoffeeWidgetEntryView: View {
           MonthlyCountView(count: entry.snapshot.monthlyCount)
         }
         Divider()
-        RecentVisitView(visit: entry.snapshot.recent, totalCount: entry.snapshot.totalCount)
+        featuredView
       }
       .containerBackground(.fill.tertiary, for: .widget)
+
+    case .systemSmall:
+      // 가까운 곳을 보라고 골라놓고 이번 달 숫자만 띄우면 고른 의미가 없다.
+      if entry.mode == .nearest {
+        featuredView
+          .containerBackground(.fill.tertiary, for: .widget)
+      } else {
+        MonthlyCountView(count: entry.snapshot.monthlyCount)
+          .containerBackground(.fill.tertiary, for: .widget)
+          .widgetURL(WidgetRoute.statistics.url)
+      }
 
     case .accessoryCircular:
       VStack(spacing: 0) {
@@ -174,8 +243,8 @@ struct WhatTheCoffeeWidgetEntryView: View {
       VStack(alignment: .leading, spacing: 2) {
         Label("이번 달 \(entry.snapshot.monthlyCount)회", systemImage: "cup.and.saucer.fill")
           .font(.system(size: 14, weight: .bold))
-        if let recent = entry.snapshot.recent {
-          Text(recent.name)
+        if let featured = entry.snapshot.featured {
+          Text(featured.name)
             .font(.system(size: 12))
             .lineLimit(1)
         }
@@ -201,11 +270,11 @@ struct WhatTheCoffeeWidget: Widget {
   let kind = "WhatTheCoffeeWidget"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: Provider()) { entry in
+    AppIntentConfiguration(kind: kind, intent: SelectDisplayModeIntent.self, provider: Provider()) { entry in
       WhatTheCoffeeWidgetEntryView(entry: entry)
     }
     .configurationDisplayName("커피 방문 기록")
-    .description("이번 달 방문 횟수와 최근 간 카페를 보고, 같은 곳을 한 번에 기록할 수 있어요.")
+    .description("최근 간 카페나 지금 가까운 카페를 보고, 그 자리에서 한 번에 기록할 수 있어요.")
     .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular])
   }
 }
@@ -213,13 +282,14 @@ struct WhatTheCoffeeWidget: Widget {
 #Preview("Small", as: .systemSmall) {
   WhatTheCoffeeWidget()
 } timeline: {
-  CafeVisitEntry(date: Date(), snapshot: .sample)
-  CafeVisitEntry(date: Date(), snapshot: .empty)
+  CafeVisitEntry(date: Date(), snapshot: .sample, mode: .recent)
+  CafeVisitEntry(date: Date(), snapshot: .nearbySample, mode: .nearest)
 }
 
 #Preview("Medium", as: .systemMedium) {
   WhatTheCoffeeWidget()
 } timeline: {
-  CafeVisitEntry(date: Date(), snapshot: .sample)
-  CafeVisitEntry(date: Date(), snapshot: .empty)
+  CafeVisitEntry(date: Date(), snapshot: .sample, mode: .recent)
+  CafeVisitEntry(date: Date(), snapshot: .nearbySample, mode: .nearest)
+  CafeVisitEntry(date: Date(), snapshot: .empty, mode: .recent)
 }
