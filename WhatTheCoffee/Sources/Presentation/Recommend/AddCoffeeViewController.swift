@@ -25,32 +25,7 @@ class AddCoffeeViewController: BaseViewController {
   /// 마지막 분석 결과. 사진을 다시 고르지 않고도 다른 피사체로 바꿀 수 있게 들고 있는다.
   private var analyzedSubjects: [SubjectCutout.Subject] = []
 
-  private let photoStatusLabel: UILabel = {
-    let label = UILabel()
-    label.font = UIFont.GowunBatang(type: .regular, size: 12)
-    label.textColor = .secondaryLabel
-    label.numberOfLines = 2
-    return label
-  }()
-
-  private let changeSubjectButton: UIButton = {
-    let button = UIButton(type: .system)
-    button.setTitle("변경", for: .normal)
-    button.setTitleColor(UIColor(named: "GreenMainColor"), for: .normal)
-    button.titleLabel?.font = UIFont(name: "GowunBatang-Bold", size: 12)
-    button.isHidden = true
-    button.setContentHuggingPriority(.required, for: .horizontal)
-    return button
-  }()
-
-  private lazy var photoStatusRow: UIStackView = {
-    let stack = UIStackView(arrangedSubviews: [photoStatusLabel, changeSubjectButton])
-    stack.axis = .horizontal
-    stack.spacing = 8
-    stack.alignment = .center
-    stack.isHidden = true
-    return stack
-  }()
+  private let photoStatusView = CutoutStatusView()
 
   private let coffeeImageView: UIImageView = {
     let iv = UIImageView()
@@ -137,9 +112,9 @@ class AddCoffeeViewController: BaseViewController {
 
     view.addSubview(cutoutIndicator)
 
-    changeSubjectButton.addTarget(self, action: #selector(onChangeSubject), for: .touchUpInside)
+    photoStatusView.onChange = { [weak self] in self?.onChangeSubject() }
 
-    let imageStack = UIStackView(arrangedSubviews: [coffeeImageView, photoStatusRow, addImageButton])
+    let imageStack = UIStackView(arrangedSubviews: [coffeeImageView, photoStatusView, addImageButton])
     imageStack.axis = .vertical
     imageStack.alignment = .center
     imageStack.spacing = 20
@@ -165,8 +140,8 @@ class AddCoffeeViewController: BaseViewController {
       coffeeImageView.widthAnchor.constraint(equalTo: coffeeImageView.heightAnchor),
       coffeeImageView.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor, constant: 37),
       coffeeImageView.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor, constant: -37),
-      photoStatusRow.leadingAnchor.constraint(equalTo: coffeeImageView.leadingAnchor),
-      photoStatusRow.trailingAnchor.constraint(equalTo: coffeeImageView.trailingAnchor),
+      photoStatusView.leadingAnchor.constraint(equalTo: coffeeImageView.leadingAnchor),
+      photoStatusView.trailingAnchor.constraint(equalTo: coffeeImageView.trailingAnchor),
 
       addImageButton.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor),
       addImageButton.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor),
@@ -233,7 +208,7 @@ class AddCoffeeViewController: BaseViewController {
       guard let self else { return }
       coffeeImageView.image = UIImage.randomCoffeeImage
       analyzedSubjects = []
-      photoStatusRow.isHidden = true
+      photoStatusView.clear()
     }
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
 
@@ -277,8 +252,8 @@ extension AddCoffeeViewController: UIImagePickerControllerDelegate, UINavigation
       case .failure(let error):
         // 떼어낼 피사체가 없으면 원본을 그대로 쓴다.
         analyzedSubjects = []
-        apply(original)
-        photoStatusLabel.text = Self.failureReason(for: error)
+        coffeeImageView.image = original.image
+        photoStatusView.showFailure(error)
       }
     }
   }
@@ -293,27 +268,12 @@ extension AddCoffeeViewController: UIImagePickerControllerDelegate, UINavigation
     addImageButton.isEnabled = !isAnalyzing
   }
 
-  private static func failureReason(for error: Error) -> String {
-    switch error {
-    case SubjectCutout.Failure.subjectNotFound:
-      return "원본 이미지 · 사진에서 피사체를 찾지 못했어요"
-    case SubjectCutout.Failure.unreadableImage:
-      return "원본 이미지 · 사진을 분석할 수 없어요"
-    default:
-      return "원본 이미지 · 이 기기에서는 배경을 지울 수 없어요"
-    }
-  }
-
-  /// 지금 어떤 이미지가 들어가 있는지 화면에 남겨둔다.
-  /// 알림은 사라지고 나면 누끼인지 원본인지 알 방법이 없다.
   private func apply(_ subject: SubjectCutout.Subject) {
     coffeeImageView.image = subject.image
-    photoStatusLabel.text = subject.isCutout ? "배경을 지운 이미지 · \(subject.title)" : "원본 이미지"
-    changeSubjectButton.isHidden = analyzedSubjects.count < 2
-    photoStatusRow.isHidden = false
+    photoStatusView.show(subject, canChange: analyzedSubjects.count > 1)
   }
 
-  @objc private func onChangeSubject() {
+  private func onChangeSubject() {
     guard analyzedSubjects.count > 1 else { return }
     presentSubjectPicker(analyzedSubjects)
   }

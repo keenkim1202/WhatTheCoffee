@@ -26,15 +26,14 @@ final class ImageManager {
 
     let imageURL = filePath.appendingPathComponent(imageName)
 
-    let resized = downscaled(image)
+    // 줄이는 과정에서 알파 채널이 생기므로 판단은 원본으로 한다.
+    // 아니면 배경이 꽉 찬 사진까지 전부 PNG가 되어 파일이 몇 배로 커진다.
+    let isTransparent = hasAlpha(image)
+    let resized = downscaled(image, opaque: !isTransparent)
 
-    let data: Data?
-    if type == .cafe {
-      data = resized.jpegData(compressionQuality: 0.5)
-    } else {
-      // 커피는 누끼의 투명 배경을 살려야 해서 PNG로 둔다.
-      data = resized.pngData()
-    }
+    // 배경을 지운 이미지는 투명한 부분이 있어 JPEG로 저장하면 다 뭉개진다.
+    // 반대로 배경이 꽉 찬 사진은 JPEG가 훨씬 작다.
+    let data = isTransparent ? resized.pngData() : resized.jpegData(compressionQuality: 0.5)
 
     guard let imageData = data else { return }
 
@@ -54,10 +53,20 @@ final class ImageManager {
     }
   }
 
+  private func hasAlpha(_ image: UIImage) -> Bool {
+    guard let alphaInfo = image.cgImage?.alphaInfo else { return false }
+    switch alphaInfo {
+    case .first, .last, .premultipliedFirst, .premultipliedLast:
+      return true
+    default:
+      return false
+    }
+  }
+
   /// 긴 변을 기준으로 줄인다. 이미 작으면 그대로 둔다.
   /// UIImage.size는 포인트라 scale이 1보다 크면 실제 픽셀 수보다 작게 나온다.
   /// 저장되는 것은 픽셀이므로 CGImage의 픽셀 크기로 판단한다.
-  private func downscaled(_ image: UIImage) -> UIImage {
+  private func downscaled(_ image: UIImage, opaque: Bool) -> UIImage {
     guard let cgImage = image.cgImage else { return image }
 
     let pixelWidth = CGFloat(cgImage.width)
@@ -70,7 +79,7 @@ final class ImageManager {
 
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
-    format.opaque = false
+    format.opaque = opaque
 
     return UIGraphicsImageRenderer(size: size, format: format).image { _ in
       image.draw(in: CGRect(origin: .zero, size: size))
