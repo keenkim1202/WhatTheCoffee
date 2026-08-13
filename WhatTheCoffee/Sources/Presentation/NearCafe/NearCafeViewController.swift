@@ -58,6 +58,8 @@ class NearCafeViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     Analytics.logEvent("TAB_nearCafe", parameters: nil)
+    // 다른 탭에서 기록을 추가하고 돌아왔을 수 있으니 다시 읽는다.
+    viewModel.reloadRecords()
     configureLocationManager()
     fetchData()
   }
@@ -190,7 +192,8 @@ extension NearCafeViewController: UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: NearCafeTableViewCell.identifier) as? NearCafeTableViewCell else { return UITableViewCell() }
     let row = viewModel.cafe(at: indexPath.row)
     cell.cellConfigure(row: row)
-    cell.cafeImageView.image = UIImage.NearCafePlaceholder
+    // 기록해둔 가게면 그때 남긴 사진을, 아니면 기본 이미지를 쓴다.
+    cell.cafeImageView.image = viewModel.recordedImage(for: row) ?? UIImage.NearCafePlaceholder
     cell.selectionStyle = .none
     return cell
   }

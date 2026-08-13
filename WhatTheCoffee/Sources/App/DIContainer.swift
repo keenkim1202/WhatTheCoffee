@@ -87,7 +87,10 @@ final class DIContainer {
   }
 
   func makeNearCafeViewModel() -> NearCafeViewModel {
-    NearCafeViewModel(useCase: makeFetchNearCafeUseCase())
+    NearCafeViewModel(
+      useCase: makeFetchNearCafeUseCase(),
+      recordsUseCase: makeManageRecordsUseCase(),
+      imageUseCase: makeManageImageUseCase())
   }
 
   func makeRecordsViewModel() -> RecordsViewModel {
