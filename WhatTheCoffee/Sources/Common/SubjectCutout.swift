@@ -21,6 +21,8 @@ enum SubjectCutout {
   enum Failure: Error {
     /// 사진에서 떼어낼 피사체를 찾지 못함.
     case subjectNotFound
+    /// 사진을 분석에 넘길 형태로 만들지 못함.
+    case unreadableImage
   }
 
   /// 사진에서 찾은 피사체들. 둘 이상이면 전부 합친 것을 맨 앞에 둔다.
@@ -35,8 +37,8 @@ enum SubjectCutout {
   }
 
   private static func extractSubjects(from image: UIImage) -> Result<[Subject], Error> {
-    guard let cgImage = image.cgImage else {
-      return .failure(Failure.subjectNotFound)
+    guard let cgImage = cgImage(from: image) else {
+      return .failure(Failure.unreadableImage)
     }
 
     let request = VNGenerateForegroundInstanceMaskRequest()
@@ -69,6 +71,25 @@ enum SubjectCutout {
     } catch {
       return .failure(error)
     }
+  }
+
+  /// 사진 라이브러리에서 온 UIImage는 CIImage 기반일 수 있고, 그때 cgImage는 nil이다.
+  /// 그대로 포기하면 모델을 돌려보지도 못하고 피사체가 없다고 판단하게 된다.
+  private static func cgImage(from image: UIImage) -> CGImage? {
+    if let cgImage = image.cgImage {
+      return cgImage
+    }
+    if let ciImage = image.ciImage {
+      return CIContext().createCGImage(ciImage, from: ciImage.extent)
+    }
+
+    let format = UIGraphicsImageRendererFormat.default()
+    format.scale = image.scale
+    format.opaque = false
+    let redrawn = UIGraphicsImageRenderer(size: image.size, format: format).image { _ in
+      image.draw(at: .zero)
+    }
+    return redrawn.cgImage
   }
 
   private static func maskedImage(_ observation: VNInstanceMaskObservation,

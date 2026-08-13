@@ -8,7 +8,7 @@ final class SubjectPickerViewController: BaseViewController {
 
   // MARK: - Properties
   private let subjects: [SubjectCutout.Subject]
-  private let onSelect: (UIImage) -> Void
+  private let onSelect: (SubjectCutout.Subject) -> Void
 
   /// 목록이 뜨는 경우는 선택지가 둘 이상일 때뿐이라, 첫 번째를 미리 골라둔다.
   private var selectedIndex = 0
@@ -55,7 +55,7 @@ final class SubjectPickerViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(subjects: [SubjectCutout.Subject], onSelect: @escaping (UIImage) -> Void) {
+  init(subjects: [SubjectCutout.Subject], onSelect: @escaping (SubjectCutout.Subject) -> Void) {
     self.subjects = subjects
     self.onSelect = onSelect
     super.init(nibName: nil, bundle: nil)
@@ -124,7 +124,7 @@ final class SubjectPickerViewController: BaseViewController {
 
   // MARK: - Action
   @objc private func onApply() {
-    let selected = subjects[selectedIndex].image
+    let selected = subjects[selectedIndex]
     dismiss(animated: true) { [weak self] in
       self?.onSelect(selected)
     }
