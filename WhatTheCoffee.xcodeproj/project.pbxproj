@@ -103,6 +103,7 @@
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
 		1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */; };
 		1CA1CE072F90000800C9DE50 /* SubjectCutout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */; };
+		1CA1CE0B2F90000C00C9DE50 /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
@@ -237,6 +238,7 @@
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppLauncher.swift; sourceTree = "<group>"; };
 		1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCutout.swift; sourceTree = "<group>"; };
+		1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
 		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
 		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 				A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */,
 				1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */,
 				1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */,
+				1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
 			);
 			path = Common;
@@ -796,6 +799,7 @@
 				D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */,
 				1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */,
 				1CA1CE072F90000800C9DE50 /* SubjectCutout.swift in Sources */,
+				1CA1CE0B2F90000C00C9DE50 /* NavigationBarAppearance.swift in Sources */,
 				4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */,
 				80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */,
 				1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */,

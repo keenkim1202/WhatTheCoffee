@@ -218,6 +218,7 @@ class AddRecordViewController: BaseViewController {
     navItem.leftBarButtonItem = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(onClose))
     navItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(onDone))
     navigationBar.items = [navItem]
+    NavigationBarAppearance.hideSharedBackground(on: [navItem.leftBarButtonItem, navItem.rightBarButtonItem].compactMap { $0 })
 
     let barTitleTextAttributes: [NSAttributedString.Key: Any] = [
       .font: UIFont(name: "GowunBatang-Bold", size: 17)!
