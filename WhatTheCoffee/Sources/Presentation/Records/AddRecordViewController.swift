@@ -30,6 +30,17 @@ class AddRecordViewController: BaseViewController {
     return view
   }()
 
+  /// 마지막 분석 결과. 사진을 다시 고르지 않고도 다른 피사체로 바꿀 수 있게 들고 있는다.
+  private var analyzedSubjects: [SubjectCutout.Subject] = []
+  private let photoStatusView = CutoutStatusView()
+
+  private let cutoutIndicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.hidesWhenStopped = true
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    return indicator
+  }()
+
   private let recordImageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFit
@@ -247,7 +258,10 @@ class AddRecordViewController: BaseViewController {
     scrollView.addSubview(contentView)
 
     // 이미지 섹션
-    let imageStack = UIStackView(arrangedSubviews: [recordImageView, addImageButton])
+    photoStatusView.onChange = { [weak self] in self?.onChangeSubject() }
+    view.addSubview(cutoutIndicator)
+
+    let imageStack = UIStackView(arrangedSubviews: [recordImageView, photoStatusView, addImageButton])
     imageStack.axis = .vertical
     imageStack.alignment = .center
     imageStack.spacing = 15
@@ -361,6 +375,10 @@ class AddRecordViewController: BaseViewController {
       imageStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
       recordImageView.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor, constant: 20),
       recordImageView.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor, constant: -20),
+      photoStatusView.leadingAnchor.constraint(equalTo: recordImageView.leadingAnchor),
+      photoStatusView.trailingAnchor.constraint(equalTo: recordImageView.trailingAnchor),
+      cutoutIndicator.centerXAnchor.constraint(equalTo: recordImageView.centerXAnchor),
+      cutoutIndicator.centerYAnchor.constraint(equalTo: recordImageView.centerYAnchor),
       recordImageView.widthAnchor.constraint(equalTo: recordImageView.heightAnchor),
       addImageButton.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor),
       addImageButton.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor),
@@ -536,8 +554,11 @@ class AddRecordViewController: BaseViewController {
     let alert = UIAlertController(title: "카페 사진 추가", message: "어디에서 이미지를 불러오시겠습니까?", preferredStyle: .actionSheet)
     let library = UIAlertAction(title: "사진앨범", style: .default) { _ in self.openLibrary() }
     let camera = UIAlertAction(title: "카메라", style: .default) { _ in self.openCamera() }
-    let defaultImage = UIAlertAction(title: "기본 이미지로 변경", style: .default) { _ in
-      self.recordImageView.image = UIImage.defaultCafeImage
+    let defaultImage = UIAlertAction(title: "기본 이미지로 변경", style: .default) { [weak self] _ in
+      guard let self else { return }
+      recordImageView.image = UIImage.defaultCafeImage
+      analyzedSubjects = []
+      photoStatusView.clear()
     }
     let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
 
@@ -557,10 +578,15 @@ class AddRecordViewController: BaseViewController {
 // MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
 extension AddRecordViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-      recordImageView.image = image
+    guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+      dismiss(animated: true)
+      return
     }
-    dismiss(animated: true)
+
+    // 카메라로 찍은 사진도 앨범에서 고른 것과 같은 흐름을 탄다.
+    dismiss(animated: true) { [weak self] in
+      self?.applyCutout(to: image)
+    }
   }
 }
 
@@ -782,13 +808,63 @@ extension AddRecordViewController: PHPickerViewControllerDelegate {
             showErrorAlert("사진을 불러오지 못했습니다.")
             return
           }
-          recordImageView.image = image
+          applyCutout(to: image)
         }
       }
     }
   }
 
   private func setLoadingPhoto(_ isLoading: Bool) {
+    if isLoading {
+      cutoutIndicator.startAnimating()
+    } else {
+      cutoutIndicator.stopAnimating()
+    }
     navigationBar.items?.first?.rightBarButtonItem?.isEnabled = !isLoading
+    addImageButton.isEnabled = !isLoading
+  }
+
+  /// 배경을 지우고 피사체만 남긴다. 커피 사진과 같은 흐름이다.
+  private func applyCutout(to image: UIImage) {
+    setLoadingPhoto(true)
+
+    SubjectCutout.extractSubjects(from: image) { [weak self] result in
+      guard let self else { return }
+      setLoadingPhoto(false)
+
+      let original = SubjectCutout.Subject(title: "원본", image: image, isCutout: false)
+
+      switch result {
+      case .success(let subjects):
+        analyzedSubjects = subjects + [original]
+        presentSubjectPicker(analyzedSubjects)
+      case .failure(let error):
+        analyzedSubjects = []
+        recordImageView.image = original.image
+        photoStatusView.showFailure(error)
+      }
+    }
+  }
+
+  private func apply(_ subject: SubjectCutout.Subject) {
+    recordImageView.image = subject.image
+    photoStatusView.show(subject, canChange: analyzedSubjects.count > 1)
+  }
+
+  private func onChangeSubject() {
+    guard analyzedSubjects.count > 1 else { return }
+    presentSubjectPicker(analyzedSubjects)
+  }
+
+  private func presentSubjectPicker(_ subjects: [SubjectCutout.Subject]) {
+    let picker = SubjectPickerViewController(subjects: subjects) { [weak self] subject in
+      self?.apply(subject)
+    }
+
+    if let sheet = picker.sheetPresentationController {
+      sheet.detents = [.medium(), .large()]
+      sheet.prefersGrabberVisible = true
+    }
+    present(picker, animated: true)
   }
 }

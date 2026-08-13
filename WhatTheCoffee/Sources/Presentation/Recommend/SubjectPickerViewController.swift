@@ -80,11 +80,12 @@ final class SubjectPickerViewController: BaseViewController {
 
   private func prepareOutlines() {
     let subjects = self.subjects
-    let color = UIColor(named: "GreenMainColor") ?? .systemGreen
+    // 스티커처럼 흰 테두리로 둘러 어떤 사진 위에서도 경계가 드러나게 한다.
+    let color = UIColor.white
 
     DispatchQueue.global(qos: .userInitiated).async {
       var rendered: [Int: UIImage] = [:]
-      for (index, subject) in subjects.enumerated() where subject.isCutout {
+      for (index, subject) in subjects.enumerated() {
         rendered[index] = SubjectOutline.outlined(subject.image, color: color)
       }
 
@@ -169,7 +170,8 @@ private final class SubjectCell: UICollectionViewCell {
   private let imageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFit
-    iv.backgroundColor = .secondarySystemBackground
+    // 잘라낸 피사체가 배경 없이 떠 보이도록 칸 배경을 두지 않는다.
+    iv.backgroundColor = .clear
     iv.layer.cornerRadius = 12
     iv.clipsToBounds = true
     iv.translatesAutoresizingMaskIntoConstraints = false
@@ -215,16 +217,9 @@ private final class SubjectCell: UICollectionViewCell {
   }
 
   private func updateSelectionStyle() {
-    // 원본처럼 배경이 꽉 찬 이미지는 윤곽선이 보이지 않으므로 테두리로 대신 표시한다.
-    if isSelected, let outlinedImage {
-      imageView.image = outlinedImage
-      imageView.layer.borderWidth = 0
-    } else {
-      imageView.image = plainImage
-      imageView.layer.borderWidth = isSelected ? 3 : 0
-      imageView.layer.borderColor = UIColor(named: "GreenMainColor")?.cgColor
-    }
-    titleLabel.textColor = isSelected ? UIColor(named: "GreenMainColor") : .secondaryLabel
+    // 누끼든 원본이든 이미지 모양을 따라 그린 윤곽선으로 표시한다.
+    imageView.image = isSelected ? (outlinedImage ?? plainImage) : plainImage
+    titleLabel.textColor = isSelected ? UIColor(named: "GreenSubColor") : .secondaryLabel
   }
 }
 
@@ -237,7 +232,7 @@ private enum SubjectOutline {
   /// 셀에 보이는 크기. 원본 해상도 그대로 처리하면 느린 데다,
   /// 고정 반경으로 부풀려봐야 4000픽셀짜리에서는 1포인트도 안 되어 선이 보이지 않는다.
   private static let renderSize: CGFloat = 240
-  private static let outlineRadius: CGFloat = 6
+  private static let outlineRadius: CGFloat = 10
 
   static func outlined(_ image: UIImage, color: UIColor) -> UIImage? {
     // 다시 그리는 과정에서 UIImage가 들고 있던 회전도 함께 반영된다.
@@ -257,11 +252,13 @@ private enum SubjectOutline {
   }
 
   private static func downscaled(_ image: UIImage) -> UIImage? {
-    guard let cgImage = image.cgImage else { return nil }
+    guard image.cgImage != nil else { return nil }
 
-    let longestSide = max(CGFloat(cgImage.width), CGFloat(cgImage.height))
+    // CGImage의 픽셀 크기는 회전 전 기준이라 세로 사진이면 가로세로가 뒤바뀐다.
+    // 그 크기로 그리면 이미지가 눌린 채로 들어간다. 회전이 반영된 size를 쓴다.
+    let longestSide = max(image.size.width, image.size.height)
     let ratio = min(1, renderSize / longestSide)
-    let size = CGSize(width: CGFloat(cgImage.width) * ratio, height: CGFloat(cgImage.height) * ratio)
+    let size = CGSize(width: image.size.width * ratio, height: image.size.height * ratio)
 
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
