@@ -17,6 +17,9 @@ class CafeLocationViewController: BaseViewController {
   }()
 
   // MARK: - Init
+  /// 핀을 눌렀을 때 무엇을 띄울지는 Coordinator가 정한다.
+  var onSelectCafe: ((NearCafeEntity) -> Void)?
+
   init(nearCafeLists: [NearCafeEntity], myLocation: CLLocationCoordinate2D?) {
     self.nearCafeLists = nearCafeLists
     self.myLocation = myLocation
@@ -91,9 +94,7 @@ class CafeLocationViewController: BaseViewController {
     marker.touchHandler = { [weak self] _ in
       guard let self else { return true }
       if let cafe = nearCafeLists.first(where: { $0.name == caption }) {
-        let popupVC = PopupViewController(cafe: cafe)
-        popupVC.modalPresentationStyle = .overFullScreen
-        present(popupVC, animated: false)
+        onSelectCafe?(cafe)
       }
       return true
     }

@@ -114,6 +114,7 @@
 		CDBFE9B16059FFA15E548557 /* RecordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */; };
 		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
+		D636081121075A6A45DB3C2B /* NearCafeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED28EF9568D84F6B80071BA /* NearCafeCoordinator.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		E2D11FFCEBA4FED9F0A1FB46 /* AddRecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA971B8CCD5C8E06539CB5D4 /* AddRecordCoordinator.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
@@ -245,6 +246,7 @@
 		45D131131D88D8952645A469 /* RecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewModel.swift; sourceTree = "<group>"; };
 		4DC893B2FDB03AA7249F4C44 /* RealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataSource.swift; sourceTree = "<group>"; };
 		5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCoffeeUseCase.swift; sourceTree = "<group>"; };
+		5ED28EF9568D84F6B80071BA /* NearCafeCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearCafeCoordinator.swift; sourceTree = "<group>"; };
 		662C814CFF93646E6A30F10E /* AddCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewModel.swift; sourceTree = "<group>"; };
 		6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewModel.swift; sourceTree = "<group>"; };
 		73DB8A68B90159B8F3FC2F77 /* CoffeeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 				AA8925F69451D14876B166EB /* AppCoordinator.swift */,
 				F23E9B5ACD41612BB3FC4506 /* RecordsCoordinator.swift */,
 				FA971B8CCD5C8E06539CB5D4 /* AddRecordCoordinator.swift */,
+				5ED28EF9568D84F6B80071BA /* NearCafeCoordinator.swift */,
 			);
 			name = Coordinator;
 			path = Coordinator;
@@ -908,6 +911,7 @@
 				4C0FACE1E2E39C5ECF0BF765 /* AppCoordinator.swift in Sources */,
 				C1F8DA8B7A354930D74E8C7A /* RecordsCoordinator.swift in Sources */,
 				E2D11FFCEBA4FED9F0A1FB46 /* AddRecordCoordinator.swift in Sources */,
+				D636081121075A6A45DB3C2B /* NearCafeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

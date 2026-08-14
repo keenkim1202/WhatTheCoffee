@@ -6,7 +6,10 @@ class NearCafeViewController: BaseViewController {
 
   // MARK: - Properties
   let viewModel: NearCafeViewModel
-  let container: DIContainer
+
+  /// 화면 전환은 Coordinator가 맡는다.
+  var onSelectCafe: ((NearCafeEntity) -> Void)?
+  var onShowCafeMap: (([NearCafeEntity], CLLocationCoordinate2D?) -> Void)?
   var locationManger = CLLocationManager()
   var userCoordinate: CLLocationCoordinate2D?
 
@@ -28,9 +31,8 @@ class NearCafeViewController: BaseViewController {
   private var pendingQuery: String?
 
   // MARK: - Init
-  init(viewModel: NearCafeViewModel, container: DIContainer) {
+  init(viewModel: NearCafeViewModel) {
     self.viewModel = viewModel
-    self.container = container
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -154,10 +156,7 @@ class NearCafeViewController: BaseViewController {
 
   @objc private func onCafeLocation() {
     if !viewModel.isEmpty {
-      let vc = CafeLocationViewController(nearCafeLists: viewModel.nearCafeList, myLocation: userCoordinate)
-      let nav = UINavigationController(rootViewController: vc)
-      nav.modalPresentationStyle = .fullScreen
-      present(nav, animated: true)
+      onShowCafeMap?(viewModel.nearCafeList, userCoordinate)
     } else {
       showErrorAlert("지도에 표시할 카페가 없어요😅\n다시 검색해주세요.")
     }
@@ -171,12 +170,7 @@ extension NearCafeViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let cafe = viewModel.cafe(at: indexPath.row)
-    let vc = DetailNearCafeViewController(nearCafe: cafe, container: container)
-    let nav = UINavigationController(rootViewController: vc)
-    nav.title = cafe.name
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
+    onSelectCafe?(viewModel.cafe(at: indexPath.row))
   }
 }
 

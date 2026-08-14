@@ -9,6 +9,9 @@ class CafeSearchBottomSheetViewController: UIViewController {
 
   // MARK: - Properties
   weak var delegate: CafeSearchBottomSheetDelegate?
+
+  /// 고른 카페의 상세를 어떻게 띄울지는 Coordinator가 정한다. 확정되면 confirm을 부른다.
+  var onShowCafeDetail: ((NearCafeEntity, @escaping () -> Void) -> Void)?
   var initialQuery: String?
 
   private let fetchUseCase = FetchNearCafeUseCase()
@@ -180,7 +183,11 @@ extension CafeSearchBottomSheetViewController: UITableViewDataSource {
   }
 
   @objc private func onSelectButton(_ sender: UIButton) {
-    let cafe = cafeList[sender.tag]
+    select(cafeList[sender.tag])
+  }
+
+  /// 목록에서 바로 고르든 상세를 거쳐 고르든 결과는 같다.
+  private func select(_ cafe: NearCafeEntity) {
     let location = SelectedLocation(
       name: cafe.name, address: cafe.address,
       latitude: cafe.latitude, longitude: cafe.longitude)
@@ -198,20 +205,9 @@ extension CafeSearchBottomSheetViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     let cafe = cafeList[indexPath.row]
-
-    let detailVC = CafeSearchDetailViewController()
-    detailVC.nearCafe = cafe
-    detailVC.onSelect = { [weak self] in
-      let location = SelectedLocation(
-        name: cafe.name, address: cafe.address,
-        latitude: cafe.latitude, longitude: cafe.longitude)
-      self?.delegate?.didSelectCafe(location)
-      self?.dismiss(animated: true)
+    onShowCafeDetail?(cafe) { [weak self] in
+      self?.select(cafe)
     }
-
-    let nav = UINavigationController(rootViewController: detailVC)
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
   }
 }
 
