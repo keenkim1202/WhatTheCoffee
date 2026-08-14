@@ -8,6 +8,9 @@ class DetailNearCafeViewController: BaseViewController {
   let nearCafe: NearCafeEntity
   private let container: DIContainer
 
+  /// 기록 추가 흐름이 끝날 때까지 붙들고 있어야 한다. 놓으면 시트를 띄울 주체가 사라진다.
+  private var addRecordCoordinator: AddRecordCoordinator?
+
   // MARK: - UI
   private let infoTitleLabel: UILabel = {
     let label = UILabel()
@@ -178,9 +181,17 @@ class DetailNearCafeViewController: BaseViewController {
       latitude: nearCafe.latitude,
       longitude: nearCafe.longitude)
 
-    let viewModel = container.makeAddRecordViewModel(prefilledLocation: location)
-    let vc = AddRecordViewController(viewModel: viewModel)
-    present(vc, animated: true)
+    // 직접 만들면 카페 검색 시트를 띄울 사람이 없어 "검색해서 위치 기록"이 아무 일도 하지 않는다.
+    let coordinator = AddRecordCoordinator(
+      presenter: self,
+      container: container,
+      prefilledLocation: location)
+    coordinator.onFinish = { [weak self] in
+      self?.addRecordCoordinator = nil
+    }
+
+    addRecordCoordinator = coordinator
+    coordinator.start()
   }
 
   @objc private func onDetailInfo() {

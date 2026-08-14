@@ -9,7 +9,6 @@ class CafeSearchBottomSheetViewController: UIViewController {
 
   // MARK: - Properties
   weak var delegate: CafeSearchBottomSheetDelegate?
-  var container: DIContainer?
   var initialQuery: String?
 
   private let fetchUseCase = FetchNearCafeUseCase()
@@ -56,7 +55,6 @@ class CafeSearchBottomSheetViewController: UIViewController {
   // MARK: - View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard container != nil else { return }
     view.backgroundColor = .appearanceColor
     configureUI()
     configureLocation()

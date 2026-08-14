@@ -8,7 +8,10 @@ class AddRecordViewController: BaseViewController {
 
   // MARK: - Properties
   let viewModel: AddRecordViewModel
-  let container: DIContainer
+
+  /// 카페 검색 시트를 띄우는 일과 흐름이 끝났음을 알리는 일은 Coordinator가 받는다.
+  var onSearchCafe: (() -> Void)?
+  var onFinish: (() -> Void)?
   let buttonCornerRadius: CGFloat = 20
   let imagePicker = UIImagePickerController()
   let commentPlaceholder: String = "커피/디저트/분위기 등은 어땠나요?"
@@ -201,9 +204,8 @@ class AddRecordViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(viewModel: AddRecordViewModel, container: DIContainer = .shared) {
+  init(viewModel: AddRecordViewModel) {
     self.viewModel = viewModel
-    self.container = container
     super.init(nibName: nil, bundle: nil)
     modalPresentationStyle = .fullScreen
   }
@@ -609,13 +611,20 @@ class AddRecordViewController: BaseViewController {
       if comment == commentPlaceholder { comment = nil }
       viewModel.save(name: text, visitDateString: dateTextField.text, comment: comment, image: recordImageView.image)
       Analytics.logEvent("ADD_newRecord", parameters: nil)
-      dismiss(animated: true)
+      finish()
     }
   }
 
   @objc private func onClose() {
     Analytics.logEvent("CANCEL_newRecord", parameters: nil)
-    dismiss(animated: true)
+    finish()
+  }
+
+  /// 저장이든 취소든 화면이 닫히는 건 같다. 닫힌 뒤에 알려야 Coordinator가 자신을 떼어낼 수 있다.
+  private func finish() {
+    dismiss(animated: true) { [weak self] in
+      self?.onFinish?()
+    }
   }
 
   @objc private func onAddImage() {
@@ -777,17 +786,13 @@ extension AddRecordViewController {
     present(sheet, animated: true)
   }
 
-  @objc func onSearchLocation() {
-    let searchVC = CafeSearchBottomSheetViewController()
-    searchVC.delegate = self
-    searchVC.container = container
-    searchVC.initialQuery = titleTextField.text
+  /// 검색 시트에 넘길 초기 질의. 화면 밖에서 입력값을 읽을 유일한 통로다.
+  var searchQuery: String? {
+    return titleTextField.text
+  }
 
-    if let sheet = searchVC.sheetPresentationController {
-      sheet.detents = [.medium(), .large()]
-      sheet.prefersGrabberVisible = true
-    }
-    present(searchVC, animated: true)
+  @objc func onSearchLocation() {
+    onSearchCafe?()
   }
 
   /// 한국 주소는 구·동이 subLocality로 내려오므로 빠뜨리면 안 된다.
