@@ -38,9 +38,22 @@ platform :ios do
   lane :release do
     build_release
     upload_to_app_store(
+      # 메타데이터는 fastlane metadata 레인으로 따로 올린다.
+      # 빌드를 올리는 시점에는 대상 버전이 아직 없을 수 있어 엉뚱한 버전에 덮어쓸 수 있다.
       skip_metadata: true,
       skip_screenshots: true,
       submit_for_review: false,
+      precheck_include_in_app_purchases: false)
+  end
+
+  desc "릴리즈 노트와 프로모션 텍스트만 올리기 (빌드는 건드리지 않음)"
+  lane :metadata do
+    # 심사 중인 버전에 덮어쓰지 않도록, 올릴 버전이 App Store Connect에 만들어진 뒤에 실행한다.
+    upload_to_app_store(
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      submit_for_review: false,
+      force: true,
       precheck_include_in_app_purchases: false)
   end
 
