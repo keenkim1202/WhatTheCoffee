@@ -4,7 +4,10 @@ class CoffeeListViewController: BaseViewController {
 
   // MARK: - Properties
   let viewModel: CoffeeListViewModel
-  let container: DIContainer
+
+  /// 어느 화면을 쌓을지는 Coordinator가 정한다.
+  var onAddCoffee: (() -> Void)?
+  var onSelectCoffee: ((CoffeeEntity) -> Void)?
 
   // MARK: - UI
   private let tableView: UITableView = {
@@ -36,9 +39,8 @@ class CoffeeListViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(viewModel: CoffeeListViewModel, container: DIContainer) {
+  init(viewModel: CoffeeListViewModel) {
     self.viewModel = viewModel
-    self.container = container
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -116,8 +118,7 @@ class CoffeeListViewController: BaseViewController {
   }
 
   @objc private func onAdd() {
-    let vc = AddCoffeeViewController(viewModel: container.makeAddCoffeeViewModel())
-    navigationController?.pushViewController(vc, animated: true)
+    onAddCoffee?()
   }
 }
 
@@ -128,9 +129,7 @@ extension CoffeeListViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let coffee = viewModel.coffee(at: indexPath.row)
-    let vc = AddCoffeeViewController(viewModel: container.makeAddCoffeeViewModel(coffee: coffee))
-    navigationController?.pushViewController(vc, animated: true)
+    onSelectCoffee?(viewModel.coffee(at: indexPath.row))
   }
 }
 

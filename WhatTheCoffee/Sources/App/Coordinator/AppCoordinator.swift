@@ -19,6 +19,9 @@ final class AppCoordinator: Coordinator {
   }
 
   func start() {
+    // 첫 실행이면 기본 커피·카페를 넣는다. 조립하는 자리에서 한 번만 한다.
+    container.makeManageDefaultDataUseCase().installDefaultsIfNeeded()
+
     let records = RecordsCoordinator(container: container)
     records.start()
     addChild(records)
@@ -28,9 +31,13 @@ final class AppCoordinator: Coordinator {
     nearCafe.start()
     addChild(nearCafe)
 
+    let recommend = RecommendCoordinator(container: container)
+    recommend.start()
+    addChild(recommend)
+
     tabBarController.viewControllers = [
       records.navigationController,
-      makeRecommendTab(),
+      recommend.navigationController,
       nearCafe.navigationController,
       makeStatisticsTab()
     ]
@@ -57,19 +64,6 @@ final class AppCoordinator: Coordinator {
   }
 
   // MARK: - Tabs
-  /// 아직 Coordinator로 옮기지 않은 탭들. 순서대로 이관한다.
-  private func makeRecommendTab() -> UIViewController {
-    let vc = RecommendViewController(viewModel: container.makeRecommendViewModel(), container: container)
-    vc.checkIsFirst(coffeeRepository: container.coffeeRepository, cafeRepository: container.cafeRepository)
-
-    let navigation = UINavigationController(rootViewController: vc)
-    navigation.tabBarItem = UITabBarItem(
-      title: "추천",
-      image: UIImage(systemName: "heart"),
-      selectedImage: UIImage(systemName: "heart.fill"))
-    return navigation
-  }
-
   private func makeStatisticsTab() -> UIViewController {
     let vc = StatisticsViewController(viewModel: container.makeStatisticsViewModel())
 

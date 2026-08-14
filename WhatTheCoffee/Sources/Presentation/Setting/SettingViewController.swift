@@ -3,7 +3,12 @@ import UIKit
 class SettingViewController: BaseViewController {
 
   // MARK: - Properties
-  let container: DIContainer
+  private let defaultDataUseCase: ManageDefaultDataUseCase
+
+  /// 화면 전환은 Coordinator가 맡는다.
+  var onShowDefaultImages: ((String) -> Void)?
+  var onShowDetail: ((Int, String) -> Void)?
+  var onFinish: (() -> Void)?
   let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기", "☝️ 개별 이미지 추가하기"]
 
   // MARK: - UI
@@ -41,8 +46,8 @@ class SettingViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(container: DIContainer) {
-    self.container = container
+  init(defaultDataUseCase: ManageDefaultDataUseCase) {
+    self.defaultDataUseCase = defaultDataUseCase
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -112,7 +117,9 @@ class SettingViewController: BaseViewController {
 
   // MARK: - Action
   @objc private func onClose() {
-    dismiss(animated: true)
+    dismiss(animated: true) { [weak self] in
+      self?.onFinish?()
+    }
   }
 }
 
@@ -127,26 +134,18 @@ extension SettingViewController: UITableViewDelegate {
 
     if indexPath.section == 3 {
       addAlert("🧊 아이스 커피 재추가", "커피목록에 존재여부와 관계없이\n 기존 이미지 모두 추가됩니다.") {
-        self.saveDefaultIceCoffee(coffeeRepository: self.container.coffeeRepository)
+        self.defaultDataUseCase.addDefaultIceCoffees()
         self.showSuccessAlert("재추가에 성공하였습니다.")
       }
     } else if indexPath.section == 4 {
       addAlert("☕️ 핫 커피 재추가", "커피목록에 존재여부와 관계없이\n 기존 이미지 모두 추가됩니다.") {
-        self.saveDefaultHotCoffee(coffeeRepository: self.container.coffeeRepository)
+        self.defaultDataUseCase.addDefaultHotCoffees()
         self.showSuccessAlert("재추가에 성공하였습니다.")
       }
     } else if indexPath.section == 5 {
-      let vc = AddDefaultImageViewController(container: container)
-      vc.title = settingList[indexPath.section]
-      let nav = UINavigationController(rootViewController: vc)
-      nav.modalPresentationStyle = .fullScreen
-      present(nav, animated: true)
+      onShowDefaultImages?(settingList[indexPath.section])
     } else {
-      let vc = SettingDetailViewController(index: indexPath.section)
-      vc.title = settingList[indexPath.section]
-      let nav = UINavigationController(rootViewController: vc)
-      nav.modalPresentationStyle = .fullScreen
-      present(nav, animated: true)
+      onShowDetail?(indexPath.section, settingList[indexPath.section])
     }
   }
 }
