@@ -176,10 +176,10 @@ class RecordsViewController: BaseViewController {
     view.addSubview(emptyView)
 
     NSLayoutConstraint.activate([
-      recordCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      recordCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      recordCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      recordCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      recordCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      recordCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      recordCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      recordCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
       emptyView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       emptyView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

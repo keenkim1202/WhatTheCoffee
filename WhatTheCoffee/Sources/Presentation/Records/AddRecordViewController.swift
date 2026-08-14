@@ -28,7 +28,9 @@ class AddRecordViewController: BaseViewController {
 
   private let navBackgroundView: UIView = {
     let view = UIView()
-    view.backgroundColor = UIColor(named: "NaviColor")
+    // 네비게이션 바와 같은 색이어야 한다. NaviColor는 다크에서 순수 검정이 아니라
+    // 화면 배경 위에 밝은 띠로 드러난다.
+    view.backgroundColor = .appearanceColor
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -400,9 +402,9 @@ class AddRecordViewController: BaseViewController {
       navigationBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
       scrollView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
       contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
       contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),

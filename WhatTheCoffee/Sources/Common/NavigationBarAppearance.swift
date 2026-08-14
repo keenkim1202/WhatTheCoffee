@@ -29,7 +29,10 @@ enum NavigationBarAppearance {
     navigationBar.standardAppearance = appearance
     navigationBar.compactAppearance = appearance
     navigationBar.scrollEdgeAppearance = appearance
+    navigationBar.compactScrollEdgeAppearance = appearance
     navigationBar.tintColor = .orangeMainColor
+    // 콘텐츠가 바 아래로 지나갈 때 반투명 재질이 비치면 배경보다 밝은 띠로 보인다.
+    navigationBar.isTranslucent = false
   }
 
   /// iOS 26은 바 버튼 뒤에 유리 재질 배경을 깔아준다. 앱의 평평한 톤과 어울리지 않아 끈다.

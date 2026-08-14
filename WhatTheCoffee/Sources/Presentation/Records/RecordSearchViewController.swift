@@ -122,10 +122,10 @@ class RecordSearchViewController: UIViewController {
     view.addSubview(emptyView)
 
     NSLayoutConstraint.activate([
-      searchCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      searchCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      searchCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      searchCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      searchCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      searchCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      searchCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      searchCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
       emptyView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       emptyView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
