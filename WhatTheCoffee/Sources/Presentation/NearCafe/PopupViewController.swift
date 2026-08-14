@@ -71,6 +71,9 @@ class PopupViewController: BaseViewController {
   }()
 
   // MARK: - Init
+  /// 가게 정보를 어디에 띄울지는 Coordinator가 정한다.
+  var onShowPlaceInfo: (() -> Void)?
+
   init(cafe: NearCafeEntity) {
     self.cafe = cafe
     super.init(nibName: nil, bundle: nil)
@@ -145,10 +148,6 @@ class PopupViewController: BaseViewController {
   }
 
   @objc private func onDetailInfo() {
-    let vc = SettingDetailViewController(url: cafe.placeUrl)
-    vc.title = cafe.name
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
+    onShowPlaceInfo?()
   }
 }

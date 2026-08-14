@@ -46,6 +46,17 @@ final class AddRecordCoordinator: Coordinator {
     searchViewController.delegate = viewController
     searchViewController.initialQuery = viewController.searchQuery
 
+    searchViewController.onShowCafeDetail = { [weak searchViewController] cafe, confirm in
+      guard let searchViewController else { return }
+      let detail = CafeSearchDetailViewController()
+      detail.nearCafe = cafe
+      detail.onSelect = confirm
+
+      let navigation = UINavigationController(rootViewController: detail)
+      navigation.modalPresentationStyle = .fullScreen
+      searchViewController.present(navigation, animated: true)
+    }
+
     if let sheet = searchViewController.sheetPresentationController {
       sheet.detents = [.medium(), .large()]
       sheet.prefersGrabberVisible = true

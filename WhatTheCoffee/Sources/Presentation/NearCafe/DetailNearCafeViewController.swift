@@ -6,10 +6,10 @@ class DetailNearCafeViewController: BaseViewController {
 
   // MARK: - Properties
   let nearCafe: NearCafeEntity
-  private let container: DIContainer
 
-  /// 기록 추가 흐름이 끝날 때까지 붙들고 있어야 한다. 놓으면 시트를 띄울 주체가 사라진다.
-  private var addRecordCoordinator: AddRecordCoordinator?
+  /// 이 화면에서 이어지는 곳은 Coordinator가 정한다.
+  var onStartRecord: ((SelectedLocation) -> Void)?
+  var onShowPlaceInfo: (() -> Void)?
 
   // MARK: - UI
   private let infoTitleLabel: UILabel = {
@@ -70,9 +70,8 @@ class DetailNearCafeViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(nearCafe: NearCafeEntity, container: DIContainer) {
+  init(nearCafe: NearCafeEntity) {
     self.nearCafe = nearCafe
-    self.container = container
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -181,24 +180,10 @@ class DetailNearCafeViewController: BaseViewController {
       latitude: nearCafe.latitude,
       longitude: nearCafe.longitude)
 
-    // 직접 만들면 카페 검색 시트를 띄울 사람이 없어 "검색해서 위치 기록"이 아무 일도 하지 않는다.
-    let coordinator = AddRecordCoordinator(
-      presenter: self,
-      container: container,
-      prefilledLocation: location)
-    coordinator.onFinish = { [weak self] in
-      self?.addRecordCoordinator = nil
-    }
-
-    addRecordCoordinator = coordinator
-    coordinator.start()
+    onStartRecord?(location)
   }
 
   @objc private func onDetailInfo() {
-    let vc = SettingDetailViewController(url: nearCafe.placeUrl)
-    vc.title = nearCafe.name
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
+    onShowPlaceInfo?()
   }
 }

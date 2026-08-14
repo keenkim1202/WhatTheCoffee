@@ -24,10 +24,14 @@ final class AppCoordinator: Coordinator {
     addChild(records)
     recordsCoordinator = records
 
+    let nearCafe = NearCafeCoordinator(container: container)
+    nearCafe.start()
+    addChild(nearCafe)
+
     tabBarController.viewControllers = [
       records.navigationController,
       makeRecommendTab(),
-      makeNearCafeTab(),
+      nearCafe.navigationController,
       makeStatisticsTab()
     ]
     tabBarController.selectedIndex = Self.defaultTabIndex
@@ -63,17 +67,6 @@ final class AppCoordinator: Coordinator {
       title: "추천",
       image: UIImage(systemName: "heart"),
       selectedImage: UIImage(systemName: "heart.fill"))
-    return navigation
-  }
-
-  private func makeNearCafeTab() -> UIViewController {
-    let vc = NearCafeViewController(viewModel: container.makeNearCafeViewModel(), container: container)
-
-    let navigation = UINavigationController(rootViewController: vc)
-    navigation.tabBarItem = UITabBarItem(
-      title: "근처 카페",
-      image: UIImage(systemName: "mappin.circle"),
-      selectedImage: UIImage(systemName: "mappin.circle.fill"))
     return navigation
   }
 
