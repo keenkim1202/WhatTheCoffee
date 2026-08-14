@@ -1,10 +1,11 @@
 import Foundation
 import RealmSwift
 
+/// 앱의 의존성을 만드는 유일한 자리.
+/// AppCoordinator가 소유하고, 필요한 곳에는 만들어진 것만 건네준다.
 final class DIContainer {
-  static let shared = DIContainer()
 
-  static let appGroupID = "group.keen.WhatTheCoffee"
+  private static let appGroupID = "group.keen.WhatTheCoffee"
 
 
   // MARK: - DataSource
@@ -39,8 +40,9 @@ final class DIContainer {
   }
 
   // MARK: - Repository
-  lazy var coffeeRepository: CoffeeRepositoryProtocol = CoffeeRepositoryImpl(dataSource: realmDataSource)
-  lazy var cafeRepository: CafeRepositoryProtocol = CafeRepositoryImpl(dataSource: realmDataSource)
+  /// 바깥에 열어두면 화면이 UseCase를 건너뛰고 저장소를 직접 만지게 된다.
+  private lazy var coffeeRepository: CoffeeRepositoryProtocol = CoffeeRepositoryImpl(dataSource: realmDataSource)
+  private lazy var cafeRepository: CafeRepositoryProtocol = CafeRepositoryImpl(dataSource: realmDataSource)
 
   // MARK: - UseCase
   func makeRecommendCoffeeUseCase() -> RecommendCoffeeUseCase {
