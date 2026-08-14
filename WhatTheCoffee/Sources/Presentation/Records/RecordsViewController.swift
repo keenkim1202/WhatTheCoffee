@@ -19,7 +19,13 @@ class RecordsViewController: BaseViewController {
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
   var dictionarySelectedIndexPath: [IndexPath: Bool] = [:]
   let viewModel: RecordsViewModel
-  let container: DIContainer
+
+  /// 화면 전환은 Coordinator가 맡는다. 이 화면은 무엇이 일어났는지만 알린다.
+  var onShowMap: (() -> Void)?
+  var onAddRecord: (() -> Void)?
+  var onEditRecord: ((CafeEntity) -> Void)?
+
+  private let searchResultsController: UIViewController
 
   var modeType: ModeType = .view {
     didSet {
@@ -103,9 +109,9 @@ class RecordsViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(viewModel: RecordsViewModel, container: DIContainer) {
+  init(viewModel: RecordsViewModel, searchResultsController: UIViewController) {
     self.viewModel = viewModel
-    self.container = container
+    self.searchResultsController = searchResultsController
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -183,8 +189,7 @@ class RecordsViewController: BaseViewController {
   }
 
   private func configureSearchController() {
-    let searchVC = RecordSearchViewController(viewModel: container.makeRecordSearchViewModel(), container: container)
-    let searchController = UISearchController(searchResultsController: searchVC)
+    let searchController = UISearchController(searchResultsController: searchResultsController)
 
     searchController.searchBar.setImage(UIImage(), for: UISearchBar.Icon.search, state: .normal)
     searchController.searchBar.delegate = self
@@ -223,20 +228,11 @@ class RecordsViewController: BaseViewController {
   }
 
   @objc private func onMap() {
-    let vc = RecordMapViewController(container: container)
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
-  }
-
-  /// 위젯에서 바로 기록을 시작할 때 쓴다.
-  func presentAddRecord() {
-    onAdd()
+    onShowMap?()
   }
 
   @objc private func onAdd() {
-    let vc = AddRecordViewController(viewModel: container.makeAddRecordViewModel())
-    present(vc, animated: true)
+    onAddRecord?()
   }
 }
 
@@ -250,9 +246,7 @@ extension RecordsViewController: UICollectionViewDelegate {
     switch modeType {
     case .view:
       recordCollectionView.deselectItem(at: indexPath, animated: true)
-      let cafe = viewModel.cafe(at: indexPath.item)
-      let vc = AddRecordViewController(viewModel: container.makeAddRecordViewModel(cafe: cafe))
-      present(vc, animated: true)
+      onEditRecord?(viewModel.cafe(at: indexPath.item))
     case .edit:
       dictionarySelectedIndexPath[indexPath] = true
     }

@@ -10,7 +10,9 @@ class RecordSearchViewController: UIViewController {
 
   // MARK: - Properties
   let viewModel: RecordSearchViewModel
-  let container: DIContainer
+
+  /// 고른 기록을 어떻게 열지는 Coordinator가 정한다.
+  var onSelectCafe: ((CafeEntity) -> Void)?
   let cellInsets = UIEdgeInsets(top: Metric.spacing, left: Metric.spacing, bottom: Metric.spacing, right: Metric.spacing)
 
   // MARK: - UI
@@ -61,9 +63,8 @@ class RecordSearchViewController: UIViewController {
   }()
 
   // MARK: - Init
-  init(viewModel: RecordSearchViewModel, container: DIContainer) {
+  init(viewModel: RecordSearchViewModel) {
     self.viewModel = viewModel
-    self.container = container
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -157,9 +158,7 @@ extension RecordSearchViewController: UICollectionViewDelegate {
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     searchCollectionView.deselectItem(at: indexPath, animated: true)
-    let cafe = viewModel.cafe(at: indexPath.item)
-    let vc = AddRecordViewController(viewModel: container.makeAddRecordViewModel(cafe: cafe))
-    present(vc, animated: true)
+    onSelectCafe?(viewModel.cafe(at: indexPath.item))
   }
 }
 

@@ -6,16 +6,16 @@ class RecordMapViewController: BaseViewController {
 
   // MARK: - Properties
   let viewModel: RecordsViewModel
-  let container: DIContainer
+  private let checkClosedUseCase: CheckClosedCafeUseCase
   private var naverMapView: NMFNaverMapView!
   private let locationManager = CLLocationManager()
   private var myLocation: CLLocationCoordinate2D?
   private var markers: [NMFMarker] = []
 
   // MARK: - Init
-  init(container: DIContainer) {
-    self.container = container
-    self.viewModel = container.makeRecordsViewModel()
+  init(viewModel: RecordsViewModel, checkClosedUseCase: CheckClosedCafeUseCase) {
+    self.viewModel = viewModel
+    self.checkClosedUseCase = checkClosedUseCase
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -126,11 +126,10 @@ class RecordMapViewController: BaseViewController {
   }
 
   @objc private func onCheckClosed() {
-    let useCase = container.makeCheckClosedCafeUseCase()
     navigationItem.rightBarButtonItem?.isEnabled = false
     title = "폐점 여부 확인 중..."
 
-    useCase.checkAll { [weak self] closedCount in
+    checkClosedUseCase.checkAll { [weak self] closedCount in
       guard let self else { return }
       title = "나의 카페 지도"
       navigationItem.rightBarButtonItem?.isEnabled = true
