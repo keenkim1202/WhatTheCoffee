@@ -8,19 +8,25 @@ struct AddVisitIntent: AppIntent {
   static var title: LocalizedStringResource = "한 잔 더 기록"
   static var description = IntentDescription("최근 방문한 카페를 오늘 한 번 더 방문한 것으로 기록합니다.")
 
+  /// 이름이 같은 기록이 여럿일 수 있어 어느 기록인지는 기본키로 가린다.
+  @Parameter(title: "기록 식별자")
+  var id: String
+
   @Parameter(title: "카페 이름")
   var name: String
 
   init() {
+    self.id = ""
     self.name = ""
   }
 
-  init(name: String) {
+  init(id: String, name: String) {
+    self.id = id
     self.name = name
   }
 
   func perform() async throws -> some IntentResult {
-    RealmProvider.addVisit(cafeNamed: name)
+    RealmProvider.addVisit(id: id, fallbackName: name)
     WidgetCenter.shared.reloadAllTimelines()
     return .result()
   }

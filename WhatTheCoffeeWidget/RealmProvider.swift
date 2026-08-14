@@ -1,4 +1,6 @@
 import Foundation
+import CoreLocation
+import Realm
 import RealmSwift
 
 /// 앱 그룹 컨테이너의 Realm을 읽기 전용으로 열어 위젯에 필요한 값만 뽑아온다.
@@ -6,7 +8,10 @@ import RealmSwift
 enum RealmProvider {
   static let appGroupID = "group.keen.WhatTheCoffee"
 
-  static func snapshot(now: Date = Date(), calendar: Calendar = .current) -> CafeVisitSnapshot? {
+  static func snapshot(mode: WidgetDisplayMode = .recent,
+                       location: CLLocation? = nil,
+                       now: Date = Date(),
+                       calendar: Calendar = .current) -> CafeVisitSnapshot? {
     guard let realm = openRealm() else { return nil }
 
     let cafes = realm.objects(Cafe.self).sorted(byKeyPath: "visitDate", ascending: false)
@@ -20,30 +25,63 @@ enum RealmProvider {
     let monthlyCount = cafes
       .filter("visitDate >= %@ AND visitDate < %@", startOfMonth, startOfNextMonth)
       .reduce(0) { $0 + max(1, $1.visitCount) }
-    let recent = cafes.first.map {
-      CafeVisitSnapshot.Visit(name: $0.name, visitDate: $0.visitDate, rate: $0.rate)
-    }
-
     let totalCount = cafes.reduce(0) { $0 + max(1, $1.visitCount) }
-    return CafeVisitSnapshot(monthlyCount: monthlyCount, totalCount: totalCount, recent: recent)
+
+    let picked = pick(mode: mode, location: location, from: cafes)
+    return CafeVisitSnapshot(
+      monthlyCount: monthlyCount,
+      totalCount: totalCount,
+      featured: picked.featured,
+      fallback: picked.fallback)
   }
 
-  /// 이름이 같은 가장 최근 기록의 방문 횟수를 올리고 날짜를 오늘로 옮긴다.
+  /// 고른 카페와, 원하는 기준으로 고르지 못했다면 그 이유.
+  /// 가까운 곳을 못 찾았을 때 빈 화면을 두는 대신 최근 방문을 보여주고 왜 그런지 밝힌다.
+  private static func pick(mode: WidgetDisplayMode,
+                           location: CLLocation?,
+                           from cafes: Results<Cafe>) -> (featured: CafeVisitSnapshot.Featured?, fallback: CafeVisitSnapshot.Fallback?) {
+    let recent = cafes.first.map { CafeVisitSnapshot.Featured(cafe: $0, distance: nil) }
+    guard mode == .nearest else { return (recent, nil) }
+
+    guard let location else { return (recent, .locationUnavailable) }
+
+    // 좌표는 나중에 생긴 항목이라 예전 기록에는 없다. 폐점한 곳으로 부를 이유도 없다.
+    let measured = cafes.compactMap { cafe -> (Cafe, CLLocationDistance)? in
+      guard !cafe.isClosed, let latitude = cafe.latitude, let longitude = cafe.longitude else { return nil }
+      return (cafe, CLLocation(latitude: latitude, longitude: longitude).distance(from: location))
+    }
+
+    guard let nearest = measured.min(by: { $0.1 < $1.1 }) else { return (recent, .noCoordinates) }
+    return (CafeVisitSnapshot.Featured(cafe: nearest.0, distance: nearest.1), nil)
+  }
+
+  /// 위젯에 떠 있던 그 기록의 방문 횟수를 올리고 날짜를 오늘로 옮긴다.
   /// 같은 내용의 기록을 여러 건 만들면 목록이 중복으로 채워진다.
   /// 위젯에서 새 카페를 만들 수는 없으므로, 기록이 없으면 아무것도 하지 않는다.
-  static func addVisit(cafeNamed name: String) {
+  static func addVisit(id: String, fallbackName: String) {
     guard let realm = openRealm() else { return }
-
-    let target = realm.objects(Cafe.self)
-      .filter("name == %@", name)
-      .sorted(byKeyPath: "visitDate", ascending: false)
-      .first
-    guard let target else { return }
+    guard let target = cafe(withID: id, in: realm) ?? mostRecentCafe(named: fallbackName, in: realm) else {
+      return
+    }
 
     try? realm.write {
       target.visitCount = max(1, target.visitCount) + 1
       target.visitDate = Date()
     }
+  }
+
+  private static func cafe(withID id: String, in realm: Realm) -> Cafe? {
+    guard let objectID = try? ObjectId(string: id) else { return nil }
+    return realm.object(ofType: Cafe.self, forPrimaryKey: objectID)
+  }
+
+  /// 아직 기본키를 담지 않은 채로 그려진 위젯이 남아 있을 때만 쓰이는 대비책.
+  /// 이름이 같은 곳이 여럿이면 어느 하나로 정해지므로 기본키가 있으면 그쪽을 먼저 본다.
+  private static func mostRecentCafe(named name: String, in realm: Realm) -> Cafe? {
+    return realm.objects(Cafe.self)
+      .filter("name == %@", name)
+      .sorted(byKeyPath: "visitDate", ascending: false)
+      .first
   }
 
   private static func openRealm() -> Realm? {
@@ -68,24 +106,83 @@ enum RealmProvider {
 }
 
 struct CafeVisitSnapshot {
-  struct Visit {
+  /// 위젯이 골라 보여주는 한 곳.
+  struct Featured {
+    /// 이름은 같은 곳이 여럿일 수 있어 기록을 가리키는 데 쓸 수 없다.
+    let id: String
     let name: String
     let visitDate: Date
     let rate: Int
+    let visitCount: Int
+    /// 현재 위치에서의 거리. 가까운 순으로 골랐을 때만 있다.
+    let distance: CLLocationDistance?
+
+    init(id: String, name: String, visitDate: Date, rate: Int, visitCount: Int, distance: CLLocationDistance?) {
+      self.id = id
+      self.name = name
+      self.visitDate = visitDate
+      self.rate = rate
+      self.visitCount = max(1, visitCount)
+      self.distance = distance
+    }
+
+    init(cafe: Cafe, distance: CLLocationDistance?) {
+      self.init(
+        id: cafe._id.stringValue,
+        name: cafe.name,
+        visitDate: cafe.visitDate,
+        rate: cafe.rate,
+        visitCount: cafe.visitCount,
+        distance: distance)
+    }
+  }
+
+  /// 가까운 곳을 보여주려다 실패한 이유. 대신 최근 방문을 보여준다.
+  enum Fallback {
+    case locationUnavailable
+    case noCoordinates
+
+    var message: String {
+      switch self {
+      case .locationUnavailable: return "위치를 못 찾아 최근 방문"
+      case .noCoordinates: return "위치 있는 기록이 없어 최근 방문"
+      }
+    }
   }
 
   let monthlyCount: Int
   let totalCount: Int
-  let recent: Visit?
+  let featured: Featured?
+  let fallback: Fallback?
 }
 
 extension CafeVisitSnapshot {
   /// 아직 기록이 없거나 앱 그룹 컨테이너를 열지 못했을 때 보여줄 값.
-  static let empty = CafeVisitSnapshot(monthlyCount: 0, totalCount: 0, recent: nil)
+  static let empty = CafeVisitSnapshot(monthlyCount: 0, totalCount: 0, featured: nil, fallback: nil)
 
   /// 위젯 갤러리와 프리뷰에서 쓰는 예시 데이터.
   static let sample = CafeVisitSnapshot(
     monthlyCount: 12,
     totalCount: 143,
-    recent: Visit(name: "언더프레셔", visitDate: Date(timeIntervalSinceNow: -3600 * 5), rate: 4))
+    featured: Featured(
+      id: "",
+      name: "언더프레셔",
+      visitDate: Date(timeIntervalSinceNow: -3600 * 5),
+      rate: 4,
+      visitCount: 3,
+      distance: nil),
+    fallback: nil)
+
+  /// 가까운 곳 모드의 예시. 갤러리에서 두 모드가 어떻게 다른지 보여준다.
+  static let nearbySample = CafeVisitSnapshot(
+    monthlyCount: 12,
+    totalCount: 143,
+    featured: Featured(
+      id: "",
+      name: "언더프레셔",
+      visitDate: Date(timeIntervalSinceNow: -3600 * 24 * 6),
+      rate: 4,
+      visitCount: 3,
+      distance: 320),
+    fallback: nil)
 }
