@@ -6,8 +6,6 @@ final class DIContainer {
 
   static let appGroupID = "group.keen.WhatTheCoffee"
 
-  /// 위젯의 RealmProvider와 같은 값을 써야 한다.
-  private static let realmSchemaVersion: UInt64 = 3
 
   // MARK: - DataSource
   private lazy var realmDataSource: RealmDataSource = {
@@ -22,7 +20,7 @@ final class DIContainer {
     let legacyURL = Realm.Configuration.defaultConfiguration.fileURL
 
     guard let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID) else {
-      return Realm.Configuration(schemaVersion: realmSchemaVersion, migrationBlock: { _, _ in })
+      return Realm.Configuration(schemaVersion: RealmSchema.version, migrationBlock: RealmSchema.migrationBlock)
     }
 
     let sharedURL = containerURL.appendingPathComponent("default.realm")
@@ -33,11 +31,11 @@ final class DIContainer {
       do {
         try FileManager.default.copyItem(at: legacyURL, to: sharedURL)
       } catch {
-        return Realm.Configuration(fileURL: legacyURL, schemaVersion: realmSchemaVersion, migrationBlock: { _, _ in })
+        return Realm.Configuration(fileURL: legacyURL, schemaVersion: RealmSchema.version, migrationBlock: RealmSchema.migrationBlock)
       }
     }
 
-    return Realm.Configuration(fileURL: sharedURL, schemaVersion: realmSchemaVersion, migrationBlock: { _, _ in })
+    return Realm.Configuration(fileURL: sharedURL, schemaVersion: RealmSchema.version, migrationBlock: RealmSchema.migrationBlock)
   }
 
   // MARK: - Repository

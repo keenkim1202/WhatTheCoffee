@@ -15,16 +15,16 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
   }
 
   @discardableResult
-  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?) -> CafeEntity {
-    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address)
+  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitCount: Int) -> CafeEntity {
+    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address, visitCount: visitCount)
     dataSource.add(object)
     reloadWidget()
     return CafeMapper.toEntity(object)
   }
 
-  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?) {
+  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitCount: Int) {
     guard let objectId = try? ObjectId(string: id) else { return }
-    var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": visitDate, "comment": comment ?? "", "rate": rate]
+    var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": visitDate, "comment": comment ?? "", "rate": rate, "visitCount": max(1, visitCount)]
     if let latitude { value["latitude"] = latitude }
     if let longitude { value["longitude"] = longitude }
     if let address { value["address"] = address }

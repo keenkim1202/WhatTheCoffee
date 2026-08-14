@@ -121,12 +121,25 @@ class RecordsViewController: BaseViewController {
     configureLayout()
     configure()
     bindViewModel()
+    observeForeground()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     Analytics.logEvent("TAB_records", parameters: nil)
     viewModel.fetchData()
+  }
+
+  /// 위젯에서 방문을 기록하면 앱은 백그라운드에 있다.
+  /// 이 탭이 이미 떠 있는 상태로 돌아오면 viewWillAppear가 불리지 않아 예전 목록이 그대로 남는다.
+  private func observeForeground() {
+    NotificationCenter.default.addObserver(
+      forName: UIApplication.didBecomeActiveNotification,
+      object: nil,
+      queue: .main) { [weak self] _ in
+        guard let self, viewIfLoaded?.window != nil else { return }
+        viewModel.fetchData()
+      }
   }
 
   private func bindViewModel() {

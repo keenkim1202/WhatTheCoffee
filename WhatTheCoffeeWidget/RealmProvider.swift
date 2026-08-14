@@ -17,36 +17,32 @@ enum RealmProvider {
       return nil
     }
 
-    let monthlyCount = cafes.filter("visitDate >= %@ AND visitDate < %@", startOfMonth, startOfNextMonth).count
+    let monthlyCount = cafes
+      .filter("visitDate >= %@ AND visitDate < %@", startOfMonth, startOfNextMonth)
+      .reduce(0) { $0 + max(1, $1.visitCount) }
     let recent = cafes.first.map {
       CafeVisitSnapshot.Visit(name: $0.name, visitDate: $0.visitDate, rate: $0.rate)
     }
 
-    return CafeVisitSnapshot(monthlyCount: monthlyCount, totalCount: cafes.count, recent: recent)
+    let totalCount = cafes.reduce(0) { $0 + max(1, $1.visitCount) }
+    return CafeVisitSnapshot(monthlyCount: monthlyCount, totalCount: totalCount, recent: recent)
   }
 
-  /// 이름이 같은 가장 최근 기록을 복제해 오늘 방문으로 남긴다.
+  /// 이름이 같은 가장 최근 기록의 방문 횟수를 올리고 날짜를 오늘로 옮긴다.
+  /// 같은 내용의 기록을 여러 건 만들면 목록이 중복으로 채워진다.
   /// 위젯에서 새 카페를 만들 수는 없으므로, 기록이 없으면 아무것도 하지 않는다.
   static func addVisit(cafeNamed name: String) {
     guard let realm = openRealm() else { return }
 
-    let source = realm.objects(Cafe.self)
+    let target = realm.objects(Cafe.self)
       .filter("name == %@", name)
       .sorted(byKeyPath: "visitDate", ascending: false)
       .first
-    guard let source else { return }
-
-    let visit = Cafe(
-      name: source.name,
-      visitDate: Date(),
-      comment: nil,
-      rate: source.rate,
-      latitude: source.latitude,
-      longitude: source.longitude,
-      address: source.address)
+    guard let target else { return }
 
     try? realm.write {
-      realm.add(visit)
+      target.visitCount = max(1, target.visitCount) + 1
+      target.visitDate = Date()
     }
   }
 
@@ -63,8 +59,8 @@ enum RealmProvider {
 
     let config = Realm.Configuration(
       fileURL: realmURL,
-      schemaVersion: 3,
-      migrationBlock: { _, _ in },
+      schemaVersion: RealmSchema.version,
+      migrationBlock: RealmSchema.migrationBlock,
       objectTypes: [Cafe.self])
 
     return try? Realm(configuration: config)

@@ -41,6 +41,31 @@ class AddRecordViewController: BaseViewController {
     return indicator
   }()
 
+  private let visitCountField: UITextField = {
+    let field = UITextField()
+    field.font = UIFont(name: "GowunBatang-Bold", size: 17)
+    field.textColor = .orangeMainColor
+    field.textAlignment = .center
+    field.keyboardType = .numberPad
+    field.text = "1"
+    field.translatesAutoresizingMaskIntoConstraints = false
+    return field
+  }()
+
+  private let decreaseVisitButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+    button.tintColor = UIColor(named: "GreenMainColor")
+    return button
+  }()
+
+  private let increaseVisitButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+    button.tintColor = UIColor(named: "GreenMainColor")
+    return button
+  }()
+
   private let recordImageView: UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFit
@@ -204,6 +229,7 @@ class AddRecordViewController: BaseViewController {
   // MARK: - Configure
   private func configureFromViewModel() {
     recordImageView.image = viewModel.currentImage
+    visitCountField.text = "\(viewModel.visitCount)"
     titleTextField.text = viewModel.currentName
     dateTextField.text = viewModel.currentDate
 
@@ -302,6 +328,23 @@ class AddRecordViewController: BaseViewController {
     commentStack.spacing = 15
     commentStack.translatesAutoresizingMaskIntoConstraints = false
 
+    // 방문 횟수 섹션
+    let visitCountSectionLabel = makeSectionLabel("방문 횟수")
+    decreaseVisitButton.addTarget(self, action: #selector(onDecreaseVisit), for: .touchUpInside)
+    increaseVisitButton.addTarget(self, action: #selector(onIncreaseVisit), for: .touchUpInside)
+    visitCountField.delegate = self
+
+    let visitCountRow = UIStackView(arrangedSubviews: [decreaseVisitButton, visitCountField, increaseVisitButton])
+    visitCountRow.axis = .horizontal
+    visitCountRow.spacing = 12
+    visitCountRow.alignment = .center
+
+    let visitCountStack = UIStackView(arrangedSubviews: [visitCountSectionLabel, visitCountRow])
+    visitCountStack.axis = .vertical
+    visitCountStack.alignment = .center
+    visitCountStack.spacing = 10
+    visitCountStack.translatesAutoresizingMaskIntoConstraints = false
+
     // 위치 섹션
     let locationSectionLabel = makeSectionLabel("위치 기록")
 
@@ -336,7 +379,7 @@ class AddRecordViewController: BaseViewController {
     locationStack.translatesAutoresizingMaskIntoConstraints = false
 
     // 전체 스택
-    let mainStack = UIStackView(arrangedSubviews: [imageStack, titleStack, locationStack, dateStack, rateStack, commentStack])
+    let mainStack = UIStackView(arrangedSubviews: [imageStack, titleStack, locationStack, dateStack, visitCountStack, rateStack, commentStack])
     mainStack.axis = .vertical
     mainStack.alignment = .center
     mainStack.spacing = 40
@@ -414,6 +457,13 @@ class AddRecordViewController: BaseViewController {
       locationTextView.heightAnchor.constraint(equalToConstant: ceil(UIFont.GowunBatang(type: .regular, size: 13).lineHeight * 2)),
       locationActionRow.leadingAnchor.constraint(equalTo: locationStack.leadingAnchor),
       locationActionRow.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
+
+      // 방문 횟수 섹션
+      visitCountStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor, constant: 10),
+      visitCountStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
+      visitCountSectionLabel.leadingAnchor.constraint(equalTo: visitCountStack.leadingAnchor),
+      visitCountSectionLabel.trailingAnchor.constraint(equalTo: visitCountStack.trailingAnchor),
+      visitCountField.widthAnchor.constraint(equalToConstant: 60),
 
       // 평점 섹션
       rateStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor),
@@ -529,8 +579,26 @@ class AddRecordViewController: BaseViewController {
     }
   }
 
+  @objc private func onDecreaseVisit() {
+    updateVisitCount(viewModel.visitCount - 1)
+  }
+
+  @objc private func onIncreaseVisit() {
+    updateVisitCount(viewModel.visitCount + 1)
+  }
+
+  /// 0회 방문은 기록이 아니므로 1 아래로는 내려가지 않는다.
+  private func updateVisitCount(_ count: Int) {
+    viewModel.visitCount = max(1, count)
+    visitCountField.text = "\(viewModel.visitCount)"
+  }
+
   // MARK: - Actions
   @objc private func onDone() {
+    // 방문 횟수를 타이핑한 채로 바로 저장을 누르면 편집이 끝나지 않아
+    // textFieldDidEndEditing이 불리지 않는다. 입력한 값이 그대로 버려진다.
+    view.endEditing(true)
+
     guard let text = titleTextField.text else { return }
     if text.isEmpty {
       showErrorAlert("카페명을 입력해주세요.")
@@ -616,6 +684,12 @@ extension AddRecordViewController: UITextFieldDelegate {
       dateTextField.becomeFirstResponder()
     }
     return true
+  }
+
+  /// 직접 타이핑한 값도 뷰모델에 반영한다. 비우거나 0을 넣으면 1로 되돌린다.
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    guard textField == visitCountField else { return }
+    updateVisitCount(Int(textField.text ?? "") ?? 1)
   }
 }
 
