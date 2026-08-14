@@ -5,7 +5,10 @@ class RecommendViewController: BaseViewController {
 
   // MARK: - Properties
   let viewModel: RecommendViewModel
-  let container: DIContainer
+
+  /// 화면 전환은 Coordinator가 맡는다.
+  var onShowSetting: (() -> Void)?
+  var onShowCoffeeList: (() -> Void)?
   let buttonCornerRadius: CGFloat = 20
 
   // MARK: - UI
@@ -62,9 +65,8 @@ class RecommendViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(viewModel: RecommendViewModel, container: DIContainer) {
+  init(viewModel: RecommendViewModel) {
     self.viewModel = viewModel
-    self.container = container
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -149,17 +151,11 @@ class RecommendViewController: BaseViewController {
 
   // MARK: - Actions
   @objc private func onInfo() {
-    let vc = SettingViewController(container: container)
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
+    onShowSetting?()
   }
 
   @objc private func onCoffeeList() {
-    let vc = CoffeeListViewController(viewModel: container.makeCoffeeListViewModel(), container: container)
-    let nav = UINavigationController(rootViewController: vc)
-    nav.modalPresentationStyle = .fullScreen
-    present(nav, animated: true)
+    onShowCoffeeList?()
   }
 
   @objc private func onRecommend() {

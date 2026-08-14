@@ -67,6 +67,13 @@ final class DIContainer {
     FetchStatisticsUseCase(repository: cafeRepository)
   }
 
+  func makeManageDefaultDataUseCase() -> ManageDefaultDataUseCase {
+    ManageDefaultDataUseCase(
+      coffeeRepository: coffeeRepository,
+      cafeRepository: cafeRepository,
+      imageUseCase: makeManageImageUseCase())
+  }
+
   func makeManageImageUseCase() -> ManageImageUseCase {
     ManageImageUseCase()
   }

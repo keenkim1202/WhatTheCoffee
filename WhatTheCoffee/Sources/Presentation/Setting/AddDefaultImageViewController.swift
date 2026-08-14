@@ -3,7 +3,7 @@ import UIKit
 class AddDefaultImageViewController: BaseViewController {
 
   // MARK: - Property
-  let container: DIContainer
+  private let defaultDataUseCase: ManageDefaultDataUseCase
 
   // MARK: - UI
   private let tableView: UITableView = {
@@ -16,8 +16,8 @@ class AddDefaultImageViewController: BaseViewController {
   }()
 
   // MARK: - Init
-  init(container: DIContainer) {
-    self.container = container
+  init(defaultDataUseCase: ManageDefaultDataUseCase) {
+    self.defaultDataUseCase = defaultDataUseCase
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -104,28 +104,16 @@ extension AddDefaultImageViewController: UITableViewDelegate, UITableViewDataSou
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    let repo = container.coffeeRepository
 
-    if indexPath.section == 0 {
-      let iceCoffee = CoffeeNameList.defaultIceCoffeeList[indexPath.row]
-      let image = UIImage(named: iceCoffee) ?? UIImage.randomCoffeeImage
-      let name = iceCoffee.replacingOccurrences(of: "_", with: " ")
+    let asset = indexPath.section == 0
+      ? CoffeeNameList.defaultIceCoffeeList[indexPath.row]
+      : CoffeeNameList.defaultHotCoffeeList[indexPath.row]
+    let name = asset.replacingOccurrences(of: "_", with: " ")
 
-      addAlert("다음 커피를 추가하시겠습니까?", name) {
-        let coffee = repo.add(name: name)
-        self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
-        self.showSuccessAlert("재추가에 성공하였습니다.")
-      }
-    } else {
-      let hotCoffee = CoffeeNameList.defaultHotCoffeeList[indexPath.row]
-      let image = UIImage(named: hotCoffee) ?? UIImage.randomCoffeeImage
-      let name = hotCoffee.replacingOccurrences(of: "_", with: " ")
-
-      addAlert("다음 커피를 추가하시겠습니까?", name) {
-        let coffee = repo.add(name: name)
-        self.saveImageToDocumentDirectory(type: .coffee, imageName: "coffee_\(coffee.id).jpg", image: image)
-        self.showSuccessAlert("재추가에 성공하였습니다.")
-      }
+    addAlert("다음 커피를 추가하시겠습니까?", name) { [weak self] in
+      guard let self else { return }
+      defaultDataUseCase.addCoffee(assetNamed: asset)
+      showSuccessAlert("재추가에 성공하였습니다.")
     }
   }
 }
