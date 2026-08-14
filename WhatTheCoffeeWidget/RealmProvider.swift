@@ -25,6 +25,31 @@ enum RealmProvider {
     return CafeVisitSnapshot(monthlyCount: monthlyCount, totalCount: cafes.count, recent: recent)
   }
 
+  /// 이름이 같은 가장 최근 기록을 복제해 오늘 방문으로 남긴다.
+  /// 위젯에서 새 카페를 만들 수는 없으므로, 기록이 없으면 아무것도 하지 않는다.
+  static func addVisit(cafeNamed name: String) {
+    guard let realm = openRealm() else { return }
+
+    let source = realm.objects(Cafe.self)
+      .filter("name == %@", name)
+      .sorted(byKeyPath: "visitDate", ascending: false)
+      .first
+    guard let source else { return }
+
+    let visit = Cafe(
+      name: source.name,
+      visitDate: Date(),
+      comment: nil,
+      rate: source.rate,
+      latitude: source.latitude,
+      longitude: source.longitude,
+      address: source.address)
+
+    try? realm.write {
+      realm.add(visit)
+    }
+  }
+
   private static func openRealm() -> Realm? {
     guard let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID) else {
       return nil

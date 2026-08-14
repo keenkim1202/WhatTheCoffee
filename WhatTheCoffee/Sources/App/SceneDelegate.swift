@@ -6,6 +6,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
   private let container = DIContainer.shared
+  private var tabBarController: UITabBarController?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -40,8 +41,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.rootViewController = tabBar
     window.makeKeyAndVisible()
     self.window = window
+    self.tabBarController = tabBar
 
     sleep(1)
+
+    // 위젯을 눌러 실행된 경우 그 화면으로 바로 보낸다.
+    if let url = connectionOptions.urlContexts.first?.url {
+      handle(url: url)
+    }
+  }
+
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let url = URLContexts.first?.url else { return }
+    handle(url: url)
+  }
+
+  private func handle(url: URL) {
+    guard let route = WidgetRoute(url: url), let index = route.tabIndex else { return }
+
+    tabBarController?.selectedIndex = index
+
+    guard route == .addRecord,
+          let navigation = tabBarController?.viewControllers?[index] as? UINavigationController,
+          let records = navigation.viewControllers.first as? RecordsViewController else { return }
+
+    records.presentAddRecord()
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

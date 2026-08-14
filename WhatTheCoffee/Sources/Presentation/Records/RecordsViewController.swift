@@ -216,6 +216,11 @@ class RecordsViewController: BaseViewController {
     present(nav, animated: true)
   }
 
+  /// 위젯에서 바로 기록을 시작할 때 쓴다.
+  func presentAddRecord() {
+    onAdd()
+  }
+
   @objc private func onAdd() {
     let vc = AddRecordViewController(viewModel: container.makeAddRecordViewModel())
     present(vc, animated: true)

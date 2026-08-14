@@ -106,6 +106,8 @@
 		1CA1CE0B2F90000C00C9DE50 /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */; };
 		1CA1CE0D2F90000E00C9DE50 /* CutoutStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */; };
 		1CA1CE0F2F90001000C9DE50 /* ListStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE102F90001100C9DE50 /* ListStatusView.swift */; };
+		1CA1CE112F90001200C9DE50 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */; };
+		1CA1CE132F90001400C9DE50 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
@@ -243,6 +245,7 @@
 		1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
 		1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutoutStatusView.swift; sourceTree = "<group>"; };
 		1CA1CE102F90001100C9DE50 /* ListStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatusView.swift; sourceTree = "<group>"; };
+		1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRoute.swift; sourceTree = "<group>"; };
 		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
 		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
@@ -598,6 +601,7 @@
 				1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */,
 				1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */,
 				1CA1CE102F90001100C9DE50 /* ListStatusView.swift */,
+				1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
 			);
 			path = Common;
@@ -808,6 +812,7 @@
 				1CA1CE0B2F90000C00C9DE50 /* NavigationBarAppearance.swift in Sources */,
 				1CA1CE0D2F90000E00C9DE50 /* CutoutStatusView.swift in Sources */,
 				1CA1CE0F2F90001000C9DE50 /* ListStatusView.swift in Sources */,
+				1CA1CE112F90001200C9DE50 /* WidgetRoute.swift in Sources */,
 				4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */,
 				80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */,
 				1C83188C2F869D3D00C9DE50 /* RecordMapViewController.swift in Sources */,
@@ -870,6 +875,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */,
+				1CA1CE132F90001400C9DE50 /* WidgetRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
