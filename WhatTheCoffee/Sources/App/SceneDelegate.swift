@@ -5,67 +5,27 @@ import FirebaseAnalytics
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
-  private let container = DIContainer.shared
-  private var tabBarController: UITabBarController?
+  private var appCoordinator: AppCoordinator?
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
 
-    let tabBar = UITabBarController()
-
-    // 추천 탭
-    let recommendVC = RecommendViewController(viewModel: container.makeRecommendViewModel(), container: container)
-    recommendVC.checkIsFirst(coffeeRepository: container.coffeeRepository, cafeRepository: container.cafeRepository)
-    let recommendNav = UINavigationController(rootViewController: recommendVC)
-    recommendNav.tabBarItem = UITabBarItem(title: "추천", image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
-
-    // 근처 카페 탭
-    let nearCafeVC = NearCafeViewController(viewModel: container.makeNearCafeViewModel(), container: container)
-    let nearCafeNav = UINavigationController(rootViewController: nearCafeVC)
-    nearCafeNav.tabBarItem = UITabBarItem(title: "근처 카페", image: UIImage(systemName: "mappin.circle"), selectedImage: UIImage(systemName: "mappin.circle.fill"))
-
-    // 기록 탭
-    let recordsVC = RecordsViewController(viewModel: container.makeRecordsViewModel(), container: container)
-    let recordsNav = UINavigationController(rootViewController: recordsVC)
-    recordsNav.tabBarItem = UITabBarItem(title: "기록", image: UIImage(systemName: "heart.text.square"), selectedImage: UIImage(systemName: "heart.text.square.fill"))
-
-    // 통계 탭
-    let statisticsVC = StatisticsViewController(viewModel: container.makeStatisticsViewModel())
-    let statisticsNav = UINavigationController(rootViewController: statisticsVC)
-    statisticsNav.tabBarItem = UITabBarItem(title: "통계", image: UIImage(systemName: "chart.bar"), selectedImage: UIImage(systemName: "chart.bar.fill"))
-
-    tabBar.viewControllers = [recordsNav, recommendNav, nearCafeNav, statisticsNav]
-    tabBar.selectedIndex = 1
-
     let window = UIWindow(windowScene: windowScene)
-    window.rootViewController = tabBar
-    window.makeKeyAndVisible()
-    self.window = window
-    self.tabBarController = tabBar
+    let coordinator = AppCoordinator(window: window, container: DIContainer.shared)
+    coordinator.start()
 
-    sleep(1)
+    self.window = window
+    self.appCoordinator = coordinator
 
     // 위젯을 눌러 실행된 경우 그 화면으로 바로 보낸다.
     if let url = connectionOptions.urlContexts.first?.url {
-      handle(url: url)
+      coordinator.handle(url: url)
     }
   }
 
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     guard let url = URLContexts.first?.url else { return }
-    handle(url: url)
-  }
-
-  private func handle(url: URL) {
-    guard let route = WidgetRoute(url: url), let index = route.tabIndex else { return }
-
-    tabBarController?.selectedIndex = index
-
-    guard route == .addRecord,
-          let navigation = tabBarController?.viewControllers?[index] as? UINavigationController,
-          let records = navigation.viewControllers.first as? RecordsViewController else { return }
-
-    records.presentAddRecord()
+    appCoordinator?.handle(url: url)
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

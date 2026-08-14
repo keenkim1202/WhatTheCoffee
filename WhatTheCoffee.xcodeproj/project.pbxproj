@@ -17,7 +17,6 @@
 		1C2206412744B41B00FDBBEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2206402744B41B00FDBBEF /* Assets.xcassets */; };
 		1C2DA394278822EB005183B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2DA393278822EB005183B2 /* CoreLocation.framework */; };
 		1C37C3582744E6CA00EC3CA3 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */; };
-		1CA1CE092F90000A00C9DE50 /* SubjectPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */; };
 		1C37C35A2744E6D500EC3CA3 /* CoffeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */; };
 		1C37C35C2744E6DD00EC3CA3 /* AddCoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */; };
 		1C37C35E2744E6EC00EC3CA3 /* NearCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */; };
@@ -66,9 +65,20 @@
 		1C8318BB2F86BC2000C9DE50 /* WhatTheCoffeeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1C8318A62F86BC1F00C9DE50 /* WhatTheCoffeeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1C8318C42F86BECC00C9DE50 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C8318C32F86BECC00C9DE50 /* RealmSwift */; };
 		1C8D4770275DFD2400A4F486 /* APIKEY.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8D476F275DFD2400A4F486 /* APIKEY.plist */; };
-		1CA1CE012F90000200C9DE50 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */; };
-		1CA1CE062F90000700C9DE50 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1C90BDFE27633DD5001618B9 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C90BDFD27633DD5001618B9 /* PopupViewController.swift */; };
+		1CA1CE012F90000200C9DE50 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */; };
+		1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
+		1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */; };
+		1CA1CE062F90000700C9DE50 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1CA1CE072F90000800C9DE50 /* SubjectCutout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */; };
+		1CA1CE092F90000A00C9DE50 /* SubjectPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */; };
+		1CA1CE0B2F90000C00C9DE50 /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */; };
+		1CA1CE0D2F90000E00C9DE50 /* CutoutStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */; };
+		1CA1CE0F2F90001000C9DE50 /* ListStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE102F90001100C9DE50 /* ListStatusView.swift */; };
+		1CA1CE112F90001200C9DE50 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */; };
+		1CA1CE132F90001400C9DE50 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */; };
+		1CA1CE142F90001500C9DE50 /* RealmSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE152F90001600C9DE50 /* RealmSchema.swift */; };
+		1CA1CE162F90001700C9DE50 /* RealmSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE152F90001600C9DE50 /* RealmSchema.swift */; };
 		1CC914E3275888A2002BD76D /* AppError.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E2275888A2002BD76D /* AppError.swift.swift */; };
 		1CC914E52758A6F4002BD76D /* NearCafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */; };
 		1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */; };
@@ -83,6 +93,7 @@
 		35FCFE435EDA3AE9AA234FD9 /* CoffeeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB8A68B90159B8F3FC2F77 /* CoffeeRepositoryImpl.swift */; };
 		36096127140F6D068AF89778 /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */; };
 		3A25DDA02E5AA6A38DA65512 /* CafeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C669A0C884DC4812959D9 /* CafeMapper.swift */; };
+		4C0FACE1E2E39C5ECF0BF765 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8925F69451D14876B166EB /* AppCoordinator.swift */; };
 		4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D131131D88D8952645A469 /* RecommendViewModel.swift */; };
 		519F6619144D556D1CD982EC /* CoffeeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */; };
 		80284E2478D04FEAD2E761B0 /* NearCafeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */; };
@@ -95,24 +106,16 @@
 		950494E52287A1144FA47FBA /* KakaoSearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0584C3D04FFE43AE9F7316B7 /* KakaoSearchResponseDTO.swift */; };
 		9D4D740A71194B0E6AA02BDF /* ManageRecordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A38218C40889C72F12F1982 /* ManageRecordsUseCase.swift */; };
 		A1879CE2F00CD73847F49D50 /* CoffeeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD4CB85FF5A9AFAC923857 /* CoffeeRepositoryProtocol.swift */; };
+		A66B5B60D11FA8B2789D8045 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B8B04FE353991B83DBA87 /* Coordinator.swift */; };
 		AA000001DICONTAINER00000001 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002DICONTAINER00000002 /* DIContainer.swift */; };
 		ADF1C56E71CD997C87B4C246 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */; };
 		BB000001IMAGEUSECASE000001 /* ManageImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */; };
+		C1F8DA8B7A354930D74E8C7A /* RecordsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E9B5ACD41612BB3FC4506 /* RecordsCoordinator.swift */; };
 		CDBFE9B16059FFA15E548557 /* RecordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */; };
 		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
-		1CA1CE032F90000400C9DE50 /* MapAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */; };
-		1CA1CE072F90000800C9DE50 /* SubjectCutout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */; };
-		1CA1CE0B2F90000C00C9DE50 /* NavigationBarAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */; };
-		1CA1CE0D2F90000E00C9DE50 /* CutoutStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */; };
-		1CA1CE0F2F90001000C9DE50 /* ListStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE102F90001100C9DE50 /* ListStatusView.swift */; };
-		1CA1CE112F90001200C9DE50 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */; };
-		1CA1CE142F90001500C9DE50 /* RealmSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE152F90001600C9DE50 /* RealmSchema.swift */; };
-		1CA1CE162F90001700C9DE50 /* RealmSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE152F90001600C9DE50 /* RealmSchema.swift */; };
-		1CA1CE132F90001400C9DE50 /* WidgetRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
-		1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,17 +130,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1CA1CE052F90000600C9DE50 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1CA1CE062F90000700C9DE50 /* RealmSwift in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1C8318BC2F86BC2000C9DE50 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,6 +139,17 @@
 				1C8318BB2F86BC2000C9DE50 /* WhatTheCoffeeWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CA1CE052F90000600C9DE50 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1CA1CE062F90000700C9DE50 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -176,7 +179,6 @@
 		1C2DA39B27882307005183B2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		1C2DA39D27882322005183B2 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		1C37C3572744E6CA00EC3CA3 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
-		1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectPickerViewController.swift; sourceTree = "<group>"; };
 		1C37C3592744E6D500EC3CA3 /* CoffeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewController.swift; sourceTree = "<group>"; };
 		1C37C35B2744E6DD00EC3CA3 /* AddCoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewController.swift; sourceTree = "<group>"; };
 		1C37C35D2744E6EC00EC3CA3 /* NearCafeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeViewController.swift; sourceTree = "<group>"; };
@@ -219,8 +221,16 @@
 		1C8318C12F86BDB600C9DE50 /* WhatTheCoffee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatTheCoffee.entitlements; sourceTree = "<group>"; };
 		1C8318C22F86BE3500C9DE50 /* WhatTheCoffeeWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatTheCoffeeWidgetExtension.entitlements; sourceTree = "<group>"; };
 		1C8D476F275DFD2400A4F486 /* APIKEY.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKEY.plist; sourceTree = "<group>"; };
-		1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1C90BDFD27633DD5001618B9 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		1CA1CE002F90000100C9DE50 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppLauncher.swift; sourceTree = "<group>"; };
+		1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCutout.swift; sourceTree = "<group>"; };
+		1CA1CE0A2F90000B00C9DE50 /* SubjectPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectPickerViewController.swift; sourceTree = "<group>"; };
+		1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
+		1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutoutStatusView.swift; sourceTree = "<group>"; };
+		1CA1CE102F90001100C9DE50 /* ListStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatusView.swift; sourceTree = "<group>"; };
+		1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRoute.swift; sourceTree = "<group>"; };
+		1CA1CE152F90001600C9DE50 /* RealmSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSchema.swift; sourceTree = "<group>"; };
 		1CC914E2275888A2002BD76D /* AppError.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift.swift; sourceTree = "<group>"; };
 		1CC914E42758A6F4002BD76D /* NearCafeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeTableViewCell.swift; sourceTree = "<group>"; };
 		1CCF0F8827550D4600B45F07 /* UIFont++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont++Extension.swift"; sourceTree = "<group>"; };
@@ -238,31 +248,27 @@
 		6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewModel.swift; sourceTree = "<group>"; };
 		73DB8A68B90159B8F3FC2F77 /* CoffeeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryImpl.swift; sourceTree = "<group>"; };
 		78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeEntity.swift; sourceTree = "<group>"; };
+		7C2B8B04FE353991B83DBA87 /* Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
 		9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMapper.swift; sourceTree = "<group>"; };
 		A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewModel.swift; sourceTree = "<group>"; };
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		1CA1CE042F90000500C9DE50 /* MapAppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppLauncher.swift; sourceTree = "<group>"; };
-		1CA1CE082F90000900C9DE50 /* SubjectCutout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCutout.swift; sourceTree = "<group>"; };
-		1CA1CE0C2F90000D00C9DE50 /* NavigationBarAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarAppearance.swift; sourceTree = "<group>"; };
-		1CA1CE0E2F90000F00C9DE50 /* CutoutStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutoutStatusView.swift; sourceTree = "<group>"; };
-		1CA1CE102F90001100C9DE50 /* ListStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatusView.swift; sourceTree = "<group>"; };
-		1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRoute.swift; sourceTree = "<group>"; };
-		1CA1CE152F90001600C9DE50 /* RealmSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSchema.swift; sourceTree = "<group>"; };
 		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		AA8925F69451D14876B166EB /* AppCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
 		B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNearCafeUseCase.swift; sourceTree = "<group>"; };
 		BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageImageUseCase.swift; sourceTree = "<group>"; };
 		BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeEntity.swift; sourceTree = "<group>"; };
 		C6BF14649F5814720E35F008 /* KakaoAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIDataSource.swift; sourceTree = "<group>"; };
+		F23E9B5ACD41612BB3FC4506 /* RecordsCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecordsCoordinator.swift; sourceTree = "<group>"; };
 		F3FD4CB85FF5A9AFAC923857 /* CoffeeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F627021097B5EB81EC818A0C /* CafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeEntity.swift; sourceTree = "<group>"; };
 		FB601088954B73FB16B1ED4F /* ManageCoffeeListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCoffeeListUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1C8318BF2F86BC2000C9DE50 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		1C8318BF2F86BC2000C9DE50 /* Exceptions for "WhatTheCoffeeWidget" folder in "WhatTheCoffeeWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -272,7 +278,18 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1C8318AB2F86BC1F00C9DE50 /* WhatTheCoffeeWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1C8318BF2F86BC2000C9DE50 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = WhatTheCoffeeWidget; sourceTree = "<group>"; };
+		1C8318AB2F86BC1F00C9DE50 /* WhatTheCoffeeWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1C8318BF2F86BC2000C9DE50 /* Exceptions for "WhatTheCoffeeWidget" folder in "WhatTheCoffeeWidgetExtension" target */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = WhatTheCoffeeWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,6 +568,7 @@
 				1C2206392744B41A00FDBBEF /* SceneDelegate.swift */,
 				1C7BC3B6278C021100424504 /* BaseViewController.swift */,
 				AA000002DICONTAINER00000002 /* DIContainer.swift */,
+				FA96979BE2907A8BF7780B54 /* Coordinator */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -632,6 +650,17 @@
 				1CC914E2275888A2002BD76D /* AppError.swift.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		FA96979BE2907A8BF7780B54 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7C2B8B04FE353991B83DBA87 /* Coordinator.swift */,
+				AA8925F69451D14876B166EB /* AppCoordinator.swift */,
+				F23E9B5ACD41612BB3FC4506 /* RecordsCoordinator.swift */,
+			);
+			name = Coordinator;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -872,6 +901,9 @@
 				1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
 				1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */,
+				A66B5B60D11FA8B2789D8045 /* Coordinator.swift in Sources */,
+				4C0FACE1E2E39C5ECF0BF765 /* AppCoordinator.swift in Sources */,
+				C1F8DA8B7A354930D74E8C7A /* RecordsCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,7 +1059,6 @@
 				CODE_SIGN_ENTITLEMENTS = WhatTheCoffee/WhatTheCoffee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
-				VERSIONING_SYSTEM = "apple-generic";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1058,6 +1089,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1070,7 +1102,6 @@
 				CODE_SIGN_ENTITLEMENTS = WhatTheCoffee/WhatTheCoffee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
-				VERSIONING_SYSTEM = "apple-generic";
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1101,6 +1132,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1296,7 +1328,7 @@
 		};
 		1C8318C32F86BECC00C9DE50 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 1C37C392274550B900EC3CA3 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
