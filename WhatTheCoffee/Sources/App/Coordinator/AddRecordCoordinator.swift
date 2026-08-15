@@ -9,6 +9,9 @@ final class AddRecordCoordinator: Coordinator {
   /// 흐름이 끝났음을 부모에게 알린다. 알리지 않으면 부모가 자식을 계속 붙들고 있는다.
   var onFinish: (() -> Void)?
 
+  /// 시트의 칸은 110pt이고 윤곽선도 240픽셀로 다시 그린다. 원본을 펼칠 이유가 없다.
+  private static let pickerPixelSize: CGFloat = 240
+
   private let presenter: UIViewController
   private let container: DIContainer
   private let cafe: CafeEntity?
@@ -48,7 +51,7 @@ final class AddRecordCoordinator: Coordinator {
   private func showCoffeePicker(from viewController: AddRecordViewController) {
     let imageUseCase = container.makeManageImageUseCase()
     let choices = container.makeManageCoffeeListUseCase().fetchAll().map {
-      CoffeePickerViewController.Choice(coffee: $0, image: imageUseCase.loadCoffeeImage(id: $0.id))
+      CoffeePickerViewController.Choice(coffee: $0, image: imageUseCase.loadCoffeeImage(id: $0.id, maxPixelSize: Self.pickerPixelSize)?.roundedCorners())
     }
 
     let picker = CoffeePickerViewController(

@@ -7,8 +7,8 @@ final class ManageImageUseCase {
     self.imageManager = imageManager
   }
 
-  func loadCoffeeImage(id: String) -> UIImage? {
-    imageManager.loadImage(type: .coffee, imageName: "coffee_\(id).jpg")
+  func loadCoffeeImage(id: String, maxPixelSize: CGFloat? = nil) -> UIImage? {
+    imageManager.loadImage(type: .coffee, imageName: "coffee_\(id).jpg", maxPixelSize: maxPixelSize)
   }
 
   func saveCoffeeImage(id: String, image: UIImage) {

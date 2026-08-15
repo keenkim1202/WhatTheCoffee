@@ -70,8 +70,10 @@ final class ImageManager {
     }
   }
 
-  func loadImage(type: DirectoryType, imageName: String) -> UIImage? {
-    return SharedImageStore.load(type: type, imageName: imageName)
+  /// maxPixelSize를 주면 그 크기로 줄여 읽는다.
+  /// 목록 셀처럼 작게 보여줄 곳에서 원본을 펼치면 스크롤할 때마다 큰 비트맵을 만든다.
+  func loadImage(type: DirectoryType, imageName: String, maxPixelSize: CGFloat? = nil) -> UIImage? {
+    return SharedImageStore.load(type: type, imageName: imageName, maxPixelSize: maxPixelSize)
   }
 
   func deleteImage(type: DirectoryType, imageName: String) {
