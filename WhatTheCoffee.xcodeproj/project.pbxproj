@@ -91,6 +91,7 @@
 		2C1B1019EBFF8EA0ABB4BDD6 /* KakaoAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF14649F5814720E35F008 /* KakaoAPIDataSource.swift */; };
 		35FCFE435EDA3AE9AA234FD9 /* CoffeeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB8A68B90159B8F3FC2F77 /* CoffeeRepositoryImpl.swift */; };
 		36096127140F6D068AF89778 /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */; };
+		395584B560B1469256CC1275 /* CoffeePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77301EEAFA119DA3817ED965 /* CoffeePickerViewController.swift */; };
 		3A25DDA02E5AA6A38DA65512 /* CafeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C669A0C884DC4812959D9 /* CafeMapper.swift */; };
 		4C0FACE1E2E39C5ECF0BF765 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8925F69451D14876B166EB /* AppCoordinator.swift */; };
 		4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D131131D88D8952645A469 /* RecommendViewModel.swift */; };
@@ -257,6 +258,7 @@
 		668F5D1F1EB41929997178FB /* SharedImageStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SharedImageStore.swift; sourceTree = "<group>"; };
 		6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewModel.swift; sourceTree = "<group>"; };
 		73DB8A68B90159B8F3FC2F77 /* CoffeeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryImpl.swift; sourceTree = "<group>"; };
+		77301EEAFA119DA3817ED965 /* CoffeePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CoffeePickerViewController.swift; sourceTree = "<group>"; };
 		78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeEntity.swift; sourceTree = "<group>"; };
 		7C2B8B04FE353991B83DBA87 /* Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */,
 				884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */,
 				A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */,
+				77301EEAFA119DA3817ED965 /* CoffeePickerViewController.swift */,
 			);
 			path = Records;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				A76056E2757825653107BFF2 /* SettingCoordinator.swift in Sources */,
 				9933FA50FA9E1B468D6B5FD8 /* ManageDefaultDataUseCase.swift in Sources */,
 				F88B5B7562EBFE08D5F9367A /* SharedImageStore.swift in Sources */,
+				395584B560B1469256CC1275 /* CoffeePickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

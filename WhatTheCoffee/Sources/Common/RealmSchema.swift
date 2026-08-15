@@ -4,7 +4,7 @@ import RealmSwift
 /// 앱과 위젯이 같은 Realm 파일을 열기 때문에 버전과 마이그레이션도 같아야 한다.
 /// 한쪽만 고치면 먼저 여는 쪽이 다르게 이전해 버린다.
 enum RealmSchema {
-  static let version: UInt64 = 5
+  static let version: UInt64 = 6
 
   static let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
     // 횟수만 세던 것을 방문마다 날짜를 남기도록 바꾼다.
@@ -17,6 +17,9 @@ enum RealmSchema {
       }
     }
   }
+
+  // coffeeName은 6에서 새로 생긴 값이라 기존 기록은 비어 있다.
+  // 무엇을 마셨는지 모르는 것과 마시지 않은 것은 다르므로 채우지 않고 그대로 둔다.
 
   /// visitCount는 스키마 4에서 생겼다가 5에서 없어졌다.
   /// Realm은 스키마에 없는 이름을 읽기만 해도 예외를 던지므로 버전을 보고 물어야 한다.

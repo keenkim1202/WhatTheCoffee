@@ -4,8 +4,8 @@ protocol CafeRepositoryProtocol {
   var count: Int { get }
 
   @discardableResult
-  func add(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date]) -> CafeEntity
-  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date])
+  func add(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?) -> CafeEntity
+  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?)
   func updateClosedStatus(id: String, isClosed: Bool)
   func remove(id: String)
   func fetch() -> [CafeEntity]
@@ -15,10 +15,10 @@ protocol CafeRepositoryProtocol {
 extension CafeRepositoryProtocol {
   @discardableResult
   func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int) -> CafeEntity {
-    return add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: nil, longitude: nil, address: nil, visitDates: [visitDate])
+    return add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: nil, longitude: nil, address: nil, visitDates: [visitDate], coffeeName: nil)
   }
 
   func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int) {
-    update(id: id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: nil, longitude: nil, address: nil, visitDates: [visitDate])
+    update(id: id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: nil, longitude: nil, address: nil, visitDates: [visitDate], coffeeName: nil)
   }
 }

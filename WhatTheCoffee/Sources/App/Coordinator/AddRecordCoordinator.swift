@@ -32,11 +32,34 @@ final class AddRecordCoordinator: Coordinator {
       guard let self, let viewController else { return }
       showCafeSearch(from: viewController)
     }
+    viewController.onPickCoffee = { [weak self, weak viewController] in
+      guard let self, let viewController else { return }
+      showCoffeePicker(from: viewController)
+    }
     viewController.onFinish = { [weak self] in
       self?.onFinish?()
     }
 
     presenter.present(viewController, animated: true)
+  }
+
+  /// 커피 목록에서 무엇을 마셨는지 고른다.
+  /// 목록은 추천 탭이 들고 있는 것과 같아서, 두 화면이 같은 커피를 가리키게 된다.
+  private func showCoffeePicker(from viewController: AddRecordViewController) {
+    let names = container.makeManageCoffeeListUseCase().fetchAll().map { $0.name }
+    let picker = CoffeePickerViewController(
+      coffeeNames: names,
+      selectedName: viewController.selectedCoffeeName)
+
+    picker.onSelect = { [weak viewController] name in
+      viewController?.applyCoffee(name)
+    }
+
+    if let sheet = picker.sheetPresentationController {
+      sheet.detents = [.medium(), .large()]
+      sheet.prefersGrabberVisible = true
+    }
+    viewController.present(picker, animated: true)
   }
 
   /// 카페 이름을 검색해 위치를 채우는 시트.
