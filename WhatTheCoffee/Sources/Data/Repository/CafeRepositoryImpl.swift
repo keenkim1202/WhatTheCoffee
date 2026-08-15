@@ -15,16 +15,18 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
   }
 
   @discardableResult
-  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitCount: Int) -> CafeEntity {
-    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address, visitCount: visitCount)
+  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date]) -> CafeEntity {
+    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address, visitDates: visitDates)
     dataSource.add(object)
     reloadWidget()
     return CafeMapper.toEntity(object)
   }
 
-  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitCount: Int) {
+  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date]) {
     guard let objectId = try? ObjectId(string: id) else { return }
-    var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": visitDate, "comment": comment ?? "", "rate": rate, "visitCount": max(1, visitCount)]
+    // 방문 날짜가 진실이고 visitDate는 그중 가장 늦은 날이어야 정렬이 맞는다.
+    let dates = (visitDates.isEmpty ? [visitDate] : visitDates).sorted()
+    var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": dates.last ?? visitDate, "comment": comment ?? "", "rate": rate, "visitDates": dates]
     if let latitude { value["latitude"] = latitude }
     if let longitude { value["longitude"] = longitude }
     if let address { value["address"] = address }

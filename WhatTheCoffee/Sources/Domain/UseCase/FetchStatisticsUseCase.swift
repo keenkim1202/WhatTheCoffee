@@ -38,15 +38,18 @@ final class FetchStatisticsUseCase {
       return (components.year!, components.month!)
     }.reversed()
 
-    let grouped = Dictionary(grouping: cafes) { cafe -> String in
-      let components = calendar.dateComponents([.year, .month], from: cafe.visitDate)
-      return "\(components.year!)-\(components.month!)"
+    // 방문마다 날짜가 남으므로 각 방문을 그 달에 센다.
+    // 마지막 방문일 하나로 세면 3월에 간 것까지 8월로 몰린다.
+    var countsByMonth: [String: Int] = [:]
+    for cafe in cafes {
+      for date in cafe.visitDates {
+        let components = calendar.dateComponents([.year, .month], from: date)
+        countsByMonth["\(components.year!)-\(components.month!)", default: 0] += 1
+      }
     }
 
     return last6Months.map { (year, month) in
-      let key = "\(year)-\(month)"
-      let count = grouped[key]?.reduce(0) { $0 + $1.visitCount } ?? 0
-      return (year: year, month: month, count: count)
+      return (year: year, month: month, count: countsByMonth["\(year)-\(month)"] ?? 0)
     }
   }
 
