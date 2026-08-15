@@ -24,6 +24,11 @@ final class ManageRecordsUseCase {
     repository.updateClosedStatus(id: id, isClosed: isClosed)
   }
 
+  @discardableResult
+  func addVisitToLatest() -> CafeEntity? {
+    return repository.addVisitToLatest()
+  }
+
   func remove(id: String) {
     repository.remove(id: id)
   }

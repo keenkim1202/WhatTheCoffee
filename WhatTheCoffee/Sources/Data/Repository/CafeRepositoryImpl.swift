@@ -42,6 +42,26 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
       update: .modified)
   }
 
+  /// 새 기록을 만들지 않고 기존 기록에 방문만 더한다.
+  /// 같은 내용의 기록이 여러 건 생기면 목록이 중복으로 채워진다.
+  func addVisitToLatest() -> CafeEntity? {
+    guard let target = dataSource.objects(Cafe.self)
+      .sorted(byKeyPath: "visitDate", ascending: false)
+      .first else { return nil }
+
+    let now = Date()
+    dataSource.write {
+      if target.visitDates.isEmpty {
+        target.visitDates.append(target.visitDate)
+      }
+      target.visitDates.append(now)
+      target.visitDate = now
+    }
+
+    reloadWidget()
+    return CafeMapper.toEntity(target)
+  }
+
   func remove(id: String) {
     guard let objectId = try? ObjectId(string: id) else { return }
     guard let object = dataSource.object(ofType: Cafe.self, forPrimaryKey: objectId) else { return }

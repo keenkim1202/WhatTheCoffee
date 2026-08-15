@@ -7,6 +7,8 @@ protocol CafeRepositoryProtocol {
   func add(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?, coffeeId: String?) -> CafeEntity
   func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?, coffeeId: String?)
   func updateClosedStatus(id: String, isClosed: Bool)
+  /// 가장 최근에 간 카페에 오늘 방문을 하나 더한다. 기록이 없으면 nil.
+  func addVisitToLatest() -> CafeEntity?
   func remove(id: String)
   func fetch() -> [CafeEntity]
   func search(query: String) -> [CafeEntity]
