@@ -19,13 +19,15 @@ final class FetchStatisticsUseCase {
     let monthlyVisitCounts = calculateMonthlyVisits(cafes)
     let ratingDistribution = calculateRatingDistribution(cafes)
     let topCafes = calculateTopCafes(cafes)
+    let topCoffees = calculateTopCoffees(cafes)
 
     return CafeStatistics(
       totalVisitCount: totalCount,
       averageRating: averageRating,
       monthlyVisitCounts: monthlyVisitCounts,
       ratingDistribution: ratingDistribution,
-      topCafes: topCafes)
+      topCafes: topCafes,
+      topCoffees: topCoffees)
   }
 
   private func calculateMonthlyVisits(_ cafes: [CafeEntity]) -> [(year: Int, month: Int, count: Int)] {
@@ -59,6 +61,32 @@ final class FetchStatisticsUseCase {
       distribution[cafe.rate, default: 0] += cafe.visitCount
     }
     return distribution
+  }
+
+  /// 어떤 커피를 자주 마셨는지, 그리고 그 커피가 몇 점이었는지.
+  /// 커피를 남기지 않은 기록은 세지 않는다. 안 마신 것과 안 적은 것은 다르다.
+  private func calculateTopCoffees(_ cafes: [CafeEntity]) -> [(name: String, count: Int, averageRating: Double)] {
+    let named = cafes.filter { $0.coffeeName?.isEmpty == false }
+    let grouped = Dictionary(grouping: named) { $0.coffeeName! }
+
+    var summaries: [(name: String, count: Int, averageRating: Double)] = []
+    for (name, records) in grouped {
+      // 한 기록이 여러 번의 방문을 담으므로 별점도 그만큼 무게를 갖는다.
+      var count = 0
+      var ratingTotal = 0
+      for record in records {
+        count += record.visitCount
+        ratingTotal += record.rate * record.visitCount
+      }
+
+      let average: Double = count == 0 ? 0 : Double(ratingTotal) / Double(count)
+      summaries.append((name: name, count: count, averageRating: average))
+    }
+
+    summaries.sort { first, second in
+      return first.count == second.count ? first.name < second.name : first.count > second.count
+    }
+    return Array(summaries.prefix(5))
   }
 
   private func calculateTopCafes(_ cafes: [CafeEntity]) -> [(name: String, count: Int)] {

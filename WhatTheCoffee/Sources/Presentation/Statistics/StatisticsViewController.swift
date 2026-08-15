@@ -25,6 +25,7 @@ class StatisticsViewController: BaseViewController {
   private let monthlyChart = MonthlyVisitChartView()
   private let ratingDistribution = RatingDistributionView()
   private let topCafes = TopCafesView()
+  private let topCoffees = TopCoffeesView()
 
   private let emptyLabel: UILabel = {
     let label = UILabel()
@@ -89,11 +90,13 @@ class StatisticsViewController: BaseViewController {
     monthlyChart.translatesAutoresizingMaskIntoConstraints = false
     ratingDistribution.translatesAutoresizingMaskIntoConstraints = false
     topCafes.translatesAutoresizingMaskIntoConstraints = false
+    topCoffees.translatesAutoresizingMaskIntoConstraints = false
 
     contentStack.addArrangedSubview(summaryCard)
     contentStack.addArrangedSubview(monthlyChart)
     contentStack.addArrangedSubview(ratingDistribution)
     contentStack.addArrangedSubview(topCafes)
+    contentStack.addArrangedSubview(topCoffees)
 
     scrollView.addSubview(contentStack)
     view.addSubview(scrollView)
@@ -128,6 +131,7 @@ class StatisticsViewController: BaseViewController {
         monthlyChart.configure(monthlyData: statistics.monthlyVisitCounts)
         ratingDistribution.configure(distribution: statistics.ratingDistribution)
         topCafes.configure(topCafes: statistics.topCafes)
+        topCoffees.configure(topCoffees: statistics.topCoffees)
       }
     }
   }
