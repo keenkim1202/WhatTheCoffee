@@ -62,6 +62,9 @@ class TopCafesView: UIView {
       contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)])
   }
 
+  /// 목록의 이름을 누르면 그 기록만 모아 보여준다.
+  var onSelectCafe: ((String) -> Void)?
+
   func configure(topCafes: [(name: String, count: Int)]) {
     rowsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
@@ -75,8 +78,20 @@ class TopCafesView: UIView {
 
     for (index, cafe) in topCafes.enumerated() {
       let row = makeRow(rank: index + 1, name: cafe.name, count: cafe.count)
+      attachTap(to: row, name: cafe.name)
       rowsStack.addArrangedSubview(row)
     }
+  }
+
+  private func attachTap(to row: UIView, name: String) {
+    row.isUserInteractionEnabled = true
+    let tap = NameTapGestureRecognizer(target: self, action: #selector(onNameTapped(_:)))
+    tap.value = name
+    row.addGestureRecognizer(tap)
+  }
+
+  @objc private func onNameTapped(_ gesture: NameTapGestureRecognizer) {
+    onSelectCafe?(gesture.value)
   }
 
   private func makeRow(rank: Int, name: String, count: Int) -> UIView {
@@ -106,4 +121,11 @@ class TopCafesView: UIView {
     stack.translatesAutoresizingMaskIntoConstraints = false
     return stack
   }
+}
+
+/// 어느 줄을 눌렀는지 제스처가 함께 들고 있게 한다.
+/// 줄은 매번 새로 만들어지므로 인덱스를 밖에 저장해두면 어긋난다.
+final class NameTapGestureRecognizer: UITapGestureRecognizer {
+  /// UIGestureRecognizer가 이미 name을 갖고 있어 다른 이름을 쓴다.
+  var value = ""
 }
