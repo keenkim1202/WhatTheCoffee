@@ -21,6 +21,8 @@ final class AppCoordinator: Coordinator {
   func start() {
     // 첫 실행이면 기본 커피·카페를 넣는다. 조립하는 자리에서 한 번만 한다.
     container.makeManageDefaultDataUseCase().installDefaultsIfNeeded()
+    // 사진이 앱 그룹에 있어야 위젯이 읽는다. 예전 기록은 여기서 한 번 옮긴다.
+    SharedImageStore.migrateFromSandboxIfNeeded()
 
     let records = RecordsCoordinator(container: container)
     records.start()
