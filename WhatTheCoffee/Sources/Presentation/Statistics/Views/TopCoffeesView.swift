@@ -1,10 +1,12 @@
 import UIKit
 
-class TopCafesView: UIView {
+/// 자주 마신 커피와 그 커피의 평균 별점.
+/// 자주 방문한 카페 카드와 같은 모양으로 두어 나란히 읽히게 한다.
+final class TopCoffeesView: UIView {
 
   private let titleLabel: UILabel = {
     let label = UILabel()
-    label.text = "자주 방문한 카페 Top 5"
+    label.text = "자주 마신 커피 Top 5"
     label.font = UIFont(name: "GowunBatang-Bold", size: 15)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -20,7 +22,7 @@ class TopCafesView: UIView {
 
   private let emptyLabel: UILabel = {
     let label = UILabel()
-    label.text = "방문 기록이 없어요"
+    label.text = "기록에 마신 커피를 남겨보세요"
     label.font = UIFont.GowunBatang(type: .regular, size: 13)
     label.textColor = .gray
     label.textAlignment = .center
@@ -62,10 +64,10 @@ class TopCafesView: UIView {
       contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)])
   }
 
-  func configure(topCafes: [(name: String, count: Int)]) {
+  func configure(topCoffees: [(name: String, count: Int, averageRating: Double)]) {
     rowsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-    if topCafes.isEmpty {
+    if topCoffees.isEmpty {
       emptyLabel.isHidden = false
       rowsStack.isHidden = true
       return
@@ -73,13 +75,13 @@ class TopCafesView: UIView {
     emptyLabel.isHidden = true
     rowsStack.isHidden = false
 
-    for (index, cafe) in topCafes.enumerated() {
-      let row = makeRow(rank: index + 1, name: cafe.name, count: cafe.count)
-      rowsStack.addArrangedSubview(row)
+    for (index, coffee) in topCoffees.enumerated() {
+      rowsStack.addArrangedSubview(
+        makeRow(rank: index + 1, name: coffee.name, count: coffee.count, rating: coffee.averageRating))
     }
   }
 
-  private func makeRow(rank: Int, name: String, count: Int) -> UIView {
+  private func makeRow(rank: Int, name: String, count: Int, rating: Double) -> UIView {
     let rankLabel = UILabel()
     rankLabel.text = "\(rank)"
     rankLabel.font = UIFont(name: "GowunBatang-Bold", size: 15)
@@ -93,14 +95,17 @@ class TopCafesView: UIView {
     nameLabel.font = UIFont.GowunBatang(type: .regular, size: 14)
     nameLabel.translatesAutoresizingMaskIntoConstraints = false
 
-    let countLabel = UILabel()
-    countLabel.text = "\(count)회"
-    countLabel.font = UIFont.GowunBatang(type: .regular, size: 13)
-    countLabel.textColor = .gray
-    countLabel.textAlignment = .right
-    countLabel.translatesAutoresizingMaskIntoConstraints = false
+    // 몇 번 마셨는지와 그때 몇 점을 줬는지를 같이 보여야 "어느 게 좋았나"가 읽힌다.
+    let detailLabel = UILabel()
+    // 이 앱은 별점을 별 기호로 쓰지 않는다. 통계 요약과 같이 숫자로만 보여준다.
+    detailLabel.text = String(format: "%d회 · 평점 %.1f", count, rating)
+    detailLabel.font = UIFont.GowunBatang(type: .regular, size: 13)
+    detailLabel.textColor = .gray
+    detailLabel.textAlignment = .right
+    detailLabel.setContentHuggingPriority(.required, for: .horizontal)
+    detailLabel.translatesAutoresizingMaskIntoConstraints = false
 
-    let stack = UIStackView(arrangedSubviews: [rankLabel, nameLabel, countLabel])
+    let stack = UIStackView(arrangedSubviews: [rankLabel, nameLabel, detailLabel])
     stack.axis = .horizontal
     stack.spacing = 8
     stack.translatesAutoresizingMaskIntoConstraints = false

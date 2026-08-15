@@ -97,6 +97,7 @@
 		4F44B3E1536B9163FCB005AA /* RecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D131131D88D8952645A469 /* RecommendViewModel.swift */; };
 		519F6619144D556D1CD982EC /* CoffeeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FC0214DCDE6B133E9535A4 /* CoffeeEntity.swift */; };
 		59E6D4865E84758AE9C103B2 /* RecommendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3447C17EC6439B1427A16902 /* RecommendCoordinator.swift */; };
+		5EBE687FDA8C897D46388F8C /* TopCoffeesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902CC3E932FFF14E1F30EBD8 /* TopCoffeesView.swift */; };
 		80284E2478D04FEAD2E761B0 /* NearCafeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */; };
 		80F3009B334E205341023F50 /* CoffeeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B7720E84B07FE584C471C /* CoffeeListViewModel.swift */; };
 		89DA8C843BA4393D03ADE16B /* FetchNearCafeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B577524FFFA2B137D2001F45 /* FetchNearCafeUseCase.swift */; };
@@ -264,6 +265,7 @@
 		78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeEntity.swift; sourceTree = "<group>"; };
 		7C2B8B04FE353991B83DBA87 /* Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
+		902CC3E932FFF14E1F30EBD8 /* TopCoffeesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TopCoffeesView.swift; sourceTree = "<group>"; };
 		9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMapper.swift; sourceTree = "<group>"; };
 		A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewModel.swift; sourceTree = "<group>"; };
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				1C8318952F86B53C00C9DE50 /* RatingDistributionView.swift */,
 				1C8318962F86B53C00C9DE50 /* SummaryCardView.swift */,
 				1C8318972F86B53C00C9DE50 /* TopCafesView.swift */,
+				902CC3E932FFF14E1F30EBD8 /* TopCoffeesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				F88B5B7562EBFE08D5F9367A /* SharedImageStore.swift in Sources */,
 				395584B560B1469256CC1275 /* CoffeePickerViewController.swift in Sources */,
 				C71AB5F866898C61E6CD4D34 /* StickerOutline.swift in Sources */,
+				5EBE687FDA8C897D46388F8C /* TopCoffeesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
