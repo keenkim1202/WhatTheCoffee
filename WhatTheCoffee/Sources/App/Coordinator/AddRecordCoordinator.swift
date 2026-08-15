@@ -46,14 +46,16 @@ final class AddRecordCoordinator: Coordinator {
   /// 커피 목록에서 무엇을 마셨는지 고른다.
   /// 목록은 추천 탭이 들고 있는 것과 같아서, 두 화면이 같은 커피를 가리키게 된다.
   private func showCoffeePicker(from viewController: AddRecordViewController) {
-    let names = container.makeManageCoffeeListUseCase().fetchAll().map { $0.name }
-    let picker = CoffeePickerViewController(
-      coffeeNames: names,
-      selectedName: viewController.selectedCoffeeName)
-
-    picker.onSelect = { [weak viewController] name in
-      viewController?.applyCoffee(name)
+    let imageUseCase = container.makeManageImageUseCase()
+    let choices = container.makeManageCoffeeListUseCase().fetchAll().map {
+      CoffeePickerViewController.Choice(coffee: $0, image: imageUseCase.loadCoffeeImage(id: $0.id))
     }
+
+    let picker = CoffeePickerViewController(
+      choices: choices,
+      selectedID: viewController.selectedCoffeeID) { [weak viewController] coffee in
+        viewController?.applyCoffee(coffee)
+      }
 
     if let sheet = picker.sheetPresentationController {
       sheet.detents = [.medium(), .large()]

@@ -114,6 +114,7 @@
 		ADF1C56E71CD997C87B4C246 /* RecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */; };
 		BB000001IMAGEUSECASE000001 /* ManageImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */; };
 		C1F8DA8B7A354930D74E8C7A /* RecordsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E9B5ACD41612BB3FC4506 /* RecordsCoordinator.swift */; };
+		C71AB5F866898C61E6CD4D34 /* StickerOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2F4B4517E0110CC6192580 /* StickerOutline.swift */; };
 		CDBFE9B16059FFA15E548557 /* RecordSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */; };
 		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
@@ -247,6 +248,7 @@
 		1CCF0F902755F5E900B45F07 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1CCF0F922755FA7700B45F07 /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 		1CD5EA6D275DE4A900308DB2 /* Bundle++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle++Extension.swift"; sourceTree = "<group>"; };
+		1D2F4B4517E0110CC6192580 /* StickerOutline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StickerOutline.swift; sourceTree = "<group>"; };
 		26707B564A4F0606C15D9F0D /* SettingCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		31E3521A1C8F4028C758BCCF /* CafeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeRepositoryImpl.swift; sourceTree = "<group>"; };
 		3447C17EC6439B1427A16902 /* RecommendCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecommendCoordinator.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				1CA1CE152F90001600C9DE50 /* RealmSchema.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
 				668F5D1F1EB41929997178FB /* SharedImageStore.swift */,
+				1D2F4B4517E0110CC6192580 /* StickerOutline.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				9933FA50FA9E1B468D6B5FD8 /* ManageDefaultDataUseCase.swift in Sources */,
 				F88B5B7562EBFE08D5F9367A /* SharedImageStore.swift in Sources */,
 				395584B560B1469256CC1275 /* CoffeePickerViewController.swift in Sources */,
+				C71AB5F866898C61E6CD4D34 /* StickerOutline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
