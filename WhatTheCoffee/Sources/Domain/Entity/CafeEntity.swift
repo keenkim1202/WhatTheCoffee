@@ -14,6 +14,7 @@ struct CafeEntity: Equatable {
   let visitDates: [Date]
   /// 그 카페에서 마신 커피.
   let coffeeName: String?
+  let coffeeId: String?
 
   var visitCount: Int {
     return max(1, visitDates.count)

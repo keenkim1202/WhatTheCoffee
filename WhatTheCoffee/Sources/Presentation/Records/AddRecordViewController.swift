@@ -824,12 +824,13 @@ extension AddRecordViewController {
   }
 
   /// 고른 커피를 화면 밖에서 읽고 쓰는 통로.
-  var selectedCoffeeName: String? {
-    return viewModel.coffeeName
+  var selectedCoffeeID: String? {
+    return viewModel.coffeeId
   }
 
-  func applyCoffee(_ name: String?) {
-    viewModel.coffeeName = name
+  func applyCoffee(_ coffee: CoffeeEntity?) {
+    viewModel.coffeeName = coffee?.name
+    viewModel.coffeeId = coffee?.id
     updateCoffeeTitle()
   }
 

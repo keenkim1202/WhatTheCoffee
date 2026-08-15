@@ -25,6 +25,12 @@ final class RecordsViewModel {
     return cafeList[index]
   }
 
+  /// 그 기록에서 마신 커피 사진. 커피를 지웠으면 사진도 없어 nil이 된다.
+  func coffeeImage(at index: Int) -> UIImage? {
+    guard let id = cafeList[index].coffeeId else { return nil }
+    return imageUseCase.loadCoffeeImage(id: id)
+  }
+
   func cafeImage(at index: Int) -> UIImage {
     let cafe = cafeList[index]
     return imageUseCase.loadCafeImage(id: cafe.id) ?? UIImage.defaultCafeImage

@@ -269,7 +269,7 @@ extension RecordsViewController: UICollectionViewDataSource {
     guard let cell = recordCollectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
     let item = viewModel.cafe(at: indexPath.item)
     cell.backgroundImageView.image = viewModel.cafeImage(at: indexPath.item)
-    cell.cellConfigure(with: item)
+    cell.cellConfigure(with: item, coffeeImage: viewModel.coffeeImage(at: indexPath.item))
     return cell
   }
 }

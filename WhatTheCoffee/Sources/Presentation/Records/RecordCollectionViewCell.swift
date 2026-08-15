@@ -47,6 +47,16 @@ class RecordCollectionViewCell: UICollectionViewCell {
     return iv
   }()
 
+  /// 무엇을 마셨는지를 그림으로 보여준다. 배경을 지운 커피 사진이라 스티커처럼 붙는다.
+  let coffeeImageView: UIImageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFit
+    iv.clipsToBounds = true
+    iv.isHidden = true
+    iv.translatesAutoresizingMaskIntoConstraints = false
+    return iv
+  }()
+
   let highlightView: UIView = {
     let view = UIView()
     view.backgroundColor = UIColor(white: 1, alpha: 0.85)
@@ -100,6 +110,7 @@ class RecordCollectionViewCell: UICollectionViewCell {
     contentView.addSubview(dimView)
     contentView.addSubview(textStack)
     contentView.addSubview(rateImageView)
+    contentView.addSubview(coffeeImageView)
     contentView.addSubview(highlightView)
     contentView.addSubview(checkImageView)
 
@@ -128,6 +139,12 @@ class RecordCollectionViewCell: UICollectionViewCell {
       rateImageView.widthAnchor.constraint(equalToConstant: 50),
       rateImageView.heightAnchor.constraint(equalToConstant: 50),
 
+      // 별점과 나란히, 같은 크기로 둔다.
+      coffeeImageView.trailingAnchor.constraint(equalTo: rateImageView.leadingAnchor, constant: -6),
+      coffeeImageView.centerYAnchor.constraint(equalTo: rateImageView.centerYAnchor),
+      coffeeImageView.widthAnchor.constraint(equalTo: rateImageView.widthAnchor),
+      coffeeImageView.heightAnchor.constraint(equalTo: rateImageView.heightAnchor),
+
       highlightView.topAnchor.constraint(equalTo: contentView.topAnchor),
       highlightView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       highlightView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -139,12 +156,17 @@ class RecordCollectionViewCell: UICollectionViewCell {
     ])
   }
 
-  func cellConfigure(with item: CafeEntity) {
+  func cellConfigure(with item: CafeEntity, coffeeImage: UIImage?) {
     // 여러 번 간 곳은 횟수를 이름 옆에 붙여준다. 한 번이면 굳이 보여주지 않는다.
     nameLabel.text = item.visitCount > 1 ? "\(item.name) · \(item.visitCount)회" : item.name
     rateImageView.image = UIImage(named: "star\(item.rate)")!
-    // 무엇을 마셨는지가 있으면 날짜 옆에 붙인다. 카드가 좁아 한 줄을 더 쓰지 않는다.
+    coffeeImageView.image = coffeeImage
+    coffeeImageView.isHidden = coffeeImage == nil
+
+    // 사진이 없는데 이름은 남아 있는 기록이 있다. 커피를 지웠거나, 이름만 저장하던 시절의 기록이다.
+    // 그림이 없다고 입력한 것을 지워버리면 안 되므로 그때만 글씨로 되살린다.
     let date = DateFormatter.visitDateFormat.string(from: item.visitDate)
-    dateLabel.text = [date, item.coffeeName].compactMap { $0 }.joined(separator: " · ")
+    let fallbackName = coffeeImage == nil ? item.coffeeName : nil
+    dateLabel.text = [date, fallbackName].compactMap { $0 }.joined(separator: " · ")
   }
 }

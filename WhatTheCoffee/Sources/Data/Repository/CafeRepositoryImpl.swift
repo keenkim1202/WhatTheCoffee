@@ -15,18 +15,18 @@ final class CafeRepositoryImpl: CafeRepositoryProtocol {
   }
 
   @discardableResult
-  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?) -> CafeEntity {
-    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address, visitDates: visitDates, coffeeName: coffeeName)
+  func add(name: String, visitDate: Date = Date(), comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?, coffeeId: String?) -> CafeEntity {
+    let object = Cafe(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: latitude, longitude: longitude, address: address, visitDates: visitDates, coffeeName: coffeeName, coffeeId: coffeeId)
     dataSource.add(object)
     reloadWidget()
     return CafeMapper.toEntity(object)
   }
 
-  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?) {
+  func update(id: String, name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date], coffeeName: String?, coffeeId: String?) {
     guard let objectId = try? ObjectId(string: id) else { return }
     // 방문 날짜가 진실이고 visitDate는 그중 가장 늦은 날이어야 정렬이 맞는다.
     let dates = (visitDates.isEmpty ? [visitDate] : visitDates).sorted()
-    var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": dates.last ?? visitDate, "comment": comment ?? "", "rate": rate, "visitDates": dates, "coffeeName": coffeeName as Any]
+    var value: [String: Any] = ["_id": objectId, "name": name, "visitDate": dates.last ?? visitDate, "comment": comment ?? "", "rate": rate, "visitDates": dates, "coffeeName": coffeeName as Any, "coffeeId": coffeeId as Any]
     if let latitude { value["latitude"] = latitude }
     if let longitude { value["longitude"] = longitude }
     if let address { value["address"] = address }

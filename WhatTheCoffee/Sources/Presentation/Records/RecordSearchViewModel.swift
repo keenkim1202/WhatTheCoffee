@@ -25,6 +25,12 @@ final class RecordSearchViewModel {
     return results[index]
   }
 
+  /// 그 기록에서 마신 커피 사진. 목록과 검색 결과가 같은 셀을 쓰므로 여기도 필요하다.
+  func coffeeImage(at index: Int) -> UIImage? {
+    guard let id = results[index].coffeeId else { return nil }
+    return imageUseCase.loadCoffeeImage(id: id)
+  }
+
   func cafeImage(at index: Int) -> UIImage {
     let cafe = results[index]
     return imageUseCase.loadCafeImage(id: cafe.id) ?? UIImage.defaultCafeImage
