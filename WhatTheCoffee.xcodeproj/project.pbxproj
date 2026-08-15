@@ -37,7 +37,6 @@
 		1C3D7167274FFEF5008EEAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */; };
 		1C48D3FD275380910008C3F7 /* UITextField++Extension.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */; };
 		1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */; };
-		1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555659274FA6E100B5A145 /* ImageDataManager.swift */; };
 		1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */; };
 		1C5F65552F84F8D600DC5647 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
@@ -118,9 +117,11 @@
 		CF6287C46491876D72D302B4 /* CafeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD74BF6E1CF82868DB058994 /* CafeRepositoryProtocol.swift */; };
 		D241A4FEDCB56B14E90ED743 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */; };
 		D636081121075A6A45DB3C2B /* NearCafeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED28EF9568D84F6B80071BA /* NearCafeCoordinator.swift */; };
+		D79AEDF198958C63ADE4379D /* SharedImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5D1F1EB41929997178FB /* SharedImageStore.swift */; };
 		DB7143DF1A22D0961B749FF8 /* RecommendCoffeeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */; };
 		E2D11FFCEBA4FED9F0A1FB46 /* AddRecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA971B8CCD5C8E06539CB5D4 /* AddRecordCoordinator.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
+		F88B5B7562EBFE08D5F9367A /* SharedImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5D1F1EB41929997178FB /* SharedImageStore.swift */; };
 		FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */; };
 /* End PBXBuildFile section */
 
@@ -199,7 +200,6 @@
 		1C3D7166274FFEF5008EEAC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField++Extension.swift.swift"; sourceTree = "<group>"; };
 		1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage++Extension.swift"; sourceTree = "<group>"; };
-		1C555659274FA6E100B5A145 /* ImageDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataManager.swift; sourceTree = "<group>"; };
 		1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter++Extension.swift"; sourceTree = "<group>"; };
 		1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController++Extension.swift"; sourceTree = "<group>"; };
 		1C7BC3B6278C021100424504 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +254,7 @@
 		5AB2D63C632975D9C3203FAD /* RecommendCoffeeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCoffeeUseCase.swift; sourceTree = "<group>"; };
 		5ED28EF9568D84F6B80071BA /* NearCafeCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NearCafeCoordinator.swift; sourceTree = "<group>"; };
 		662C814CFF93646E6A30F10E /* AddCoffeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeViewModel.swift; sourceTree = "<group>"; };
+		668F5D1F1EB41929997178FB /* SharedImageStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SharedImageStore.swift; sourceTree = "<group>"; };
 		6D43C0EFE974EEB7EBD6E918 /* RecordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewModel.swift; sourceTree = "<group>"; };
 		73DB8A68B90159B8F3FC2F77 /* CoffeeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRepositoryImpl.swift; sourceTree = "<group>"; };
 		78676FC9CC2CD25EE596A568 /* NearCafeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearCafeEntity.swift; sourceTree = "<group>"; };
@@ -465,7 +466,6 @@
 				1C37C37D2744F83500EC3CA3 /* UIColor++Extension.swift */,
 				1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */,
 				1C1839FA274CC2A600AAD04B /* UIAlert++Extension.swift */,
-				1C555659274FA6E100B5A145 /* ImageDataManager.swift */,
 				1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */,
 				1C48D3FC275380910008C3F7 /* UITextField++Extension.swift.swift */,
 				1C48D3FE2754C91C0008C3F7 /* UIImage++Extension.swift */,
@@ -636,6 +636,7 @@
 				1CA1CE122F90001300C9DE50 /* WidgetRoute.swift */,
 				1CA1CE152F90001600C9DE50 /* RealmSchema.swift */,
 				1C1839F8274CB06800AAD04B /* Storage.swift */,
+				668F5D1F1EB41929997178FB /* SharedImageStore.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -913,7 +914,6 @@
 				1C48D3FF2754C91C0008C3F7 /* UIImage++Extension.swift in Sources */,
 				1C37C37E2744F83600EC3CA3 /* UIColor++Extension.swift in Sources */,
 				1CD5EA6E275DE4A900308DB2 /* Bundle++Extension.swift in Sources */,
-				1C55565A274FA6E100B5A145 /* ImageDataManager.swift in Sources */,
 				1C37C3802744FB4A00EC3CA3 /* RecordCollectionViewCell.swift in Sources */,
 				1CCF0F8927550D4600B45F07 /* UIFont++Extension.swift in Sources */,
 				A66B5B60D11FA8B2789D8045 /* Coordinator.swift in Sources */,
@@ -924,6 +924,7 @@
 				59E6D4865E84758AE9C103B2 /* RecommendCoordinator.swift in Sources */,
 				A76056E2757825653107BFF2 /* SettingCoordinator.swift in Sources */,
 				9933FA50FA9E1B468D6B5FD8 /* ManageDefaultDataUseCase.swift in Sources */,
+				F88B5B7562EBFE08D5F9367A /* SharedImageStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +935,7 @@
 				1CA1CE022F90000300C9DE50 /* CafeRealmObject.swift in Sources */,
 				1CA1CE132F90001400C9DE50 /* WidgetRoute.swift in Sources */,
 				1CA1CE162F90001700C9DE50 /* RealmSchema.swift in Sources */,
+				D79AEDF198958C63ADE4379D /* SharedImageStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
