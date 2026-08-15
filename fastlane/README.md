@@ -31,6 +31,14 @@ TestFlight에 새 빌드 올리기
 
 앱스토어에 새 빌드 올리기 (심사 제출은 App Store Connect에서)
 
+### ios metadata
+
+```sh
+[bundle exec] fastlane ios metadata
+```
+
+릴리즈 노트와 프로모션 텍스트만 올리기 (빌드는 건드리지 않음)
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
