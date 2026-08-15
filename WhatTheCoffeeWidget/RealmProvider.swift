@@ -22,10 +22,15 @@ enum RealmProvider {
       return nil
     }
 
-    let monthlyCount = cafes
-      .filter("visitDate >= %@ AND visitDate < %@", startOfMonth, startOfNextMonth)
-      .reduce(0) { $0 + max(1, $1.visitCount) }
-    let totalCount = cafes.reduce(0) { $0 + max(1, $1.visitCount) }
+    // 방문마다 날짜가 남으므로 이번 달에 속한 방문만 센다.
+    // 기록 단위로 세면 지난달에 간 것까지 이번 달로 딸려 온다.
+    var monthlyCount = 0
+    var totalCount = 0
+    for cafe in cafes {
+      let dates = cafe.visitDates.isEmpty ? [cafe.visitDate] : Array(cafe.visitDates)
+      totalCount += dates.count
+      monthlyCount += dates.filter { $0 >= startOfMonth && $0 < startOfNextMonth }.count
+    }
 
     let picked = pick(mode: mode, location: location, from: cafes)
     return CafeVisitSnapshot(
@@ -65,8 +70,12 @@ enum RealmProvider {
     }
 
     try? realm.write {
-      target.visitCount = max(1, target.visitCount) + 1
-      target.visitDate = Date()
+      let now = Date()
+      if target.visitDates.isEmpty {
+        target.visitDates.append(target.visitDate)
+      }
+      target.visitDates.append(now)
+      target.visitDate = now
     }
   }
 

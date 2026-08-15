@@ -10,7 +10,12 @@ struct CafeEntity: Equatable {
   let longitude: Double?
   let isClosed: Bool
   let address: String?
-  let visitCount: Int
+  /// 방문한 날들. 오래된 순.
+  let visitDates: [Date]
+
+  var visitCount: Int {
+    return max(1, visitDates.count)
+  }
 
   var hasLocation: Bool {
     return latitude != nil && longitude != nil
