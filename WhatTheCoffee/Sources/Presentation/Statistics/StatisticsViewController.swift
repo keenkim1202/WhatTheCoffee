@@ -8,6 +8,7 @@ class StatisticsViewController: BaseViewController {
 
   /// 어느 카드를 눌렀든 "이런 기록을 보고 싶다"는 한 가지 뜻이다.
   var onSelectFilter: ((RecordFilter) -> Void)?
+  var onSelectAllTime: (() -> Void)?
 
   // MARK: - UI
   private let scrollView: UIScrollView = {
@@ -123,6 +124,9 @@ class StatisticsViewController: BaseViewController {
   }
 
   private func bindCards() {
+    summaryCard.onSelectAllTime = { [weak self] in
+      self?.onSelectAllTime?()
+    }
     monthlyChart.onSelectMonth = { [weak self] year, month in
       self?.onSelectFilter?(.month(year: year, month: month))
     }

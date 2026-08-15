@@ -30,6 +30,34 @@ final class FetchStatisticsUseCase {
       topCoffees: topCoffees)
   }
 
+  /// 첫 방문이 있는 달부터 이번 달까지 빠짐없이. 기록이 없는 달도 0으로 채운다.
+  /// 빈 달을 건너뛰면 뜸했던 시기가 차트에서 사라져 추이를 잘못 읽게 된다.
+  func fetchAllTimeMonthlyVisits() -> [(year: Int, month: Int, count: Int)] {
+    let calendar = Calendar.current
+    let dates = repository.fetch().flatMap { $0.visitDates }
+    guard let earliest = dates.min() else { return [] }
+
+    var countsByMonth: [String: Int] = [:]
+    for date in dates {
+      let components = calendar.dateComponents([.year, .month], from: date)
+      countsByMonth["\(components.year!)-\(components.month!)", default: 0] += 1
+    }
+
+    var months: [(year: Int, month: Int, count: Int)] = []
+    var cursor = calendar.date(from: calendar.dateComponents([.year, .month], from: earliest)) ?? earliest
+    let end = Date()
+
+    while cursor <= end {
+      let components = calendar.dateComponents([.year, .month], from: cursor)
+      let key = "\(components.year!)-\(components.month!)"
+      months.append((year: components.year!, month: components.month!, count: countsByMonth[key] ?? 0))
+
+      guard let next = calendar.date(byAdding: .month, value: 1, to: cursor) else { break }
+      cursor = next
+    }
+    return months
+  }
+
   private func calculateMonthlyVisits(_ cafes: [CafeEntity]) -> [(year: Int, month: Int, count: Int)] {
     let calendar = Calendar.current
     let now = Date()

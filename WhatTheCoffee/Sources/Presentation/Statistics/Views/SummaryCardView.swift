@@ -53,6 +53,9 @@ class SummaryCardView: UIView {
     let visitCard = makeCard(valueLabel: visitCountLabel, subtitleLabel: visitSubtitleLabel)
     let ratingCard = makeCard(valueLabel: ratingLabel, subtitleLabel: ratingSubtitleLabel)
 
+    isUserInteractionEnabled = true
+    addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onCardTapped)))
+
     let stack = UIStackView(arrangedSubviews: [visitCard, ratingCard])
     stack.axis = .horizontal
     stack.spacing = 12
@@ -85,6 +88,13 @@ class SummaryCardView: UIView {
       stack.centerYAnchor.constraint(equalTo: card.centerYAnchor),
       card.heightAnchor.constraint(equalToConstant: 100)])
     return card
+  }
+
+  /// 요약을 누르면 전체 기간 추이로 간다. 위 차트는 최근 6개월만 보여준다.
+  var onSelectAllTime: (() -> Void)?
+
+  @objc private func onCardTapped() {
+    onSelectAllTime?()
   }
 
   func configure(totalCount: Int, averageRating: Double) {
