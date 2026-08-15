@@ -47,13 +47,29 @@ class AddRecordViewController: BaseViewController {
     return indicator
   }()
 
+  /// 눌러서 고르는 자리임이 드러나도록 다른 동작 버튼과 같은 배경을 준다.
   private let coffeeButton: UIButton = {
-    let button = UIButton(type: .system)
-    button.setTitleColor(UIColor(named: "OrangeMainColor"), for: .normal)
-    button.titleLabel?.font = UIFont.GowunBatang(type: .regular, size: 15)
-    button.contentHorizontalAlignment = .center
+    var config = UIButton.Configuration.filled()
+    config.baseBackgroundColor = UIColor(named: "GreenSubColor")
+    config.baseForegroundColor = UIColor(named: "GreenMainColor")
+    config.cornerStyle = .large
+    config.imagePadding = 10
+    config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 40)
+
+    let button = UIButton(configuration: config)
+    button.contentHorizontalAlignment = .leading
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
+  }()
+
+  /// 오른쪽 끝 화살표. 배경만으로는 눌리는 것인지 덜 분명하다.
+  private let coffeeChevron: UIImageView = {
+    let iv = UIImageView(image: UIImage(systemName: "chevron.right"))
+    iv.tintColor = UIColor(named: "GreenMainColor")
+    iv.contentMode = .scaleAspectFit
+    iv.isUserInteractionEnabled = false
+    iv.translatesAutoresizingMaskIntoConstraints = false
+    return iv
   }()
 
   private let visitCountField: UITextField = {
@@ -357,9 +373,11 @@ class AddRecordViewController: BaseViewController {
     let coffeeSectionLabel = makeSectionLabel("마신 커피")
     coffeeButton.addTarget(self, action: #selector(onCoffee), for: .touchUpInside)
 
+    coffeeButton.addSubview(coffeeChevron)
+
     let coffeeStack = UIStackView(arrangedSubviews: [coffeeSectionLabel, coffeeButton])
     coffeeStack.axis = .vertical
-    coffeeStack.alignment = .center
+    coffeeStack.alignment = .fill
     coffeeStack.spacing = 10
     coffeeStack.translatesAutoresizingMaskIntoConstraints = false
 
@@ -487,6 +505,10 @@ class AddRecordViewController: BaseViewController {
       coffeeStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
       coffeeSectionLabel.leadingAnchor.constraint(equalTo: coffeeStack.leadingAnchor),
       coffeeSectionLabel.trailingAnchor.constraint(equalTo: coffeeStack.trailingAnchor),
+
+      coffeeChevron.trailingAnchor.constraint(equalTo: coffeeButton.trailingAnchor, constant: -14),
+      coffeeChevron.centerYAnchor.constraint(equalTo: coffeeButton.centerYAnchor),
+      coffeeChevron.widthAnchor.constraint(equalToConstant: 14),
 
       visitCountStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor, constant: 10),
       visitCountStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
@@ -623,8 +645,18 @@ class AddRecordViewController: BaseViewController {
 
   /// 고른 커피가 없으면 무엇을 하는 자리인지 버튼이 스스로 말하게 한다.
   func updateCoffeeTitle() {
-    coffeeButton.setTitle(viewModel.coffeeName ?? "고르기", for: .normal)
+    var config = coffeeButton.configuration
+    var title = AttributedString(viewModel.coffeeName ?? "고르기")
+    title.font = UIFont.GowunBatang(type: .regular, size: 15)
+    config?.attributedTitle = title
+
+    // 사진이 있으면 그림으로 보여준다. 없으면 무엇을 고르는 자리인지 기호로 알린다.
+    let placeholder = UIImage(systemName: "cup.and.saucer")
+    config?.image = viewModel.coffeeThumbnail(size: Self.coffeeThumbnailSize) ?? placeholder
+    coffeeButton.configuration = config
   }
+
+  private static let coffeeThumbnailSize = CGSize(width: 32, height: 32)
 
   private func updateVisitCount(_ count: Int) {
     viewModel.visitCount = max(1, count)
