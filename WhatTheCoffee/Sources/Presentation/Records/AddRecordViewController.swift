@@ -62,6 +62,17 @@ class AddRecordViewController: BaseViewController {
     return button
   }()
 
+  /// 여러 번 간 곳이라면 언제부터 다녔는지가 횟수보다 더 와닿는다.
+  private let firstVisitLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.GowunBatang(type: .regular, size: 13)
+    label.textColor = .secondaryLabel
+    label.textAlignment = .center
+    label.isHidden = true
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+
   /// 오른쪽 끝 화살표. 배경만으로는 눌리는 것인지 덜 분명하다.
   private let coffeeChevron: UIImageView = {
     let iv = UIImageView(image: UIImage(systemName: "chevron.right"))
@@ -260,6 +271,7 @@ class AddRecordViewController: BaseViewController {
   private func configureFromViewModel() {
     recordImageView.image = viewModel.currentImage
     visitCountField.text = "\(viewModel.visitCount)"
+    updateFirstVisitLabel()
     updateCoffeeTitle()
     titleTextField.text = viewModel.currentName
     dateTextField.text = viewModel.currentDate
@@ -381,7 +393,7 @@ class AddRecordViewController: BaseViewController {
     coffeeStack.spacing = 10
     coffeeStack.translatesAutoresizingMaskIntoConstraints = false
 
-    let visitCountStack = UIStackView(arrangedSubviews: [visitCountSectionLabel, visitCountRow])
+    let visitCountStack = UIStackView(arrangedSubviews: [visitCountSectionLabel, visitCountRow, firstVisitLabel])
     visitCountStack.axis = .vertical
     visitCountStack.alignment = .center
     visitCountStack.spacing = 10
@@ -604,6 +616,8 @@ class AddRecordViewController: BaseViewController {
   @objc private func datePickerDone() {
     if let datePicker = dateTextField.inputView as? UIDatePicker {
       dateTextField.text = DateFormatter.selectDateFormat.string(from: datePicker.date)
+      // 날짜를 바꾸면 저장될 이력이 달라지므로 처음 간 날도 다시 계산해야 한다.
+      updateFirstVisitLabel()
     }
     dateTextField.resignFirstResponder()
   }
@@ -658,9 +672,23 @@ class AddRecordViewController: BaseViewController {
 
   private static let coffeeThumbnailSize = CGSize(width: 32, height: 32)
 
+  /// 처음 간 날은 이미 저장된 기록에서만 알 수 있다. 화면에서 횟수를 늘려도 그 날짜를 지어내지 않는다.
+  private func updateFirstVisitLabel() {
+    guard let first = viewModel.projectedFirstVisitDate(visitDateString: dateTextField.text) else {
+      firstVisitLabel.isHidden = true
+      return
+    }
+
+    firstVisitLabel.text = "처음 간 날 " + DateFormatter.visitDateFormat.string(from: first)
+    firstVisitLabel.isHidden = false
+  }
+
   private func updateVisitCount(_ count: Int) {
     viewModel.visitCount = max(1, count)
     visitCountField.text = "\(viewModel.visitCount)"
+    // 횟수를 1로 줄이면 저장될 때 이력이 사라진다. 화면도 그에 맞춰야 한다.
+    updateFirstVisitLabel()
+    updateFirstVisitLabel()
     updateCoffeeTitle()
   }
 

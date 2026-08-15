@@ -71,12 +71,7 @@ final class AddRecordViewModel {
   func save(name: String, visitDateString: String?, comment: String?, image: UIImage?) {
     guard let rate = rate else { return }
 
-    let visitDate: Date
-    if let dateString = visitDateString, let date = DateFormatter.selectDateFormat.date(from: dateString) {
-      visitDate = date
-    } else {
-      visitDate = Date()
-    }
+    let visitDate = parsedVisitDate(from: visitDateString)
 
     let lat = selectedLocation?.latitude
     let lng = selectedLocation?.longitude
@@ -100,6 +95,27 @@ final class AddRecordViewModel {
         imageUseCase.saveCafeImage(id: newCafe.id, image: image)
       }
     }
+  }
+
+  /// 지금 화면 상태로 저장하면 남게 될 첫 방문일.
+  /// 저장된 값이 아니라 **저장될 값**에서 계산해야 화면과 결과가 어긋나지 않는다.
+  /// 날짜를 앞당기면 그보다 늦은 방문은 저장 시 사라지므로, 옛 최솟값을 그대로 쓰면 거짓말이 된다.
+  ///
+  /// 첫 방문이 마지막 방문과 같은 날이면 보여주지 않는다.
+  /// 방문 날짜를 남기기 전의 기록은 아는 날짜 하나를 횟수만큼 복제해 옮겼으므로
+  /// 둘이 같은 날이고, 그걸 "처음 간 날"이라 부르면 없는 이력을 지어내는 셈이다.
+  func projectedFirstVisitDate(visitDateString: String?) -> Date? {
+    guard visitCount > 1 else { return nil }
+
+    let dates = adjustedVisitDates(latest: keepingTime(of: parsedVisitDate(from: visitDateString)))
+    guard let first = dates.min(), let last = dates.max(), first < last else { return nil }
+    return first
+  }
+
+  /// 화면의 날짜 문자열을 Date로. 비어 있거나 읽을 수 없으면 오늘로 본다.
+  private func parsedVisitDate(from text: String?) -> Date {
+    guard let text, let date = DateFormatter.selectDateFormat.date(from: text) else { return Date() }
+    return date
   }
 
   /// 버튼에 넣을 커피 사진. 저장된 사진은 커서 그대로 넣으면 버튼이 늘어난다.
