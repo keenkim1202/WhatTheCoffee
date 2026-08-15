@@ -125,6 +125,7 @@
 		E2D11FFCEBA4FED9F0A1FB46 /* AddRecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA971B8CCD5C8E06539CB5D4 /* AddRecordCoordinator.swift */; };
 		EDCEE13A21595389249CAD12 /* CafeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15390F16D379C3F51485C26D /* CafeRealmObject.swift */; };
 		F88B5B7562EBFE08D5F9367A /* SharedImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F5D1F1EB41929997178FB /* SharedImageStore.swift */; };
+		FDD3E697A500A7C6C3753FCD /* ExportRecordsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9791ECD60AD46D6D4CDCE7A8 /* ExportRecordsUseCase.swift */; };
 		FE2DFDC29A7C6A77D4E6D4A4 /* CoffeeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */; };
 /* End PBXBuildFile section */
 
@@ -267,6 +268,7 @@
 		884A4B86CEFEDAA057266153 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
 		902CC3E932FFF14E1F30EBD8 /* TopCoffeesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TopCoffeesView.swift; sourceTree = "<group>"; };
 		9626009148B363FF1F60D6F9 /* CoffeeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMapper.swift; sourceTree = "<group>"; };
+		9791ECD60AD46D6D4CDCE7A8 /* ExportRecordsUseCase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ExportRecordsUseCase.swift; sourceTree = "<group>"; };
 		A67D8EA089B2956975A2C67F /* RecordSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSearchViewModel.swift; sourceTree = "<group>"; };
 		A8B3DB99A57DE2F6B3BBEA35 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AA000002DICONTAINER00000002 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 				BB000002IMAGEUSECASE000002 /* ManageImageUseCase.swift */,
 				1C83187D2F867CAD00C9DE50 /* CheckClosedCafeUseCase.swift */,
 				0207D2210197A2A22C028CCE /* ManageDefaultDataUseCase.swift */,
+				9791ECD60AD46D6D4CDCE7A8 /* ExportRecordsUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				395584B560B1469256CC1275 /* CoffeePickerViewController.swift in Sources */,
 				C71AB5F866898C61E6CD4D34 /* StickerOutline.swift in Sources */,
 				5EBE687FDA8C897D46388F8C /* TopCoffeesView.swift in Sources */,
+				FDD3E697A500A7C6C3753FCD /* ExportRecordsUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

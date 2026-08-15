@@ -69,6 +69,10 @@ final class DIContainer {
     FetchStatisticsUseCase(repository: cafeRepository)
   }
 
+  func makeExportRecordsUseCase() -> ExportRecordsUseCase {
+    ExportRecordsUseCase(cafeRepository: cafeRepository, coffeeRepository: coffeeRepository)
+  }
+
   func makeManageDefaultDataUseCase() -> ManageDefaultDataUseCase {
     ManageDefaultDataUseCase(
       coffeeRepository: coffeeRepository,

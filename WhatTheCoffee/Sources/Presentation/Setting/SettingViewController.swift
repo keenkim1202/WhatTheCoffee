@@ -7,9 +7,10 @@ class SettingViewController: BaseViewController {
 
   /// 화면 전환은 Coordinator가 맡는다.
   var onShowDefaultImages: ((String) -> Void)?
+  var onExportRecords: (() -> Void)?
   var onShowDetail: ((Int, String) -> Void)?
   var onFinish: (() -> Void)?
-  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기", "☝️ 개별 이미지 추가하기"]
+  let settingList: [String] = ["🧞‍♂️ 문의하기", "📝 개인정보 처리방침","📚 오픈소스 라이선스", "🧊 아이스 커피 이미지 불러오기", "☕️ 핫 커피 이미지 불러오기", "☝️ 개별 이미지 추가하기", "💾 기록 내보내기"]
 
   // MARK: - UI
   private let tableView: UITableView = {
@@ -144,6 +145,8 @@ extension SettingViewController: UITableViewDelegate {
       }
     } else if indexPath.section == 5 {
       onShowDefaultImages?(settingList[indexPath.section])
+    } else if indexPath.section == 6 {
+      onExportRecords?()
     } else {
       onShowDetail?(indexPath.section, settingList[indexPath.section])
     }
