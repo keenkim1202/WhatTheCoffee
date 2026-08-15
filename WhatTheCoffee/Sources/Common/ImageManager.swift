@@ -1,10 +1,5 @@
 import UIKit
 
-enum DirectoryType: String {
-  case coffee = "coffeeImages"
-  case cafe = "cafeImages"
-}
-
 final class ImageManager {
   static let shared = ImageManager()
   private init() {}
@@ -13,18 +8,7 @@ final class ImageManager {
   private static let maxDimension: CGFloat = 1024
 
   func saveImage(type: DirectoryType, imageName: String, image: UIImage) {
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    let filePath = documentDirectory.appendingPathComponent(type.rawValue)
-
-    if !FileManager.default.fileExists(atPath: filePath.path) {
-      do {
-        try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
-      } catch {
-        print("FAILED - fail to create directory: \(error)")
-      }
-    }
-
-    let imageURL = filePath.appendingPathComponent(imageName)
+    guard let imageURL = SharedImageStore.imageURL(type: type, imageName: imageName) else { return }
 
     // 줄이는 과정에서 알파 채널이 생기므로 판단은 원본으로 한다.
     // 아니면 배경이 꽉 찬 사진까지 전부 PNG가 되어 파일이 몇 배로 커진다.
@@ -87,34 +71,11 @@ final class ImageManager {
   }
 
   func loadImage(type: DirectoryType, imageName: String) -> UIImage? {
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-    let filePath = documentDirectory.appendingPathComponent(type.rawValue)
-
-    if !FileManager.default.fileExists(atPath: filePath.path) {
-      do {
-        try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
-      } catch {
-        print("FAILED - fail to create directory: \(error)")
-      }
-    }
-
-    let imageURL = filePath.appendingPathComponent(imageName)
-    return UIImage(contentsOfFile: imageURL.path)
+    return SharedImageStore.load(type: type, imageName: imageName)
   }
 
   func deleteImage(type: DirectoryType, imageName: String) {
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    let filePath = documentDirectory.appendingPathComponent(type.rawValue)
-
-    if !FileManager.default.fileExists(atPath: filePath.path) {
-      do {
-        try FileManager.default.createDirectory(atPath: filePath.path, withIntermediateDirectories: true, attributes: nil)
-      } catch {
-        print("FAILED - fail to create directory: \(error)")
-      }
-    }
-
-    let imageURL = filePath.appendingPathComponent(imageName)
+    guard let imageURL = SharedImageStore.imageURL(type: type, imageName: imageName) else { return }
 
     if FileManager.default.fileExists(atPath: imageURL.path) {
       do {

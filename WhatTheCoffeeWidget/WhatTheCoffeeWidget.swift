@@ -86,11 +86,19 @@ private struct MonthlyCountView: View {
   }
 }
 
+/// 기록해둔 카페 사진. 없으면 nil이고 위젯은 원래대로 그린다.
+private func featuredPhoto(id: String, maxPixelSize: CGFloat) -> UIImage? {
+  guard !id.isEmpty else { return nil }
+  return SharedImageStore.load(type: .cafe, imageName: "cafe_\(id).jpg", maxPixelSize: maxPixelSize)
+}
+
 private struct FeaturedCafeView: View {
   let featured: CafeVisitSnapshot.Featured?
   let fallback: CafeVisitSnapshot.Fallback?
   let totalCount: Int
   let mode: WidgetDisplayMode
+  /// small은 사진을 배경으로 쓰므로 안쪽에 또 넣으면 두 장이 되고 높이가 모자란다.
+  let showsThumbnail: Bool
 
   /// 거리를 보여주고 있을 때만 가까운 곳을 고른 것이다.
   /// 위치를 못 얻어 최근 방문으로 물러난 경우에는 제목도 그에 맞춰야 한다.
@@ -121,6 +129,13 @@ private struct FeaturedCafeView: View {
         // 버튼만 누를 수 있으면 나머지 영역은 눌러도 아무 데도 가지 않는 죽은 자리가 된다.
         Link(destination: WidgetRoute.records.url ?? Self.recordsFallbackURL) {
           VStack(alignment: .leading, spacing: 4) {
+            if showsThumbnail, let photo = featuredPhoto(id: featured.id, maxPixelSize: 160) {
+              Image(uiImage: photo)
+                .resizable()
+                .scaledToFill()
+                .frame(height: 44)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+            }
             Text(featured.name)
               .font(.system(size: 16, weight: .bold))
               .foregroundStyle(.primary)
@@ -196,12 +211,21 @@ struct WhatTheCoffeeWidgetEntryView: View {
   @Environment(\.widgetFamily) private var family
   var entry: CafeVisitEntry
 
-  private var featuredView: FeaturedCafeView {
+  @Environment(\.colorScheme) private var colorScheme
+
+  private func featuredView(showsThumbnail: Bool) -> FeaturedCafeView {
     return FeaturedCafeView(
       featured: entry.snapshot.featured,
       fallback: entry.snapshot.fallback,
       totalCount: entry.snapshot.totalCount,
-      mode: entry.mode)
+      mode: entry.mode,
+      showsThumbnail: showsThumbnail)
+  }
+
+  /// small 배경에 깔 사진. 어둡게 덮으므로 글씨는 밝은 쪽으로 가야 읽힌다.
+  private var backgroundPhoto: UIImage? {
+    guard family == .systemSmall, entry.mode == .nearest, let id = entry.snapshot.featured?.id else { return nil }
+    return featuredPhoto(id: id, maxPixelSize: 400)
   }
 
   var body: some View {
@@ -213,15 +237,28 @@ struct WhatTheCoffeeWidgetEntryView: View {
           MonthlyCountView(count: entry.snapshot.monthlyCount)
         }
         Divider()
-        featuredView
+        featuredView(showsThumbnail: true)
       }
       .containerBackground(.fill.tertiary, for: .widget)
 
     case .systemSmall:
       // 가까운 곳을 보라고 골라놓고 이번 달 숫자만 띄우면 고른 의미가 없다.
       if entry.mode == .nearest {
-        featuredView
-          .containerBackground(.fill.tertiary, for: .widget)
+        let photo = backgroundPhoto
+        featuredView(showsThumbnail: false)
+          // 어두운 사진 위에서는 .primary가 검정으로 풀려 글씨가 묻힌다.
+          .environment(\.colorScheme, photo == nil ? colorScheme : .dark)
+          .containerBackground(for: .widget) {
+            // 사진이 있으면 그 카페가 어디였는지 글보다 빨리 알아본다.
+            if let photo {
+              Image(uiImage: photo)
+                .resizable()
+                .scaledToFill()
+                .overlay(Color.black.opacity(0.55))
+            } else {
+              Rectangle().fill(.fill.tertiary)
+            }
+          }
       } else {
         MonthlyCountView(count: entry.snapshot.monthlyCount)
           .containerBackground(.fill.tertiary, for: .widget)
