@@ -26,9 +26,12 @@ final class RecordsViewModel {
   }
 
   /// 그 기록에서 마신 커피 사진. 커피를 지웠으면 사진도 없어 nil이 된다.
+  private static let stickerPixelSize: CGFloat = 150
+
   func coffeeImage(at index: Int) -> UIImage? {
     guard let id = cafeList[index].coffeeId else { return nil }
-    return imageUseCase.loadCoffeeImage(id: id)
+    // 카드의 스티커는 50pt다. 원본을 읽으면 셀을 넘길 때마다 1024픽셀짜리를 펼치게 된다.
+    return imageUseCase.loadCoffeeImage(id: id, maxPixelSize: Self.stickerPixelSize)?.roundedCorners()
   }
 
   func cafeImage(at index: Int) -> UIImage {

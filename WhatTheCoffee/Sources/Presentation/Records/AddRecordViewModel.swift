@@ -120,8 +120,10 @@ final class AddRecordViewModel {
 
   /// 버튼에 넣을 커피 사진. 저장된 사진은 커서 그대로 넣으면 버튼이 늘어난다.
   func coffeeThumbnail(size: CGSize) -> UIImage? {
-    guard let coffeeId, let image = imageUseCase.loadCoffeeImage(id: coffeeId) else { return nil }
-    return image.preparingThumbnail(of: size) ?? image
+    let pixelSize = max(size.width, size.height) * UIScreen.main.scale
+    guard let coffeeId,
+          let image = imageUseCase.loadCoffeeImage(id: coffeeId, maxPixelSize: pixelSize) else { return nil }
+    return image.roundedCorners()
   }
 
   /// 화면에서 고른 횟수와 날짜에 맞춰 방문 날짜 목록을 만든다.
