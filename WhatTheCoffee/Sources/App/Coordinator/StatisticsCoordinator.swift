@@ -19,6 +19,9 @@ final class StatisticsCoordinator: Coordinator {
     rootViewController.onSelectFilter = { [weak self] filter in
       self?.showRecords(matching: filter)
     }
+    rootViewController.onSelectAllTime = { [weak self] in
+      self?.showAllTimeTrend()
+    }
   }
 
   func start() {
@@ -26,6 +29,14 @@ final class StatisticsCoordinator: Coordinator {
       title: "통계",
       image: UIImage(systemName: "chart.bar"),
       selectedImage: UIImage(systemName: "chart.bar.fill"))
+  }
+
+  private func showAllTimeTrend() {
+    let viewController = AllTimeTrendViewController(useCase: container.makeFetchStatisticsUseCase())
+
+    let navigation = UINavigationController(rootViewController: viewController)
+    navigation.modalPresentationStyle = .fullScreen
+    rootViewController.present(navigation, animated: true)
   }
 
   private func showRecords(matching filter: RecordFilter) {
