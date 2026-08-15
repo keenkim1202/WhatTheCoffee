@@ -11,6 +11,7 @@ class AddRecordViewController: BaseViewController {
 
   /// 카페 검색 시트를 띄우는 일과 흐름이 끝났음을 알리는 일은 Coordinator가 받는다.
   var onSearchCafe: (() -> Void)?
+  var onPickCoffee: (() -> Void)?
   var onFinish: (() -> Void)?
   let buttonCornerRadius: CGFloat = 20
   let imagePicker = UIImagePickerController()
@@ -44,6 +45,15 @@ class AddRecordViewController: BaseViewController {
     indicator.hidesWhenStopped = true
     indicator.translatesAutoresizingMaskIntoConstraints = false
     return indicator
+  }()
+
+  private let coffeeButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitleColor(UIColor(named: "OrangeMainColor"), for: .normal)
+    button.titleLabel?.font = UIFont.GowunBatang(type: .regular, size: 15)
+    button.contentHorizontalAlignment = .center
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
   }()
 
   private let visitCountField: UITextField = {
@@ -234,6 +244,7 @@ class AddRecordViewController: BaseViewController {
   private func configureFromViewModel() {
     recordImageView.image = viewModel.currentImage
     visitCountField.text = "\(viewModel.visitCount)"
+    updateCoffeeTitle()
     titleTextField.text = viewModel.currentName
     dateTextField.text = viewModel.currentDate
 
@@ -343,6 +354,15 @@ class AddRecordViewController: BaseViewController {
     visitCountRow.spacing = 12
     visitCountRow.alignment = .center
 
+    let coffeeSectionLabel = makeSectionLabel("마신 커피")
+    coffeeButton.addTarget(self, action: #selector(onCoffee), for: .touchUpInside)
+
+    let coffeeStack = UIStackView(arrangedSubviews: [coffeeSectionLabel, coffeeButton])
+    coffeeStack.axis = .vertical
+    coffeeStack.alignment = .center
+    coffeeStack.spacing = 10
+    coffeeStack.translatesAutoresizingMaskIntoConstraints = false
+
     let visitCountStack = UIStackView(arrangedSubviews: [visitCountSectionLabel, visitCountRow])
     visitCountStack.axis = .vertical
     visitCountStack.alignment = .center
@@ -383,7 +403,7 @@ class AddRecordViewController: BaseViewController {
     locationStack.translatesAutoresizingMaskIntoConstraints = false
 
     // 전체 스택
-    let mainStack = UIStackView(arrangedSubviews: [imageStack, titleStack, locationStack, dateStack, visitCountStack, rateStack, commentStack])
+    let mainStack = UIStackView(arrangedSubviews: [imageStack, titleStack, locationStack, dateStack, visitCountStack, coffeeStack, rateStack, commentStack])
     mainStack.axis = .vertical
     mainStack.alignment = .center
     mainStack.spacing = 40
@@ -463,6 +483,11 @@ class AddRecordViewController: BaseViewController {
       locationActionRow.trailingAnchor.constraint(equalTo: locationStack.trailingAnchor),
 
       // 방문 횟수 섹션
+      coffeeStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor, constant: 10),
+      coffeeStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
+      coffeeSectionLabel.leadingAnchor.constraint(equalTo: coffeeStack.leadingAnchor),
+      coffeeSectionLabel.trailingAnchor.constraint(equalTo: coffeeStack.trailingAnchor),
+
       visitCountStack.leadingAnchor.constraint(equalTo: mainStack.leadingAnchor, constant: 10),
       visitCountStack.trailingAnchor.constraint(equalTo: mainStack.trailingAnchor, constant: -10),
       visitCountSectionLabel.leadingAnchor.constraint(equalTo: visitCountStack.leadingAnchor),
@@ -592,9 +617,19 @@ class AddRecordViewController: BaseViewController {
   }
 
   /// 0회 방문은 기록이 아니므로 1 아래로는 내려가지 않는다.
+  @objc private func onCoffee() {
+    onPickCoffee?()
+  }
+
+  /// 고른 커피가 없으면 무엇을 하는 자리인지 버튼이 스스로 말하게 한다.
+  func updateCoffeeTitle() {
+    coffeeButton.setTitle(viewModel.coffeeName ?? "고르기", for: .normal)
+  }
+
   private func updateVisitCount(_ count: Int) {
     viewModel.visitCount = max(1, count)
     visitCountField.text = "\(viewModel.visitCount)"
+    updateCoffeeTitle()
   }
 
   // MARK: - Actions
@@ -786,6 +821,16 @@ extension AddRecordViewController {
       popover.sourceRect = openMapButton.bounds
     }
     present(sheet, animated: true)
+  }
+
+  /// 고른 커피를 화면 밖에서 읽고 쓰는 통로.
+  var selectedCoffeeName: String? {
+    return viewModel.coffeeName
+  }
+
+  func applyCoffee(_ name: String?) {
+    viewModel.coffeeName = name
+    updateCoffeeTitle()
   }
 
   /// 검색 시트에 넘길 초기 질의. 화면 밖에서 입력값을 읽을 유일한 통로다.

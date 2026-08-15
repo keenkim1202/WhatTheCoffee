@@ -15,6 +15,7 @@ final class AddRecordViewModel {
   let cafe: CafeEntity?
   var rate: Int?
   var visitCount: Int = 1
+  var coffeeName: String?
   var selectedLocation: SelectedLocation?
 
   // MARK: - Init
@@ -28,6 +29,7 @@ final class AddRecordViewModel {
     self.viewType = cafe != nil ? .update : .add
     self.rate = cafe?.rate
     self.visitCount = cafe?.visitCount ?? 1
+    self.coffeeName = cafe?.coffeeName
 
     if let cafe, let lat = cafe.latitude, let lng = cafe.longitude {
       self.selectedLocation = SelectedLocation(
@@ -80,7 +82,7 @@ final class AddRecordViewModel {
     let dates = adjustedVisitDates(latest: keepingTime(of: visitDate))
 
     if viewType == .update, let cafe {
-      useCase.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng, address: address, visitDates: dates)
+      useCase.update(id: cafe.id, name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng, address: address, visitDates: dates, coffeeName: coffeeName)
 
       if let image, image != UIImage.defaultCafeImage {
         imageUseCase.saveCafeImage(id: cafe.id, image: image)
@@ -90,7 +92,7 @@ final class AddRecordViewModel {
         }
       }
     } else {
-      let newCafe = useCase.add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng, address: address, visitDates: dates)
+      let newCafe = useCase.add(name: name, visitDate: visitDate, comment: comment, rate: rate, latitude: lat, longitude: lng, address: address, visitDates: dates, coffeeName: coffeeName)
 
       if let image, image != UIImage.defaultCafeImage {
         imageUseCase.saveCafeImage(id: newCafe.id, image: image)

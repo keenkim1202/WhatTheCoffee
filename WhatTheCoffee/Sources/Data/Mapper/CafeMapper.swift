@@ -12,6 +12,7 @@ enum CafeMapper {
       longitude: object.longitude,
       isClosed: object.isClosed,
       address: object.address,
-      visitDates: object.visitDates.isEmpty ? [object.visitDate] : Array(object.visitDates))
+      visitDates: object.visitDates.isEmpty ? [object.visitDate] : Array(object.visitDates),
+      coffeeName: object.coffeeName)
   }
 }

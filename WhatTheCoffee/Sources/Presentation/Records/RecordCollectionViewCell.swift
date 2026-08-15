@@ -143,6 +143,8 @@ class RecordCollectionViewCell: UICollectionViewCell {
     // 여러 번 간 곳은 횟수를 이름 옆에 붙여준다. 한 번이면 굳이 보여주지 않는다.
     nameLabel.text = item.visitCount > 1 ? "\(item.name) · \(item.visitCount)회" : item.name
     rateImageView.image = UIImage(named: "star\(item.rate)")!
-    dateLabel.text = DateFormatter.visitDateFormat.string(from: item.visitDate)
+    // 무엇을 마셨는지가 있으면 날짜 옆에 붙인다. 카드가 좁아 한 줄을 더 쓰지 않는다.
+    let date = DateFormatter.visitDateFormat.string(from: item.visitDate)
+    dateLabel.text = [date, item.coffeeName].compactMap { $0 }.joined(separator: " · ")
   }
 }

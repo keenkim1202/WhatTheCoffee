@@ -13,6 +13,8 @@ class Cafe: Object {
   @Persisted var address: String?
   /// 방문한 날들. 이쪽이 진짜 기록이고 visitDate는 이 중 가장 늦은 날이다.
   @Persisted var visitDates: List<Date>
+  /// 그 카페에서 마신 커피 이름. 커피 목록에서 지워져도 기록은 남아야 해서 참조가 아니라 이름으로 둔다.
+  @Persisted var coffeeName: String?
 
   @Persisted(primaryKey: true) var _id: ObjectId
 
@@ -30,7 +32,7 @@ class Cafe: Object {
     self.visitDates.append(self.visitDate)
   }
 
-  convenience init(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date] = []) {
+  convenience init(name: String, visitDate: Date, comment: String?, rate: Int, latitude: Double?, longitude: Double?, address: String?, visitDates: [Date] = [], coffeeName: String? = nil) {
     self.init()
     self.name = name
     self.comment = comment
@@ -39,6 +41,7 @@ class Cafe: Object {
     self.longitude = longitude
     self.address = address
     self.isClosed = false
+    self.coffeeName = coffeeName
 
     let dates = visitDates.isEmpty ? [visitDate] : visitDates.sorted()
     self.visitDates.append(objectsIn: dates)
