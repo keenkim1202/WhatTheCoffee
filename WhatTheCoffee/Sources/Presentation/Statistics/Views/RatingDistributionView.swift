@@ -45,6 +45,9 @@ class RatingDistributionView: UIView {
       rowsStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)])
   }
 
+  /// 몇 점을 준 곳이 어디였는지로 이어진다.
+  var onSelectRate: ((Int) -> Void)?
+
   func configure(distribution: [Int: Int]) {
     rowsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
@@ -53,8 +56,18 @@ class RatingDistributionView: UIView {
     for star in stride(from: 5, through: 1, by: -1) {
       let count = distribution[star] ?? 0
       let row = makeRow(star: star, count: count, maxCount: maxCount)
+      if count > 0 {
+        row.isUserInteractionEnabled = true
+        let tap = RateTapGestureRecognizer(target: self, action: #selector(onRateTapped(_:)))
+        tap.rate = star
+        row.addGestureRecognizer(tap)
+      }
       rowsStack.addArrangedSubview(row)
     }
+  }
+
+  @objc private func onRateTapped(_ gesture: RateTapGestureRecognizer) {
+    onSelectRate?(gesture.rate)
   }
 
   private func makeRow(star: Int, count: Int, maxCount: Int) -> UIView {
@@ -122,4 +135,8 @@ class RatingDistributionView: UIView {
       countLabel.widthAnchor.constraint(equalToConstant: 30)])
     return container
   }
+}
+
+private final class RateTapGestureRecognizer: UITapGestureRecognizer {
+  var rate = 0
 }

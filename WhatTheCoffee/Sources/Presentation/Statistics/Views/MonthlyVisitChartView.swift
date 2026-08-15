@@ -65,6 +65,9 @@ class MonthlyVisitChartView: UIView {
       emptyLabel.centerYAnchor.constraint(equalTo: chartContainer.centerYAnchor)])
   }
 
+  /// 막대를 누르면 그달 기록을 보여준다. 숫자만 보여주고 끝나면 다음에 할 게 없다.
+  var onSelectMonth: ((Int, Int) -> Void)?
+
   func configure(monthlyData: [(year: Int, month: Int, count: Int)]) {
     chartContainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
@@ -80,8 +83,20 @@ class MonthlyVisitChartView: UIView {
     for data in monthlyData {
       let isCurrent = data.month == currentMonth
       let column = makeColumn(month: data.month, count: data.count, maxCount: maxCount, isCurrent: isCurrent)
+      // 기록이 없는 달은 눌러도 보여줄 게 없다.
+      if data.count > 0 {
+        column.isUserInteractionEnabled = true
+        let tap = MonthTapGestureRecognizer(target: self, action: #selector(onMonthTapped(_:)))
+        tap.year = data.year
+        tap.month = data.month
+        column.addGestureRecognizer(tap)
+      }
       chartContainer.addArrangedSubview(column)
     }
+  }
+
+  @objc private func onMonthTapped(_ gesture: MonthTapGestureRecognizer) {
+    onSelectMonth?(gesture.year, gesture.month)
   }
 
   private func makeColumn(month: Int, count: Int, maxCount: Int, isCurrent: Bool = false) -> UIView {
@@ -129,4 +144,11 @@ class MonthlyVisitChartView: UIView {
       countLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor)])
     return container
   }
+}
+
+/// 어느 달을 눌렀는지 제스처가 함께 들고 있게 한다.
+/// 막대는 매번 새로 만들어지므로 인덱스를 밖에 저장해두면 어긋난다.
+private final class MonthTapGestureRecognizer: UITapGestureRecognizer {
+  var year = 0
+  var month = 0
 }

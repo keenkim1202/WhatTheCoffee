@@ -6,6 +6,9 @@ class StatisticsViewController: BaseViewController {
   // MARK: - Properties
   let viewModel: StatisticsViewModel
 
+  /// 어느 카드를 눌렀든 "이런 기록을 보고 싶다"는 한 가지 뜻이다.
+  var onSelectFilter: ((RecordFilter) -> Void)?
+
   // MARK: - UI
   private let scrollView: UIScrollView = {
     let sv = UIScrollView()
@@ -55,6 +58,7 @@ class StatisticsViewController: BaseViewController {
     configureNav()
     configureLayout()
     bindViewModel()
+    bindCards()
     observeForeground()
   }
 
@@ -116,6 +120,21 @@ class StatisticsViewController: BaseViewController {
 
       emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+  }
+
+  private func bindCards() {
+    monthlyChart.onSelectMonth = { [weak self] year, month in
+      self?.onSelectFilter?(.month(year: year, month: month))
+    }
+    ratingDistribution.onSelectRate = { [weak self] rate in
+      self?.onSelectFilter?(.rate(rate))
+    }
+    topCafes.onSelectCafe = { [weak self] name in
+      self?.onSelectFilter?(.cafe(name: name))
+    }
+    topCoffees.onSelectCoffee = { [weak self] name in
+      self?.onSelectFilter?(.coffee(name: name))
+    }
   }
 
   private func bindViewModel() {

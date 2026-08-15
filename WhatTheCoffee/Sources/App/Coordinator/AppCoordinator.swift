@@ -37,11 +37,15 @@ final class AppCoordinator: Coordinator {
     recommend.start()
     addChild(recommend)
 
+    let statistics = StatisticsCoordinator(container: container)
+    statistics.start()
+    addChild(statistics)
+
     tabBarController.viewControllers = [
       records.navigationController,
       recommend.navigationController,
       nearCafe.navigationController,
-      makeStatisticsTab()
+      statistics.navigationController
     ]
     tabBarController.selectedIndex = Self.defaultTabIndex
 
@@ -66,17 +70,6 @@ final class AppCoordinator: Coordinator {
   }
 
   // MARK: - Tabs
-  private func makeStatisticsTab() -> UIViewController {
-    let vc = StatisticsViewController(viewModel: container.makeStatisticsViewModel())
-
-    let navigation = UINavigationController(rootViewController: vc)
-    navigation.tabBarItem = UITabBarItem(
-      title: "통계",
-      image: UIImage(systemName: "chart.bar"),
-      selectedImage: UIImage(systemName: "chart.bar.fill"))
-    return navigation
-  }
-
   /// 처음 보이는 탭은 추천이다. WidgetRoute.tabIndex와 같은 배열 순서를 따른다.
   private static let defaultTabIndex = 1
 }

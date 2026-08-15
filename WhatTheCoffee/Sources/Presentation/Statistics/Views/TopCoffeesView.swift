@@ -64,6 +64,9 @@ final class TopCoffeesView: UIView {
       contentStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)])
   }
 
+  /// 목록의 이름을 누르면 그 기록만 모아 보여준다.
+  var onSelectCoffee: ((String) -> Void)?
+
   func configure(topCoffees: [(name: String, count: Int, averageRating: Double)]) {
     rowsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
@@ -76,9 +79,21 @@ final class TopCoffeesView: UIView {
     rowsStack.isHidden = false
 
     for (index, coffee) in topCoffees.enumerated() {
-      rowsStack.addArrangedSubview(
-        makeRow(rank: index + 1, name: coffee.name, count: coffee.count, rating: coffee.averageRating))
+      let row = makeRow(rank: index + 1, name: coffee.name, count: coffee.count, rating: coffee.averageRating)
+      attachTap(to: row, name: coffee.name)
+      rowsStack.addArrangedSubview(row)
     }
+  }
+
+  private func attachTap(to row: UIView, name: String) {
+    row.isUserInteractionEnabled = true
+    let tap = NameTapGestureRecognizer(target: self, action: #selector(onNameTapped(_:)))
+    tap.value = name
+    row.addGestureRecognizer(tap)
+  }
+
+  @objc private func onNameTapped(_ gesture: NameTapGestureRecognizer) {
+    onSelectCoffee?(gesture.value)
   }
 
   private func makeRow(rank: Int, name: String, count: Int, rating: Double) -> UIView {
