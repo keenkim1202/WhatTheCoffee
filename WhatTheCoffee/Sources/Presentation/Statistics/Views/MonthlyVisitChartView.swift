@@ -13,7 +13,9 @@ class MonthlyVisitChartView: UIView {
   private let chartContainer: UIStackView = {
     let stack = UIStackView()
     stack.axis = .horizontal
-    stack.alignment = .bottom
+    // .bottom이면 컬럼이 내용 높이만 갖는데, 내용은 아래에서 위로만 묶여 있어 높이가 0으로 접힌다.
+    // 막대가 컨테이너 밖에 그려져 눌러도 터치가 닿지 않았다. 채워서 컬럼 전체를 누를 수 있게 한다.
+    stack.alignment = .fill
     stack.distribution = .fillEqually
     stack.spacing = 8
     stack.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +143,9 @@ class MonthlyVisitChartView: UIView {
       bar.heightAnchor.constraint(equalToConstant: max(barHeight, 4)),
 
       countLabel.bottomAnchor.constraint(equalTo: bar.topAnchor, constant: -2),
-      countLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor)])
+      countLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+      // 내용이 컨테이너를 넘지 않도록 위쪽을 막아둔다.
+      countLabel.topAnchor.constraint(greaterThanOrEqualTo: container.topAnchor)])
     return container
   }
 }
