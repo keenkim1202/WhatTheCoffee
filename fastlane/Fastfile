@@ -46,6 +46,29 @@ platform :ios do
       precheck_include_in_app_purchases: false)
   end
 
+  desc "이미 올라간 빌드로 심사 제출하기 (예: fastlane submit version:2.1 build:28)"
+  lane :submit do |options|
+    # 어느 버전에 어느 빌드를 넣는지는 짐작할 수 없다. 빠뜨렸다면 무엇이 없는지 알려준다.
+    version = options[:version] || UI.user_error!("version이 필요합니다. 예: fastlane submit version:2.1 build:28")
+    build = options[:build] || UI.user_error!("build가 필요합니다. 예: fastlane submit version:2.1 build:28")
+
+    upload_to_app_store(
+      app_version: version,
+      build_number: build,
+      # 빌드는 beta 레인으로 이미 올렸다. 여기서는 버전과 메타데이터만 맞춘다.
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      submit_for_review: true,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      submission_information: {
+        # 광고 식별자를 쓰지 않는다. AdSupport를 링크하지 않았고 소스에서도 참조하지 않는다.
+        add_id_info_uses_idfa: false,
+        # Info.plist의 ITSAppUsesNonExemptEncryption과 같은 답이어야 한다.
+        export_compliance_uses_encryption: false
+      })
+  end
+
   desc "릴리즈 노트와 프로모션 텍스트만 올리기 (빌드는 건드리지 않음)"
   lane :metadata do
     # 심사 중인 버전에 덮어쓰지 않도록, 올릴 버전이 App Store Connect에 만들어진 뒤에 실행한다.
