@@ -31,6 +31,14 @@ TestFlight에 새 빌드 올리기
 
 앱스토어에 새 빌드 올리기 (심사 제출은 App Store Connect에서)
 
+### ios submit
+
+```sh
+[bundle exec] fastlane ios submit
+```
+
+이미 올라간 빌드로 심사 제출하기 (예: fastlane submit version:2.1 build:28)
+
 ### ios metadata
 
 ```sh
