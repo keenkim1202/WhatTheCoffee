@@ -17,35 +17,18 @@ extension UIViewController {
   }
 }
 
-// MARK: - Delete Alert
+// MARK: - Confirming Alert
 extension UIViewController {
   typealias CompletionHandler = () -> Void
   
-  // TODO: deleteAlert, addAlert 비슷함. 코드 줄일 수 있을 것 같음. 나중에 고치기.
   func addAlert(_ title: String,_ message: String, completion: @escaping CompletionHandler) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    let no = UIAlertAction(title: "아니오", style: .default, handler: nil)
-    let yes = UIAlertAction(title: "네", style: .destructive) { _ in
-      completion()
-    }
-    
-    alert.addAction(no)
-    alert.addAction(yes)
-    
-    self.present(alert, animated: true)
+    UIAlertController
+      .confirm(self, title: title, message: message, onConfirm: completion)
   }
   
   func deleteAlert(_ message: String, completion: @escaping CompletionHandler) {
-    let alert = UIAlertController(title: "⚠️", message: message, preferredStyle: .alert)
-    let no = UIAlertAction(title: "아니오", style: .default, handler: nil)
-    let yes = UIAlertAction(title: "네", style: .destructive) { _ in
-      completion()
-    }
-    
-    alert.addAction(no)
-    alert.addAction(yes)
-    
-    self.present(alert, animated: true)
+    UIAlertController
+      .confirm(self, title: "⚠️", message: message, onConfirm: completion)
   }
 }
 
