@@ -1,6 +1,6 @@
 # WhatTheCoffee
 
-- 오늘 마실 커피를 추천하고, 방문한 카페를 기록하는 iOS 앱입니다.
+오늘 마실 커피를 추천하고, 방문한 카페를 기록하는 iOS 앱입니다.
 
 ## 기능
 
@@ -19,7 +19,7 @@
 
 ### 그 밖의 기능
 
-| | 내용 |
+| 기능 | 내용 |
 |---|---|
 | 위젯 | 이번 달 방문 수, 최근 방문 또는 가까운 카페. 버튼 하나로 오늘 방문 기록. 잠금화면 지원 |
 | 시리 | "왓더커피에 커피 기록"이라고 말하면 앱을 열지 않고 최근 카페에 방문을 더합니다 |
@@ -50,11 +50,27 @@ WhatTheCoffeeWidget/    위젯과 AppIntent
 
 - 앱 샌드박스에 있으면 위젯이 읽지 못하기 때문에, Realm 파일과 사진은 앱 그룹 `group.keen.WhatTheCoffee` 안에 둡니다.
 - 예전 위치에 남아 있던 파일은 첫 실행 때 옮깁니다.
-- 스키마 버전과 마이그레이션 코드는 `RealmSchema` 한 곳에 두고 앱과 위젯이 같이 씁니다. (현재 스키마 버전: 7)
+- 스키마 버전과 마이그레이션 코드는 `RealmSchema` 한 곳에 두고 앱과 위젯이 같이 씁니다.
 - 한쪽만 고치면 파일을 먼저 여는 쪽이 다르게 마이그레이션합니다.
 
 ## 필요한 파일
 
 - `WhatTheCoffee/Supporting Files/` 에 두 파일이 있어야 빌드됩니다. 둘 다 gitignore 대상입니다.
-- `APIKEY.plist`에 카카오 REST API 키와 네이버 지도 클라이언트 ID를 넣습니다.
+- `APIKEY.plist`에 키 두 개를 넣습니다.
+  - `KAKAO_APP_KEY`: `KakaoAK <REST API 키>` 형태로 넣습니다. Authorization 헤더에 그대로 실리기 때문에 접두사가 빠지면 카페 검색이 401로 실패합니다.
+  - `NAVER_MAP_CLIENT_ID`: 네이버 지도 클라이언트 ID.
 - `GoogleService-Info.plist`는 Firebase 콘솔에서 받습니다.
+
+## 배포
+
+```bash
+bundle exec fastlane beta                          # TestFlight
+bundle exec fastlane release                       # 앱스토어 업로드
+bundle exec fastlane submit version:2.1 build:28   # 올라간 빌드로 심사 제출
+```
+
+- App Store Connect API 키를 환경변수로 넘깁니다. 없으면 Apple ID 대화형 로그인으로 넘어가 사람이 직접 실행해야 합니다.
+
+```bash
+ASC_KEY_PATH=... ASC_KEY_ID=... ASC_ISSUER_ID=... bundle exec fastlane release
+```
