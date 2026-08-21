@@ -63,6 +63,9 @@ WhatTheCoffeeWidget/    위젯과 AppIntent
 
 ## 배포
 
+- Ruby 3.3.0을 씁니다 (`.ruby-version`). macOS 기본 Ruby 2.6으로는 fastlane이 설치되지 않습니다.
+- 처음이라면 `bundle install`로 gem을 먼저 받습니다.
+
 ```bash
 bundle exec fastlane beta                          # TestFlight
 bundle exec fastlane release                       # 앱스토어 업로드
