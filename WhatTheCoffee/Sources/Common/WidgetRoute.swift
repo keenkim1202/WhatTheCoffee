@@ -4,6 +4,7 @@ import Foundation
 /// 위젯과 앱이 같은 정의를 봐야 해서 두 타깃에서 함께 컴파일한다.
 enum WidgetRoute: String {
   case records
+  case recommend
   case statistics
   case addRecord
 
@@ -24,6 +25,7 @@ enum WidgetRoute: String {
   var tabIndex: Int? {
     switch self {
     case .records, .addRecord: return 0
+    case .recommend: return 1
     case .statistics: return 3
     }
   }

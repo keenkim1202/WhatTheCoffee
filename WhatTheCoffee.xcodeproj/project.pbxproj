@@ -41,6 +41,7 @@
 		1C555662274FF5A300B5A145 /* DateFormatter++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C555661274FF5A300B5A145 /* DateFormatter++Extension.swift */; };
 		1C5F65552F84F8D600DC5647 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1C5F65542F84F8D600DC5647 /* RealmSwift */; };
 		1C605BE2274B8046000E94D0 /* UIViewController++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C605BE1274B8046000E94D0 /* UIViewController++Extension.swift */; };
+		1C75CE7FD28A4551C309CCC1 /* CoffeeRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C36F3420FCCFE0A929FB23E /* CoffeeRealmObject.swift */; };
 		1C7BC3B7278C021100424504 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B6278C021100424504 /* BaseViewController.swift */; };
 		1C7BC3B9278C152800424504 /* UITableView++Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3B8278C152800424504 /* UITableView++Extension.swift */; };
 		1C7BC3BB278C21FD00424504 /* AddDefaultImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BC3BA278C21FD00424504 /* AddDefaultImageViewController.swift */; };
@@ -976,6 +977,7 @@
 				1CA1CE132F90001400C9DE50 /* WidgetRoute.swift in Sources */,
 				1CA1CE162F90001700C9DE50 /* RealmSchema.swift in Sources */,
 				D79AEDF198958C63ADE4379D /* SharedImageStore.swift in Sources */,
+				1C75CE7FD28A4551C309CCC1 /* CoffeeRealmObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

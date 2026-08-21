@@ -60,6 +60,15 @@ enum RealmProvider {
     return (CafeVisitSnapshot.Featured(cafe: nearest.0, distance: nearest.1), nil)
   }
 
+  /// 추천 목록에 담아둔 커피 전부.
+  /// 순서가 흔들리면 같은 날에 다른 커피가 나오므로 기본키로 고정한다.
+  static func coffees() -> [CoffeeSnapshot] {
+    guard let realm = openRealm() else { return [] }
+    return realm.objects(Coffee.self)
+      .sorted(byKeyPath: "_id", ascending: true)
+      .map { CoffeeSnapshot(id: $0._id.stringValue, name: $0.name) }
+  }
+
   /// 위젯에 떠 있던 그 기록의 방문 횟수를 올리고 날짜를 오늘로 옮긴다.
   /// 같은 내용의 기록을 여러 건 만들면 목록이 중복으로 채워진다.
   /// 위젯에서 새 카페를 만들 수는 없으므로, 기록이 없으면 아무것도 하지 않는다.
@@ -108,10 +117,22 @@ enum RealmProvider {
       fileURL: realmURL,
       schemaVersion: RealmSchema.version,
       migrationBlock: RealmSchema.migrationBlock,
-      objectTypes: [Cafe.self])
+      objectTypes: [Cafe.self, Coffee.self])
 
     return try? Realm(configuration: config)
   }
+}
+
+/// 위젯이 오늘의 커피로 보여줄 한 잔.
+struct CoffeeSnapshot {
+  /// 사진 파일 이름이 기본키로 정해지므로 이름만으로는 사진을 찾을 수 없다.
+  let id: String
+  let name: String
+}
+
+extension CoffeeSnapshot {
+  /// 위젯 갤러리와 프리뷰에서 쓰는 예시 데이터.
+  static let sample = CoffeeSnapshot(id: "", name: "아이스 아메리카노")
 }
 
 struct CafeVisitSnapshot {
